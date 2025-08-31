@@ -4,7 +4,6 @@ import {
   Typography,
   Container,
   Button,
-  Grid,
   Chip,
 } from '@mui/material';
 import Image from 'next/image';
@@ -55,10 +54,6 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
     notFound();
   }
 
-  const scrollToContact = () => {
-    // Scroll to contact section on main page
-    window.location.href = '/#contact';
-  };
 
   return (
     <>
@@ -129,8 +124,12 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
 
         {/* Content Section */}
         <Container maxWidth="lg" sx={{ py: { xs: 6, md: 10 } }}>
-          <Grid container spacing={{ xs: 4, md: 6 }}>
-            <Grid item xs={12} md={8}>
+          <Box sx={{ 
+            display: 'flex', 
+            flexDirection: { xs: 'column', md: 'row' },
+            gap: { xs: 4, md: 6 }
+          }}>
+            <Box sx={{ flex: { xs: 'none', md: '2' } }}>
               {/* Image Gallery */}
               <Box sx={{ mb: 6 }}>
                 <Typography
@@ -146,9 +145,19 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
                   Gallery
                 </Typography>
                 
-                <Grid container spacing={3}>
+                <Box sx={{ 
+                  display: 'flex', 
+                  flexWrap: 'wrap',
+                  gap: 3
+                }}>
                   {work.images.map((image, index) => (
-                    <Grid item xs={12} sm={6} key={index}>
+                    <Box 
+                      key={index}
+                      sx={{
+                        width: { xs: '100%', sm: 'calc(50% - 12px)' },
+                        flex: '0 0 auto'
+                      }}
+                    >
                       <Box
                         sx={{
                           position: 'relative',
@@ -167,13 +176,13 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
                           }}
                         />
                       </Box>
-                    </Grid>
+                    </Box>
                   ))}
-                </Grid>
+                </Box>
               </Box>
-            </Grid>
+            </Box>
 
-            <Grid item xs={12} md={4}>
+            <Box sx={{ flex: { xs: 'none', md: '1' } }}>
               {/* Project Details */}
               <Box
                 sx={{
@@ -255,28 +264,29 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
                   Request a similar project and let&apos;s bring your vision to life.
                 </Typography>
                 
-                <Button
-                  variant="contained"
-                  size="large"
-                  onClick={scrollToContact}
-                  sx={{
-                    backgroundColor: '#000',
-                    color: 'primary.main',
-                    px: 3,
-                    py: 1.5,
-                    fontSize: '0.9rem',
-                    fontWeight: 700,
-                    textTransform: 'uppercase',
-                    '&:hover': {
-                      backgroundColor: '#333',
-                    },
-                  }}
-                >
-                  Get Started
-                </Button>
+                <Link href="/#contact" passHref>
+                  <Button
+                    variant="contained"
+                    size="large"
+                    sx={{
+                      backgroundColor: '#000',
+                      color: 'primary.main',
+                      px: 3,
+                      py: 1.5,
+                      fontSize: '0.9rem',
+                      fontWeight: 700,
+                      textTransform: 'uppercase',
+                      '&:hover': {
+                        backgroundColor: '#333',
+                      },
+                    }}
+                  >
+                    Get Started
+                  </Button>
+                </Link>
               </Box>
-            </Grid>
-          </Grid>
+            </Box>
+          </Box>
 
           {/* Back to Work */}
           <Box sx={{ mt: 8, textAlign: 'center' }}>

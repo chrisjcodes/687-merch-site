@@ -5,7 +5,6 @@ import {
   Box,
   Typography,
   Container,
-  Grid,
 } from '@mui/material';
 import Image from 'next/image';
 import { partners } from '@/lib/data';
@@ -33,19 +32,24 @@ export default function Partners() {
           </Typography>
         </Box>
 
-        <Box sx={{ maxWidth: '800px', margin: '0 auto' }}>
-          <Grid container spacing={4} justifyContent="center">
-            {partners.map((partner) => (
-              <Grid
-                item
-                xs={6}
-                sm={4}
-                key={partner.name}
-                sx={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                }}
-              >
+        <Box sx={{ 
+          maxWidth: '800px', 
+          margin: '0 auto',
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: 4,
+          justifyContent: 'center'
+        }}>
+          {partners.map((partner) => (
+            <Box
+              key={partner.name}
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                width: { xs: 'calc(50% - 16px)', sm: 'calc(33.333% - 16px)' },
+                minWidth: '140px'
+              }}
+            >
               <Box
                 sx={{
                   position: 'relative',
@@ -80,9 +84,8 @@ export default function Partners() {
                   }}
                 />
               </Box>
-            </Grid>
+            </Box>
             ))}
-          </Grid>
         </Box>
       </Container>
     </Box>
