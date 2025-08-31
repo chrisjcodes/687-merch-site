@@ -68,7 +68,7 @@ export default function AppHeader() {
               }}
             >
               <Image
-                src="/687-logo.webp"
+                src="/687-logo.png"
                 alt="687 Merch"
                 fill
                 style={{ 
