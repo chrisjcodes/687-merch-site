@@ -76,8 +76,14 @@ export default function ContactForm() {
       }}
     >
       <Container maxWidth="lg">
-        <Grid container spacing={{ xs: 4, md: 8 }} alignItems="center" justifyContent="center">
-          <Grid item xs={12} md={6}>
+        <Box sx={{ 
+          display: 'flex', 
+          flexDirection: { xs: 'column', md: 'row' },
+          gap: { xs: 4, md: 8 },
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}>
+          <Box sx={{ flex: { xs: 'none', md: '1' }, textAlign: { xs: 'center', md: 'left' } }}>
             <Typography
               variant="h2"
               component="h2"
@@ -91,9 +97,9 @@ export default function ContactForm() {
               Need Merch?<br />
               Let&apos;s Talk
             </Typography>
-          </Grid>
+          </Box>
           
-          <Grid item xs={12} md={6} sx={{ minWidth: '48%' }}>
+          <Box sx={{ flex: { xs: 'none', md: '1' }, minWidth: { md: '48%' }, width: { xs: '100%', md: 'auto' } }}>
             <Box
               component="form"
               onSubmit={handleSubmit(onSubmit)}
@@ -277,8 +283,8 @@ export default function ContactForm() {
                 </Button>
               </Box>
             </Box>
-          </Grid>
-        </Grid>
+          </Box>
+        </Box>
       </Container>
 
       {/* Success/Error Notifications */}
