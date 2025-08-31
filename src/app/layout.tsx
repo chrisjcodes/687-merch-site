@@ -22,6 +22,11 @@ export const metadata: Metadata = {
   authors: [{ name: "687 Merch" }],
   creator: "687 Merch",
   publisher: "687 Merch",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
