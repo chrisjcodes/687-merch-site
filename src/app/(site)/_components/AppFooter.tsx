@@ -26,10 +26,11 @@ export default function AppFooter() {
             <Image
               src="/687-logo.png"
               alt="687 Merch"
-              width={96}
-              height={32}
+              width={192}
+              height={64}
               style={{ width: 'auto', height: '32px', maxWidth: '100%' }}
               priority
+              quality={95}
             />
           </Box>
           
