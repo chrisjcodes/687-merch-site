@@ -63,11 +63,11 @@ export default function AppHeader() {
             <Image
               src="/687-logo.png"
               alt="687 Merch"
-              width={180}
-              height={60}
+              width={144}
+              height={48}
               style={{ 
                 width: 'auto',
-                height: '60px',
+                height: '48px',
                 maxWidth: '100%'
               }}
               priority

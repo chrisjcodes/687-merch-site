@@ -24,10 +24,10 @@ export default function AppFooter() {
         <Box sx={{ textAlign: 'center' }}>
           <Box sx={{ mb: 1 }}>
             <Image
-              src="/687-logo.webp"
+              src="/687-logo.png"
               alt="687 Merch"
               height={32}
-              width={0}
+              width={96}
               style={{ width: 'auto', height: '32px' }}
             />
           </Box>
