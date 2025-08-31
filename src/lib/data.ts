@@ -84,5 +84,8 @@ export const recentWork: WorkItem[] = [
 export const partners: Partner[] = [
   { name: 'Sony Pictures', logo: '/images/partners/sony.png' },
   { name: 'Colony', logo: '/images/partners/colony.png' },
-  { name: 'FSU Seminole Club', logo: '/images/partners/fsu.png' },
+  { name: 'FSU SF', logo: '/images/partners/fsu-sf.webp' },
+  { name: 'Brit', logo: '/images/partners/brit.webp' },
+  { name: 'Good People', logo: '/images/partners/good-people.webp' },
+  { name: 'San Remo', logo: '/images/partners/san-remo.webp' },
 ];
