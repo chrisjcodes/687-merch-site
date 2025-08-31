@@ -10,6 +10,7 @@ import {
   Container,
   useScrollTrigger,
 } from '@mui/material';
+import Image from 'next/image';
 
 export default function AppHeader() {
   const [scrolled, setScrolled] = useState(false);
@@ -47,18 +48,26 @@ export default function AppHeader() {
     >
       <Container maxWidth="lg">
         <Toolbar sx={{ px: 0 }}>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{
-              flexGrow: 1,
-              fontWeight: 800,
-              letterSpacing: '0.1em',
-              fontSize: '1.2rem',
-            }}
-          >
-            687 MERCH
-          </Typography>
+          <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
+            <Image
+              src="/687-logo.webp"
+              alt="687 Merch Logo"
+              width={40}
+              height={40}
+              style={{ marginRight: '12px' }}
+            />
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{
+                fontWeight: 800,
+                letterSpacing: '0.1em',
+                fontSize: '1.2rem',
+              }}
+            >
+              687 MERCH
+            </Typography>
+          </Box>
           
           <Box sx={{ display: 'flex', gap: 2 }}>
             <Button
