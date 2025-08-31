@@ -60,13 +60,25 @@ export default function AppHeader() {
       <Container maxWidth="lg">
         <Toolbar sx={{ px: 0 }}>
           <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
-            <Image
-              src="/687-logo.webp"
-              alt="687 Merch"
-              height={40}
-              width={0}
-              style={{ width: 'auto', height: '40px' }}
-            />
+            <Box
+              sx={{
+                height: { xs: '50px', md: '60px' },
+                width: { xs: '150px', md: '180px' },
+                position: 'relative',
+              }}
+            >
+              <Image
+                src="/687-logo.webp"
+                alt="687 Merch"
+                fill
+                style={{ 
+                  objectFit: 'contain',
+                  objectPosition: 'left center'
+                }}
+                priority
+                sizes="(max-width: 768px) 50px, 60px"
+              />
+            </Box>
           </Box>
           
           {/* Desktop Navigation */}
