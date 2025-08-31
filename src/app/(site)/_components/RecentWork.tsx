@@ -59,9 +59,6 @@ export default function RecentWork({ onItemClick }: RecentWorkProps) {
             variant="h2"
             component="h2"
             sx={{
-              fontWeight: 800,
-              textTransform: 'uppercase',
-              letterSpacing: '-0.02em',
               color: '#000',
               mb: 2,
             }}
@@ -137,11 +134,9 @@ export default function RecentWork({ onItemClick }: RecentWorkProps) {
                       border: '1px solid #e0e0e0',
                       borderRadius: 3,
                       overflow: 'hidden',
-                      transition: 'all 0.3s ease',
+                      transition: 'border-color 0.3s ease',
                       '&:hover': {
-                        transform: 'translateY(-8px)',
-                        boxShadow: '0px 12px 30px rgba(0, 0, 0, 0.15)',
-                        borderColor: '#f2bf00',
+                        borderColor: '#14b8a6',
                       },
                     }}
                   >

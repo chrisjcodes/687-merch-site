@@ -76,15 +76,12 @@ export default function ContactForm() {
       }}
     >
       <Container maxWidth="lg">
-        <Grid container spacing={{ xs: 4, md: 8 }} alignItems="center">
-          <Grid item xs={12} md={5}>
+        <Grid container spacing={{ xs: 4, md: 8 }} alignItems="center" justifyContent="center">
+          <Grid item xs={12} md={6}>
             <Typography
               variant="h2"
               component="h2"
               sx={{
-                fontWeight: 800,
-                textTransform: 'uppercase',
-                letterSpacing: '-0.02em',
                 color: '#000',
                 mb: { xs: 4, md: 0 },
                 fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' },
@@ -96,7 +93,7 @@ export default function ContactForm() {
             </Typography>
           </Grid>
           
-          <Grid item xs={12} md={7}>
+          <Grid item xs={12} md={6} sx={{ minWidth: '48%' }}>
             <Box
               component="form"
               onSubmit={handleSubmit(onSubmit)}
@@ -107,89 +104,137 @@ export default function ContactForm() {
                 backdropFilter: 'blur(10px)',
               }}
             >
-              <Grid container spacing={3}>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    {...register('firstName')}
-                    label="First Name"
-                    fullWidth
-                    error={!!errors.firstName}
-                    helperText={errors.firstName?.message}
-                    sx={{
-                      '& .MuiInputLabel-root': { color: '#000' },
-                      '& .MuiOutlinedInput-root': {
-                        backgroundColor: 'rgba(255, 255, 255, 0.8)',
-                        '& fieldset': { borderColor: 'rgba(0, 0, 0, 0.3)' },
-                        '&:hover fieldset': { borderColor: 'rgba(0, 0, 0, 0.5)' },
-                        '&.Mui-focused fieldset': { borderColor: '#000' },
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+                <TextField
+                  {...register('firstName')}
+                  label="First Name"
+                  fullWidth
+                  error={!!errors.firstName}
+                  helperText={errors.firstName?.message}
+                  sx={{
+                    '& .MuiInputLabel-root': { color: '#000' },
+                    '& .MuiInputLabel-root.Mui-focused': { color: '#000' },
+                    '& .MuiOutlinedInput-root': {
+                      backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                      '& fieldset': { borderColor: 'rgba(0, 0, 0, 0.3)' },
+                      '&:hover fieldset': { borderColor: 'rgba(0, 0, 0, 0.5)' },
+                      '&.Mui-focused fieldset': { borderColor: '#000' },
+                    },
+                    '& .MuiInputBase-input': { 
+                      color: '#000',
+                      '&:-webkit-autofill': {
+                        WebkitBoxShadow: '0 0 0 1000px rgba(255, 255, 255, 0.8) inset',
+                        WebkitTextFillColor: '#000',
+                        transition: 'background-color 5000s ease-in-out 0s',
                       },
-                      '& .MuiInputBase-input': { color: '#000' },
-                    }}
-                  />
-                </Grid>
+                      '&:-webkit-autofill:hover': {
+                        WebkitBoxShadow: '0 0 0 1000px rgba(255, 255, 255, 0.8) inset',
+                      },
+                      '&:-webkit-autofill:focus': {
+                        WebkitBoxShadow: '0 0 0 1000px rgba(255, 255, 255, 0.8) inset',
+                      },
+                    },
+                  }}
+                />
                 
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    {...register('lastName')}
-                    label="Last Name"
-                    fullWidth
-                    error={!!errors.lastName}
-                    helperText={errors.lastName?.message}
-                    sx={{
-                      '& .MuiInputLabel-root': { color: '#000' },
-                      '& .MuiOutlinedInput-root': {
-                        backgroundColor: 'rgba(255, 255, 255, 0.8)',
-                        '& fieldset': { borderColor: 'rgba(0, 0, 0, 0.3)' },
-                        '&:hover fieldset': { borderColor: 'rgba(0, 0, 0, 0.5)' },
-                        '&.Mui-focused fieldset': { borderColor: '#000' },
+                <TextField
+                  {...register('lastName')}
+                  label="Last Name"
+                  fullWidth
+                  error={!!errors.lastName}
+                  helperText={errors.lastName?.message}
+                  sx={{
+                    '& .MuiInputLabel-root': { color: '#000' },
+                    '& .MuiInputLabel-root.Mui-focused': { color: '#000' },
+                    '& .MuiOutlinedInput-root': {
+                      backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                      '& fieldset': { borderColor: 'rgba(0, 0, 0, 0.3)' },
+                      '&:hover fieldset': { borderColor: 'rgba(0, 0, 0, 0.5)' },
+                      '&.Mui-focused fieldset': { borderColor: '#000' },
+                    },
+                    '& .MuiInputBase-input': { 
+                      color: '#000',
+                      '&:-webkit-autofill': {
+                        WebkitBoxShadow: '0 0 0 1000px rgba(255, 255, 255, 0.8) inset',
+                        WebkitTextFillColor: '#000',
+                        transition: 'background-color 5000s ease-in-out 0s',
                       },
-                      '& .MuiInputBase-input': { color: '#000' },
-                    }}
-                  />
-                </Grid>
+                      '&:-webkit-autofill:hover': {
+                        WebkitBoxShadow: '0 0 0 1000px rgba(255, 255, 255, 0.8) inset',
+                      },
+                      '&:-webkit-autofill:focus': {
+                        WebkitBoxShadow: '0 0 0 1000px rgba(255, 255, 255, 0.8) inset',
+                      },
+                    },
+                  }}
+                />
                 
-                <Grid item xs={12}>
-                  <TextField
-                    {...register('email')}
-                    label="Email"
-                    type="email"
-                    fullWidth
-                    error={!!errors.email}
-                    helperText={errors.email?.message}
-                    sx={{
-                      '& .MuiInputLabel-root': { color: '#000' },
-                      '& .MuiOutlinedInput-root': {
-                        backgroundColor: 'rgba(255, 255, 255, 0.8)',
-                        '& fieldset': { borderColor: 'rgba(0, 0, 0, 0.3)' },
-                        '&:hover fieldset': { borderColor: 'rgba(0, 0, 0, 0.5)' },
-                        '&.Mui-focused fieldset': { borderColor: '#000' },
+                <TextField
+                  {...register('email')}
+                  label="Email"
+                  type="email"
+                  fullWidth
+                  error={!!errors.email}
+                  helperText={errors.email?.message}
+                  sx={{
+                    '& .MuiInputLabel-root': { color: '#000' },
+                    '& .MuiInputLabel-root.Mui-focused': { color: '#000' },
+                    '& .MuiOutlinedInput-root': {
+                      backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                      '& fieldset': { borderColor: 'rgba(0, 0, 0, 0.3)' },
+                      '&:hover fieldset': { borderColor: 'rgba(0, 0, 0, 0.5)' },
+                      '&.Mui-focused fieldset': { borderColor: '#000' },
+                    },
+                    '& .MuiInputBase-input': { 
+                      color: '#000',
+                      '&:-webkit-autofill': {
+                        WebkitBoxShadow: '0 0 0 1000px rgba(255, 255, 255, 0.8) inset',
+                        WebkitTextFillColor: '#000',
+                        transition: 'background-color 5000s ease-in-out 0s',
                       },
-                      '& .MuiInputBase-input': { color: '#000' },
-                    }}
-                  />
-                </Grid>
+                      '&:-webkit-autofill:hover': {
+                        WebkitBoxShadow: '0 0 0 1000px rgba(255, 255, 255, 0.8) inset',
+                      },
+                      '&:-webkit-autofill:focus': {
+                        WebkitBoxShadow: '0 0 0 1000px rgba(255, 255, 255, 0.8) inset',
+                      },
+                    },
+                  }}
+                />
                 
-                <Grid item xs={12}>
-                  <TextField
-                    {...register('message')}
-                    label="Message"
-                    multiline
-                    rows={4}
-                    fullWidth
-                    error={!!errors.message}
-                    helperText={errors.message?.message}
-                    sx={{
-                      '& .MuiInputLabel-root': { color: '#000' },
-                      '& .MuiOutlinedInput-root': {
-                        backgroundColor: 'rgba(255, 255, 255, 0.8)',
-                        '& fieldset': { borderColor: 'rgba(0, 0, 0, 0.3)' },
-                        '&:hover fieldset': { borderColor: 'rgba(0, 0, 0, 0.5)' },
-                        '&.Mui-focused fieldset': { borderColor: '#000' },
+                <TextField
+                  {...register('message')}
+                  label="Message"
+                  multiline
+                  rows={4}
+                  fullWidth
+                  error={!!errors.message}
+                  helperText={errors.message?.message}
+                  sx={{
+                    '& .MuiInputLabel-root': { color: '#000' },
+                    '& .MuiInputLabel-root.Mui-focused': { color: '#000' },
+                    '& .MuiOutlinedInput-root': {
+                      backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                      '& fieldset': { borderColor: 'rgba(0, 0, 0, 0.3)' },
+                      '&:hover fieldset': { borderColor: 'rgba(0, 0, 0, 0.5)' },
+                      '&.Mui-focused fieldset': { borderColor: '#000' },
+                    },
+                    '& .MuiInputBase-input': { 
+                      color: '#000',
+                      '&:-webkit-autofill': {
+                        WebkitBoxShadow: '0 0 0 1000px rgba(255, 255, 255, 0.8) inset',
+                        WebkitTextFillColor: '#000',
+                        transition: 'background-color 5000s ease-in-out 0s',
                       },
-                      '& .MuiInputBase-input': { color: '#000' },
-                    }}
-                  />
-                </Grid>
+                      '&:-webkit-autofill:hover': {
+                        WebkitBoxShadow: '0 0 0 1000px rgba(255, 255, 255, 0.8) inset',
+                      },
+                      '&:-webkit-autofill:focus': {
+                        WebkitBoxShadow: '0 0 0 1000px rgba(255, 255, 255, 0.8) inset',
+                      },
+                    },
+                  }}
+                />
 
                 {/* Honeypot field - hidden from users */}
                 <input
@@ -200,38 +245,37 @@ export default function ContactForm() {
                   autoComplete="off"
                 />
                 
-                <Grid item xs={12}>
-                  <Button
-                    type="submit"
-                    variant="contained"
-                    size="large"
-                    disabled={isSubmitting}
-                    sx={{
-                      backgroundColor: '#000',
-                      color: 'primary.main',
-                      px: 4,
-                      py: 1.5,
-                      fontSize: '1rem',
-                      fontWeight: 700,
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.5px',
-                      borderRadius: 2,
-                      '&:hover': {
-                        backgroundColor: '#333',
-                      },
-                      '&:disabled': {
-                        backgroundColor: '#666',
-                        color: '#999',
-                      },
-                    }}
-                    startIcon={
-                      isSubmitting ? <CircularProgress size={20} /> : null
-                    }
-                  >
-                    {isSubmitting ? 'Sending...' : 'Send'}
-                  </Button>
-                </Grid>
-              </Grid>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  size="large"
+                  disabled={isSubmitting}
+                  sx={{
+                    backgroundColor: '#000',
+                    color: 'primary.main',
+                    px: 4,
+                    py: 1.5,
+                    fontSize: '1rem',
+                    fontWeight: 700,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.5px',
+                    borderRadius: 2,
+                    alignSelf: 'flex-start',
+                    '&:hover': {
+                      backgroundColor: '#333',
+                    },
+                    '&:disabled': {
+                      backgroundColor: '#666',
+                      color: '#999',
+                    },
+                  }}
+                  startIcon={
+                    isSubmitting ? <CircularProgress size={20} /> : null
+                  }
+                >
+                  {isSubmitting ? 'Sending...' : 'Send'}
+                </Button>
+              </Box>
             </Box>
           </Grid>
         </Grid>

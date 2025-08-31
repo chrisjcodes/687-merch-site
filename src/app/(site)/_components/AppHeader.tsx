@@ -9,11 +9,22 @@ import {
   Box,
   Container,
   useScrollTrigger,
+  IconButton,
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
+  useMediaQuery,
+  useTheme,
 } from '@mui/material';
+import { Menu as MenuIcon, Close as CloseIcon } from '@mui/icons-material';
 import Image from 'next/image';
 
 export default function AppHeader() {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   const trigger = useScrollTrigger({
     disableHysteresis: true,
@@ -29,6 +40,11 @@ export default function AppHeader() {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+    setMobileMenuOpen(false);
+  };
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
   };
 
   return (
@@ -51,25 +67,15 @@ export default function AppHeader() {
           <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
             <Image
               src="/687-logo.webp"
-              alt="687 Merch Logo"
-              width={40}
+              alt="687 Merch"
               height={40}
-              style={{ marginRight: '12px' }}
+              width={0}
+              style={{ width: 'auto', height: '40px' }}
             />
-            <Typography
-              variant="h6"
-              component="div"
-              sx={{
-                fontWeight: 800,
-                letterSpacing: '0.1em',
-                fontSize: '1.2rem',
-              }}
-            >
-              687 MERCH
-            </Typography>
           </Box>
           
-          <Box sx={{ display: 'flex', gap: 2 }}>
+          {/* Desktop Navigation */}
+          <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 2 }}>
             <Button
               color="inherit"
               onClick={() => scrollToSection('work')}
@@ -78,7 +84,7 @@ export default function AppHeader() {
                 textTransform: 'uppercase',
                 letterSpacing: '0.5px',
                 '&:hover': {
-                  backgroundColor: 'rgba(242, 191, 0, 0.1)',
+                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
                 },
               }}
             >
@@ -92,7 +98,7 @@ export default function AppHeader() {
                 textTransform: 'uppercase',
                 letterSpacing: '0.5px',
                 '&:hover': {
-                  backgroundColor: 'rgba(242, 191, 0, 0.1)',
+                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
                 },
               }}
             >
@@ -106,15 +112,120 @@ export default function AppHeader() {
                 textTransform: 'uppercase',
                 letterSpacing: '0.5px',
                 '&:hover': {
-                  backgroundColor: 'rgba(242, 191, 0, 0.1)',
+                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
                 },
               }}
             >
               Contact
             </Button>
           </Box>
+
+          {/* Mobile Hamburger Menu */}
+          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+            <IconButton
+              color="inherit"
+              onClick={toggleMobileMenu}
+              sx={{
+                '&:hover': {
+                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                },
+              }}
+            >
+              <MenuIcon />
+            </IconButton>
+          </Box>
         </Toolbar>
       </Container>
+
+      {/* Mobile Menu Drawer */}
+      <Drawer
+        anchor="right"
+        open={mobileMenuOpen}
+        onClose={() => setMobileMenuOpen(false)}
+        sx={{
+          '& .MuiDrawer-paper': {
+            width: 250,
+            backgroundColor: '#0f0f0f',
+            color: 'white',
+          },
+        }}
+      >
+        <Box sx={{ p: 2 }}>
+          <Box sx={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', mb: 3 }}>
+            <IconButton
+              color="inherit"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <CloseIcon />
+            </IconButton>
+          </Box>
+          
+          <List>
+            <ListItem 
+              button 
+              onClick={() => scrollToSection('work')}
+              sx={{
+                '&:hover': {
+                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                },
+              }}
+            >
+              <ListItemText 
+                primary="WORK" 
+                sx={{
+                  '& .MuiTypography-root': {
+                    fontWeight: 600,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.5px',
+                  }
+                }}
+              />
+            </ListItem>
+            
+            <ListItem 
+              button 
+              onClick={() => scrollToSection('partners')}
+              sx={{
+                '&:hover': {
+                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                },
+              }}
+            >
+              <ListItemText 
+                primary="PARTNERS" 
+                sx={{
+                  '& .MuiTypography-root': {
+                    fontWeight: 600,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.5px',
+                  }
+                }}
+              />
+            </ListItem>
+            
+            <ListItem 
+              button 
+              onClick={() => scrollToSection('contact')}
+              sx={{
+                '&:hover': {
+                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                },
+              }}
+            >
+              <ListItemText 
+                primary="CONTACT" 
+                sx={{
+                  '& .MuiTypography-root': {
+                    fontWeight: 600,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.5px',
+                  }
+                }}
+              />
+            </ListItem>
+          </List>
+        </Box>
+      </Drawer>
     </AppBar>
   );
 }

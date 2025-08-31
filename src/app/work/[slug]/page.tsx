@@ -101,9 +101,6 @@ export default function WorkDetailPage({ params }: WorkDetailPageProps) {
               variant="h1"
               component="h1"
               sx={{
-                fontWeight: 800,
-                textTransform: 'uppercase',
-                letterSpacing: '-0.025em',
                 mb: 2,
                 fontSize: { xs: '2rem', sm: '2.5rem', md: '3.5rem' },
                 lineHeight: 1.1,
@@ -294,7 +291,7 @@ export default function WorkDetailPage({ params }: WorkDetailPageProps) {
                   fontWeight: 600,
                   textTransform: 'uppercase',
                   '&:hover': {
-                    backgroundColor: 'rgba(242, 191, 0, 0.1)',
+                    backgroundColor: 'rgba(20, 184, 166, 0.1)',
                     borderColor: 'primary.main',
                   },
                 }}

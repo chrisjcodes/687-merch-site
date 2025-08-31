@@ -6,7 +6,7 @@ const theme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: '#f2bf00',
+      main: '#14b8a6',
     },
     background: {
       default: '#0f0f0f',
@@ -18,32 +18,54 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
+    fontFamily: 'var(--font-epilogue), "Epilogue", "Inter", "Roboto", "Helvetica", "Arial", sans-serif',
     h1: {
-      fontWeight: 800,
+      fontFamily: 'var(--font-anton), "Anton", "Impact", "Arial Black", sans-serif',
+      fontWeight: 400,
       textTransform: 'uppercase',
-      letterSpacing: '-0.025em',
       fontSize: '4rem',
       '@media (max-width:600px)': {
         fontSize: '2.5rem',
       },
     },
     h2: {
-      fontWeight: 700,
+      fontFamily: 'var(--font-anton), "Anton", "Impact", "Arial Black", sans-serif',
+      fontWeight: 400,
       textTransform: 'uppercase',
-      letterSpacing: '-0.02em',
       fontSize: '2.5rem',
       '@media (max-width:600px)': {
         fontSize: '2rem',
       },
     },
     h3: {
-      fontWeight: 700,
+      fontFamily: 'var(--font-anton), "Anton", "Impact", "Arial Black", sans-serif',
+      fontWeight: 400,
       textTransform: 'uppercase',
       fontSize: '2rem',
       '@media (max-width:600px)': {
         fontSize: '1.5rem',
       },
+    },
+    h4: {
+      fontWeight: 700,
+      textTransform: 'uppercase',
+      fontSize: '1.5rem',
+      letterSpacing: '0.025em',
+      '@media (max-width:600px)': {
+        fontSize: '1.25rem',
+      },
+    },
+    h5: {
+      fontWeight: 600,
+      textTransform: 'uppercase',
+      fontSize: '1.25rem',
+      letterSpacing: '0.025em',
+    },
+    h6: {
+      fontWeight: 600,
+      textTransform: 'uppercase',
+      fontSize: '1rem',
+      letterSpacing: '0.05em',
     },
     body1: {
       fontSize: '1rem',
@@ -58,6 +80,7 @@ const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
+          fontFamily: 'var(--font-epilogue), "Epilogue", sans-serif',
           textTransform: 'uppercase',
           fontWeight: 600,
           borderRadius: 8,
@@ -68,7 +91,7 @@ const theme = createTheme({
         contained: {
           boxShadow: 'none',
           '&:hover': {
-            boxShadow: '0px 4px 12px rgba(242, 191, 0, 0.3)',
+            backgroundColor: '#0f9488',
           },
         },
       },
@@ -79,10 +102,9 @@ const theme = createTheme({
           backgroundColor: '#141414',
           borderRadius: 12,
           border: '1px solid transparent',
-          transition: 'border-color 0.3s ease, transform 0.3s ease',
+          transition: 'border-color 0.3s ease',
           '&:hover': {
             borderColor: '#333',
-            transform: 'translateY(-2px)',
           },
         },
       },

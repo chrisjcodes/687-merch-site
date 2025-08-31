@@ -23,20 +23,12 @@ export default function Hero() {
         alignItems: 'center',
         justifyContent: 'center',
         overflow: 'hidden',
+        backgroundImage: 'url(/images/hero.jpg)',
+        backgroundSize: 'inherit',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
       }}
     >
-      {/* Background Image */}
-      <Image
-        src="/images/hero.jpg"
-        alt="Clothing rack background"
-        fill
-        style={{
-          objectFit: 'cover',
-          objectPosition: 'center',
-        }}
-        priority
-      />
-      
       {/* Dark Overlay */}
       <Box className="hero-overlay" />
       
@@ -54,9 +46,6 @@ export default function Hero() {
           variant="h1"
           component="h1"
           sx={{
-            fontWeight: 800,
-            textTransform: 'uppercase',
-            letterSpacing: '-0.025em',
             mb: 3,
             fontSize: { xs: '2.5rem', sm: '3.5rem', md: '4rem', lg: '5rem' },
             lineHeight: { xs: 1.1, sm: 1.0 },
@@ -86,19 +75,6 @@ export default function Hero() {
           sx={{
             px: 4,
             py: 1.5,
-            fontSize: '1rem',
-            fontWeight: 700,
-            textTransform: 'uppercase',
-            letterSpacing: '0.5px',
-            borderRadius: 2,
-            backgroundColor: 'primary.main',
-            color: '#000',
-            '&:hover': {
-              backgroundColor: '#e6ab00',
-              transform: 'translateY(-2px)',
-              boxShadow: '0px 8px 25px rgba(242, 191, 0, 0.4)',
-            },
-            transition: 'all 0.3s ease',
           }}
         >
           Get a Quote

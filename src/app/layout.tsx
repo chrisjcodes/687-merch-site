@@ -1,8 +1,15 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Epilogue, Anton } from "next/font/google";
 
-const inter = Inter({
+const epilogue = Epilogue({
   subsets: ["latin"],
+  variable: "--font-epilogue",
+});
+
+const anton = Anton({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-anton",
 });
 
 export const metadata: Metadata = {
@@ -41,7 +48,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${epilogue.className} ${anton.variable} ${epilogue.variable}`}>
         {children}
       </body>
     </html>
