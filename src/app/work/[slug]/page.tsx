@@ -15,9 +15,9 @@ import AppHeader from '@/app/(site)/_components/AppHeader';
 import AppFooter from '@/app/(site)/_components/AppFooter';
 
 interface WorkDetailPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export async function generateStaticParams() {
@@ -27,7 +27,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: WorkDetailPageProps) {
-  const work = recentWork.find((item) => item.slug === params.slug);
+  const { slug } = await params;
+  const work = recentWork.find((item) => item.slug === slug);
   
   if (!work) {
     return {
@@ -46,8 +47,9 @@ export async function generateMetadata({ params }: WorkDetailPageProps) {
   };
 }
 
-export default function WorkDetailPage({ params }: WorkDetailPageProps) {
-  const work = recentWork.find((item) => item.slug === params.slug);
+export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
+  const { slug } = await params;
+  const work = recentWork.find((item) => item.slug === slug);
 
   if (!work) {
     notFound();

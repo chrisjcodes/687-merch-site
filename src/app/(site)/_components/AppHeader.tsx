@@ -13,8 +13,6 @@ import {
   List,
   ListItem,
   ListItemText,
-  useMediaQuery,
-  useTheme,
 } from '@mui/material';
 import { Menu as MenuIcon, Close as CloseIcon } from '@mui/icons-material';
 import Image from 'next/image';
@@ -22,7 +20,6 @@ import Image from 'next/image';
 export default function AppHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const theme = useTheme();
 
   const trigger = useScrollTrigger({
     disableHysteresis: true,
