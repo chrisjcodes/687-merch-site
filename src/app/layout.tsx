@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Epilogue, Anton } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 
 const epilogue = Epilogue({
   subsets: ["latin"],
@@ -55,6 +56,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${epilogue.className} ${anton.variable} ${epilogue.variable}`}>
         {children}
+        <Analytics />
       </body>
     </html>
   );
