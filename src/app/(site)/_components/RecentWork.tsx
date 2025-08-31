@@ -6,7 +6,6 @@ import {
   Typography,
   Container,
   Card,
-  CardMedia,
   CardContent,
   IconButton,
   Chip,
@@ -118,7 +117,7 @@ export default function RecentWork({ onItemClick }: RecentWorkProps) {
                 pb: 2,
               }}
             >
-              {recentWork.map((item, index) => (
+              {recentWork.map((item) => (
                 <Box
                   key={item.slug}
                   sx={{

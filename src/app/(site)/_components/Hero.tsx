@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { Box, Typography, Button, Container } from '@mui/material';
-import Image from 'next/image';
 import { siteCopy } from '@/lib/data';
 
 export default function Hero() {

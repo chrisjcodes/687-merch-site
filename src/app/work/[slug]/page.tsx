@@ -250,7 +250,7 @@ export default function WorkDetailPage({ params }: WorkDetailPageProps) {
                 </Typography>
                 
                 <Typography variant="body1" sx={{ mb: 3 }}>
-                  Request a similar project and let's bring your vision to life.
+                  Request a similar project and let&apos;s bring your vision to life.
                 </Typography>
                 
                 <Button

@@ -89,7 +89,7 @@ export default function ContactForm() {
               }}
             >
               Need Merch?<br />
-              Let's Talk
+              Let&apos;s Talk
             </Typography>
           </Grid>
           
@@ -292,7 +292,7 @@ export default function ContactForm() {
           severity="success"
           sx={{ width: '100%' }}
         >
-          Message sent successfully! We'll get back to you soon.
+          Message sent successfully! We&apos;ll get back to you soon.
         </Alert>
       </Snackbar>
 

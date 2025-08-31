@@ -5,8 +5,6 @@ import {
   Box,
   Typography,
   Container,
-  Grid,
-  Link,
 } from '@mui/material';
 import Image from 'next/image';
 
