@@ -157,9 +157,9 @@ export default function AppHeader() {
           
           <List>
             <ListItem 
-              button 
               onClick={() => scrollToSection('work')}
               sx={{
+                cursor: 'pointer',
                 '&:hover': {
                   backgroundColor: 'rgba(255, 255, 255, 0.1)',
                 },
@@ -178,9 +178,9 @@ export default function AppHeader() {
             </ListItem>
             
             <ListItem 
-              button 
               onClick={() => scrollToSection('partners')}
               sx={{
+                cursor: 'pointer',
                 '&:hover': {
                   backgroundColor: 'rgba(255, 255, 255, 0.1)',
                 },
@@ -199,9 +199,9 @@ export default function AppHeader() {
             </ListItem>
             
             <ListItem 
-              button 
               onClick={() => scrollToSection('contact')}
               sx={{
+                cursor: 'pointer',
                 '&:hover': {
                   backgroundColor: 'rgba(255, 255, 255, 0.1)',
                 },
