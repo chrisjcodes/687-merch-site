@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Epilogue, Anton } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { SessionProvider } from "./providers/SessionProvider";
 
 const epilogue = Epilogue({
   subsets: ["latin"],
@@ -56,7 +57,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${epilogue.className} ${anton.variable} ${epilogue.variable}`}>
-        {children}
+        <SessionProvider>
+          {children}
+        </SessionProvider>
         <Analytics />
         <SpeedInsights />
       </body>
