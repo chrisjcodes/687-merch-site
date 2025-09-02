@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Box,
   Typography,
@@ -14,7 +16,9 @@ import {
 } from '@mui/material';
 import { Refresh as RefreshIcon, Reorder as ReorderIcon } from '@mui/icons-material';
 import Link from 'next/link';
-import { requireCustomerSession, getCustomerJobs } from '@/lib/auth-helpers';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import { JobStatus } from '@prisma/client';
 
 const statusColors: Record<JobStatus, 'default' | 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning'> = {
@@ -35,19 +39,55 @@ const statusLabels: Record<JobStatus, string> = {
   CANCELLED: 'Cancelled',
 };
 
-export default async function CustomerOrdersPage() {
-  const session = await requireCustomerSession();
-  const jobs = await getCustomerJobs(session.user.customerId!);
+export default function CustomerOrdersPage() {
+  const { data: session, status } = useSession();
+  const router = useRouter();
+  const [jobs, setJobs] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (status === 'loading') return;
+    
+    if (!session || session.user.role !== 'CUSTOMER') {
+      router.push('/auth/signin');
+      return;
+    }
+
+    fetchJobs();
+  }, [session, status, router]);
+
+  const fetchJobs = async () => {
+    try {
+      setLoading(true);
+      const response = await fetch('/api/customer/jobs');
+      if (response.ok) {
+        const data = await response.json();
+        setJobs(data.jobs || []);
+      }
+    } catch (error) {
+      console.error('Failed to fetch jobs:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const formatJobItems = (items: any[]) => {
     if (items.length === 0) return 'No items';
     if (items.length === 1) {
       const item = items[0];
-      return `${item.qty}x ${item.productSku}${item.variant ? ` (${item.variant})` : ''}`;
+      return `${item.quantity || item.qty}x ${item.product?.sku || item.productSku}${item.variant?.name || item.variant ? ` (${item.variant?.name || item.variant})` : ''}`;
     }
-    const totalQty = items.reduce((sum, item) => sum + item.qty, 0);
+    const totalQty = items.reduce((sum, item) => sum + (item.quantity || item.qty), 0);
     return `${totalQty} items (${items.length} SKUs)`;
   };
+
+  if (status === 'loading' || loading) {
+    return (
+      <Container maxWidth="lg" sx={{ py: 4 }}>
+        <Typography>Loading...</Typography>
+      </Container>
+    );
+  }
 
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
@@ -58,7 +98,7 @@ export default async function CustomerOrdersPage() {
         <Button
           variant="outlined"
           startIcon={<RefreshIcon />}
-          onClick={() => window.location.reload()}
+          onClick={fetchJobs}
         >
           Refresh
         </Button>

@@ -2,7 +2,7 @@
 
 import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
-import { makeTheme } from '../(site)/theme';
+import { makeTheme } from '../(site)/portal-theme';
 
 const theme = makeTheme('light');
 

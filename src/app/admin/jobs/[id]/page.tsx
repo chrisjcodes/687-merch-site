@@ -15,8 +15,6 @@ import {
   Alert,
   Divider,
 } from '@mui/material';
-import { ArrowBack as ArrowBackIcon } from '@mui/icons-material';
-import Link from 'next/link';
 import { requireAdminSession } from '@/lib/auth-helpers';
 import { prisma } from '@/lib/prisma';
 import { JobStatus } from '@prisma/client';
@@ -97,11 +95,6 @@ export default async function JobDetailPage({ params }: JobDetailPageProps) {
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
       <Box sx={{ mb: 4 }}>
-        <Link href="/admin/jobs" passHref>
-          <Button startIcon={<ArrowBackIcon />} sx={{ mb: 2 }}>
-            Back to Jobs
-          </Button>
-        </Link>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <Typography variant="h4" component="h1">
             Job {job.id.slice(-8).toUpperCase()}

@@ -2,14 +2,11 @@ import {
   Box,
   Typography,
   Container,
-  Button,
   TextField,
   Grid,
   Paper,
   Alert,
 } from '@mui/material';
-import { ArrowBack as ArrowBackIcon } from '@mui/icons-material';
-import Link from 'next/link';
 import { requireCustomerSession, getJobForCustomer } from '@/lib/auth-helpers';
 import { ReorderForm } from './ReorderForm';
 
@@ -42,11 +39,6 @@ export default async function ReorderPage({ params }: ReorderPageProps) {
   return (
     <Container maxWidth="md" sx={{ py: 4 }}>
       <Box sx={{ mb: 4 }}>
-        <Link href="/portal/orders" passHref>
-          <Button startIcon={<ArrowBackIcon />} sx={{ mb: 2 }}>
-            Back to Orders
-          </Button>
-        </Link>
         <Typography variant="h4" component="h1">
           Reorder Job {job.id.slice(-8).toUpperCase()}
         </Typography>

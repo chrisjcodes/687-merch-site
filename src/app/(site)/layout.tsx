@@ -2,7 +2,7 @@
 
 import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
-import theme from './theme';
+import marketingTheme from './marketing-theme';
 import "./globals.css";
 
 export default function SiteLayout({
@@ -11,7 +11,7 @@ export default function SiteLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={marketingTheme}>
       <CssBaseline />
       {children}
     </ThemeProvider>
