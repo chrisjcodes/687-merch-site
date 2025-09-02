@@ -190,6 +190,33 @@ export function ItemEditor({ open, onClose, onSave, item, products, isEditing = 
     });
   };
 
+  const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>, placementId: string) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+
+      const response = await fetch('/api/admin/jobs/files', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error('Upload failed');
+      }
+
+      const data = await response.json();
+      
+      updatePlacement(placementId, 'designFileUrl', data.url);
+      updatePlacement(placementId, 'designFileName', file.name);
+    } catch (error) {
+      console.error('File upload failed:', error);
+      alert('File upload failed. Please try again.');
+    }
+  };
+
   const removePlacement = (placementId: string) => {
     if (!editItem) return;
     setEditItem({
@@ -621,6 +648,71 @@ export function ItemEditor({ open, onClose, onSave, item, products, isEditing = 
                           placeholder="0.00"
                           helperText="Cost per transfer, patch, or special decoration"
                         />
+                        
+                        <Box>
+                          <Typography variant="body2" sx={{ mb: 1, fontWeight: 'medium' }}>
+                            Design File
+                          </Typography>
+                          {placement.designFileUrl ? (
+                            <Box sx={{ 
+                              p: 2, 
+                              border: '1px dashed', 
+                              borderColor: 'success.main',
+                              borderRadius: 1,
+                              backgroundColor: 'success.50',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'space-between'
+                            }}>
+                              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                                <Typography variant="body2" color="success.main">
+                                  📎 {placement.designFileName || 'Uploaded file'}
+                                </Typography>
+                              </Box>
+                              <Button
+                                size="small"
+                                color="error"
+                                onClick={() => {
+                                  updatePlacement(placement.id, 'designFileUrl', '');
+                                  updatePlacement(placement.id, 'designFileName', '');
+                                }}
+                              >
+                                Remove
+                              </Button>
+                            </Box>
+                          ) : (
+                            <Box>
+                              <input
+                                accept=".png,.jpg,.jpeg,.svg,.pdf,.eps,.ai"
+                                style={{ display: 'none' }}
+                                id={`design-file-${placement.id}`}
+                                type="file"
+                                onChange={(e) => handleFileUpload(e, placement.id)}
+                              />
+                              <label htmlFor={`design-file-${placement.id}`}>
+                                <Button
+                                  variant="outlined"
+                                  component="span"
+                                  fullWidth
+                                  sx={{ 
+                                    p: 3,
+                                    border: '2px dashed',
+                                    borderColor: 'grey.300',
+                                    '&:hover': {
+                                      borderColor: 'primary.main',
+                                      backgroundColor: 'primary.50'
+                                    }
+                                  }}
+                                >
+                                  📁 Upload Design File
+                                </Button>
+                              </label>
+                              <Typography variant="caption" color="textSecondary" sx={{ mt: 1, display: 'block' }}>
+                                Accepted formats: PNG, JPG, SVG, PDF, EPS, AI
+                              </Typography>
+                            </Box>
+                          )}
+                        </Box>
                       </Box>
                     </Paper>
                   ))}
