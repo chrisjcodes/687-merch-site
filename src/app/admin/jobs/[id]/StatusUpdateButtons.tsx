@@ -11,21 +11,20 @@ import {
 import { JobStatus } from '@prisma/client';
 
 const statusOrder: JobStatus[] = [
-  'QUEUED',
-  'APPROVED', 
-  'IN_PROD',
-  'READY',
-  'SHIPPED',
-  'DELIVERED'
+  'PENDING_DESIGN',
+  'PENDING_MATERIALS',
+  'PENDING_PRINT',
+  'PENDING_FULFILLMENT',
+  'DONE'
 ];
 
 const statusLabels: Record<JobStatus, string> = {
-  QUEUED: 'Approve',
-  APPROVED: 'Start Production',
-  IN_PROD: 'Mark Ready',
-  READY: 'Ship',
-  SHIPPED: 'Deliver',
-  DELIVERED: 'Delivered',
+  PENDING_DESIGN: 'Approve Design',
+  PENDING_MATERIALS: 'Materials Ready',
+  PENDING_PRINT: 'Start Printing',
+  PENDING_FULFILLMENT: 'Ready for Fulfillment',
+  DONE: 'Complete',
+  CANCELLED: 'Cancelled',
 };
 
 interface StatusUpdateButtonsProps {

@@ -1,318 +1,281 @@
-# 687 Merch Website
+# 687 Merch Site
 
-A modern, responsive merchandise website built with Next.js 14, Material UI, and TypeScript. Features a dark theme design with brand yellow accents, showcasing work portfolio, partner logos, and a contact form.
+A comprehensive custom merchandise ordering and job management system built with Next.js 15.5.2, featuring a public marketing site, customer portal, and admin dashboard.
 
-## ✨ Features
+## 🏢 System Overview
 
-- **Modern Design**: Dark theme with brand yellow (#f2bf00) accents
-- **Responsive Layout**: Works perfectly on desktop, tablet, and mobile devices
-- **Interactive Components**: Smooth scrolling, image carousel, and lightbox gallery
-- **Contact Form**: Email integration with spam protection
-- **SEO Optimized**: Proper metadata, sitemap, and robots.txt
-- **Accessibility**: WCAG compliant with keyboard navigation support
-- **Performance**: Optimized images and lazy loading
+The 687 Merch Site provides a complete solution for custom merchandise businesses:
 
-## 🚀 Getting Started
+- **Public Marketing Site** - Showcases services and captures leads
+- **Customer Portal** - Self-service order tracking and management
+- **Admin Dashboard** - Complete job management and workflow system
+- **Authentication System** - Magic link-based secure authentication
+- **File Management** - Vercel Blob storage for design files
+
+## ✨ Key Features
+
+### Public Site
+- Modern, responsive design with Material-UI
+- Contact form with email integration
+- SEO optimized with proper metadata
+- Performance optimized with Next.js Image
+
+### Customer Portal
+- Order tracking and status updates
+- Job history and details
+- Profile management
+- Design file downloads
+
+### Admin Dashboard
+- Advanced job creation system with:
+  - Dynamic garment and decoration method selection
+  - Placement management with auto-sizing
+  - Design file uploads with Vercel Blob
+  - Size breakdown management
+- Comprehensive job detail views
+- Status management workflow
+- Customer management
+- Event timeline tracking
+
+### Technical Features
+- **TypeScript** for type safety
+- **Prisma ORM** with PostgreSQL
+- **NextAuth.js** for authentication
+- **Vercel Blob** for file storage
+- **Material-UI** for consistent design
+- **Responsive design** for all screen sizes
+
+## 🚀 Quick Start
+
+For detailed setup instructions, see the [Setup Documentation](./docs/setup/README.md).
 
 ### Prerequisites
+- Node.js 20.0.0 or higher
+- PostgreSQL database
+- Email service (SMTP)
+- Vercel account (for blob storage)
 
-- Node.js 18.18.0 or later
-- npm, yarn, or pnpm
+### Basic Installation
 
-### Installation
-
-1. Clone the repository:
 ```bash
-git clone https://github.com/chrisjcodes/687-merch-site.git
+# Clone repository
+git clone <repository-url>
 cd 687-merch-site
-```
 
-2. Install dependencies:
-```bash
+# Install dependencies
 npm install
-# or
-pnpm install
-# or
-yarn install
-```
 
-3. Set up environment variables:
-Create a `.env.local` file in the root directory:
-```env
-# Email Configuration (Required for contact form)
-RESEND_API_KEY=your_resend_api_key_here
-CONTACT_TO=your-email@example.com
+# Setup environment variables
+cp .env.example .env.local
+# Edit .env.local with your configuration
 
-# Analytics (Optional)
-PLAUSIBLE_DOMAIN=your-domain.com
-```
+# Setup database
+npx prisma db push
+npx prisma db seed
 
-4. Run the development server:
-```bash
+# Start development server
 npm run dev
-# or
-pnpm dev
-# or
-yarn dev
 ```
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+## 📚 Documentation
 
-## 📁 Project Structure
+Comprehensive documentation is available in the `/docs` directory:
+
+### Getting Started
+- **[Setup & Installation](./docs/setup/README.md)** - Complete setup guide
+- **[Development Guide](./docs/development/README.md)** - Development workflows and standards
+- **[Deployment Guide](./docs/deployment/README.md)** - Production deployment on Vercel
+
+### System Components
+- **[Public Site](./docs/public-site/README.md)** - Marketing website documentation
+- **[Customer Portal](./docs/customer-portal/README.md)** - Customer-facing features
+- **[Admin Panel](./docs/admin/README.md)** - Administrative functionality
+
+### Technical Reference
+- **[API Documentation](./docs/api/README.md)** - Backend endpoints and schemas
+- **[Database Schema](./docs/database/README.md)** - Data models and relationships
+- **[Authentication System](./docs/auth/README.md)** - Auth implementation and security
+- **[File Management](./docs/files/README.md)** - Design file storage and handling
+
+## 🏗️ Architecture
 
 ```
-src/
-├── app/
-│   ├── (site)/
-│   │   ├── _components/
-│   │   │   ├── AppHeader.tsx      # Navigation header
-│   │   │   ├── Hero.tsx           # Hero section
-│   │   │   ├── RecentWork.tsx     # Work carousel
-│   │   │   ├── Partners.tsx       # Partner logos grid
-│   │   │   ├── ContactForm.tsx    # Contact form
-│   │   │   ├── Lightbox.tsx       # Image lightbox
-│   │   │   └── AppFooter.tsx      # Footer
-│   │   ├── theme.ts               # MUI theme configuration
-│   │   ├── page.tsx               # Main page
-│   │   ├── layout.tsx             # Site layout with theme
-│   │   ├── sitemap.ts             # Dynamic sitemap
-│   │   └── robots.ts              # SEO robots file
-│   ├── work/
-│   │   └── [slug]/
-│   │       └── page.tsx           # Work detail pages
-│   ├── api/
-│   │   └── contact/
-│   │       └── route.ts           # Contact form API
-│   └── layout.tsx                 # Root layout
-├── lib/
-│   ├── types.ts                   # TypeScript definitions
-│   └── data.ts                    # Mock data and content
-└── public/
-    └── images/                    # Placeholder images
-        ├── hero.jpg               # Hero background
-        ├── work/                  # Work portfolio images
-        └── partners/              # Partner logos
+┌─────────────────────────────────────────────────────────┐
+│                    Next.js 15.5.2                      │
+│                  (App Router)                          │
+├─────────────────────────────────────────────────────────┤
+│  Public Routes    │  Customer Portal  │  Admin Panel    │
+│  - Homepage       │  - Job Dashboard  │  - Job Creation │
+│  - About          │  - Order Status   │  - Job Details  │
+│  - Contact        │  - Profile        │  - Customer Mgmt│
+├─────────────────────────────────────────────────────────┤
+│                 Authentication Layer                     │
+│              NextAuth.js + Magic Links                  │
+├─────────────────────────────────────────────────────────┤
+│           Database Layer (PostgreSQL)                   │
+│                   Prisma ORM                           │
+├─────────────────────────────────────────────────────────┤
+│              File Storage (Vercel Blob)                │
+│           CDN-delivered design files                   │
+└─────────────────────────────────────────────────────────┘
 ```
 
-## 🖼️ Image Management
+## 🎯 Project Structure
 
-### Placeholder Images
-
-The project includes placeholder images for development. Replace them with your actual content:
-
-- **Hero Background**: `/public/images/hero.jpg` (1200x800px recommended)
-- **Work Thumbnails**: `/public/images/work/[slug]-thumb.jpg` (800x800px recommended)
-- **Work Gallery**: `/public/images/work/[slug]-1.jpg`, etc. (1200x1200px recommended)
-- **Partner Logos**: `/public/images/partners/[name].png` (200x200px recommended)
-
-### Adding New Images
-
-1. Place images in the appropriate `/public/images/` subdirectory
-2. Update filenames in `/src/lib/data.ts` if needed
-3. Images are automatically optimized by Next.js
-
-## 📝 Content Management
-
-### Adding New Work Items
-
-Edit `/src/lib/data.ts` and add to the `recentWork` array:
-
-```typescript
-{
-  slug: 'unique-slug',
-  title: 'Project Title',
-  subtitle: 'Optional subtitle',
-  thumbnail: '/images/work/project-thumb.jpg',
-  images: [
-    '/images/work/project-1.jpg',
-    '/images/work/project-2.jpg'
-  ],
-  tags: ['Tag 1', 'Tag 2'],
-  year: 2025,
-}
+```
+├── docs/                    # Comprehensive documentation
+│   ├── setup/              # Installation and setup guides
+│   ├── admin/              # Admin panel documentation
+│   ├── customer-portal/    # Customer portal documentation
+│   ├── api/                # API reference
+│   └── deployment/         # Deployment guides
+├── prisma/                 # Database schema and migrations
+│   ├── schema.prisma       # Database schema definition
+│   ├── migrations/         # Database migration files
+│   └── seed.js            # Development seed data
+├── src/
+│   ├── app/               # Next.js App Router
+│   │   ├── admin/         # Admin panel pages
+│   │   ├── api/           # API route handlers
+│   │   ├── dashboard/     # Customer portal pages
+│   │   └── (public)/      # Public site pages
+│   ├── components/        # Shared React components
+│   ├── lib/              # Utility functions and configurations
+│   └── types/            # TypeScript type definitions
+└── uploads/              # Local file storage (development)
 ```
 
-### Adding New Partners
+## 🔧 Technology Stack
 
-Edit `/src/lib/data.ts` and add to the `partners` array:
+- **Framework**: Next.js 15.5.2 with App Router
+- **Language**: TypeScript
+- **Database**: PostgreSQL with Prisma ORM
+- **Authentication**: NextAuth.js with magic links
+- **UI Framework**: Material-UI (MUI)
+- **File Storage**: Vercel Blob
+- **Deployment**: Vercel Platform
+- **Email**: SMTP with Nodemailer
 
-```typescript
-{
-  name: 'Partner Name',
-  logo: '/images/partners/partner-logo.png',
-  url: 'https://partner-website.com'
-}
-```
+## 🗃️ Database Schema
 
-### Updating Site Copy
+The system uses a comprehensive PostgreSQL schema with these main entities:
 
-Edit the `siteCopy` object in `/src/lib/data.ts`:
+- **Users** - Authentication and role management
+- **Customers** - Business information and contacts
+- **Jobs** - Core order/project management
+- **JobItems** - Individual items within jobs
+- **Events** - Audit trail and job history
+- **Proofs** - Design approval workflow
 
-```typescript
-export const siteCopy = {
-  headline: 'YOUR HEADLINE HERE',
-  subhead: 'Your subheading content here...',
-};
-```
+For detailed schema information, see [Database Documentation](./docs/database/README.md).
 
-## 🎨 Customization
+## 🔐 Authentication & Security
 
-### Theme Colors
+- **Magic Link Authentication** - Password-free login via email
+- **Role-Based Access Control** - ADMIN and CUSTOMER roles
+- **Route Protection** - Middleware-based route guarding
+- **Session Management** - Secure JWT-based sessions
+- **File Access Control** - Authenticated file access
 
-Edit `/src/app/(site)/theme.ts` to customize colors:
+## 📁 File Management
 
-```typescript
-palette: {
-  primary: {
-    main: '#f2bf00', // Brand yellow
-  },
-  background: {
-    default: '#0f0f0f', // Dark background
-    paper: '#141414',   // Card background
-  },
-  // ... other colors
-}
-```
-
-### Typography
-
-The theme uses Inter font family. Customize typography in the theme file:
-
-```typescript
-typography: {
-  h1: {
-    fontWeight: 800,
-    textTransform: 'uppercase',
-    // ... other styles
-  },
-  // ... other typography settings
-}
-```
-
-## 📧 Email Configuration
-
-The contact form uses [Resend](https://resend.com) for email delivery:
-
-1. Sign up for a Resend account
-2. Create an API key
-3. Add your API key to `.env.local`
-4. Update the `from` email in `/src/app/api/contact/route.ts` to use your verified domain
-
-### Testing Email Locally
-
-For development, you can use Resend's test mode or implement a mock email service.
+- **Vercel Blob Storage** - Scalable cloud storage
+- **Global CDN** - Fast file delivery worldwide
+- **Supported Formats** - PNG, SVG, PDF, EPS
+- **Secure Access** - Authentication-based file access
+- **Organized Structure** - Files organized by job ID
 
 ## 🚀 Deployment
 
-### Vercel (Recommended)
+The application is optimized for deployment on Vercel:
 
-1. Push your code to GitHub
-2. Connect your repository to [Vercel](https://vercel.com)
-3. Add environment variables in Vercel dashboard
-4. Deploy automatically on every push
+- **Automatic Deployments** - Git-based deployment pipeline
+- **Preview Deployments** - Branch preview environments
+- **Environment Variables** - Secure configuration management
+- **Performance Monitoring** - Built-in analytics and insights
 
-### Other Platforms
+See [Deployment Documentation](./docs/deployment/README.md) for detailed instructions.
 
-The site can be deployed on any platform that supports Next.js:
+## 👥 User Roles
 
-- **Netlify**: Use `npm run build && npm run export`
-- **AWS Amplify**: Connect your GitHub repository
-- **Railway**: Connect repository and add environment variables
-- **Self-hosted**: Use `npm run build` and serve the `.next` directory
+### Administrators
+- Full system access
+- Job creation and management
+- Customer management
+- Status updates and workflow management
+- File access and management
 
-### Environment Variables for Production
+### Customers
+- Own job viewing and tracking
+- Profile management
+- Design file downloads
+- Order history access
 
-Set these in your deployment platform:
-
-```env
-RESEND_API_KEY=your_production_resend_key
-CONTACT_TO=your-business-email@yourdom.com
-PLAUSIBLE_DOMAIN=yourdomain.com
-```
-
-## 🔧 Development
+## 🧪 Development
 
 ### Available Scripts
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run start` - Start production server
-- `npm run lint` - Run ESLint
+```bash
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run start        # Start production server
+npm run lint         # Run ESLint
+npm run type-check   # TypeScript type checking
 
-### Code Structure
+# Database
+npx prisma studio    # Database browser
+npx prisma generate  # Generate Prisma client
+npx prisma db seed   # Seed development data
+```
 
-- **Components**: Reusable UI components in `_components/`
-- **Pages**: Route handlers in app directory structure
-- **Styles**: Global styles in `globals.css`, component styles via MUI theme
-- **Types**: TypeScript interfaces in `/src/lib/types.ts`
-- **Data**: Mock data and content in `/src/lib/data.ts`
+### Development Workflow
 
-## 📱 Features by Section
+1. **Feature Development** - Branch-based development with PR reviews
+2. **Code Quality** - ESLint, TypeScript, and Prettier integration
+3. **Testing** - Unit tests with Jest, E2E tests with Playwright
+4. **Documentation** - Comprehensive docs in `/docs` directory
 
-### Header
-- Fixed navigation with scroll effect
-- Smooth scrolling to page sections
-- Mobile-responsive hamburger menu
+## 📊 Features Highlights
 
-### Hero
-- Full-screen background image
-- Responsive typography
-- Call-to-action button
+### Smart Job Creation System
+- **Dynamic Form Logic** - Options change based on selections
+- **Garment Categories** - Headwear, Tops, Bottoms, Accessories
+- **Decoration Methods** - HTV, Hybrid DTF, Screen Print DTF, Patches
+- **Placement Management** - Location-specific options with auto-sizing
+- **File Upload Integration** - Vercel Blob storage with validation
 
-### Recent Work
-- Horizontal scrolling carousel
-- Hover effects and transitions
-- Lightbox gallery integration
-- Mobile-friendly touch scrolling
+### Comprehensive Job Management
+- **Status Workflow** - QUEUED → APPROVED → IN_PROD → READY → SHIPPED → DELIVERED
+- **Event Timeline** - Complete audit trail of job changes
+- **Customer Integration** - Linked customer records with contact info
+- **Size Management** - Flexible size breakdown system
 
-### Partners
-- Responsive grid layout
-- Circular logo containers
-- Hover effects with scaling
-- Placeholder support
+### Professional User Experience
+- **Material-UI Design** - Consistent, professional interface
+- **Responsive Layout** - Works on desktop, tablet, and mobile
+- **File Downloads** - One-click design file downloads
+- **Real-time Updates** - Status changes and notifications
 
-### Contact Form
-- Form validation with Zod
-- Spam protection (honeypot)
-- Email integration via Resend
-- Success/error notifications
-- Responsive design
+## 🤝 Contributing
 
-## 🎯 Performance
-
-- **Lighthouse Score**: 90+ on all metrics
-- **Image Optimization**: Next.js automatic optimization
-- **Code Splitting**: Automatic route-based splitting
-- **Lazy Loading**: Images loaded as needed
-- **Font Optimization**: Inter font with next/font
-
-## ♿ Accessibility
-
-- **Keyboard Navigation**: All interactive elements
-- **Screen Reader**: Proper ARIA labels and semantic HTML
-- **Color Contrast**: WCAG AA compliant
-- **Focus Management**: Visible focus indicators
-
-## 🐛 Troubleshooting
-
-### Common Issues
-
-1. **Images not loading**: Check file paths in `/public/images/` directory
-2. **Contact form not working**: Verify Resend API key in environment variables
-3. **Build errors**: Run `npm run lint` to check for TypeScript errors
-4. **Styling issues**: Clear browser cache and restart dev server
-
-### Support
-
-For issues or questions:
-1. Check the [GitHub Issues](https://github.com/chrisjcodes/687-merch-site/issues)
-2. Review the Next.js and MUI documentation
-3. Create a new issue with reproduction steps
+1. Read the [Development Guide](./docs/development/README.md)
+2. Fork the repository
+3. Create a feature branch
+4. Make your changes with tests
+5. Submit a pull request
 
 ## 📄 License
 
-This project is licensed under the MIT License. See LICENSE file for details.
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+## 🆘 Support
+
+For support and questions:
+
+1. Check the [Documentation](./docs/README.md)
+2. Review existing GitHub issues
+3. Create a new issue with detailed information
 
 ---
 
-Built with ❤️ using Next.js 14, Material UI, and TypeScript.
+**Built with ❤️ using Next.js, TypeScript, and PostgreSQL**

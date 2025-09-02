@@ -18,21 +18,21 @@ import { requireCustomerSession, getCustomerJobs } from '@/lib/auth-helpers';
 import { JobStatus } from '@prisma/client';
 
 const statusColors: Record<JobStatus, 'default' | 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning'> = {
-  QUEUED: 'default',
-  APPROVED: 'info',
-  IN_PROD: 'warning',
-  READY: 'primary',
-  SHIPPED: 'secondary',
-  DELIVERED: 'success',
+  PENDING_DESIGN: 'default',
+  PENDING_MATERIALS: 'info',
+  PENDING_PRINT: 'warning',
+  PENDING_FULFILLMENT: 'primary',
+  DONE: 'success',
+  CANCELLED: 'error',
 };
 
 const statusLabels: Record<JobStatus, string> = {
-  QUEUED: 'Queued',
-  APPROVED: 'Approved',
-  IN_PROD: 'In Production',
-  READY: 'Ready',
-  SHIPPED: 'Shipped',
-  DELIVERED: 'Delivered',
+  PENDING_DESIGN: 'Pending Design',
+  PENDING_MATERIALS: 'Pending Materials',
+  PENDING_PRINT: 'Pending Print',
+  PENDING_FULFILLMENT: 'Pending Fulfillment',
+  DONE: 'Done',
+  CANCELLED: 'Cancelled',
 };
 
 export default async function CustomerOrdersPage() {
@@ -113,7 +113,7 @@ export default async function CustomerOrdersPage() {
                         variant="outlined"
                         size="small"
                         startIcon={<ReorderIcon />}
-                        disabled={job.status === 'QUEUED'}
+                        disabled={job.status === 'PENDING_DESIGN'}
                       >
                         Reorder
                       </Button>

@@ -77,7 +77,7 @@ export async function createReorderJob(originalJobId: string, customerId: string
   const newJob = await prisma.job.create({
     data: {
       customerId,
-      status: "QUEUED",
+      status: "PENDING_DESIGN",
       dueDate: reorderData.dueDate,
       notes: reorderData.notes,
       items: {

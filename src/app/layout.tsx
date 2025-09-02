@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Epilogue, Anton } from "next/font/google";
+import { Epilogue, Anton, Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SessionProvider } from "./providers/SessionProvider";
+import { ThemeProviderWrapper } from "./components/ThemeProviderWrapper";
 
 const epilogue = Epilogue({
   subsets: ["latin"],
@@ -13,6 +14,11 @@ const anton = Anton({
   subsets: ["latin"],
   weight: "400",
   variable: "--font-anton",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
@@ -56,10 +62,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${epilogue.className} ${anton.variable} ${epilogue.variable}`}>
-        <SessionProvider>
-          {children}
-        </SessionProvider>
+      <body className={`${epilogue.className} ${anton.variable} ${epilogue.variable} ${inter.variable}`}>
+        <ThemeProviderWrapper>
+          <SessionProvider>
+            {children}
+          </SessionProvider>
+        </ThemeProviderWrapper>
         <Analytics />
         <SpeedInsights />
       </body>

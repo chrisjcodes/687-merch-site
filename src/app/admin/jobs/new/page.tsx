@@ -18,7 +18,7 @@ export default async function NewJobPage() {
   });
 
   return (
-    <Container maxWidth="md" sx={{ py: 4 }}>
+    <Container maxWidth="lg" sx={{ py: 4 }}>
       <Box sx={{ mb: 4 }}>
         <Link href="/admin/jobs" passHref>
           <Button startIcon={<ArrowBackIcon />} sx={{ mb: 2 }}>

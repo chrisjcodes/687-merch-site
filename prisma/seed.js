@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client';
+const { PrismaClient } = require('@prisma/client');
 
 const prisma = new PrismaClient();
 
@@ -19,10 +19,8 @@ async function main() {
   console.log('👤 Created admin user:', adminUser.email);
 
   // Create employees
-  const designer = await prisma.employee.upsert({
-    where: { employeeNumber: 'EMP-001' },
-    update: {},
-    create: {
+  const designer = await prisma.employee.create({
+    data: {
       employeeNumber: 'EMP-001',
       name: 'Sarah Designer',
       email: 'sarah@687merch.com',
@@ -32,10 +30,8 @@ async function main() {
     },
   });
 
-  const printer = await prisma.employee.upsert({
-    where: { employeeNumber: 'EMP-002' },
-    update: {},
-    create: {
+  const printer = await prisma.employee.create({
+    data: {
       employeeNumber: 'EMP-002',
       name: 'Test Printer',
       email: 'test_printer1@687merch.com',
@@ -44,10 +40,8 @@ async function main() {
     },
   });
 
-  const fulfillment = await prisma.employee.upsert({
-    where: { employeeNumber: 'EMP-003' },
-    update: {},
-    create: {
+  const fulfillment = await prisma.employee.create({
+    data: {
       employeeNumber: 'EMP-003',
       name: 'Lisa Fulfillment',
       email: 'lisa@687merch.com',
@@ -81,15 +75,73 @@ async function main() {
             { name: 'Heather Gray', sku: 'GILDAN-64000-HGRAY', colorHex: '#808080' },
           ]
         },
-        sizePricing: {
+        placementAnchors: {
           create: [
-            { size: 'XS', basePrice: 3.25, currentPrice: 3.25 },
-            { size: 'S', basePrice: 3.50, currentPrice: 3.50 },
-            { size: 'M', basePrice: 3.50, currentPrice: 3.50 },
-            { size: 'L', basePrice: 3.50, currentPrice: 3.50 },
-            { size: 'XL', basePrice: 3.75, currentPrice: 3.75 },
-            { size: '2XL', basePrice: 4.25, currentPrice: 4.25 },
-            { size: '3XL', basePrice: 5.00, currentPrice: 5.00 },
+            { 
+              name: 'Collar Center', 
+              description: 'Center point of collar seam', 
+              anchorType: 'COLLAR',
+              maxOffsetUp: 2.0,
+              maxOffsetDown: 12.0,
+              maxOffsetLeft: 6.0,
+              maxOffsetRight: 6.0,
+              maxDesignWidth: 12.0,
+              maxDesignHeight: 16.0,
+              minDesignWidth: 4.0,
+              minDesignHeight: 2.0
+            },
+            { 
+              name: 'Left Chest Seam', 
+              description: 'Left chest pocket seam intersection', 
+              anchorType: 'SEAM',
+              maxOffsetUp: 2.0,
+              maxOffsetDown: 6.0,
+              maxOffsetLeft: 2.0,
+              maxOffsetRight: 4.0,
+              maxDesignWidth: 4.0,
+              maxDesignHeight: 4.0,
+              minDesignWidth: 2.0,
+              minDesignHeight: 1.5
+            },
+            { 
+              name: 'Bottom Hem Center', 
+              description: 'Center point of bottom hem', 
+              anchorType: 'HEM',
+              maxOffsetUp: 8.0,
+              maxOffsetDown: 0.5,
+              maxOffsetLeft: 6.0,
+              maxOffsetRight: 6.0,
+              maxDesignWidth: 10.0,
+              maxDesignHeight: 8.0,
+              minDesignWidth: 3.0,
+              minDesignHeight: 1.0
+            },
+            { 
+              name: 'Back Collar Center', 
+              description: 'Center point of back collar seam', 
+              anchorType: 'COLLAR',
+              maxOffsetUp: 1.0,
+              maxOffsetDown: 14.0,
+              maxOffsetLeft: 6.0,
+              maxOffsetRight: 6.0,
+              maxDesignWidth: 12.0,
+              maxDesignHeight: 16.0,
+              minDesignWidth: 4.0,
+              minDesignHeight: 2.0
+            },
+            { 
+              name: 'Left Sleeve Cuff', 
+              description: 'Left sleeve cuff seam', 
+              anchorType: 'SEAM',
+              maxOffsetUp: 8.0,
+              maxOffsetDown: 1.0,
+              maxOffsetLeft: 1.0,
+              maxOffsetRight: 2.0,
+              maxDesignWidth: 3.0,
+              maxDesignHeight: 8.0,
+              minDesignWidth: 1.5,
+              minDesignHeight: 1.0
+            }
           ]
         }
       }
@@ -113,6 +165,49 @@ async function main() {
             { name: 'White', sku: 'NL-POLO-001-WHITE', colorHex: '#FFFFFF' },
             { name: 'Navy', sku: 'NL-POLO-001-NAVY', colorHex: '#000080' },
             { name: 'Black', sku: 'NL-POLO-001-BLACK', colorHex: '#000000' },
+          ]
+        },
+        placementAnchors: {
+          create: [
+            { 
+              name: 'Left Chest Placket', 
+              description: 'Left chest button placket area', 
+              anchorType: 'PLACKET',
+              maxOffsetUp: 1.0,
+              maxOffsetDown: 4.0,
+              maxOffsetLeft: 1.0,
+              maxOffsetRight: 3.0,
+              maxDesignWidth: 4.0,
+              maxDesignHeight: 4.0,
+              minDesignWidth: 2.0,
+              minDesignHeight: 1.5
+            },
+            { 
+              name: 'Back Collar Center', 
+              description: 'Center of polo back collar', 
+              anchorType: 'COLLAR',
+              maxOffsetUp: 1.0,
+              maxOffsetDown: 10.0,
+              maxOffsetLeft: 5.0,
+              maxOffsetRight: 5.0,
+              maxDesignWidth: 10.0,
+              maxDesignHeight: 12.0,
+              minDesignWidth: 4.0,
+              minDesignHeight: 2.0
+            },
+            { 
+              name: 'Left Sleeve Cuff', 
+              description: 'Left sleeve cuff seam', 
+              anchorType: 'SEAM',
+              maxOffsetUp: 6.0,
+              maxOffsetDown: 1.0,
+              maxOffsetLeft: 1.0,
+              maxOffsetRight: 2.0,
+              maxDesignWidth: 3.0,
+              maxDesignHeight: 6.0,
+              minDesignWidth: 1.5,
+              minDesignHeight: 1.0
+            }
           ]
         }
       }
@@ -139,14 +234,60 @@ async function main() {
             { name: 'Maroon', sku: 'GILDAN-18500-MAROON', colorHex: '#800000' },
           ]
         },
-        sizePricing: {
+        placementAnchors: {
           create: [
-            { size: 'S', basePrice: 17.50, currentPrice: 17.50 },
-            { size: 'M', basePrice: 18.00, currentPrice: 18.00 },
-            { size: 'L', basePrice: 18.00, currentPrice: 18.00 },
-            { size: 'XL', basePrice: 19.50, currentPrice: 19.50 },
-            { size: '2XL', basePrice: 22.00, currentPrice: 22.00 },
-            { size: '3XL', basePrice: 25.50, currentPrice: 25.50 },
+            { 
+              name: 'Hood Seam Center', 
+              description: 'Center where hood meets body', 
+              anchorType: 'SEAM',
+              maxOffsetUp: 6.0,
+              maxOffsetDown: 12.0,
+              maxOffsetLeft: 5.0,
+              maxOffsetRight: 5.0,
+              maxDesignWidth: 10.0,
+              maxDesignHeight: 14.0,
+              minDesignWidth: 4.0,
+              minDesignHeight: 2.0
+            },
+            { 
+              name: 'Kangaroo Pocket Top', 
+              description: 'Top edge of kangaroo pocket', 
+              anchorType: 'POCKET',
+              maxOffsetUp: 3.0,
+              maxOffsetDown: 2.0,
+              maxOffsetLeft: 3.0,
+              maxOffsetRight: 3.0,
+              maxDesignWidth: 4.0,
+              maxDesignHeight: 4.0,
+              minDesignWidth: 2.0,
+              minDesignHeight: 1.5
+            },
+            { 
+              name: 'Back Hood Seam', 
+              description: 'Back center where hood attaches', 
+              anchorType: 'SEAM',
+              maxOffsetUp: 4.0,
+              maxOffsetDown: 12.0,
+              maxOffsetLeft: 5.0,
+              maxOffsetRight: 5.0,
+              maxDesignWidth: 10.0,
+              maxDesignHeight: 14.0,
+              minDesignWidth: 4.0,
+              minDesignHeight: 2.0
+            },
+            { 
+              name: 'Hood Center', 
+              description: 'Center top of hood', 
+              anchorType: 'SEAM',
+              maxOffsetUp: 2.0,
+              maxOffsetDown: 4.0,
+              maxOffsetLeft: 3.0,
+              maxOffsetRight: 3.0,
+              maxDesignWidth: 6.0,
+              maxDesignHeight: 4.0,
+              minDesignWidth: 2.0,
+              minDesignHeight: 1.0
+            }
           ]
         }
       }
@@ -171,6 +312,49 @@ async function main() {
             { name: 'Navy/White', sku: 'TRUCKER-CLASSIC-NVWH', colorHex: '#000080' },
             { name: 'Red/White', sku: 'TRUCKER-CLASSIC-RDWH', colorHex: '#FF0000' },
           ]
+        },
+        placementAnchors: {
+          create: [
+            { 
+              name: 'Front Panel Center', 
+              description: 'Center of front hat panel', 
+              anchorType: 'PANEL',
+              maxOffsetUp: 1.5,
+              maxOffsetDown: 1.5,
+              maxOffsetLeft: 2.0,
+              maxOffsetRight: 2.0,
+              maxDesignWidth: 4.0,
+              maxDesignHeight: 3.0,
+              minDesignWidth: 2.0,
+              minDesignHeight: 1.0
+            },
+            { 
+              name: 'Visor Seam', 
+              description: 'Seam where visor attaches to front', 
+              anchorType: 'SEAM',
+              maxOffsetUp: 2.5,
+              maxOffsetDown: 0.5,
+              maxOffsetLeft: 3.0,
+              maxOffsetRight: 3.0,
+              maxDesignWidth: 6.0,
+              maxDesignHeight: 1.5,
+              minDesignWidth: 2.0,
+              minDesignHeight: 0.5
+            },
+            { 
+              name: 'Back Panel Center', 
+              description: 'Center of back mesh panel', 
+              anchorType: 'PANEL',
+              maxOffsetUp: 1.0,
+              maxOffsetDown: 1.5,
+              maxOffsetLeft: 2.0,
+              maxOffsetRight: 2.0,
+              maxDesignWidth: 4.0,
+              maxDesignHeight: 2.5,
+              minDesignWidth: 2.0,
+              minDesignHeight: 1.0
+            }
+          ]
         }
       }
     }),
@@ -192,6 +376,36 @@ async function main() {
           create: [
             { name: 'Natural', sku: 'TOTE-CANVAS-NATURAL', colorHex: '#F5F5DC' },
             { name: 'Black', sku: 'TOTE-CANVAS-BLACK', colorHex: '#000000' },
+          ]
+        },
+        placementAnchors: {
+          create: [
+            { 
+              name: 'Handle Attachment Center', 
+              description: 'Center where handles attach to bag', 
+              anchorType: 'SEAM',
+              maxOffsetUp: 2.0,
+              maxOffsetDown: 8.0,
+              maxOffsetLeft: 5.0,
+              maxOffsetRight: 5.0,
+              maxDesignWidth: 10.0,
+              maxDesignHeight: 10.0,
+              minDesignWidth: 4.0,
+              minDesignHeight: 2.0
+            },
+            { 
+              name: 'Bottom Seam Center', 
+              description: 'Center of bottom seam', 
+              anchorType: 'SEAM',
+              maxOffsetUp: 4.0,
+              maxOffsetDown: 1.0,
+              maxOffsetLeft: 4.0,
+              maxOffsetRight: 4.0,
+              maxDesignWidth: 8.0,
+              maxDesignHeight: 4.0,
+              minDesignWidth: 3.0,
+              minDesignHeight: 1.0
+            }
           ]
         }
       }
@@ -305,10 +519,14 @@ async function main() {
 
   console.log('🏢 Created test customers:', testCustomer.name, acmeCustomer.name);
 
-  // Create sample jobs with new structure
-  const tshirtProduct = products[0]; // Gildan T-Shirt
-  const hoodieProduct = products[2]; // Hoodie
-  const poloProduct = products[1]; // Polo
+  // Get products with their variants for job creation
+  const productsWithVariants = await prisma.product.findMany({
+    include: { variants: true }
+  });
+  
+  const tshirtProduct = productsWithVariants[0]; // Gildan T-Shirt
+  const hoodieProduct = productsWithVariants[2]; // Hoodie
+  const poloProduct = productsWithVariants[1]; // Polo
 
   // Job 1: Completed T-shirt order
   const job1 = await prisma.job.create({
@@ -323,7 +541,7 @@ async function main() {
       items: {
         create: {
           productId: tshirtProduct.id,
-          variantId: null, // No variant for now
+          variantId: tshirtProduct.variants[2]?.id, // Navy variant
           quantity: 50,
           unitPrice: 17.50,
           totalPrice: 875.00,
@@ -408,7 +626,7 @@ async function main() {
       items: {
         create: {
           productId: hoodieProduct.id,
-          variantId: null, // No variant for now
+          variantId: hoodieProduct.variants[2]?.id, // Heather Gray
           quantity: 25,
           unitPrice: 18.00,
           totalPrice: 450.00,
@@ -457,7 +675,7 @@ async function main() {
       items: {
         create: {
           productId: poloProduct.id,
-          variantId: null, // No variant for now
+          variantId: poloProduct.variants[0]?.id, // White
           quantity: 100,
           unitPrice: 12.50,
           totalPrice: 1250.00,

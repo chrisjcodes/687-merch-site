@@ -2,13 +2,13 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "darwin", "darwin-arm64"]
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("POSTGRES_PRISMA_URL")
-  directUrl = env("POSTGRES_URL_NON_POOLING")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 enum Role {
@@ -17,12 +17,65 @@ enum Role {
 }
 
 enum JobStatus {
-  QUEUED
-  APPROVED
-  IN_PROD
-  READY
-  SHIPPED
-  DELIVERED
+  PENDING_DESIGN
+  PENDING_MATERIALS
+  PENDING_PRINT
+  PENDING_FULFILLMENT
+  DONE
+  CANCELLED
+}
+
+enum JobPriority {
+  LOW
+  NORMAL
+  HIGH
+  URGENT
+}
+
+enum ProductCategory {
+  TOPS
+  BOTTOMS
+  HEADWEAR
+  ACCESSORIES
+}
+
+enum SizeSystem {
+  APPAREL
+  OSFA
+  CAPS
+  SHOES
+}
+
+enum EmployeeRole {
+  DESIGNER
+  PRINT_OPERATOR
+  FULFILLMENT
+  MANAGER
+}
+
+enum AssignmentStatus {
+  ASSIGNED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+enum MaterialType {
+  VINYL
+  DTF_INK
+  DTF_POWDER
+  SCREEN_INK
+  THREAD
+  BACKING
+  PATCHES
+  ADHESIVE
+  OTHER
+}
+
+enum MovementType {
+  IN
+  OUT
+  ADJUSTMENT
 }
 
 model User {
@@ -32,7 +85,10 @@ model User {
   role          Role      @default(CUSTOMER)
   customerId    String?   @unique
   customer      Customer? @relation(fields: [customerId], references: [id])
+  employee      Employee?
   emailVerified DateTime?
+  accounts      Account[]
+  sessions      Session[]
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 
@@ -55,34 +111,179 @@ model Customer {
 }
 
 model Job {
-  id         String    @id @default(cuid())
-  customerId String
-  customer   Customer  @relation(fields: [customerId], references: [id])
-  status     JobStatus @default(QUEUED)
-  dueDate    DateTime?
-  notes      String?
-  items      JobItem[]
-  events     Event[]
-  proofs     Proof[]
-  createdAt  DateTime  @default(now())
-  updatedAt  DateTime  @updatedAt
+  id             String      @id @default(cuid())
+  jobNumber      String      @unique
+  customerId     String
+  customer       Customer    @relation(fields: [customerId], references: [id])
+  status         JobStatus   @default(PENDING_DESIGN)
+  priority       JobPriority @default(NORMAL)
+  dueDate        DateTime?
+  rushJob        Boolean     @default(false)
+  estimatedValue Decimal?
+  actualValue    Decimal?
+  notes          String?
+  internalNotes  String?
+  items          JobItem[]
+  designs        Design[]
+  assignments    JobAssignment[]
+  events         Event[]
+  proofs         Proof[]
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
 
   @@map("jobs")
 }
 
+model Product {
+  id                 String                @id @default(cuid())
+  sku                String                @unique
+  name               String
+  category           ProductCategory
+  brand              String?
+  basePrice          Decimal
+  currentPrice       Decimal
+  isActive           Boolean               @default(true)
+  sizeSystem         SizeSystem
+  availableSizes     String[]
+  decorationMethods  String[]
+  weight             Float?
+  color              String?
+  material           String?
+  jobItems           JobItem[]
+  variants           ProductVariant[]
+  sizePricing        ProductSizePrice[]
+  placementAnchors   PlacementAnchor[]
+  createdAt          DateTime              @default(now())
+  updatedAt          DateTime              @updatedAt
+
+  @@map("products")
+}
+
+model PlacementAnchor {
+  id               String  @id @default(cuid())
+  productId        String
+  product          Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  name             String  // e.g., "Collar Center", "Bottom Hem", "Left Seam"
+  description      String? // e.g., "Center point of collar seam"
+  anchorType       String  // e.g., "COLLAR", "HEM", "SEAM", "POCKET"
+  maxOffsetUp      Float?  // Maximum distance up from anchor (inches)
+  maxOffsetDown    Float?  // Maximum distance down from anchor (inches)  
+  maxOffsetLeft    Float?  // Maximum distance left from anchor (inches)
+  maxOffsetRight   Float?  // Maximum distance right from anchor (inches)
+  maxDesignWidth   Float   // Maximum design width from this anchor
+  maxDesignHeight  Float   // Maximum design height from this anchor
+  minDesignWidth   Float?  // Minimum recommended width
+  minDesignHeight  Float?  // Minimum recommended height
+  isActive         Boolean @default(true)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@unique([productId, name])
+  @@map("placement_anchors")
+}
+
+model ProductSizePrice {
+  id          String  @id @default(cuid())
+  productId   String
+  product     Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  size        String
+  basePrice   Decimal
+  currentPrice Decimal
+  isActive    Boolean @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([productId, size])
+  @@map("product_size_prices")
+}
+
+model ProductVariant {
+  id              String   @id @default(cuid())
+  productId       String
+  product         Product  @relation(fields: [productId], references: [id])
+  name            String
+  sku             String   @unique
+  colorHex        String?
+  priceAdjustment Decimal  @default(0)
+  isActive        Boolean  @default(true)
+  jobItems        JobItem[]
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@map("product_variants")
+}
+
 model JobItem {
-  id            String  @id @default(cuid())
+  id            String            @id @default(cuid())
   jobId         String
-  job           Job     @relation(fields: [jobId], references: [id], onDelete: Cascade)
-  productSku    String
-  variant       String?
-  printSpec     Json
-  qty           Int
-  sizeBreakdown Json
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  job           Job               @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  productId     String
+  product       Product           @relation(fields: [productId], references: [id])
+  variantId     String?
+  variant       ProductVariant?   @relation(fields: [variantId], references: [id])
+  quantity      Int
+  unitPrice     Decimal?
+  totalPrice    Decimal?
+  rushItem      Boolean           @default(false)
+  notes         String?
+  sizeBreakdown SizeBreakdown[]
+  placements    DesignPlacement[]
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
 
   @@map("job_items")
+}
+
+model SizeBreakdown {
+  id        String  @id @default(cuid())
+  jobItemId String
+  jobItem   JobItem @relation(fields: [jobItemId], references: [id], onDelete: Cascade)
+  size      String
+  quantity  Int
+
+  @@map("size_breakdowns")
+}
+
+model Design {
+  id          String            @id @default(cuid())
+  jobId       String
+  job         Job               @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  name        String
+  fileUrl     String
+  fileName    String
+  fileSize    Int
+  mimeType    String
+  version     Int               @default(1)
+  isActive    Boolean           @default(true)
+  isApproved  Boolean           @default(false)
+  approvedAt  DateTime?
+  approvedBy  String?
+  placements  DesignPlacement[]
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+
+  @@map("designs")
+}
+
+model DesignPlacement {
+  id                  String  @id @default(cuid())
+  designId            String
+  design              Design  @relation(fields: [designId], references: [id], onDelete: Cascade)
+  jobItemId           String
+  jobItem             JobItem @relation(fields: [jobItemId], references: [id], onDelete: Cascade)
+  placementType       String
+  decorationMethod    String
+  width               Float
+  height              Float
+  positionX           Float?
+  positionY           Float?
+  colors              String[]
+  specialInstructions String?
+  estimatedTime       Float?
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  @@map("design_placements")
 }
 
 model Event {
@@ -116,9 +317,81 @@ enum ProofStatus {
   CHANGES_REQUESTED
 }
 
+model Employee {
+  id             String          @id @default(cuid())
+  employeeNumber String          @unique
+  name           String
+  email          String          @unique
+  phone          String?
+  role           EmployeeRole
+  hourlyRate     Decimal?
+  isActive       Boolean         @default(true)
+  jobAssignments JobAssignment[]
+  userId         String?         @unique
+  user           User?           @relation(fields: [userId], references: [id])
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+
+  @@map("employees")
+}
+
+model JobAssignment {
+  id          String           @id @default(cuid())
+  jobId       String
+  job         Job              @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  employeeId  String
+  employee    Employee         @relation(fields: [employeeId], references: [id])
+  role        String
+  assignedAt  DateTime         @default(now())
+  startedAt   DateTime?
+  completedAt DateTime?
+  hoursWorked Float?
+  status      AssignmentStatus @default(ASSIGNED)
+  notes       String?
+
+  @@map("job_assignments")
+}
+
+model Material {
+  id              String          @id @default(cuid())
+  name            String
+  type            MaterialType
+  brand           String?
+  color           String?
+  currentStock    Float           @default(0)
+  unit            String
+  costPerUnit     Decimal?
+  minStockLevel   Float           @default(0)
+  supplierSku     String?
+  supplierName    String?
+  lastOrderDate   DateTime?
+  isActive        Boolean         @default(true)
+  movements       StockMovement[]
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+
+  @@map("materials")
+}
+
+model StockMovement {
+  id          String       @id @default(cuid())
+  materialId  String
+  material    Material     @relation(fields: [materialId], references: [id])
+  type        MovementType
+  quantity    Float
+  reason      String
+  reference   String?
+  employeeId  String?
+  notes       String?
+  createdAt   DateTime     @default(now())
+
+  @@map("stock_movements")
+}
+
 model Account {
   id                String  @id @default(cuid())
   userId            String
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   type              String
   provider          String
   providerAccountId String
@@ -140,6 +413,7 @@ model Session {
   id           String   @id @default(cuid())
   sessionToken String   @unique
   userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   expires      DateTime
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
