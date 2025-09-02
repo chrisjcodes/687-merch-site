@@ -13,6 +13,8 @@ import {
   TableHead,
   TableRow,
   Paper,
+  TablePagination,
+  TableSortLabel,
 } from '@mui/material';
 import { Refresh as RefreshIcon, Reorder as ReorderIcon } from '@mui/icons-material';
 import Link from 'next/link';
@@ -39,11 +41,17 @@ const statusLabels: Record<JobStatus, string> = {
   CANCELLED: 'Cancelled',
 };
 
+type Order = 'asc' | 'desc';
+
 export default function CustomerOrdersPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
   const [jobs, setJobs] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [orderBy, setOrderBy] = useState<string>('status');
+  const [order, setOrder] = useState<Order>('asc');
 
   useEffect(() => {
     if (status === 'loading') return;
@@ -71,15 +79,70 @@ export default function CustomerOrdersPage() {
     }
   };
 
-  const formatJobItems = (items: any[]) => {
-    if (items.length === 0) return 'No items';
-    if (items.length === 1) {
-      const item = items[0];
-      return `${item.quantity || item.qty}x ${item.product?.sku || item.productSku}${item.variant?.name || item.variant ? ` (${item.variant?.name || item.variant})` : ''}`;
-    }
-    const totalQty = items.reduce((sum, item) => sum + (item.quantity || item.qty), 0);
-    return `${totalQty} items (${items.length} SKUs)`;
+  const handleRequestSort = (property: string) => {
+    const isAsc = orderBy === property && order === 'asc';
+    setOrder(isAsc ? 'desc' : 'asc');
+    setOrderBy(property);
   };
+
+  const handleChangePage = (event: unknown, newPage: number) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
+
+  // Sort jobs with non-Done status first, then by selected criteria
+  const sortJobs = (jobs: any[]) => {
+    return [...jobs].sort((a, b) => {
+      // First, sort by Done status (non-Done first)
+      const aIsDone = a.status === 'DONE';
+      const bIsDone = b.status === 'DONE';
+      
+      if (aIsDone && !bIsDone) return 1;
+      if (!aIsDone && bIsDone) return -1;
+      
+      // Then sort by selected criteria
+      let aValue, bValue;
+      
+      switch (orderBy) {
+        case 'status':
+          aValue = a.status;
+          bValue = b.status;
+          break;
+        case 'createdAt':
+          aValue = new Date(a.createdAt).getTime();
+          bValue = new Date(b.createdAt).getTime();
+          break;
+        case 'dueDate':
+          aValue = a.dueDate ? new Date(a.dueDate).getTime() : 0;
+          bValue = b.dueDate ? new Date(b.dueDate).getTime() : 0;
+          break;
+        case 'id':
+          aValue = a.id;
+          bValue = b.id;
+          break;
+        default:
+          aValue = a[orderBy];
+          bValue = b[orderBy];
+      }
+      
+      if (aValue < bValue) return order === 'asc' ? -1 : 1;
+      if (aValue > bValue) return order === 'asc' ? 1 : -1;
+      return 0;
+    });
+  };
+
+  const formatJobItems = (items: any[]) => {
+    if (items.length === 0) return '0 items • 0 qty';
+    const totalQty = items.reduce((sum, item) => sum + (item.quantity || item.qty), 0);
+    return `${items.length} items • ${totalQty} qty`;
+  };
+
+  const sortedJobs = sortJobs(jobs);
+  const paginatedJobs = sortedJobs.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
   if (status === 'loading' || loading) {
     return (
@@ -108,11 +171,43 @@ export default function CustomerOrdersPage() {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>Job ID</TableCell>
+              <TableCell>
+                <TableSortLabel
+                  active={orderBy === 'id'}
+                  direction={orderBy === 'id' ? order : 'asc'}
+                  onClick={() => handleRequestSort('id')}
+                >
+                  Job ID
+                </TableSortLabel>
+              </TableCell>
               <TableCell>Items</TableCell>
-              <TableCell>Status</TableCell>
-              <TableCell>Created</TableCell>
-              <TableCell>Due Date</TableCell>
+              <TableCell>
+                <TableSortLabel
+                  active={orderBy === 'status'}
+                  direction={orderBy === 'status' ? order : 'asc'}
+                  onClick={() => handleRequestSort('status')}
+                >
+                  Status
+                </TableSortLabel>
+              </TableCell>
+              <TableCell>
+                <TableSortLabel
+                  active={orderBy === 'createdAt'}
+                  direction={orderBy === 'createdAt' ? order : 'asc'}
+                  onClick={() => handleRequestSort('createdAt')}
+                >
+                  Created
+                </TableSortLabel>
+              </TableCell>
+              <TableCell>
+                <TableSortLabel
+                  active={orderBy === 'dueDate'}
+                  direction={orderBy === 'dueDate' ? order : 'asc'}
+                  onClick={() => handleRequestSort('dueDate')}
+                >
+                  Target Dispatch Date
+                </TableSortLabel>
+              </TableCell>
               <TableCell align="right">Actions</TableCell>
             </TableRow>
           </TableHead>
@@ -126,7 +221,7 @@ export default function CustomerOrdersPage() {
                 </TableCell>
               </TableRow>
             ) : (
-              jobs.map((job) => (
+              paginatedJobs.map((job) => (
                 <TableRow key={job.id}>
                   <TableCell>
                     <Typography variant="body2" sx={{ fontFamily: 'monospace' }}>
@@ -148,22 +243,42 @@ export default function CustomerOrdersPage() {
                     {job.dueDate ? new Date(job.dueDate).toLocaleDateString() : 'TBD'}
                   </TableCell>
                   <TableCell align="right">
-                    <Link href={`/portal/orders/${job.id}/reorder`} passHref>
+                    {job.status === 'DONE' ? (
+                      <Link href={`/portal/orders/${job.id}/reorder`} passHref>
+                        <Button
+                          variant="outlined"
+                          size="small"
+                          startIcon={<ReorderIcon />}
+                        >
+                          Reorder
+                        </Button>
+                      </Link>
+                    ) : (
                       <Button
                         variant="outlined"
                         size="small"
                         startIcon={<ReorderIcon />}
-                        disabled={job.status === 'PENDING_DESIGN'}
+                        disabled
+                        sx={{ opacity: 0.5 }}
                       >
                         Reorder
                       </Button>
-                    </Link>
+                    )}
                   </TableCell>
                 </TableRow>
               ))
             )}
           </TableBody>
         </Table>
+        <TablePagination
+          rowsPerPageOptions={[5, 10, 25]}
+          component="div"
+          count={jobs.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
       </TableContainer>
     </Container>
   );
