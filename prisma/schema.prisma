@@ -96,16 +96,17 @@ model User {
 }
 
 model Customer {
-  id          String   @id @default(cuid())
-  name        String
-  email       String   @unique
-  phone       String?
-  company     String?
-  defaultShip Json?
-  user        User?
-  jobs        Job[]
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id            String         @id @default(cuid())
+  name          String
+  email         String         @unique
+  phone         String?
+  company       String?
+  defaultShip   Json?
+  user          User?
+  jobs          Job[]
+  itemTemplates ItemTemplate[]
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
 
   @@map("customers")
 }
@@ -153,6 +154,7 @@ model Product {
   variants           ProductVariant[]
   sizePricing        ProductSizePrice[]
   placementAnchors   PlacementAnchor[]
+  itemTemplates      ItemTemplate[]
   createdAt          DateTime              @default(now())
   updatedAt          DateTime              @updatedAt
 
@@ -207,20 +209,47 @@ model ProductVariant {
   priceAdjustment Decimal  @default(0)
   isActive        Boolean  @default(true)
   jobItems        JobItem[]
+  itemTemplates   ItemTemplate[]
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 
   @@map("product_variants")
 }
 
+model ItemTemplate {
+  id                 String            @id @default(cuid())
+  customerId         String
+  customer           Customer          @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  name               String            // e.g., "Good People Coffee Co Staff Shirts"
+  description        String?           // Optional description
+  productId          String
+  product            Product           @relation(fields: [productId], references: [id])
+  variantId          String?
+  variant            ProductVariant?   @relation(fields: [variantId], references: [id])
+  standardSizes      Json?             // Standard size breakdown as reference
+  designSpecs        Json?             // Standard design specifications
+  notes              String?           // Any special notes or requirements
+  lastOrderedAt      DateTime?         // When this was last ordered
+  timesOrdered       Int               @default(0) // How many times this has been ordered
+  jobItems           JobItem[]         // JobItems that used this template
+  isActive           Boolean           @default(true)
+  createdAt          DateTime          @default(now())
+  updatedAt          DateTime          @updatedAt
+
+  @@unique([customerId, name]) // Customer can't have duplicate item names
+  @@map("item_templates")
+}
+
 model JobItem {
-  id            String            @id @default(cuid())
-  jobId         String
-  job           Job               @relation(fields: [jobId], references: [id], onDelete: Cascade)
-  productId     String
-  product       Product           @relation(fields: [productId], references: [id])
-  variantId     String?
-  variant       ProductVariant?   @relation(fields: [variantId], references: [id])
+  id               String            @id @default(cuid())
+  jobId            String
+  job              Job               @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  itemTemplateId   String?
+  itemTemplate     ItemTemplate?     @relation(fields: [itemTemplateId], references: [id])
+  productId        String
+  product          Product           @relation(fields: [productId], references: [id])
+  variantId        String?
+  variant          ProductVariant?   @relation(fields: [variantId], references: [id])
   quantity      Int
   unitPrice     Decimal?
   totalPrice    Decimal?

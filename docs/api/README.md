@@ -22,6 +22,8 @@ src/app/api/
 │       └── files/route.ts        # File upload handler
 └── customer/
     ├── jobs/route.ts             # Customer job access
+    ├── items/route.ts            # Customer item templates
+    ├── reorder/route.ts          # Multi-item reorder system
     └── profile/route.ts          # Customer profile management
 ```
 
@@ -197,6 +199,134 @@ Authorization: Admin session required
 ```
 
 ## Customer API Endpoints
+
+### Item Templates
+
+#### List Customer Items
+```http
+GET /api/customer/items
+Authorization: Customer session required
+
+Query Parameters:
+- page: number (default: 0)
+- pageSize: number (default: 10)
+- search: string (optional)
+```
+
+**Response**
+```json
+{
+  "items": [
+    {
+      "id": "item-template-123",
+      "name": "Good People Coffee Co Staff Shirts",
+      "description": "Standard staff uniform shirts",
+      "customerId": "customer-id",
+      "product": {
+        "id": "product-123",
+        "name": "Unisex T-Shirt",
+        "sku": "SHIRT_BASIC",
+        "availableSizes": ["S", "M", "L", "XL", "XXL"]
+      },
+      "variant": {
+        "id": "variant-123",
+        "name": "Navy Blue",
+        "sku": "SHIRT_BASIC_NAVY",
+        "colorHex": "#1a1a2e"
+      },
+      "standardSizes": {
+        "M": 10,
+        "L": 15,
+        "XL": 8
+      },
+      "timesOrdered": 3,
+      "totalQuantityOrdered": 99,
+      "lastOrderedAt": "2024-01-10T09:00:00Z",
+      "lastJob": {
+        "id": "job-456",
+        "status": "DONE",
+        "createdAt": "2024-01-10T09:00:00Z"
+      },
+      "recentOrders": [
+        {
+          "jobId": "job-456",
+          "status": "DONE",
+          "quantity": 33,
+          "orderedAt": "2024-01-10T09:00:00Z"
+        }
+      ]
+    }
+  ],
+  "pagination": {
+    "page": 0,
+    "pageSize": 10,
+    "totalCount": 15,
+    "totalPages": 2
+  }
+}
+```
+
+#### Create Multi-Item Reorder
+```http
+POST /api/customer/reorder
+Content-Type: application/json
+Authorization: Customer session required
+
+{
+  "itemOrders": [
+    {
+      "itemTemplateId": "item-template-123",
+      "sizeBreakdown": {
+        "M": 5,
+        "L": 10,
+        "XL": 3
+      },
+      "notes": "Please use updated logo file"
+    },
+    {
+      "itemTemplateId": "item-template-456",
+      "sizeBreakdown": {
+        "S": 2,
+        "M": 8,
+        "L": 5
+      },
+      "notes": ""
+    }
+  ],
+  "dueDate": "2024-02-15",
+  "generalNotes": "Rush order for company event"
+}
+```
+
+**Response**
+```json
+{
+  "success": true,
+  "jobId": "cm789012345",
+  "job": {
+    "id": "cm789012345",
+    "customerId": "customer-id",
+    "status": "PENDING_DESIGN",
+    "dueDate": "2024-02-15T00:00:00Z",
+    "notes": "Rush order for company event",
+    "items": [
+      {
+        "id": "job-item-1",
+        "itemTemplateId": "item-template-123",
+        "productId": "product-123",
+        "variantId": "variant-123",
+        "quantity": 18,
+        "sizeBreakdown": {
+          "M": 5,
+          "L": 10,
+          "XL": 3
+        },
+        "notes": "Please use updated logo file"
+      }
+    ]
+  }
+}
+```
 
 ### Job Access
 

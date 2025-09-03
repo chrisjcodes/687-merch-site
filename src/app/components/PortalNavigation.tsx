@@ -11,11 +11,12 @@ import {
   MenuItem,
   Divider,
 } from '@mui/material';
-import { LogoutOutlined, AccountCircle, AdminPanelSettings, Business } from '@mui/icons-material';
+import { LogoutOutlined } from '@mui/icons-material';
 import { useSession, signOut } from 'next-auth/react';
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 export function PortalNavigation() {
   const { data: session } = useSession();
@@ -47,8 +48,8 @@ export function PortalNavigation() {
       }
     }}>
       <Toolbar sx={{ justifyContent: 'space-between' }}>
-        {/* Logo and Title */}
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+        {/* Logo, Title, and Navigation */}
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 4 }}>
           <Link href={isAdmin ? '/admin/jobs' : '/portal/orders'} style={{ textDecoration: 'none' }}>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
               <Image 
@@ -65,6 +66,75 @@ export function PortalNavigation() {
               </Box>
             </Box>
           </Link>
+
+          {/* Navigation Links */}
+          {session && (
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 3 }}>
+              {isAdmin ? (
+                <>
+                  <Button
+                    component={Link}
+                    href="/admin/jobs"
+                    sx={{ 
+                      color: 'white',
+                      textTransform: 'none',
+                      fontWeight: 500,
+                      '&:hover': {
+                        backgroundColor: 'rgba(255, 255, 255, 0.1)'
+                      }
+                    }}
+                  >
+                    Jobs
+                  </Button>
+                  <Button
+                    component={Link}
+                    href="/admin/customers"
+                    sx={{ 
+                      color: 'white',
+                      textTransform: 'none',
+                      fontWeight: 500,
+                      '&:hover': {
+                        backgroundColor: 'rgba(255, 255, 255, 0.1)'
+                      }
+                    }}
+                  >
+                    Customers
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Button
+                    component={Link}
+                    href="/portal/orders"
+                    sx={{ 
+                      color: 'white',
+                      textTransform: 'none',
+                      fontWeight: 500,
+                      '&:hover': {
+                        backgroundColor: 'rgba(255, 255, 255, 0.1)'
+                      }
+                    }}
+                  >
+                    My Orders
+                  </Button>
+                  <Button
+                    component={Link}
+                    href="/portal/items"
+                    sx={{ 
+                      color: 'white',
+                      textTransform: 'none',
+                      fontWeight: 500,
+                      '&:hover': {
+                        backgroundColor: 'rgba(255, 255, 255, 0.1)'
+                      }
+                    }}
+                  >
+                    My Items
+                  </Button>
+                </>
+              )}
+            </Box>
+          )}
         </Box>
 
         {/* User Menu */}
@@ -119,20 +189,12 @@ export function PortalNavigation() {
                 <Typography variant="body2" fontWeight="medium">
                   {session.user.email}
                 </Typography>
+                {session.user.role === 'CUSTOMER' && session.user.customer && (
+                  <Typography variant="caption" color="text.secondary">
+                    {session.user.customer.name}
+                  </Typography>
+                )}
               </Box>
-              <Divider />
-              {isAdmin && (
-                <MenuItem component={Link} href="/admin/jobs">
-                  <AdminPanelSettings fontSize="small" sx={{ mr: 2 }} />
-                  Admin Dashboard
-                </MenuItem>
-              )}
-              {isCustomer && (
-                <MenuItem component={Link} href="/portal/orders">
-                  <Business fontSize="small" sx={{ mr: 2 }} />
-                  My Orders
-                </MenuItem>
-              )}
               <Divider />
               <MenuItem onClick={handleLogout} sx={{ color: 'error.main' }}>
                 <LogoutOutlined fontSize="small" sx={{ mr: 2 }} />

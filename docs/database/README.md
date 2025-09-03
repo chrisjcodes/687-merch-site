@@ -17,16 +17,38 @@ The 687 Merch Site uses PostgreSQL with Prisma ORM for type-safe database operat
 │             │    │ - company   │    │ - notes     │
 └─────────────┘    │ - defaultShip│   └─────────────┘
                    └─────────────┘           │
-                                             │
-                   ┌─────────────┐           │
-                   │  JobItem    │           │
-                   │             │           │
-                   │ - id        │◀──────────┘
-                   │ - productSku│
-                   │ - variant   │
-                   │ - printSpec │ (JSON)
-                   │ - qty       │
-                   │ - sizeBreakdown │ (JSON)
+                           │                 │
+                           │     ┌─────────────┐
+                           │     │  JobItem    │
+                           │     │             │
+                           │     │ - id        │◀──────────┘
+                           │     │ - productId │
+                           │     │ - variantId │
+                           │     │ - quantity  │
+                           │     │ - sizeBreakdown │ (JSON)
+                           │     │ - itemTemplateId │
+                           │     └─────────────┘
+                           │             │
+                           │             │
+                   ┌─────────────┐       │
+                   │ItemTemplate │       │
+                   │             │       │
+                   │ - id        │◀──────┘
+                   │ - customerId│◀──────┘
+                   │ - name      │
+                   │ - productId │
+                   │ - variantId │
+                   │ - standardSizes │ (JSON)
+                   │ - timesOrdered │
+                   └─────────────┘
+                           │
+                   ┌─────────────┐
+                   │  Product    │
+                   │             │
+                   │ - id        │◀──────┘
+                   │ - name      │
+                   │ - sku       │
+                   │ - availableSizes │ (JSON)
                    └─────────────┘
 ```
 

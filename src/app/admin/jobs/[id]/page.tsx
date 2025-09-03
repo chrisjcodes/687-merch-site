@@ -15,6 +15,8 @@ import {
   Alert,
   Divider,
 } from '@mui/material';
+import { Business as BusinessIcon } from '@mui/icons-material';
+import Link from 'next/link';
 import { requireAdminSession } from '@/lib/auth-helpers';
 import { prisma } from '@/lib/prisma';
 import { JobStatus } from '@prisma/client';
@@ -113,9 +115,20 @@ export default async function JobDetailPage({ params }: JobDetailPageProps) {
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
         {/* Customer Information - Full Width */}
         <Paper variant="outlined" sx={{ p: 3 }}>
-          <Typography variant="h6" sx={{ mb: 3, color: 'primary.main', fontWeight: 600 }}>
-            Customer Information
-          </Typography>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
+            <Typography variant="h6" sx={{ color: 'primary.main', fontWeight: 600 }}>
+              Customer Information
+            </Typography>
+            <Link href={`/admin/customers/${job.customer.id}/items`} passHref>
+              <Button
+                variant="outlined"
+                size="small"
+                startIcon={<BusinessIcon />}
+              >
+                View Customer Items
+              </Button>
+            </Link>
+          </Box>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={6} md={3}>
               <Box>
