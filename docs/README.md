@@ -11,13 +11,15 @@ Welcome to the comprehensive documentation for the 687 Merch Site - a custom mer
 
 ## System Overview
 
-The 687 Merch Site is a full-stack Next.js application that provides:
+The 687 Merch Site is a comprehensive merchandise management platform that provides:
 
-- **Public Marketing Site** - Showcases services and company information
-- **Customer Portal** - Allows customers to place orders and track jobs
-- **Admin Dashboard** - Complete job management system for staff
-- **Authentication System** - Magic link-based authentication via NextAuth.js
-- **File Management** - Vercel Blob storage for design files
+- **Public Marketing Site** - Professional dark-themed marketing site with brand colors
+- **Customer Portal** - Order tracking, item management, and multi-item reordering
+- **Admin Dashboard** - Complete job lifecycle management with status updates
+- **Authentication System** - Secure magic link authentication with role-based access
+- **File Management** - Design file uploads with anchor-point placement system
+- **Item Templates** - Reusable item configurations for efficient reordering
+- **Advanced UI** - Material-UI with custom themes and comprehensive navigation
 
 ## Architecture
 
@@ -56,12 +58,16 @@ The 687 Merch Site is a full-stack Next.js application that provides:
 - [Deployment](./deployment/README.md) - Production deployment guide
 
 ### Key Features
-- **Smart Job Creation** - Dynamic form with garment-specific decoration methods
-- **Placement Management** - Detailed placement specifications with size presets
-- **File Upload System** - Vercel Blob integration for design files
-- **Status Tracking** - Complete job lifecycle management
-- **Customer Management** - Integrated customer database
-- **Event Timeline** - Detailed job history and status changes
+- **Item-Level Reordering** - Customers can reorder specific items across multiple jobs
+- **Anchor-Point Placement** - Precise design placement using product-specific anchor points  
+- **Multi-Portal Architecture** - Separate admin (plum) and customer (black) themed portals
+- **Advanced Job Management** - Complete workflow from design to fulfillment with status updates
+- **Smart Item Templates** - Automatic creation of reusable item configurations
+- **Comprehensive Search & Filtering** - Sortable, paginated tables with real-time search
+- **Global Navigation** - Persistent portal navigation with role-based features
+- **File Upload System** - Secure design file management with multiple format support
+- **Theme Separation** - Independent styling for marketing site vs. portals
+- **Status Tracking** - Visual job progression with color-coded status indicators
 
 ## Getting Started
 

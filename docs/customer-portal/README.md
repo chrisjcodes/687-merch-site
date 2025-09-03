@@ -1,39 +1,60 @@
 # Customer Portal Documentation
 
-The customer portal provides 687 Merch clients with a self-service interface to track their orders, view job history, and manage their account information.
+The customer portal provides 687 Merch clients with a comprehensive self-service interface to manage their orders, track items, and handle reordering at both job and item levels.
 
 ## Access & Authentication
 
-- **URL**: `/dashboard` (redirects to login if not authenticated)
-- **Authentication**: Magic link authentication via email
+- **URL**: `/portal/orders` (redirects to login if not authenticated)
+- **Authentication**: Magic link authentication via NextAuth.js
 - **Customer Users**: Users with `role: CUSTOMER` and linked customer records
-- **Demo Account**: `test@example.com` (created by seed data)
+- **Demo Account**: Available through seed data
+- **Portal Theme**: Black-themed navigation distinct from admin portal
 
 ## Main Features
 
-### 1. Dashboard Overview
+### 1. Order Management
 
-**Location**: `/dashboard`
+**Location**: `/portal/orders`
 
-The main dashboard provides:
-- **Active Jobs Summary**: Current orders and their status
-- **Recent Activity**: Latest job updates and status changes  
-- **Quick Stats**: Total orders, completed jobs, pending items
-- **Upcoming Due Dates**: Jobs with approaching deadlines
+The orders dashboard provides:
+- **Active Jobs Summary**: Current orders with status tracking
+- **Status Indicators**: Color-coded job statuses with visual progression
+- **Order History**: Complete history with searchable/filterable interface  
+- **Quick Actions**: Direct access to reorder functionality
 
-### 2. Job Tracking
+### 2. Item-Level Management
 
-**Job List View**
-- All jobs associated with the customer's account
-- Status indicators with color coding
-- Basic job information (ID, created date, item count)
-- Quick access to detailed job information
+**Location**: `/portal/items`
 
-**Status Tracking**
-- Real-time job status updates
-- Visual progress indicators
-- Estimated completion dates
-- Status history and timeline
+**My Items View**
+- **Item Templates**: Reusable item configurations (e.g., "Good People Coffee Co Staff Shirts")
+- **Usage Statistics**: Times ordered, total quantities, last order date
+- **Multi-Select**: Choose multiple items for bulk reordering
+- **Search & Filter**: Find items by name, product, or description
+- **Order History**: Per-item tracking across multiple jobs
+
+**Key Features**:
+- Paginated table with sortable columns
+- Item-level statistics and metrics
+- Recent order status tracking
+- Bulk selection for multi-item reordering
+
+### 3. Advanced Reordering System
+
+**Location**: `/portal/reorder`
+
+**Multi-Item Reorder Flow**
+- **Item Selection**: Choose 1 to many items from library
+- **Size Configuration**: Individual size breakdown per item
+- **Quantity Management**: Flexible quantity entry with totals
+- **Order Notes**: Item-specific and general order notes
+- **Target Dates**: Optional dispatch date specification
+
+**Reorder Capabilities**:
+- Item-level reordering across jobs
+- Standard size configurations as starting points
+- Individual item customization
+- Bulk order submission
 
 ### 3. Job Details
 

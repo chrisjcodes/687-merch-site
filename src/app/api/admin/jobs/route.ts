@@ -162,19 +162,99 @@ export async function POST(request: NextRequest) {
     const jobCount = await prisma.job.count();
     const jobNumber = `JOB-${new Date().getFullYear()}-${String(jobCount + 1).padStart(3, '0')}`;
 
-    const job = await prisma.job.create({
-      data: {
-        jobNumber,
-        customerId,
-        status: 'PENDING_DESIGN',
-        priority: priority as 'LOW' | 'NORMAL' | 'HIGH' | 'URGENT',
-        dueDate: dueDate ? new Date(dueDate) : null,
-        notes,
-        estimatedValue: items.reduce((sum: number, item: any) => 
-          sum + (parseFloat(item.unitPrice || 0) * parseInt(item.quantity || 0)), 0
-        ),
-        items: {
-          create: items.map((item: any) => ({
+    const job = await prisma.$transaction(async (tx) => {
+      // Create the job first
+      const newJob = await tx.job.create({
+        data: {
+          jobNumber,
+          customerId,
+          status: 'PENDING_DESIGN',
+          priority: priority as 'LOW' | 'NORMAL' | 'HIGH' | 'URGENT',
+          dueDate: dueDate ? new Date(dueDate) : null,
+          notes,
+          estimatedValue: items.reduce((sum: number, item: any) => 
+            sum + (parseFloat(item.unitPrice || 0) * parseInt(item.quantity || 0)), 0
+          ),
+        }
+      });
+
+      // Create job items and handle ItemTemplates
+      const jobItems = [];
+      for (const item of items) {
+        // Try to find existing ItemTemplate
+        let itemTemplate = await tx.itemTemplate.findFirst({
+          where: {
+            customerId,
+            productId: item.productId,
+            variantId: item.variantId || null,
+          }
+        });
+
+        // If no ItemTemplate exists, create one
+        if (!itemTemplate) {
+          // Get product and variant info for naming
+          const product = await tx.product.findUnique({
+            where: { id: item.productId },
+            select: { name: true }
+          });
+          
+          const variant = item.variantId ? await tx.productVariant.findUnique({
+            where: { id: item.variantId },
+            select: { name: true }
+          }) : null;
+
+          const productName = product?.name || 'Unknown Product';
+          const variantName = variant?.name || '';
+
+          // Generate item name
+          let itemName;
+          if (productName.toLowerCase().includes('t-shirt')) {
+            itemName = `${customer.name} Staff Shirts`;
+          } else if (productName.toLowerCase().includes('hoodie')) {
+            itemName = `${customer.name} Hoodies`;
+          } else if (productName.toLowerCase().includes('polo')) {
+            itemName = `${customer.name} Polo Shirts`;
+          } else if (productName.toLowerCase().includes('hat')) {
+            itemName = `${customer.name} Hats`;
+          } else if (productName.toLowerCase().includes('tote')) {
+            itemName = `${customer.name} Tote Bags`;
+          } else {
+            itemName = `${customer.name} ${productName}`;
+          }
+
+          if (variantName && !['Default', 'Standard'].includes(variantName)) {
+            itemName += ` (${variantName})`;
+          }
+
+          // Create ItemTemplate
+          itemTemplate = await tx.itemTemplate.create({
+            data: {
+              customerId,
+              productId: item.productId,
+              variantId: item.variantId || null,
+              name: itemName,
+              description: `${productName} ${variantName ? `in ${variantName}` : ''}`.trim(),
+              standardSizes: item.sizeBreakdown || null,
+              timesOrdered: 1,
+              lastOrderedAt: new Date(),
+            }
+          });
+        } else {
+          // Update existing ItemTemplate statistics
+          await tx.itemTemplate.update({
+            where: { id: itemTemplate.id },
+            data: {
+              timesOrdered: { increment: 1 },
+              lastOrderedAt: new Date(),
+            }
+          });
+        }
+
+        // Create JobItem linked to ItemTemplate
+        const jobItem = await tx.jobItem.create({
+          data: {
+            jobId: newJob.id,
+            itemTemplateId: itemTemplate.id,
             productId: item.productId,
             variantId: item.variantId || null,
             quantity: parseInt(item.quantity),
@@ -187,37 +267,48 @@ export async function POST(request: NextRequest) {
                 quantity: parseInt(qty) || 0
               }))
             }
-          }))
-        },
-        events: {
-          create: {
-            type: 'job.created',
-            payload: {
-              createdBy: 'admin',
-              itemsCount: items.length,
-              totalQty,
-              estimatedValue: items.reduce((sum: number, item: any) => 
-                sum + (parseFloat(item.unitPrice || 0) * parseInt(item.quantity || 0)), 0
-              )
-            }
+          }
+        });
+
+        jobItems.push(jobItem);
+      }
+
+      // Create job creation event
+      await tx.event.create({
+        data: {
+          jobId: newJob.id,
+          type: 'job.created',
+          payload: {
+            createdBy: 'admin',
+            itemsCount: items.length,
+            totalQty,
+            estimatedValue: items.reduce((sum: number, item: any) => 
+              sum + (parseFloat(item.unitPrice || 0) * parseInt(item.quantity || 0)), 0
+            )
           }
         }
-      },
-      include: {
-        items: {
-          include: {
-            product: {
-              include: {
-                variants: true
-              }
-            },
-            variant: true,
-            sizeBreakdown: true
-          }
-        },
-        events: true,
-        customer: true,
-      }
+      });
+
+      // Return job with all related data
+      return await tx.job.findUnique({
+        where: { id: newJob.id },
+        include: {
+          items: {
+            include: {
+              itemTemplate: true,
+              product: {
+                include: {
+                  variants: true
+                }
+              },
+              variant: true,
+              sizeBreakdown: true
+            }
+          },
+          events: true,
+          customer: true,
+        }
+      });
     });
 
     // With Vercel Blob, files are already in their permanent location
