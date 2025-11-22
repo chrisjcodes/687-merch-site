@@ -90,7 +90,7 @@ export async function POST(request: NextRequest) {
     // Send email using Resend
     const emailResponse = await resend.emails.send({
       from: 'blackfriday@687merch.com',
-      to: 'info+blackfriday@gmail.com',
+      to: 'info@687merch.com',
       replyTo: email,
       subject: `🎉 Black Friday Lead: ${firstName} ${lastName} - ${totalItems} items ($${totalPrice})`,
       html: `

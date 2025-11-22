@@ -119,7 +119,6 @@ type BlackFridayFormData = z.infer<typeof blackFridaySchema>;
 
 export default function BlackFridayForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('Failed to submit. Please try again.');
@@ -192,7 +191,6 @@ export default function BlackFridayForm() {
 
       if (response.ok) {
         setIsSubmitted(true);
-        setShowSuccess(true);
         reset();
         setFiles([]);
         setInterestedInShirts(false);
@@ -722,21 +720,7 @@ export default function BlackFridayForm() {
         )}
       </Container>
 
-      {/* Success/Error Notifications */}
-      <Snackbar
-        open={showSuccess}
-        autoHideDuration={8000}
-        onClose={() => setShowSuccess(false)}
-      >
-        <Alert
-          onClose={() => setShowSuccess(false)}
-          severity="success"
-          sx={{ width: '100%' }}
-        >
-          Thanks for your interest! We&apos;ll get back to you soon with a quote.
-        </Alert>
-      </Snackbar>
-
+      {/* Error Notification */}
       <Snackbar
         open={showError}
         autoHideDuration={6000}
