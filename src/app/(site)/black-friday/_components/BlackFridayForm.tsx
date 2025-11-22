@@ -23,8 +23,6 @@ import {
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import LocalOfferIcon from '@mui/icons-material/LocalOffer';
-import CheckroomIcon from '@mui/icons-material/Checkroom';
 import Image from 'next/image';
 
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
@@ -44,9 +42,7 @@ const ACCEPTED_FILE_TYPES = [
 const blackFridaySchema = z.object({
   firstName: z.string().min(1, 'First name is required'),
   lastName: z.string().min(1, 'Last name is required'),
-  preferredContact: z.enum(['email', 'call', 'text'], {
-    required_error: 'Please select a preferred contact method',
-  }),
+  preferredContact: z.enum(['email', 'call', 'text']),
   email: z.string().optional(),
   phone: z.string().optional(),
   interestedInShirts: z.boolean(),
@@ -333,19 +329,19 @@ export default function BlackFridayForm() {
               </Typography>
               <Box component="ol" sx={{ color: '#fff', lineHeight: 2, fontSize: '1.1rem', pl: 3, mb: 4 }}>
                 <Typography component="li" sx={{ mb: 2, fontSize: '1.1rem' }}>
-                  First, we'll take a look at all the details you sent our way.
+                  First, we&apos;ll take a look at all the details you sent our way.
                 </Typography>
                 <Typography component="li" sx={{ mb: 2, fontSize: '1.1rem' }}>
-                  Then we'll reach out to you as soon as we can—no ghosting here!
+                  Then we&apos;ll reach out to you as soon as we can—no ghosting here!
                 </Typography>
                 <Typography component="li" sx={{ mb: 2, fontSize: '1.1rem' }}>
-                  Once everything's sorted, we'll whip up a mock-up of your project for you to check out.
+                  Once everything&apos;s sorted, we&apos;ll whip up a mock-up of your project for you to check out.
                 </Typography>
                 <Typography component="li" sx={{ mb: 2, fontSize: '1.1rem' }}>
-                  Give us the thumbs-up, and we'll get to work bringing your items to life!
+                  Give us the thumbs-up, and we&apos;ll get to work bringing your items to life!
                 </Typography>
                 <Typography component="li" sx={{ fontSize: '1.1rem' }}>
-                  And when everything's ready to go… you'll pay us on delivery.
+                  And when everything&apos;s ready to go… you&apos;ll pay us on delivery.
                 </Typography>
               </Box>
 
@@ -389,7 +385,6 @@ export default function BlackFridayForm() {
             </Box>
           </Paper>
         ) : (
-          /* Form */
           <Paper
           component="form"
           onSubmit={handleSubmit(onSubmit)}
@@ -508,7 +503,7 @@ export default function BlackFridayForm() {
             {/* Project Summary */}
             <Box sx={{ mt: 2 }}>
               <Typography variant="h6" sx={{ color: '#fff', mb: 2 }}>
-                Tell us in a few words about what we're making for you
+                Tell us in a few words about what we&apos;re making for you
               </Typography>
 
               <TextField
