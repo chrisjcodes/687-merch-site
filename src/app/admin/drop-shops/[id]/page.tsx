@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation';
 import { prisma } from '@/lib/prisma';
 import DropShopForm from '../_components/DropShopForm';
 
+export const dynamic = 'force-dynamic';
+
 interface EditDropShopPageProps {
   params: Promise<{ id: string }>;
 }

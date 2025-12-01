@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { prisma } from '@/lib/prisma';
 import ShopsTable from './_components/ShopsTable';
 
+export const dynamic = 'force-dynamic';
+
 export default async function DropShopsListPage() {
   const shops = await prisma.dropShop.findMany({
     orderBy: { createdAt: 'desc' },

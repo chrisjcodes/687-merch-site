@@ -5,6 +5,8 @@ import ShopLayout from '../../_components/ShopLayout';
 import ProductDetail from './_components/ProductDetail';
 import { ThemeMode } from '@/lib/createShopTheme';
 
+export const dynamic = 'force-dynamic';
+
 interface ProductPageProps {
   params: Promise<{
     slug: string;

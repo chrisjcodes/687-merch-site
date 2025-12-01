@@ -3,6 +3,8 @@ import StorefrontIcon from '@mui/icons-material/Storefront';
 import { prisma } from '@/lib/prisma';
 import UnassignedCollections from './_components/UnassignedCollections';
 
+export const dynamic = 'force-dynamic';
+
 export default async function AdminDashboard() {
   const shops = await prisma.dropShop.findMany({
     select: { shopifyCollectionId: true, isLive: true },

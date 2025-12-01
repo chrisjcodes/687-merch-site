@@ -7,6 +7,8 @@ import ShopClosed from './_components/ShopClosed';
 import ShopLayout from './_components/ShopLayout';
 import { ThemeMode } from '@/lib/createShopTheme';
 
+export const dynamic = 'force-dynamic';
+
 interface DropShopPageProps {
   params: Promise<{ slug: string }>;
 }
