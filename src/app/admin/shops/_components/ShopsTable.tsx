@@ -301,7 +301,7 @@ export default function ShopsTable({ shops }: ShopsTableProps) {
                     </IconButton>
                     <IconButton
                       component={Link}
-                      href={`/admin/drop-shops/${shop.id}`}
+                      href={`/admin/shops/${shop.id}`}
                       size="small"
                       sx={{ color: 'primary.main', mr: 1 }}
                       title="Edit shop"

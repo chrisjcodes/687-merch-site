@@ -27,7 +27,7 @@ export default function DeleteShopButton({ shopId, shopName }: DeleteShopButtonP
   const handleDelete = async () => {
     setDeleting(true);
     try {
-      const response = await fetch(`/api/admin/drop-shops/${shopId}`, {
+      const response = await fetch(`/api/admin/shops/${shopId}`, {
         method: 'DELETE',
       });
 

@@ -53,7 +53,7 @@ export default function UnassignedCollections({ assignedCollectionIds }: Unassig
   const handleQuickCreate = async (collection: Collection) => {
     setCreating(collection.id);
     try {
-      const response = await fetch('/api/admin/drop-shops/quick-create', {
+      const response = await fetch('/api/admin/shops/quick-create', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -65,7 +65,7 @@ export default function UnassignedCollections({ assignedCollectionIds }: Unassig
       if (response.ok) {
         const data = await response.json();
         // Navigate to edit the new shop
-        router.push(`/admin/drop-shops/${data.shop.id}`);
+        router.push(`/admin/shops/${data.shop.id}`);
       }
     } catch (err) {
       console.error('Error creating shop:', err);

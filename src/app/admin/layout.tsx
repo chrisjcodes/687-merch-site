@@ -28,7 +28,7 @@ const drawerWidth = 240;
 
 const navItems = [
   { text: 'Overview', icon: <DashboardIcon />, href: '/admin' },
-  { text: 'Shops', icon: <StorefrontIcon />, href: '/admin/drop-shops' },
+  { text: 'Shops', icon: <StorefrontIcon />, href: '/admin/shops' },
 ];
 
 export default function AdminLayout({
@@ -64,7 +64,7 @@ export default function AdminLayout({
           style={{ height: 'auto', width: 'auto', maxHeight: 40 }}
         />
         <Typography variant="caption" sx={{ color: 'rgba(255, 255, 255, 0.6)', display: 'block', mt: 0.5, fontWeight: 600 }}>
-          Drop Shop Admin
+          Shop Admin
         </Typography>
       </Box>
       <Divider sx={{ borderColor: 'rgba(255, 255, 255, 0.1)' }} />

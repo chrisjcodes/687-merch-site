@@ -4,7 +4,7 @@ import { authOptions } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 import { z } from 'zod';
 
-const dropShopSchema = z.object({
+const shopSchema = z.object({
   name: z.string().min(1),
   slug: z.string().min(1).regex(/^[a-z0-9-]+$/),
   themeColor: z.string().regex(/^#[0-9A-Fa-f]{6}$/),
@@ -20,7 +20,7 @@ interface RouteParams {
   params: Promise<{ id: string }>;
 }
 
-// PUT update drop shop
+// PUT update shop
 export async function PUT(request: NextRequest, { params }: RouteParams) {
   try {
     const session = await getServerSession(authOptions);
@@ -31,7 +31,7 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
 
     const { id } = await params;
     const body = await request.json();
-    const validatedData = dropShopSchema.parse(body);
+    const validatedData = shopSchema.parse(body);
 
     // Convert activeUntil string to Date if present
     const dataToUpdate = {
@@ -46,7 +46,7 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
 
     return NextResponse.json({ shop });
   } catch (error) {
-    console.error('Error updating drop shop:', error);
+    console.error('Error updating shop:', error);
 
     if (error instanceof z.ZodError) {
       return NextResponse.json(
@@ -56,13 +56,13 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
     }
 
     return NextResponse.json(
-      { error: 'Failed to update drop shop' },
+      { error: 'Failed to update shop' },
       { status: 500 }
     );
   }
 }
 
-// DELETE drop shop
+// DELETE shop
 export async function DELETE(request: NextRequest, { params }: RouteParams) {
   try {
     const session = await getServerSession(authOptions);
@@ -79,9 +79,9 @@ export async function DELETE(request: NextRequest, { params }: RouteParams) {
 
     return NextResponse.json({ message: 'Shop deleted successfully' });
   } catch (error) {
-    console.error('Error deleting drop shop:', error);
+    console.error('Error deleting shop:', error);
     return NextResponse.json(
-      { error: 'Failed to delete drop shop' },
+      { error: 'Failed to delete shop' },
       { status: 500 }
     );
   }

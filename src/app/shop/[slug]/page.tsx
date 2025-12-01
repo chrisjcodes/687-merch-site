@@ -9,11 +9,11 @@ import { ThemeMode } from '@/lib/createShopTheme';
 
 export const dynamic = 'force-dynamic';
 
-interface DropShopPageProps {
+interface ShopPageProps {
   params: Promise<{ slug: string }>;
 }
 
-export default async function DropShopPage({ params }: DropShopPageProps) {
+export default async function ShopPage({ params }: ShopPageProps) {
   const { slug } = await params;
 
   const shop = await prisma.dropShop.findUnique({
@@ -59,7 +59,7 @@ export default async function DropShopPage({ params }: DropShopPageProps) {
   );
 }
 
-export async function generateMetadata({ params }: DropShopPageProps) {
+export async function generateMetadata({ params }: ShopPageProps) {
   const { slug } = await params;
 
   const shop = await prisma.dropShop.findUnique({

@@ -1,15 +1,15 @@
 import { Box, Typography } from '@mui/material';
 import { notFound } from 'next/navigation';
 import { prisma } from '@/lib/prisma';
-import DropShopForm from '../_components/DropShopForm';
+import ShopForm from '../_components/ShopForm';
 
 export const dynamic = 'force-dynamic';
 
-interface EditDropShopPageProps {
+interface EditShopPageProps {
   params: Promise<{ id: string }>;
 }
 
-export default async function EditDropShopPage({ params }: EditDropShopPageProps) {
+export default async function EditShopPage({ params }: EditShopPageProps) {
   const { id } = await params;
 
   const shop = await prisma.dropShop.findUnique({
@@ -25,7 +25,7 @@ export default async function EditDropShopPage({ params }: EditDropShopPageProps
       <Typography variant="h4" sx={{ mb: 4, color: '#fff' }}>
         Edit Shop
       </Typography>
-      <DropShopForm
+      <ShopForm
         initialData={{
           id: shop.id,
           name: shop.name,

@@ -6,7 +6,7 @@ import ShopsTable from './_components/ShopsTable';
 
 export const dynamic = 'force-dynamic';
 
-export default async function DropShopsListPage() {
+export default async function ShopsListPage() {
   const shops = await prisma.dropShop.findMany({
     orderBy: { createdAt: 'desc' },
   });
@@ -19,7 +19,7 @@ export default async function DropShopsListPage() {
         </Typography>
         <Button
           component={Link}
-          href="/admin/drop-shops/new"
+          href="/admin/shops/new"
           variant="contained"
           startIcon={<AddIcon />}
           sx={{

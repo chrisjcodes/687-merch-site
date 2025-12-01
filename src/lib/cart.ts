@@ -12,7 +12,7 @@ export interface Cart {
   items: CartItem[];
 }
 
-const CART_STORAGE_KEY = 'drop-shop-cart';
+const CART_STORAGE_KEY = 'shop-cart';
 
 export function getCart(): Cart {
   if (typeof window === 'undefined') {

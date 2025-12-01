@@ -36,7 +36,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 
-const dropShopSchema = z.object({
+const shopSchema = z.object({
   name: z.string().min(1, 'Shop name is required'),
   slug: z.string().min(1, 'Slug is required').regex(/^[a-z0-9-]+$/, 'Slug must be lowercase letters, numbers, and hyphens only'),
   themeColor: z.string().regex(/^#[0-9A-Fa-f]{6}$/, 'Must be a valid hex color'),
@@ -48,14 +48,14 @@ const dropShopSchema = z.object({
   logoUrl: z.string().optional(),
 });
 
-type DropShopFormData = z.infer<typeof dropShopSchema>;
+type ShopFormData = z.infer<typeof shopSchema>;
 
-interface DropShopFormProps {
-  initialData?: DropShopFormData & { id: string };
+interface ShopFormProps {
+  initialData?: ShopFormData & { id: string };
   isEdit?: boolean;
 }
 
-export default function DropShopForm({ initialData, isEdit = false }: DropShopFormProps) {
+export default function ShopForm({ initialData, isEdit = false }: ShopFormProps) {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
@@ -71,8 +71,8 @@ export default function DropShopForm({ initialData, isEdit = false }: DropShopFo
     watch,
     setValue,
     formState: { errors },
-  } = useForm<DropShopFormData>({
-    resolver: zodResolver(dropShopSchema),
+  } = useForm<ShopFormData>({
+    resolver: zodResolver(shopSchema),
     defaultValues: initialData || {
       name: '',
       slug: '',
@@ -166,12 +166,12 @@ export default function DropShopForm({ initialData, isEdit = false }: DropShopFo
     setLogoPreview(null);
   };
 
-  const onSubmit = async (data: DropShopFormData) => {
+  const onSubmit = async (data: ShopFormData) => {
     setIsSubmitting(true);
     setError('');
 
     try {
-      const url = isEdit ? `/api/admin/drop-shops/${initialData?.id}` : '/api/admin/drop-shops';
+      const url = isEdit ? `/api/admin/shops/${initialData?.id}` : '/api/admin/shops';
       const method = isEdit ? 'PUT' : 'POST';
 
       const response = await fetch(url, {
@@ -183,7 +183,7 @@ export default function DropShopForm({ initialData, isEdit = false }: DropShopFo
       });
 
       if (response.ok) {
-        router.push('/admin/drop-shops');
+        router.push('/admin/shops');
         router.refresh();
       } else {
         const errorData = await response.json();
@@ -667,7 +667,7 @@ export default function DropShopForm({ initialData, isEdit = false }: DropShopFo
         <Box sx={{ display: 'flex', gap: 2, justifyContent: 'flex-end', mt: 2 }}>
           <Button
             variant="outlined"
-            onClick={() => router.push('/admin/drop-shops')}
+            onClick={() => router.push('/admin/shops')}
             disabled={isSubmitting}
             sx={{
               borderColor: 'rgba(255, 255, 255, 0.3)',

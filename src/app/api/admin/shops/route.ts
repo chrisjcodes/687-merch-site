@@ -4,7 +4,7 @@ import { authOptions } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 import { z } from 'zod';
 
-const dropShopSchema = z.object({
+const shopSchema = z.object({
   name: z.string().min(1),
   slug: z.string().min(1).regex(/^[a-z0-9-]+$/),
   themeColor: z.string().regex(/^#[0-9A-Fa-f]{6}$/),
@@ -16,7 +16,7 @@ const dropShopSchema = z.object({
   logoUrl: z.string().optional(),
 });
 
-// GET all drop shops
+// GET all shops
 export async function GET() {
   try {
     const session = await getServerSession(authOptions);
@@ -31,15 +31,15 @@ export async function GET() {
 
     return NextResponse.json({ shops });
   } catch (error) {
-    console.error('Error fetching drop shops:', error);
+    console.error('Error fetching shops:', error);
     return NextResponse.json(
-      { error: 'Failed to fetch drop shops' },
+      { error: 'Failed to fetch shops' },
       { status: 500 }
     );
   }
 }
 
-// POST create new drop shop
+// POST create new shop
 export async function POST(request: NextRequest) {
   try {
     const session = await getServerSession(authOptions);
@@ -49,7 +49,7 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const validatedData = dropShopSchema.parse(body);
+    const validatedData = shopSchema.parse(body);
 
     // Check if slug already exists
     const existing = await prisma.dropShop.findUnique({
@@ -75,7 +75,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ shop }, { status: 201 });
   } catch (error) {
-    console.error('Error creating drop shop:', error);
+    console.error('Error creating shop:', error);
 
     if (error instanceof z.ZodError) {
       return NextResponse.json(
@@ -85,7 +85,7 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json(
-      { error: 'Failed to create drop shop' },
+      { error: 'Failed to create shop' },
       { status: 500 }
     );
   }

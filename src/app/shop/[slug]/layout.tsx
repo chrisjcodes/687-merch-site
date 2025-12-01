@@ -3,11 +3,11 @@
 import CssBaseline from '@mui/material/CssBaseline';
 import { ReactNode } from 'react';
 
-interface DropShopLayoutProps {
+interface ShopLayoutProps {
   children: ReactNode;
 }
 
-export default function DropShopLayout({ children }: DropShopLayoutProps) {
+export default function ShopRootLayout({ children }: ShopLayoutProps) {
   return (
     <>
       <CssBaseline />
