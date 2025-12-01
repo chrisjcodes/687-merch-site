@@ -44,7 +44,7 @@ export default async function ShopPage({ params }: ShopPageProps) {
 
   return (
     <ShopLayout themeColor={shop.themeColor} themeMode={themeMode} shop={shop}>
-      <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Container maxWidth="lg" sx={{ py: 4, px: { xs: 2, sm: 3 } }}>
         {products.length === 0 ? (
           <Box sx={{ textAlign: 'center', py: 8 }}>
             <Typography variant="h5" sx={{ color: 'text.secondary' }}>

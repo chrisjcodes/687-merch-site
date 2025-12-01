@@ -14,7 +14,7 @@ function getGridLayout(count: number) {
       // 2 products: 2 columns centered
       return {
         gridTemplateColumns: {
-          xs: 'repeat(2, 1fr)',
+          xs: '1fr',
           sm: 'repeat(2, 1fr)',
           md: 'repeat(2, 1fr)',
         },
@@ -24,7 +24,7 @@ function getGridLayout(count: number) {
       // 3 products: 3 columns
       return {
         gridTemplateColumns: {
-          xs: 'repeat(2, 1fr)',
+          xs: '1fr',
           sm: 'repeat(3, 1fr)',
           md: 'repeat(3, 1fr)',
         },
@@ -34,7 +34,7 @@ function getGridLayout(count: number) {
       // 4 products: 2x2 or 4 columns
       return {
         gridTemplateColumns: {
-          xs: 'repeat(2, 1fr)',
+          xs: '1fr',
           sm: 'repeat(2, 1fr)',
           md: 'repeat(4, 1fr)',
         },
@@ -45,7 +45,7 @@ function getGridLayout(count: number) {
       // 5-6 products: 3 columns
       return {
         gridTemplateColumns: {
-          xs: 'repeat(2, 1fr)',
+          xs: '1fr',
           sm: 'repeat(3, 1fr)',
           md: 'repeat(3, 1fr)',
         },
@@ -55,7 +55,7 @@ function getGridLayout(count: number) {
       // 7+ products: full 4 column grid
       return {
         gridTemplateColumns: {
-          xs: 'repeat(2, 1fr)',
+          xs: '1fr',
           sm: 'repeat(2, 1fr)',
           md: 'repeat(3, 1fr)',
           lg: 'repeat(4, 1fr)',

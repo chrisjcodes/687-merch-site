@@ -39,6 +39,7 @@ export default function ShopLayout({
             bgcolor: 'background.default',
             display: 'flex',
             flexDirection: 'column',
+            overflowX: 'hidden',
           }}
         >
           {showHeader && shop && <ShopHeader shop={shop} />}
