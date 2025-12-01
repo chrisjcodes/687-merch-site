@@ -5,7 +5,9 @@ import { getCollectionProducts } from '@/lib/shopify';
 import ProductGrid from './_components/ProductGrid';
 import ShopHeader from './_components/ShopHeader';
 import ShopClosed from './_components/ShopClosed';
+import ShopLayout from './_components/ShopLayout';
 import { ThemeProvider } from '@mui/material/styles';
+import { CssBaseline } from '@mui/material';
 import { createShopTheme } from '@/lib/createShopTheme';
 
 interface DropShopPageProps {
@@ -23,9 +25,12 @@ export default async function DropShopPage({ params }: DropShopPageProps) {
     notFound();
   }
 
+  const theme = createShopTheme(shop.themeColor);
+
   if (!shop.isLive) {
     return (
-      <ThemeProvider theme={createShopTheme(shop.themeColor)}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
         <ShopClosed shopName={shop.name} />
       </ThemeProvider>
     );
@@ -34,7 +39,7 @@ export default async function DropShopPage({ params }: DropShopPageProps) {
   const products = await getCollectionProducts(shop.shopifyCollectionId);
 
   return (
-    <ThemeProvider theme={createShopTheme(shop.themeColor)}>
+    <ShopLayout theme={theme}>
       <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
         <ShopHeader shop={shop} />
         <Container maxWidth="lg" sx={{ py: 4 }}>
@@ -49,7 +54,7 @@ export default async function DropShopPage({ params }: DropShopPageProps) {
           )}
         </Container>
       </Box>
-    </ThemeProvider>
+    </ShopLayout>
   );
 }
 

@@ -3,6 +3,7 @@
 import { AppBar, Toolbar, Typography, Container, Badge, IconButton, Box } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Image from 'next/image';
+import { useCart } from '@/contexts/CartContext';
 
 interface ShopHeaderProps {
   shop: {
@@ -13,6 +14,8 @@ interface ShopHeaderProps {
 }
 
 export default function ShopHeader({ shop }: ShopHeaderProps) {
+  const { cartItemCount, toggleCart } = useCart();
+
   return (
     <AppBar position="static" sx={{ bgcolor: 'background.paper', color: 'text.primary' }}>
       <Container maxWidth="lg">
@@ -32,8 +35,8 @@ export default function ShopHeader({ shop }: ShopHeaderProps) {
             </Typography>
           </Box>
 
-          <IconButton color="inherit" size="large">
-            <Badge badgeContent={0} color="primary">
+          <IconButton color="inherit" size="large" onClick={toggleCart}>
+            <Badge badgeContent={cartItemCount} color="primary">
               <ShoppingCartIcon />
             </Badge>
           </IconButton>
