@@ -55,7 +55,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${epilogue.className} ${anton.variable} ${epilogue.variable}`}>
+      <body className={`${epilogue.className} ${anton.variable} ${epilogue.variable}`} style={{ margin: 0, backgroundColor: '#0f0f0f' }}>
         {children}
         <Analytics />
         <SpeedInsights />
