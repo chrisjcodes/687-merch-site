@@ -72,8 +72,35 @@ export async function generateMetadata({ params }: ShopPageProps) {
     };
   }
 
+  const title = shop.name;
+  const description = `Shop exclusive merchandise from ${shop.name}`;
+  const url = `${process.env.NEXTAUTH_URL || 'https://687merch.com'}/shop/${slug}`;
+
   return {
-    title: `${shop.name} | 687 Merch`,
-    description: `Shop ${shop.name} - Custom merchandise and branded products`,
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url,
+      siteName: shop.name,
+      type: 'website',
+      ...(shop.logoUrl && {
+        images: [
+          {
+            url: shop.logoUrl,
+            width: 800,
+            height: 600,
+            alt: shop.name,
+          },
+        ],
+      }),
+    },
+    twitter: {
+      card: shop.logoUrl ? 'summary_large_image' : 'summary',
+      title,
+      description,
+      ...(shop.logoUrl && { images: [shop.logoUrl] }),
+    },
   };
 }

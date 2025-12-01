@@ -11,6 +11,7 @@ import {
   ListItem,
   TextField,
   Paper,
+  CircularProgress,
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -31,6 +32,7 @@ export default function CartDrawer() {
   } = useCart();
 
   const [isCheckingOut, setIsCheckingOut] = useState(false);
+  const [isRedirecting, setIsRedirecting] = useState(false);
 
   const handleCheckout = async () => {
     if (cart.items.length === 0) return;
@@ -57,7 +59,8 @@ export default function CartDrawer() {
 
       const { checkoutUrl } = await response.json();
 
-      // Clear cart and redirect to Shopify checkout
+      // Show redirecting state, then clear cart and redirect
+      setIsRedirecting(true);
       clearCart();
       window.location.href = checkoutUrl;
     } catch (error) {
@@ -88,7 +91,35 @@ export default function CartDrawer() {
         },
       }}
     >
-      <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+      <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column', position: 'relative' }}>
+        {/* Redirecting Overlay */}
+        {isRedirecting && (
+          <Box
+            sx={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              bgcolor: 'background.paper',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: 10,
+              gap: 2,
+            }}
+          >
+            <CircularProgress size={48} />
+            <Typography variant="h6" sx={{ fontWeight: 600 }}>
+              Redirecting to checkout...
+            </Typography>
+            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+              Please wait while we take you to complete your order.
+            </Typography>
+          </Box>
+        )}
+
         {/* Header */}
         <Box
           sx={{

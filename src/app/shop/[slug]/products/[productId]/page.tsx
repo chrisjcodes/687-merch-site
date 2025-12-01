@@ -58,7 +58,11 @@ export async function generateMetadata({ params }: ProductPageProps) {
   try {
     const urlDecodedProductId = decodeURIComponent(productId);
     const decodedProductId = Buffer.from(urlDecodedProductId, 'base64').toString('utf-8');
-    const product = await getProduct(decodedProductId);
+
+    const [product, shop] = await Promise.all([
+      getProduct(decodedProductId),
+      prisma.dropShop.findUnique({ where: { slug } }),
+    ]);
 
     if (!product) {
       return {
@@ -66,9 +70,38 @@ export async function generateMetadata({ params }: ProductPageProps) {
       };
     }
 
+    const shopName = shop?.name || slug;
+    const title = `${product.title} | ${shopName}`;
+    const description = product.description || `Shop ${product.title} from ${shopName}`;
+    const url = `${process.env.NEXTAUTH_URL || 'https://687merch.com'}/shop/${slug}/products/${productId}`;
+    const productImage = product.images?.[0]?.url;
+
     return {
-      title: `${product.title} - ${slug}`,
-      description: product.description,
+      title,
+      description,
+      openGraph: {
+        title,
+        description,
+        url,
+        siteName: shopName,
+        type: 'website',
+        ...(productImage && {
+          images: [
+            {
+              url: productImage,
+              width: 800,
+              height: 800,
+              alt: product.title,
+            },
+          ],
+        }),
+      },
+      twitter: {
+        card: productImage ? 'summary_large_image' : 'summary',
+        title,
+        description,
+        ...(productImage && { images: [productImage] }),
+      },
     };
   } catch {
     return {
