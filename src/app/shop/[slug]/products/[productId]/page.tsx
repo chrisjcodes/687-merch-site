@@ -74,7 +74,7 @@ export async function generateMetadata({ params }: ProductPageProps) {
     const title = `${product.title} | ${shopName}`;
     const description = product.description || `Shop ${product.title} from ${shopName}`;
     const url = `${process.env.NEXTAUTH_URL || 'https://687merch.com'}/shop/${slug}/products/${productId}`;
-    const productImage = product.images?.[0]?.url;
+    const productImage = product.images?.edges?.[0]?.node?.url;
 
     return {
       title,
