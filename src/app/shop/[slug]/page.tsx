@@ -72,7 +72,7 @@ export async function generateMetadata({ params }: ShopPageProps) {
     };
   }
 
-  const title = shop.name;
+  const title = `${shop.name} | Official Shop`;
   const description = `Shop exclusive merchandise from ${shop.name}`;
   const url = `${process.env.NEXTAUTH_URL || 'https://687merch.com'}/shop/${slug}`;
 
