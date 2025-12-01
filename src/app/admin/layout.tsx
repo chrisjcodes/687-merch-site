@@ -44,6 +44,16 @@ export default function AdminLayout({
     setMobileOpen(!mobileOpen);
   };
 
+  // Don't show sidebar/navbar on auth pages
+  const isAuthPage =
+    pathname?.startsWith('/admin/login') ||
+    pathname?.startsWith('/admin/error') ||
+    pathname?.startsWith('/admin/verify-request');
+
+  if (isAuthPage) {
+    return <Box sx={{ minHeight: '100vh', bgcolor: '#0f0f0f' }}>{children}</Box>;
+  }
+
   const drawer = (
     <Box>
       <Toolbar>
