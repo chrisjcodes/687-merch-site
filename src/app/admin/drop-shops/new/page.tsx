@@ -5,7 +5,7 @@ export default function NewDropShopPage() {
   return (
     <Box>
       <Typography variant="h4" sx={{ mb: 4, color: '#fff' }}>
-        Create New Drop Shop
+        Create New Shop
       </Typography>
       <DropShopForm />
     </Box>

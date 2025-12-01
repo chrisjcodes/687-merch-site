@@ -17,7 +17,7 @@ import {
   IconButton,
 } from '@mui/material';
 import Image from 'next/image';
-import { ShopifyProduct, ShopifyVariant } from '@/lib/shopify';
+import { ShopifyProduct } from '@/lib/shopify';
 import { useCart } from '@/contexts/CartContext';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -95,7 +95,7 @@ export default function ProductDetail({ product, shopSlug }: ProductDetailProps)
           sx={{ mb: 3, color: 'text.secondary' }}
         >
           <Link
-            href={`/drop/${shopSlug}`}
+            href={`/shop/${shopSlug}`}
             sx={{
               color: 'text.secondary',
               textDecoration: 'none',
@@ -112,7 +112,7 @@ export default function ProductDetail({ product, shopSlug }: ProductDetailProps)
 
         <Grid container spacing={4}>
           {/* Image Gallery */}
-          <Grid item xs={12} md={6}>
+          <Grid size={{ xs: 12, md: 6 }}>
             <Paper
               elevation={0}
               sx={{
@@ -248,7 +248,7 @@ export default function ProductDetail({ product, shopSlug }: ProductDetailProps)
           </Grid>
 
           {/* Product Info */}
-          <Grid item xs={12} md={6}>
+          <Grid size={{ xs: 12, md: 6 }}>
             <Box>
               <Typography variant="h4" sx={{ fontWeight: 700, mb: 2 }}>
                 {product.title}
@@ -258,11 +258,27 @@ export default function ProductDetail({ product, shopSlug }: ProductDetailProps)
                 ${currentPrice.toFixed(2)}
               </Typography>
 
-              {/* Description */}
-              {product.description && (
+              {/* Description - prefer plain text, fallback to HTML */}
+              {product.description && !product.descriptionHtml && (
                 <Typography variant="body1" sx={{ color: 'text.secondary', mb: 4 }}>
                   {product.description}
                 </Typography>
+              )}
+              {product.descriptionHtml && (
+                <Box
+                  sx={{
+                    mb: 4,
+                    color: 'text.secondary',
+                    '& p': {
+                      mb: 2,
+                    },
+                    '& ul, & ol': {
+                      pl: 3,
+                      mb: 2,
+                    },
+                  }}
+                  dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
+                />
               )}
 
               {/* Variant Selectors */}
@@ -314,32 +330,6 @@ export default function ProductDetail({ product, shopSlug }: ProductDetailProps)
               >
                 Add to Cart
               </Button>
-
-              {/* HTML Description (if available) */}
-              {product.descriptionHtml && (
-                <Box
-                  sx={{
-                    mt: 4,
-                    pt: 4,
-                    borderTop: 1,
-                    borderColor: 'divider',
-                    '& h1, & h2, & h3, & h4, & h5, & h6': {
-                      fontWeight: 700,
-                      mb: 2,
-                    },
-                    '& p': {
-                      mb: 2,
-                      color: 'text.secondary',
-                    },
-                    '& ul, & ol': {
-                      pl: 3,
-                      mb: 2,
-                      color: 'text.secondary',
-                    },
-                  }}
-                  dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
-                />
-              )}
             </Box>
           </Grid>
         </Grid>

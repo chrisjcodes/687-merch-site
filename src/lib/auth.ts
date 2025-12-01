@@ -1,10 +1,11 @@
 import { NextAuthOptions } from 'next-auth'
 import EmailProvider from 'next-auth/providers/email'
 import { PrismaAdapter } from '@auth/prisma-adapter'
+import { Adapter } from 'next-auth/adapters'
 import { prisma } from './prisma'
 
 export const authOptions: NextAuthOptions = {
-  adapter: PrismaAdapter(prisma) as any,
+  adapter: PrismaAdapter(prisma) as Adapter,
   providers: [
     EmailProvider({
       server: {
@@ -24,6 +25,20 @@ export const authOptions: NextAuthOptions = {
     error: '/admin/error',
   },
   callbacks: {
+    async signIn({ user }) {
+      // Only allow sign in if the user already exists in the database
+      // This prevents automatic user creation - admins must be added manually
+      if (!user.id) {
+        // New user attempting to sign in - check if they exist
+        const existingUser = await prisma.user.findUnique({
+          where: { email: user.email! },
+        })
+        if (!existingUser) {
+          return false // Reject sign in for non-existent users
+        }
+      }
+      return true
+    },
     async session({ session, user }) {
       if (session.user) {
         session.user.id = user.id

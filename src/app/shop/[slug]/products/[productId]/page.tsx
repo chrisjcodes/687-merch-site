@@ -1,10 +1,9 @@
 import { notFound } from 'next/navigation';
 import { prisma } from '@/lib/prisma';
 import { getProduct } from '@/lib/shopify';
-import { createShopTheme } from '@/lib/createShopTheme';
 import ShopLayout from '../../_components/ShopLayout';
-import ShopHeader from '../../_components/ShopHeader';
 import ProductDetail from './_components/ProductDetail';
+import { ThemeMode } from '@/lib/createShopTheme';
 
 interface ProductPageProps {
   params: Promise<{
@@ -25,32 +24,27 @@ export default async function ProductPage({ params }: ProductPageProps) {
     notFound();
   }
 
-  // Decode base64 product ID
+  // Decode base64 product ID (URL-decode first, then base64 decode)
   let decodedProductId: string;
   try {
-    decodedProductId = atob(productId);
-  } catch {
+    const urlDecodedProductId = decodeURIComponent(productId);
+    decodedProductId = Buffer.from(urlDecodedProductId, 'base64').toString('utf-8');
+  } catch (error) {
+    console.error('Error decoding product ID:', error);
     notFound();
   }
 
   // Fetch product from Shopify
-  let product;
-  try {
-    product = await getProduct(decodedProductId);
-  } catch (error) {
-    console.error('Error fetching product:', error);
-    notFound();
-  }
+  const product = await getProduct(decodedProductId);
 
   if (!product) {
     notFound();
   }
 
-  const theme = createShopTheme(shop.themeColor);
+  const themeMode = (shop.themeMode as ThemeMode) || 'light';
 
   return (
-    <ShopLayout theme={theme}>
-      <ShopHeader shop={shop} />
+    <ShopLayout themeColor={shop.themeColor} themeMode={themeMode} shop={shop}>
       <ProductDetail product={product} shopSlug={slug} />
     </ShopLayout>
   );
@@ -60,8 +54,15 @@ export async function generateMetadata({ params }: ProductPageProps) {
   const { slug, productId } = await params;
 
   try {
-    const decodedProductId = atob(productId);
+    const urlDecodedProductId = decodeURIComponent(productId);
+    const decodedProductId = Buffer.from(urlDecodedProductId, 'base64').toString('utf-8');
     const product = await getProduct(decodedProductId);
+
+    if (!product) {
+      return {
+        title: 'Product Not Found',
+      };
+    }
 
     return {
       title: `${product.title} - ${slug}`,

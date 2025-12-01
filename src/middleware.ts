@@ -1,21 +1,5 @@
-import { withAuth } from 'next-auth/middleware'
-import { NextResponse } from 'next/server'
-
-export default withAuth(
-  function middleware(req) {
-    // Middleware logic here if needed
-    return NextResponse.next()
-  },
-  {
-    callbacks: {
-      authorized: ({ token }) => !!token,
-    },
-    pages: {
-      signIn: '/admin/login',
-    },
-  }
-)
-
+// Middleware is not needed with database sessions
+// Authentication is handled in individual pages using getServerSession
 export const config = {
-  matcher: ['/admin/:path*'],
+  matcher: [],
 }

@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import {
   Box,
   Drawer,
-  AppBar,
   Toolbar,
   List,
   Typography,
@@ -15,7 +14,6 @@ import {
   ListItemIcon,
   ListItemText,
   Container,
-  Button,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import StorefrontIcon from '@mui/icons-material/Storefront';
@@ -23,13 +21,14 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { signOut } from 'next-auth/react';
 
 const drawerWidth = 240;
 
 const navItems = [
-  { text: 'Dashboard', icon: <DashboardIcon />, href: '/admin' },
-  { text: 'Drop Shops', icon: <StorefrontIcon />, href: '/admin/drop-shops' },
+  { text: 'Overview', icon: <DashboardIcon />, href: '/admin' },
+  { text: 'Shops', icon: <StorefrontIcon />, href: '/admin/drop-shops' },
 ];
 
 export default function AdminLayout({
@@ -56,12 +55,19 @@ export default function AdminLayout({
 
   const drawer = (
     <Box>
-      <Toolbar>
-        <Typography variant="h6" noWrap component="div">
-          687 Merch Admin
+      <Box sx={{ px: 2, py: 2.5, textAlign: 'center' }}>
+        <Image
+          src="/687-logo.png"
+          alt="687 Merch"
+          width={140}
+          height={40}
+          style={{ height: 'auto', width: 'auto', maxHeight: 40 }}
+        />
+        <Typography variant="caption" sx={{ color: 'rgba(255, 255, 255, 0.6)', display: 'block', mt: 0.5, fontWeight: 600 }}>
+          Drop Shop Admin
         </Typography>
-      </Toolbar>
-      <Divider />
+      </Box>
+      <Divider sx={{ borderColor: 'rgba(255, 255, 255, 0.1)' }} />
       <List>
         {navItems.map((item) => (
           <ListItem key={item.text} disablePadding>
@@ -69,21 +75,53 @@ export default function AdminLayout({
               component={Link}
               href={item.href}
               selected={pathname === item.href}
+              sx={{
+                '&.Mui-selected': {
+                  bgcolor: 'rgba(242, 191, 0, 0.15)',
+                  '&:hover': {
+                    bgcolor: 'rgba(242, 191, 0, 0.25)',
+                  },
+                },
+                '&:hover': {
+                  bgcolor: 'rgba(255, 255, 255, 0.08)',
+                },
+              }}
             >
-              <ListItemIcon>{item.icon}</ListItemIcon>
-              <ListItemText primary={item.text} />
+              <ListItemIcon
+                sx={{
+                  color: pathname === item.href ? '#f2bf00' : 'rgba(255, 255, 255, 0.7)',
+                }}
+              >
+                {item.icon}
+              </ListItemIcon>
+              <ListItemText
+                primary={item.text}
+                sx={{
+                  color: pathname === item.href ? '#fff' : 'rgba(255, 255, 255, 0.9)',
+                }}
+              />
             </ListItemButton>
           </ListItem>
         ))}
       </List>
-      <Divider />
+      <Divider sx={{ borderColor: 'rgba(255, 255, 255, 0.12)' }} />
       <List>
         <ListItem disablePadding>
-          <ListItemButton onClick={() => signOut({ callbackUrl: '/' })}>
-            <ListItemIcon>
+          <ListItemButton
+            onClick={() => signOut({ callbackUrl: '/' })}
+            sx={{
+              '&:hover': {
+                bgcolor: 'rgba(255, 255, 255, 0.08)',
+              },
+            }}
+          >
+            <ListItemIcon sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
               <LogoutIcon />
             </ListItemIcon>
-            <ListItemText primary="Sign Out" />
+            <ListItemText
+              primary="Sign Out"
+              sx={{ color: 'rgba(255, 255, 255, 0.9)' }}
+            />
           </ListItemButton>
         </ListItem>
       </List>
@@ -92,11 +130,15 @@ export default function AdminLayout({
 
   return (
     <Box sx={{ display: 'flex', minHeight: '100vh', bgcolor: '#0f0f0f' }}>
-      <AppBar
-        position="fixed"
+      {/* Mobile AppBar - only shows hamburger on mobile */}
+      <Box
         sx={{
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-          ml: { sm: `${drawerWidth}px` },
+          display: { xs: 'block', sm: 'none' },
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 1200,
           bgcolor: '#1a1a1a',
         }}
       >
@@ -106,15 +148,11 @@ export default function AdminLayout({
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Admin Panel
-          </Typography>
         </Toolbar>
-      </AppBar>
+      </Box>
 
       <Box
         component="nav"
@@ -151,6 +189,7 @@ export default function AdminLayout({
               width: drawerWidth,
               bgcolor: '#1a1a1a',
               color: '#fff',
+              borderRight: '1px solid rgba(255, 255, 255, 0.1)',
             },
           }}
           open
@@ -165,7 +204,8 @@ export default function AdminLayout({
           flexGrow: 1,
           p: 3,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
-          mt: 8,
+          mt: { xs: 8, sm: 0 },
+          borderTop: 'none',
         }}
       >
         <Container maxWidth="lg">{children}</Container>

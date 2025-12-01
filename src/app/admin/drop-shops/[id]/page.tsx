@@ -21,7 +21,7 @@ export default async function EditDropShopPage({ params }: EditDropShopPageProps
   return (
     <Box>
       <Typography variant="h4" sx={{ mb: 4, color: '#fff' }}>
-        Edit Drop Shop
+        Edit Shop
       </Typography>
       <DropShopForm
         initialData={{
@@ -29,8 +29,11 @@ export default async function EditDropShopPage({ params }: EditDropShopPageProps
           name: shop.name,
           slug: shop.slug,
           themeColor: shop.themeColor,
+          themeMode: (shop.themeMode as 'light' | 'dark') || 'light',
           shopifyCollectionId: shop.shopifyCollectionId,
           isLive: shop.isLive,
+          activationMode: (shop.activationMode as 'manual' | 'scheduled') || 'manual',
+          activeUntil: shop.activeUntil ? shop.activeUntil.toISOString().split('T')[0] : null,
           logoUrl: shop.logoUrl || '',
         }}
         isEdit

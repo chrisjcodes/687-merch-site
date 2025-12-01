@@ -7,6 +7,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model User {
@@ -57,16 +58,20 @@ model VerificationToken {
 }
 
 model DropShop {
-  id                   String   @id @default(cuid())
-  slug                 String   @unique
+  id                   String    @id @default(cuid())
+  slug                 String    @unique
   name                 String
   logoUrl              String?
-  themeColor           String   @default("#f2bf00")
+  themeColor           String    @default("#f2bf00")
+  themeMode            String    @default("light") // "light" or "dark"
   shopifyCollectionId  String
-  isLive               Boolean  @default(false)
-  createdAt            DateTime @default(now())
-  updatedAt            DateTime @updatedAt
+  isLive               Boolean   @default(false)
+  activationMode       String    @default("manual") // "manual" or "scheduled"
+  activeUntil          DateTime? // Date when shop should be deactivated (if activationMode is "scheduled")
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @updatedAt
 
   @@index([slug])
   @@index([isLive])
+  @@index([activationMode, activeUntil])
 }

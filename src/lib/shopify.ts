@@ -6,7 +6,7 @@ async function shopifyFetch<T>({
   variables,
 }: {
   query: string
-  variables?: Record<string, any>
+  variables?: Record<string, unknown>
 }): Promise<T> {
   const endpoint = `https://${domain}/api/2024-01/graphql.json`
 
@@ -81,6 +81,11 @@ export async function getCollectionProducts(collectionId: string) {
                     }
                   }
                 }
+              }
+              options {
+                id
+                name
+                values
               }
             }
           }
@@ -165,7 +170,7 @@ export async function getProduct(productId: string) {
   `
 
   const data = await shopifyFetch<{
-    product: ShopifyProduct
+    product: ShopifyProduct | null
   }>({
     query,
     variables: { id: productId },
@@ -174,16 +179,16 @@ export async function getProduct(productId: string) {
   return data.product
 }
 
-// Create a checkout with line items
+// Create a cart with line items (using Cart API - replacement for deprecated Checkout API)
 export async function createCheckout(lineItems: Array<{ variantId: string; quantity: number }>) {
   const query = `
-    mutation checkoutCreate($input: CheckoutCreateInput!) {
-      checkoutCreate(input: $input) {
-        checkout {
+    mutation cartCreate($input: CartInput!) {
+      cartCreate(input: $input) {
+        cart {
           id
-          webUrl
+          checkoutUrl
         }
-        checkoutUserErrors {
+        userErrors {
           code
           field
           message
@@ -193,12 +198,12 @@ export async function createCheckout(lineItems: Array<{ variantId: string; quant
   `
 
   const data = await shopifyFetch<{
-    checkoutCreate: {
-      checkout: {
+    cartCreate: {
+      cart: {
         id: string
-        webUrl: string
+        checkoutUrl: string
       }
-      checkoutUserErrors: Array<{
+      userErrors: Array<{
         code: string
         field: string[]
         message: string
@@ -208,19 +213,23 @@ export async function createCheckout(lineItems: Array<{ variantId: string; quant
     query,
     variables: {
       input: {
-        lineItems: lineItems.map((item) => ({
-          variantId: item.variantId,
+        lines: lineItems.map((item) => ({
+          merchandiseId: item.variantId,
           quantity: item.quantity,
         })),
       },
     },
   })
 
-  if (data.checkoutCreate.checkoutUserErrors.length > 0) {
-    throw new Error(data.checkoutCreate.checkoutUserErrors[0].message)
+  if (data.cartCreate.userErrors.length > 0) {
+    throw new Error(data.cartCreate.userErrors[0].message)
   }
 
-  return data.checkoutCreate.checkout
+  // Return in same format as old checkout for compatibility
+  return {
+    id: data.cartCreate.cart.id,
+    webUrl: data.cartCreate.cart.checkoutUrl,
+  }
 }
 
 // Get all collections (for admin dropdown)

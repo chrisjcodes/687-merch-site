@@ -8,8 +8,11 @@ const dropShopSchema = z.object({
   name: z.string().min(1),
   slug: z.string().min(1).regex(/^[a-z0-9-]+$/),
   themeColor: z.string().regex(/^#[0-9A-Fa-f]{6}$/),
+  themeMode: z.enum(['light', 'dark']).default('light'),
   shopifyCollectionId: z.string().min(1),
   isLive: z.boolean(),
+  activationMode: z.enum(['manual', 'scheduled']).default('manual'),
+  activeUntil: z.string().nullable().optional(),
   logoUrl: z.string().optional(),
 });
 
@@ -30,9 +33,15 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
     const body = await request.json();
     const validatedData = dropShopSchema.parse(body);
 
+    // Convert activeUntil string to Date if present
+    const dataToUpdate = {
+      ...validatedData,
+      activeUntil: validatedData.activeUntil ? new Date(validatedData.activeUntil) : null,
+    };
+
     const shop = await prisma.dropShop.update({
       where: { id },
-      data: validatedData,
+      data: dataToUpdate,
     });
 
     return NextResponse.json({ shop });

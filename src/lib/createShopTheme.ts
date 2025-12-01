@@ -1,44 +1,61 @@
 import { createTheme, Theme } from '@mui/material/styles';
 
-export function createShopTheme(primaryColor: string): Theme {
+export type ThemeMode = 'light' | 'dark';
+
+export function createShopTheme(primaryColor: string, mode: ThemeMode = 'light'): Theme {
+  const isLight = mode === 'light';
+
   return createTheme({
     palette: {
-      mode: 'dark',
+      mode,
       primary: {
         main: primaryColor,
       },
       background: {
-        default: '#0f0f0f',
-        paper: '#1a1a1a',
+        default: isLight ? '#ffffff' : '#0f0f0f',
+        paper: isLight ? '#f5f5f5' : '#1a1a1a',
       },
       text: {
-        primary: '#ffffff',
-        secondary: 'rgba(255, 255, 255, 0.7)',
+        primary: isLight ? '#1a1a1a' : '#ffffff',
+        secondary: isLight ? 'rgba(0, 0, 0, 0.6)' : 'rgba(255, 255, 255, 0.7)',
       },
+      divider: isLight ? 'rgba(0, 0, 0, 0.12)' : 'rgba(255, 255, 255, 0.12)',
     },
     typography: {
-      fontFamily: 'var(--font-epilogue), "Epilogue", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
       h1: {
-        fontFamily: 'var(--font-anton), "Anton", sans-serif',
+        fontWeight: 700,
       },
       h2: {
-        fontFamily: 'var(--font-anton), "Anton", sans-serif',
+        fontWeight: 700,
       },
       h3: {
-        fontFamily: 'var(--font-anton), "Anton", sans-serif',
+        fontWeight: 700,
       },
       h4: {
-        fontFamily: 'var(--font-epilogue), "Epilogue", sans-serif',
-        fontWeight: 700,
+        fontWeight: 600,
+      },
+      h5: {
+        fontWeight: 600,
+      },
+      h6: {
+        fontWeight: 600,
       },
     },
     components: {
+      MuiCssBaseline: {
+        styleOverrides: {
+          body: {
+            backgroundColor: isLight ? '#ffffff' : '#0f0f0f',
+          },
+        },
+      },
       MuiButton: {
         styleOverrides: {
           root: {
             textTransform: 'none',
-            fontWeight: 600,
-            borderRadius: 8,
+            fontWeight: 500,
+            borderRadius: 4,
           },
           contained: {
             boxShadow: 'none',
@@ -51,7 +68,15 @@ export function createShopTheme(primaryColor: string): Theme {
       MuiCard: {
         styleOverrides: {
           root: {
-            borderRadius: 12,
+            borderRadius: 0,
+            boxShadow: 'none',
+          },
+        },
+      },
+      MuiAppBar: {
+        styleOverrides: {
+          root: {
+            boxShadow: 'none',
           },
         },
       },

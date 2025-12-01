@@ -1,14 +1,11 @@
-import { notFound } from 'next/navigation';
-import { Box, Container, Typography } from '@mui/material';
+import { notFound, redirect } from 'next/navigation';
+import { Container, Typography, Box } from '@mui/material';
 import { prisma } from '@/lib/prisma';
 import { getCollectionProducts } from '@/lib/shopify';
 import ProductGrid from './_components/ProductGrid';
-import ShopHeader from './_components/ShopHeader';
 import ShopClosed from './_components/ShopClosed';
 import ShopLayout from './_components/ShopLayout';
-import { ThemeProvider } from '@mui/material/styles';
-import { CssBaseline } from '@mui/material';
-import { createShopTheme } from '@/lib/createShopTheme';
+import { ThemeMode } from '@/lib/createShopTheme';
 
 interface DropShopPageProps {
   params: Promise<{ slug: string }>;
@@ -25,35 +22,37 @@ export default async function DropShopPage({ params }: DropShopPageProps) {
     notFound();
   }
 
-  const theme = createShopTheme(shop.themeColor);
+  const themeMode = (shop.themeMode as ThemeMode) || 'light';
 
   if (!shop.isLive) {
     return (
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
+      <ShopLayout themeColor={shop.themeColor} themeMode={themeMode} showHeader={false}>
         <ShopClosed shopName={shop.name} />
-      </ThemeProvider>
+      </ShopLayout>
     );
   }
 
   const products = await getCollectionProducts(shop.shopifyCollectionId);
 
+  // If there's only 1 product, redirect directly to the product page
+  if (products.length === 1) {
+    const productId = Buffer.from(products[0].id).toString('base64');
+    redirect(`/shop/${slug}/products/${productId}`);
+  }
+
   return (
-    <ShopLayout theme={theme}>
-      <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
-        <ShopHeader shop={shop} />
-        <Container maxWidth="lg" sx={{ py: 4 }}>
-          {products.length === 0 ? (
-            <Box sx={{ textAlign: 'center', py: 8 }}>
-              <Typography variant="h5" sx={{ color: 'text.secondary' }}>
-                No products available at this time.
-              </Typography>
-            </Box>
-          ) : (
-            <ProductGrid products={products} shopSlug={slug} />
-          )}
-        </Container>
-      </Box>
+    <ShopLayout themeColor={shop.themeColor} themeMode={themeMode} shop={shop}>
+      <Container maxWidth="lg" sx={{ py: 4 }}>
+        {products.length === 0 ? (
+          <Box sx={{ textAlign: 'center', py: 8 }}>
+            <Typography variant="h5" sx={{ color: 'text.secondary' }}>
+              No products available at this time.
+            </Typography>
+          </Box>
+        ) : (
+          <ProductGrid products={products} shopSlug={slug} />
+        )}
+      </Container>
     </ShopLayout>
   );
 }

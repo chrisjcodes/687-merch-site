@@ -1,5 +1,6 @@
 'use client';
 
+import { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import {
   Box,
@@ -8,17 +9,18 @@ import {
   Typography,
   Button,
   Alert,
+  CircularProgress,
 } from '@mui/material';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function ErrorPage() {
+function ErrorContent() {
   const searchParams = useSearchParams();
   const error = searchParams?.get('error');
 
-  const getErrorMessage = (error: string | null) => {
-    switch (error) {
+  const getErrorMessage = (errorCode: string | null) => {
+    switch (errorCode) {
       case 'Configuration':
         return 'There is a problem with the server configuration.';
       case 'AccessDenied':
@@ -101,5 +103,27 @@ export default function ErrorPage() {
         </Paper>
       </Container>
     </Box>
+  );
+}
+
+export default function ErrorPage() {
+  return (
+    <Suspense
+      fallback={
+        <Box
+          sx={{
+            minHeight: '100vh',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            bgcolor: '#0f0f0f',
+          }}
+        >
+          <CircularProgress />
+        </Box>
+      }
+    >
+      <ErrorContent />
+    </Suspense>
   );
 }

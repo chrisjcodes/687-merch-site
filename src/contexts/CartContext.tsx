@@ -68,17 +68,12 @@ export function CartProvider({ children }: { children: ReactNode }) {
     setCart({ items: [] });
   };
 
-  // Don't render cart UI until mounted to avoid hydration mismatch
-  if (!mounted) {
-    return <>{children}</>;
-  }
-
   return (
     <CartContext.Provider
       value={{
         cart,
-        cartItemCount,
-        cartTotal,
+        cartItemCount: mounted ? cartItemCount : 0,
+        cartTotal: mounted ? cartTotal : 0,
         isCartOpen,
         openCart,
         closeCart,

@@ -1,21 +1,25 @@
 import { Typography, Box, Card, CardContent, Grid } from '@mui/material';
 import StorefrontIcon from '@mui/icons-material/Storefront';
 import { prisma } from '@/lib/prisma';
+import UnassignedCollections from './_components/UnassignedCollections';
 
 export default async function AdminDashboard() {
-  const shopCount = await prisma.dropShop.count();
-  const liveShopCount = await prisma.dropShop.count({
-    where: { isLive: true },
+  const shops = await prisma.dropShop.findMany({
+    select: { shopifyCollectionId: true, isLive: true },
   });
+
+  const shopCount = shops.length;
+  const liveShopCount = shops.filter(s => s.isLive).length;
+  const assignedCollectionIds = shops.map(s => s.shopifyCollectionId);
 
   return (
     <Box>
       <Typography variant="h4" sx={{ mb: 4, color: '#fff' }}>
-        Dashboard
+        Overview
       </Typography>
 
       <Grid container spacing={3}>
-        <Grid item xs={12} sm={6} md={4}>
+        <Grid size={{ xs: 12, sm: 6, md: 4 }}>
           <Card sx={{ bgcolor: '#1a1a1a', color: '#fff' }}>
             <CardContent>
               <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
@@ -27,7 +31,7 @@ export default async function AdminDashboard() {
           </Card>
         </Grid>
 
-        <Grid item xs={12} sm={6} md={4}>
+        <Grid size={{ xs: 12, sm: 6, md: 4 }}>
           <Card sx={{ bgcolor: '#1a1a1a', color: '#fff' }}>
             <CardContent>
               <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
@@ -39,7 +43,7 @@ export default async function AdminDashboard() {
           </Card>
         </Grid>
 
-        <Grid item xs={12} sm={6} md={4}>
+        <Grid size={{ xs: 12, sm: 6, md: 4 }}>
           <Card sx={{ bgcolor: '#1a1a1a', color: '#fff' }}>
             <CardContent>
               <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
@@ -49,6 +53,10 @@ export default async function AdminDashboard() {
               <Typography variant="h3">{shopCount - liveShopCount}</Typography>
             </CardContent>
           </Card>
+        </Grid>
+
+        <Grid size={{ xs: 12 }}>
+          <UnassignedCollections assignedCollectionIds={assignedCollectionIds} />
         </Grid>
       </Grid>
     </Box>
