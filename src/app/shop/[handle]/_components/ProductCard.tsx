@@ -69,9 +69,8 @@ export default function ProductCard({ product, shopSlug }: ProductCardProps) {
             fontWeight: 400,
             color: 'text.primary',
             mb: 0.5,
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
-            whiteSpace: 'nowrap',
+            minHeight: '2.5em',
+            lineHeight: 1.25,
           }}
         >
           {product.title}
