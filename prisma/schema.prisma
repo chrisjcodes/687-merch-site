@@ -57,21 +57,50 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
-model DropShop {
-  id                   String    @id @default(cuid())
-  slug                 String    @unique
-  name                 String
-  logoUrl              String?
-  themeColor           String    @default("#f2bf00")
-  themeMode            String    @default("light") // "light" or "dark"
-  shopifyCollectionId  String
-  isLive               Boolean   @default(false)
-  activationMode       String    @default("manual") // "manual" or "scheduled"
-  activeUntil          DateTime? // Date when shop should be deactivated (if activationMode is "scheduled")
-  createdAt            DateTime  @default(now())
-  updatedAt            DateTime  @updatedAt
+// Batch = "Purchase Order" - immutable record created when a drop closes
+model Batch {
+  id               String   @id @default(cuid())
+  collectionHandle String   // Reference to Shopify collection
+  periodStart      DateTime
+  periodEnd        DateTime
+  closedAt         DateTime @default(now())
 
-  @@index([slug])
-  @@index([isLive])
-  @@index([activationMode, activeUntil])
+  // Snapshot of totals at close time
+  orderCount       Int
+  totalItemsSold   Int
+  totalItemsRequired Int    // After minimums applied
+
+  // Snapshot of client info for payout (fetched from Shopify at close)
+  clientId         String?
+  clientSharePct   Decimal? @db.Decimal(5, 2)
+
+  lines            BatchLine[]
+
+  createdAt        DateTime @default(now())
+
+  @@index([collectionHandle])
 }
+
+model BatchLine {
+  id          String   @id @default(cuid())
+  batchId     String
+  batch       Batch    @relation(fields: [batchId], references: [id], onDelete: Cascade)
+
+  // What to order
+  type        LineType // GARMENT or MATERIAL
+  sku         String
+  size        String?  // Only for garments
+  productionType String? // Only for materials
+
+  // Quantities
+  soldQty     Int
+  requiredQty Int      // max(soldQty, minimum) - what to actually order
+
+  @@index([batchId])
+}
+
+enum LineType {
+  GARMENT
+  MATERIAL
+}
+
