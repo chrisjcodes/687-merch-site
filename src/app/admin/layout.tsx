@@ -17,6 +17,7 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import DashboardIcon from '@mui/icons-material/Dashboard';
+import StorefrontIcon from '@mui/icons-material/Storefront';
 import AssessmentIcon from '@mui/icons-material/Assessment';
 import InventoryIcon from '@mui/icons-material/Inventory';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -29,6 +30,7 @@ const drawerWidth = 240;
 
 const navItems = [
   { text: 'Overview', icon: <DashboardIcon />, href: '/admin' },
+  { text: 'Shops', icon: <StorefrontIcon />, href: '/admin/shops' },
   { text: 'Reports', icon: <AssessmentIcon />, href: '/admin/reports' },
   { text: 'Batches', icon: <InventoryIcon />, href: '/admin/batches' },
 ];
