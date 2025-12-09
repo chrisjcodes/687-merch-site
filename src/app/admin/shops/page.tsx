@@ -23,7 +23,7 @@ import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 interface ShopStatus {
   handle: string;
   title: string;
-  status: 'live' | 'upcoming' | 'closed' | 'ongoing';
+  status: 'live' | 'upcoming' | 'closed';
   orderWindowStart: string | null;
   orderWindowEnd: string | null;
   batchIntervalDays: number | null;
@@ -37,22 +37,19 @@ interface ShopsResponse {
     live: number;
     upcoming: number;
     closed: number;
-    ongoing: number;
   };
 }
 
-const statusColors: Record<ShopStatus['status'], 'success' | 'warning' | 'error' | 'info'> = {
+const statusColors: Record<ShopStatus['status'], 'success' | 'warning' | 'error'> = {
   live: 'success',
   upcoming: 'warning',
   closed: 'error',
-  ongoing: 'info',
 };
 
 const statusLabels: Record<ShopStatus['status'], string> = {
   live: 'Live',
   upcoming: 'Upcoming',
   closed: 'Closed',
-  ongoing: 'Ongoing',
 };
 
 function formatDate(dateString: string | null): string {
@@ -140,7 +137,7 @@ export default function ShopsPage() {
       <Box
         sx={{
           display: 'grid',
-          gridTemplateColumns: { xs: 'repeat(2, 1fr)', md: 'repeat(4, 1fr)' },
+          gridTemplateColumns: { xs: 'repeat(3, 1fr)' },
           gap: 2,
           mb: 4,
         }}
@@ -171,20 +168,6 @@ export default function ShopsPage() {
           </Typography>
           <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
             Upcoming
-          </Typography>
-        </Paper>
-        <Paper
-          sx={{
-            p: 2,
-            bgcolor: 'rgba(33, 150, 243, 0.1)',
-            border: '1px solid rgba(33, 150, 243, 0.3)',
-          }}
-        >
-          <Typography variant="h3" sx={{ color: '#2196f3', fontWeight: 700 }}>
-            {data.summary.ongoing}
-          </Typography>
-          <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
-            Ongoing
           </Typography>
         </Paper>
         <Paper

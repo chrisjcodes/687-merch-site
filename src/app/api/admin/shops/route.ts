@@ -5,7 +5,7 @@ import { prisma } from '@/lib/prisma'
 export interface ShopStatus {
   handle: string
   title: string
-  status: 'live' | 'upcoming' | 'closed' | 'ongoing'
+  status: 'live' | 'upcoming' | 'closed'
   orderWindowStart: string | null
   orderWindowEnd: string | null
   batchIntervalDays: number | null
@@ -29,32 +29,41 @@ export async function GET() {
         })
 
         // Determine status
-        let status: ShopStatus['status'] = 'ongoing'
+        // - No start or end date = live
+        // - Start date in future = upcoming
+        // - Between start and end = live
+        // - Only end date = live until that date
+        // - Past end date = closed
+        let status: ShopStatus['status'] = 'live'
         let nextBatchDate: Date | null = null
 
-        if (collection.orderWindowEnd) {
-          const windowEnd = new Date(collection.orderWindowEnd)
-          const windowStart = collection.orderWindowStart
-            ? new Date(collection.orderWindowStart)
-            : null
+        const windowStart = collection.orderWindowStart
+        const windowEnd = collection.orderWindowEnd
 
-          if (windowStart && now < windowStart) {
-            status = 'upcoming'
-          } else if (now > windowEnd) {
-            status = 'closed'
-          } else {
-            status = 'live'
-          }
+        if (windowStart && now < windowStart) {
+          // Start date in future = upcoming
+          status = 'upcoming'
+        } else if (windowEnd && now > windowEnd) {
+          // Past end date = closed
+          status = 'closed'
           nextBatchDate = windowEnd
-        } else if (collection.batchIntervalDays) {
-          status = 'ongoing'
-          if (lastBatch) {
-            nextBatchDate = new Date(
-              lastBatch.periodEnd.getTime() +
-                collection.batchIntervalDays * 24 * 60 * 60 * 1000
-            )
-          } else {
-            nextBatchDate = now // First batch is due
+        } else if (windowEnd) {
+          // Has end date but not past it = live
+          status = 'live'
+          nextBatchDate = windowEnd
+        } else {
+          // No end date = live (ongoing)
+          status = 'live'
+          // Calculate next batch date if batch interval is set
+          if (collection.batchIntervalDays) {
+            if (lastBatch) {
+              nextBatchDate = new Date(
+                lastBatch.periodEnd.getTime() +
+                  collection.batchIntervalDays * 24 * 60 * 60 * 1000
+              )
+            } else {
+              nextBatchDate = now // First batch is due
+            }
           }
         }
 
@@ -81,7 +90,6 @@ export async function GET() {
         live: configuredShops.filter((s) => s.status === 'live').length,
         upcoming: configuredShops.filter((s) => s.status === 'upcoming').length,
         closed: configuredShops.filter((s) => s.status === 'closed').length,
-        ongoing: configuredShops.filter((s) => s.status === 'ongoing').length,
       },
     })
   } catch (error) {
