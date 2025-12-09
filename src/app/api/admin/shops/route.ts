@@ -46,25 +46,28 @@ export async function GET() {
         } else if (windowEnd && now > windowEnd) {
           // Past end date = closed
           status = 'closed'
-          nextBatchDate = windowEnd
-        } else if (windowEnd) {
-          // Has end date but not past it = live
-          status = 'live'
-          nextBatchDate = windowEnd
         } else {
-          // No end date = live (ongoing)
+          // Live - either no end date or end date in future
           status = 'live'
-          // Calculate next batch date if batch interval is set
-          if (collection.batchIntervalDays) {
-            if (lastBatch) {
-              nextBatchDate = new Date(
-                lastBatch.periodEnd.getTime() +
-                  collection.batchIntervalDays * 24 * 60 * 60 * 1000
-              )
-            } else {
-              nextBatchDate = now // First batch is due
-            }
+        }
+
+        // Calculate next batch date
+        if (collection.batchIntervalDays) {
+          // Has batch interval - calculate based on last batch
+          if (lastBatch) {
+            nextBatchDate = new Date(
+              lastBatch.periodEnd.getTime() +
+                collection.batchIntervalDays * 24 * 60 * 60 * 1000
+            )
+          } else {
+            // No previous batch - next batch is now (or interval from now)
+            nextBatchDate = new Date(
+              now.getTime() + collection.batchIntervalDays * 24 * 60 * 60 * 1000
+            )
           }
+        } else if (windowEnd) {
+          // No batch interval but has end date - batch on close
+          nextBatchDate = windowEnd
         }
 
         return {
