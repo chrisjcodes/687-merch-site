@@ -275,6 +275,7 @@ export interface CollectionForBatching {
   orderWindowStart: Date | null
   orderWindowEnd: Date | null
   batchIntervalDays: number | null
+  themeColor: string | null // Used to identify if it's a drop shop
 }
 
 // Get all collections with batch-related metafields (for scheduler)
@@ -287,6 +288,9 @@ export async function getCollectionsForBatching(): Promise<CollectionForBatching
             id
             title
             handle
+            themeColor: metafield(namespace: "drop_shop", key: "theme_color") {
+              value
+            }
             orderWindowStart: metafield(namespace: "drop_shop", key: "order_window_start") {
               value
             }
@@ -309,6 +313,7 @@ export async function getCollectionsForBatching(): Promise<CollectionForBatching
           id: string
           title: string
           handle: string
+          themeColor: { value: string } | null
           orderWindowStart: { value: string } | null
           orderWindowEnd: { value: string } | null
           batchIntervalDays: { value: string } | null
@@ -323,6 +328,7 @@ export async function getCollectionsForBatching(): Promise<CollectionForBatching
     id: edge.node.id,
     title: edge.node.title,
     handle: edge.node.handle,
+    themeColor: edge.node.themeColor?.value || null,
     orderWindowStart: edge.node.orderWindowStart?.value ? new Date(edge.node.orderWindowStart.value) : null,
     orderWindowEnd: edge.node.orderWindowEnd?.value ? new Date(edge.node.orderWindowEnd.value) : null,
     batchIntervalDays: edge.node.batchIntervalDays?.value ? parseInt(edge.node.batchIntervalDays.value, 10) : null,

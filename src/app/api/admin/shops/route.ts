@@ -11,6 +11,7 @@ export interface ShopStatus {
   batchIntervalDays: number | null
   lastBatchDate: string | null
   nextBatchDate: string | null
+  themeColor: string | null
 }
 
 export async function GET() {
@@ -66,15 +67,13 @@ export async function GET() {
           batchIntervalDays: collection.batchIntervalDays,
           lastBatchDate: lastBatch?.closedAt.toISOString() || null,
           nextBatchDate: nextBatchDate?.toISOString() || null,
+          themeColor: collection.themeColor,
         }
       })
     )
 
-    // Filter to only show collections that have drop_shop config
-    // (have either orderWindowEnd or batchIntervalDays set)
-    const configuredShops = shops.filter(
-      (shop) => shop.orderWindowEnd || shop.batchIntervalDays
-    )
+    // Filter to only show collections that are drop shops (have theme_color set)
+    const configuredShops = shops.filter((shop) => shop.themeColor)
 
     return NextResponse.json({
       shops: configuredShops,
