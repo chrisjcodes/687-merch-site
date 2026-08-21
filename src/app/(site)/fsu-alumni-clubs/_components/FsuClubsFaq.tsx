@@ -386,6 +386,34 @@ const faqSections: FaqSection[] = [
         ),
       },
       {
+        q: 'Do you use AI to create the designs?',
+        a: (
+          <>
+            <Typography paragraph>
+              In one specific place, yes: generating illustration elements, the same way we would
+              reach for stock imagery when a piece calls for it. That is the whole of it. We do not
+              run end-to-end AI design, and nothing reaches you as a raw generated image.
+            </Typography>
+            <Typography paragraph>
+              Everything that makes it a design is done by hand. We build the layout, choose the
+              colors and the typography, and convert the artwork to vector so it stays sharp at any
+              size on any garment.
+            </Typography>
+            <Typography paragraph>
+              Then it gets prepped for garment printing specifically — halftones, knockouts,
+              separations, and the rest of the production work that decides whether a design looks
+              good on a shirt rather than just on a screen. That step is where most
+              &ldquo;we made it with AI&rdquo; merch falls apart.
+            </Typography>
+            <Typography>
+              One thing that is never generated: FSU marks. Those come from the official artwork,
+              unaltered — it is the only version licensing will approve, and the only version we
+              will put on a press.
+            </Typography>
+          </>
+        ),
+      },
+      {
         q: 'Can we just hire you for the design and print it somewhere else?',
         a: (
           <>
