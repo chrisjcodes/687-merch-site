@@ -487,7 +487,7 @@ export default function FsuClubsFaq() {
               component="h1"
               sx={{ mb: 3, fontSize: { xs: '2.25rem', sm: '3rem', md: '3.75rem' } }}
             >
-              FSU Alumni Club Merch, By The Book
+              Your FSU Club&apos;s Vision, Cleared To Print
             </Typography>
             <Typography
               variant="body1"
