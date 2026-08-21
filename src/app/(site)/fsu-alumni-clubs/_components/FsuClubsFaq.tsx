@@ -10,7 +10,6 @@ import {
   AccordionSummary,
   AccordionDetails,
   Button,
-  Chip,
   Divider,
 } from '@mui/material';
 import {
@@ -24,7 +23,8 @@ import {
   EmailOutlined,
   PhoneOutlined,
 } from '@mui/icons-material';
-import AppHeader from '@/app/(site)/_components/AppHeader';
+import Image from 'next/image';
+import Link from 'next/link';
 import AppFooter from '@/app/(site)/_components/AppFooter';
 
 const EMAIL = 'info@687merch.com';
@@ -57,23 +57,23 @@ function TextLink({ href, children }: { href: string; children: React.ReactNode 
 const highlights = [
   {
     icon: GavelOutlined,
-    title: 'FSU sets the rules',
-    body: 'Every design has to follow Florida State’s branding and licensing guidelines. Their guide is the source of truth — not ours, and not a template someone used last season.',
+    title: 'We know the guidelines',
+    body: 'Florida State publishes the branding and licensing standards, and keeping up with them is our job, not your club’s. Bring us the idea — we will shape it into something that fits.',
   },
   {
     icon: VerifiedOutlined,
     title: 'We’re a licensed vendor',
-    body: 'We hold a Florida State license to print apparel for internal FSU department use, and recognized alumni clubs fall under that coverage.',
+    body: 'We hold a Florida State license to print apparel for internal FSU department use, and recognized alumni clubs fall under that coverage — so you are covered from the first sketch.',
   },
   {
     icon: PaidOutlined,
-    title: 'Royalties apply',
-    body: 'Every order carrying FSU marks is subject to a royalty fee charged by the university. It is part of the cost of the order, and we build it into your quote.',
+    title: 'Royalties go back to FSU',
+    body: 'Orders carrying university marks include a royalty that goes to Florida State. We handle it and show it plainly in your quote, so there are no surprises for your treasurer.',
   },
   {
     icon: ScheduleOutlined,
-    title: 'Lead time is everything',
-    body: 'Licensing approval, production and shipping all take time. If you have a kickoff or game day in mind, the clock starts well before you think it does.',
+    title: 'Earlier means better',
+    body: 'Approval, production and shipping each take time. The sooner you loop us in, the more room we have to explore ideas rather than settle for whatever will fit the calendar.',
   },
 ];
 
@@ -82,13 +82,13 @@ const timeline = [
     step: '01',
     label: 'Design & artwork',
     duration: '1–2 weeks',
-    body: 'We build or clean up the artwork so it is print-ready and follows FSU’s brand guidelines from the start. Revisions live here — not after submission.',
+    body: 'We take your concept and build it into print-ready artwork that already lines up with FSU’s guidelines. This is where we explore options together, so the version we submit is one we are all behind.',
   },
   {
     step: '02',
     label: 'Licensing approval',
     duration: 'At least 1–2 weeks',
-    body: 'We submit the design to FSU’s licensing office for approval. Allow a week or two at minimum, and expect longer if the office comes back asking for revisions or is working through a high volume of requests — football season being the obvious one. This step is out of our hands.',
+    body: 'We handle the submission to FSU’s licensing office and any back-and-forth with them. Allow a week or two at minimum, and a little more if they ask for changes or are working through a high volume of requests — football season being the obvious one.',
   },
   {
     step: '03',
@@ -181,13 +181,14 @@ const faqSections: FaqSection[] = [
     title: 'Branding & Licensing',
     items: [
       {
-        q: 'Whose branding rules do we follow?',
+        q: 'How closely do we have to follow FSU’s branding guidelines?',
         a: (
           <>
             <Typography paragraph>
-              Florida State&apos;s. Every piece of club merch that uses FSU marks has to follow the
-              university&apos;s branding and licensing guidelines, and those guidelines are published
-              and maintained by FSU — we just work within them.
+              Closely — but that is our work to carry, not yours. Florida State publishes and
+              maintains the branding and licensing standards, and staying fluent in them is part of
+              what you are hiring us for. Come to us with an idea rather than a rulebook, and we
+              will tell you what it takes to get there.
             </Typography>
             <Typography paragraph>
               Start with the{' '}
@@ -195,15 +196,16 @@ const faqSections: FaqSection[] = [
               <TextLink href="https://licensing.fsu.edu/trademark-policies">
                 Office of Trademark Licensing&apos;s trademark policies
               </TextLink>
-              . If you are a Seminole Club, the Alumni Association&apos;s{' '}
-              <TextLink href="https://alumni.fsu.edu/clubs/resources">
-                resources for club leaders
-              </TextLink>{' '}
-              covers the club-specific pieces, including your official club wordmark.
+              . The club-specific pieces — including your official club wordmark — come from
+              university leadership rather than from the brand site, so check with them if you are
+              not sure which wordmark your club has been issued.
             </Typography>
             <Typography>
-              The short version: FSU marks can change size, but they cannot be altered, recolored,
-              redrawn, combined with other marks, or overprinted with other words or artwork.
+              The one thing worth knowing up front: the marks themselves are fixed. They can scale,
+              but they are not redrawn, recolored, or merged into other artwork — that is how
+              Florida State protects them, and we protect them the same way. Everything around the
+              marks is where your club&apos;s personality goes, and there is far more room there
+              than most clubs expect.
             </Typography>
           </>
         ),
@@ -213,14 +215,14 @@ const faqSections: FaqSection[] = [
         a: (
           <>
             <Typography paragraph>
-              Recognized clubs and chapters are issued an official wordmark by the FSU Alumni
-              Association, and using that wordmark as issued is the fastest path — it generally
-              does not need additional design approval from the university.
+              Recognized clubs and chapters are issued an official wordmark by university
+              leadership, and using that wordmark as issued is the fastest path — it generally
+              does not need additional design approval.
             </Typography>
             <Typography>
-              If you want a custom mark of your own instead, it has to be approved by the Alumni
-              Association, which will in turn seek approval from the Office of Trademark Licensing.
-              That is a longer road, so tell us early if that is the direction you want to go.
+              Want a mark of your own instead? That is a real option — it goes to university
+              leadership first, then to the Office of Trademark Licensing. It is a longer road, so
+              tell us early and we will help you build something worth the trip.
             </Typography>
           </>
         ),
@@ -229,11 +231,11 @@ const faqSections: FaqSection[] = [
         q: 'Can we put a local sponsor’s logo on the shirt?',
         a: (
           <Typography>
-            Sometimes, but there are limits. Sponsor logos may only appear alongside your official
-            club or chapter wordmark furnished by the Alumni Association — they cannot be
-            combined with standalone University trademarks, and the design must not imply that FSU
-            endorses the sponsor. Send us the sponsor artwork up front so we can flag any problems
-            before it goes to licensing.
+            Usually yes, within a few conditions. A sponsor logo can sit alongside your official
+            club or chapter wordmark, but not next to a standalone University trademark, and the
+            layout should not read as though FSU is endorsing the sponsor. Send us the sponsor
+            artwork early and we will find an arrangement that keeps everyone happy — your
+            sponsor included.
           </Typography>
         ),
       },
@@ -241,10 +243,11 @@ const faqSections: FaqSection[] = [
         q: 'Who has the final say on a design?',
         a: (
           <Typography>
-            Florida State does. We will tell you when we think something will have trouble getting
-            approved, and we will help you fix it, but we cannot approve a design on the
-            university&apos;s behalf and neither can your club. Please treat anything on this page as
-            our practical guidance, not an official ruling from FSU.
+            Florida State makes the final call — but you are not walking in there alone. We know
+            what tends to clear and what tends to come back, we build the design accordingly, and we
+            make the case for it when we submit. If licensing wants a change, we bring it back to
+            you with options rather than a dead end. Treat this page as our practical experience,
+            not an official ruling from FSU.
           </Typography>
         ),
       },
@@ -275,11 +278,11 @@ const faqSections: FaqSection[] = [
         q: 'Can licensing approval be rushed?',
         a: (
           <Typography>
-            No. Approval turnaround is controlled by FSU&apos;s licensing office, not by us, and there
-            is no expedite button we can press on your behalf. Budget at least one to two weeks, and
-            more if revisions come back or the office is buried in requests. The only real lever your
-            club has is starting earlier and submitting a clean, guideline-compliant design the first
-            time.
+            Not directly — the licensing office sets its own pace, so budget at least one to two
+            weeks, and more if changes come back or they are working through a backlog. What we can
+            do is give it the best possible run: artwork built to the guidelines from the start,
+            submitted cleanly, with us handling the follow-up. A design that clears on the first
+            pass is the closest thing to a fast track there is.
           </Typography>
         ),
       },
@@ -302,10 +305,11 @@ const faqSections: FaqSection[] = [
         q: 'What if we come to you late?',
         a: (
           <Typography>
-            Tell us the date anyway and we will be straight with you about whether it is reachable.
-            Sometimes a simpler design, a different garment, or a smaller first run makes a tight
-            deadline work. What we will not do is promise a date that depends on an approval we do
-            not control.
+            Tell us the date anyway — we would rather work the problem than turn you away. A
+            simpler design, a different garment, or a smaller first run can often rescue a tight
+            deadline, and we will lay out the options honestly. The one thing we will not do is
+            promise a date that depends on an approval we do not control, because a promise like
+            that helps nobody.
           </Typography>
         ),
       },
@@ -337,13 +341,15 @@ const faqSections: FaqSection[] = [
         a: (
           <>
             <Typography paragraph>
-              Florida State charges a royalty on orders bearing university marks, and that applies to
-              club orders placed through us. It is collected on the university&apos;s behalf and
-              remitted to FSU — it is not a 687 Merch fee, and it is not optional.
+              Orders carrying university marks include a royalty that goes to Florida State. It is
+              not a 687 Merch fee — we collect it on the university&apos;s behalf and pass it
+              through. It is also part of what makes the whole system work: those royalties fund
+              university initiatives, so your club&apos;s order sends a little something back to the
+              school.
             </Typography>
             <Typography>
-              We show it as part of your quote rather than burying it, so your club treasurer sees the
-              real number before you commit.
+              We handle the paperwork and show the royalty as a line in your quote rather than
+              burying it, so your treasurer sees the real number before you commit to anything.
             </Typography>
           </>
         ),
@@ -376,10 +382,11 @@ const faqSections: FaqSection[] = [
         a: (
           <>
             <Typography paragraph>
-              You can hire us for design only — plenty of clubs do. But the printing still has to
-              go to a licensed vendor. Handing an approved design to an unlicensed shop, a local
-              screen printer without an FSU license, or an online print-on-demand service is not
-              allowed, no matter who drew the artwork.
+              You can hire us for design only — plenty of clubs do, and we are glad to. The one
+              thing to know is that the printing still needs to go to a licensed vendor, whoever
+              drew the artwork. An unlicensed local shop or a print-on-demand service is not an
+              option, and it is the kind of thing that puts a club in an awkward spot with the
+              university, so we would rather flag it now than after the shirts exist.
             </Typography>
             <Typography>
               If you are not printing with us, use FSU&apos;s{' '}
@@ -430,23 +437,44 @@ const resources = [
     href: 'https://licensing.fsu.edu/campus-use/campus-departments',
     desc: 'The internal-use rules our license operates under.',
   },
-  {
-    label: 'FSU Alumni Association — Club Leader Resources',
-    href: 'https://alumni.fsu.edu/clubs/resources',
-    desc: 'Club wordmarks and the branding basics written specifically for Seminole Clubs.',
-  },
 ];
 
 export default function FsuClubsFaq() {
   return (
     <Box>
-      <AppHeader />
+      {/* Standalone page: logo only, linked back to the main site — no site nav. */}
+      <Box
+        component="header"
+        sx={{
+          py: { xs: 2, md: 2.5 },
+          backgroundColor: '#0f0f0f',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+        }}
+      >
+        <Container maxWidth="lg">
+          <Box
+            component={Link}
+            href="/"
+            aria-label="687 Merch home"
+            sx={{ display: 'inline-flex', alignItems: 'center' }}
+          >
+            <Image
+              src="/687-logo.png"
+              alt="687 Merch"
+              width={144}
+              height={48}
+              style={{ width: 'auto', height: '48px', maxWidth: '100%' }}
+              priority
+            />
+          </Box>
+        </Container>
+      </Box>
 
       <main>
         {/* Hero */}
         <Box
           sx={{
-            pt: { xs: 14, md: 20 },
+            pt: { xs: 7, md: 10 },
             pb: { xs: 8, md: 12 },
             backgroundColor: '#0f0f0f',
             backgroundImage:
@@ -454,28 +482,24 @@ export default function FsuClubsFaq() {
           }}
         >
           <Container maxWidth="md">
-            <Chip
-              label="For FSU Alumni Clubs"
-              sx={{
-                mb: 3,
-                color: 'primary.main',
-                borderColor: 'primary.main',
-                fontWeight: 600,
-                letterSpacing: '0.05em',
-              }}
-              variant="outlined"
-            />
-            <Typography variant="h1" component="h1" sx={{ mb: 3 }}>
-              Club Merch, By The Book
+            <Typography
+              variant="h1"
+              component="h1"
+              sx={{ mb: 3, fontSize: { xs: '2.25rem', sm: '3rem', md: '3.75rem' } }}
+            >
+              Your FSU Club&apos;s Vision,
+              <br />
+              Cleared To Print
             </Typography>
             <Typography
               variant="body1"
               color="text.secondary"
               sx={{ fontSize: { xs: '1.05rem', md: '1.25rem' }, lineHeight: 1.7, mb: 4 }}
             >
-              We&apos;re a licensed Florida State vendor, and we work with alumni clubs that want
-              merch done properly — on-brand, licensed, and delivered before the date that
-              matters. Here&apos;s what your club needs to know before you order.
+              You know what your club wants to wear. We know what Florida State will approve.
+              We&apos;re a licensed FSU vendor, and our job is to take your club&apos;s idea and turn
+              it into something that clears licensing, protects the marks we all care about, and
+              lands before the date that matters.
             </Typography>
             <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
               <Button
@@ -539,7 +563,7 @@ export default function FsuClubsFaq() {
             py: { xs: 8, md: 12 },
             backgroundColor: '#ffffff',
             color: '#000',
-            scrollMarginTop: '80px',
+            scrollMarginTop: '24px',
           }}
         >
           <Container maxWidth="lg">
@@ -548,9 +572,9 @@ export default function FsuClubsFaq() {
                 Work Backward From Your Date
               </Typography>
               <Typography sx={{ fontSize: '1.1rem', lineHeight: 1.7, color: '#444' }}>
-                Kickoff, game day, a reunion — whatever your date is, the merch has to clear
-                four separate stages before it reaches you, and one of them isn&apos;t ours to speed
-                up. Ranges below are typical, not guaranteed.
+                Kickoff, game day, a reunion — whatever your date is, here is the path from your
+                idea to boxes on site. We drive three of these four stages and shepherd the fourth.
+                Ranges below are typical, not guaranteed.
               </Typography>
             </Box>
 
@@ -608,11 +632,10 @@ export default function FsuClubsFaq() {
                 </Typography>
                 <Typography sx={{ color: '#bbb', lineHeight: 1.7 }}>
                   The stages above add up to roughly five to seven weeks when everything goes
-                  smoothly; the extra week is buffer for artwork revisions and for your club to make
-                  decisions. Late summer and football season run longer, because every department and
-                  club on campus is in the licensing queue at the same time. The clubs that get their
-                  merch on time are the ones that start early — there is no version of this where
-                  waiting helps.
+                  smoothly; the extra week gives us room to refine the artwork and gives your club
+                  room to decide. Late summer and football season run longer, since every department
+                  and club on campus is in the licensing queue at once. Come to us early and the
+                  timeline stops being a constraint on what your club can make.
                 </Typography>
               </Box>
             </Paper>
@@ -683,8 +706,9 @@ export default function FsuClubsFaq() {
               Official FSU Resources
             </Typography>
             <Typography color="text.secondary" sx={{ mb: 4, lineHeight: 1.7 }}>
-              These are the university&apos;s own pages. When something on this page and something on
-              theirs disagree, theirs wins.
+              You do not need to read any of this to work with us — we will bring what matters to
+              you. It is here for the club leaders who like to see the source, and if anything on
+              this page ever disagrees with the university&apos;s, theirs is the one to trust.
             </Typography>
 
             <Box sx={{ display: 'grid', gap: 2 }}>
@@ -740,15 +764,15 @@ export default function FsuClubsFaq() {
             >
               <BrushOutlined sx={{ color: 'primary.main', fontSize: 44, mb: 2 }} />
               <Typography variant="h2" component="h2" sx={{ mb: 2 }}>
-                Got a Date in Mind?
+                Does Your Club Need Merch?
               </Typography>
               <Typography
                 color="text.secondary"
                 sx={{ mb: 4, fontSize: '1.1rem', lineHeight: 1.7, maxWidth: 620, mx: 'auto' }}
               >
-                Tell us the date and roughly what you want. We&apos;ll tell you what&apos;s realistic,
-                what licensing will need, and what it costs — royalty included, before you
-                commit to anything.
+                We&apos;re happy to help. Tell us roughly what you have in mind and we&apos;ll walk
+                you through what licensing will need and what it costs — royalty included —
+                before you commit to anything.
               </Typography>
 
               <Box
@@ -785,9 +809,9 @@ export default function FsuClubsFaq() {
 
               <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.7 }}>
                 687 Merch is a licensed Florida State University vendor for internal department use.
-                This page is general guidance for club leaders and is not an official FSU
-                publication — branding, licensing, and royalty requirements are set by the
-                university and are subject to change.
+                This page is our own guidance for club leaders, not an official FSU publication —
+                branding, licensing, and royalty requirements are set by the university and can
+                change.
               </Typography>
             </Paper>
           </Container>
