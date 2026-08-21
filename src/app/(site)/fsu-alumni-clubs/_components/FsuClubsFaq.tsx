@@ -370,6 +370,13 @@ const faqSections: FaqSection[] = [
               your club is not fronting cash for inventory, and there are no leftover mediums sitting
               in a closet at the end.
             </Typography>
+            <Typography paragraph>
+              Worth being clear about the money: the portal is a way for your club to collect
+              orders, not a store of ours. Everything your members pay comes back to the club minus
+              the cost of production — we take no margin on those sales. If your club prices
+              above cost, that difference is yours, which is what makes a pre-sale work as a
+              fundraiser.
+            </Typography>
             <Typography>
               One scheduling note: the order window is an extra stage on top of the timeline above.
               The shop cannot open until the design is approved, and production does not start until
