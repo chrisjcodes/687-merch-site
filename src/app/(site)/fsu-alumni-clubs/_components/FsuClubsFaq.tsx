@@ -349,6 +349,29 @@ const faqSections: FaqSection[] = [
         ),
       },
       {
+        q: 'Do you offer online stores or pre-sales for clubs?',
+        a: (
+          <>
+            <Typography paragraph>
+              We can stand up an online ordering portal for your club, but it works as a pre-sale
+              rather than a permanent storefront. The shop opens for a limited window, your members
+              order and pay through it, and then we close it, run every order in one batch, and ship
+              the finished goods to the club.
+            </Typography>
+            <Typography paragraph>
+              That is what makes small runs work. Nobody is guessing at quantities or sizes up front,
+              your club is not fronting cash for inventory, and there are no leftover mediums sitting
+              in a closet at the end.
+            </Typography>
+            <Typography>
+              One scheduling note: the order window is an extra stage on top of the timeline above.
+              The shop cannot open until the design is approved, and production does not start until
+              it closes — so decide how long you want it open and count that toward your date.
+            </Typography>
+          </>
+        ),
+      },
+      {
         q: 'Can we just hire you for the design and print it somewhere else?',
         a: (
           <>
