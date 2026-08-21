@@ -87,14 +87,14 @@ const timeline = [
   {
     step: '02',
     label: 'Licensing approval',
-    duration: '2–3 weeks',
-    body: 'We submit the design to FSU’s licensing office for approval. This step is out of our hands, and it slows down during football season when everyone is submitting at once.',
+    duration: 'At least 1–2 weeks',
+    body: 'We submit the design to FSU’s licensing office for approval. Allow a week or two at minimum, and expect longer if the office comes back asking for revisions or is working through a high volume of requests — football season being the obvious one. This step is out of our hands.',
   },
   {
     step: '03',
     label: 'Production',
-    duration: '2–3 weeks',
-    body: 'Blanks are sourced and the order is printed. Nothing goes on press until the design is approved and garments are in hand.',
+    duration: '~10 business days',
+    body: 'Once the design is approved, we turn most orders of 50 shirts or fewer around in about 10 business days. Larger runs take longer, and nothing goes on press before approval comes back.',
   },
   {
     step: '04',
@@ -191,7 +191,7 @@ const faqSections: FaqSection[] = [
             <Typography paragraph>
               Sooner than feels necessary. Work backward from your date and account for three
               separate clocks: design, licensing approval, and production plus shipping. As a rule of
-              thumb, plan on <strong>eight to ten weeks</strong> between &ldquo;we have an idea&rdquo;
+              thumb, plan on <strong>six to eight weeks</strong> between &ldquo;we have an idea&rdquo;
               and &ldquo;boxes are on site.&rdquo;
             </Typography>
             <Typography>
@@ -207,8 +207,10 @@ const faqSections: FaqSection[] = [
         a: (
           <Typography>
             No. Approval turnaround is controlled by FSU&apos;s licensing office, not by us, and there
-            is no expedite button we can press on your behalf. The only real lever your club has is
-            starting earlier and submitting a clean, guideline-compliant design the first time.
+            is no expedite button we can press on your behalf. Budget at least one to two weeks, and
+            more if revisions come back or the office is buried in requests. The only real lever your
+            club has is starting earlier and submitting a clean, guideline-compliant design the first
+            time.
           </Typography>
         ),
       },
@@ -455,7 +457,7 @@ export default function FsuClubsFaq() {
               </Typography>
               <Typography sx={{ fontSize: '1.1rem', lineHeight: 1.7, color: '#444' }}>
                 Kickoff, game day, a reunion — whatever your date is, the merch has to clear
-                three separate stages before it reaches you, and one of them isn&apos;t ours to speed
+                four separate stages before it reaches you, and one of them isn&apos;t ours to speed
                 up. Ranges below are typical, not guaranteed.
               </Typography>
             </Box>
@@ -510,14 +512,15 @@ export default function FsuClubsFaq() {
               <ScheduleOutlined sx={{ color: 'primary.main', fontSize: 36, flexShrink: 0 }} />
               <Box>
                 <Typography variant="h5" component="p" sx={{ color: '#fff', mb: 1 }}>
-                  Plan on 8–10 weeks
+                  Plan on 6–8 weeks
                 </Typography>
                 <Typography sx={{ color: '#bbb', lineHeight: 1.7 }}>
-                  That&apos;s the practical window from first conversation to product in hand. Late
-                  summer and football season run longer, because every department and club on campus
-                  is in the licensing queue at the same time. The clubs that get their merch on time
-                  are the ones that start early — there is no version of this where waiting
-                  helps.
+                  The stages above add up to roughly five to seven weeks when everything goes
+                  smoothly; the extra week is buffer for artwork revisions and for your club to make
+                  decisions. Late summer and football season run longer, because every department and
+                  club on campus is in the licensing queue at the same time. The clubs that get their
+                  merch on time are the ones that start early — there is no version of this where
+                  waiting helps.
                 </Typography>
               </Box>
             </Paper>
