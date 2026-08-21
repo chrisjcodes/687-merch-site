@@ -109,6 +109,75 @@ type FaqSection = { title: string; items: FaqItem[] };
 
 const faqSections: FaqSection[] = [
   {
+    title: 'Is This a Fit for Our Club?',
+    items: [
+      {
+        q: 'Can you print for our club if we’re nowhere near Tallahassee?',
+        a: (
+          <>
+            <Typography paragraph>
+              Yes. We print for FSU clubs across the country and ship to wherever you are. Your club
+              does not need to be near campus, and neither do we — the process and the licensing
+              rules are the same either way.
+            </Typography>
+            <Typography>
+              The only thing distance really changes is the shipping leg at the end, so if you are
+              far out — or shipping to an event venue instead of somebody&apos;s address — build
+              in a little extra room.
+            </Typography>
+          </>
+        ),
+      },
+      {
+        q: 'What items do you offer?',
+        a: (
+          <>
+            <Typography paragraph>
+              Mostly apparel — tees, hats, polos, quarter-zips, and the like. That is where our FSU
+              license applies and where most club orders land.
+            </Typography>
+            <Typography>
+              We can also help design and prep other printed pieces — signage, stickers, event
+              collateral — even when the printing itself happens elsewhere. Anything carrying FSU
+              marks still has to be produced by a licensed vendor, so for non-apparel we will hand
+              off print-ready files to a licensee rather than run it ourselves. If you have something
+              specific in mind, ask; worst case we tell you it is not ours and point you somewhere
+              useful.
+            </Typography>
+          </>
+        ),
+      },
+      {
+        q: 'Our club is small and doesn’t have much of a budget. Can we still do merch?',
+        a: (
+          <>
+            <Typography paragraph>
+              Yes — and honestly, this is the case we are built for. We keep deals that are
+              exclusive to FSU clubs, and the way we print handles very small runs, so you are not
+              forced into 200 shirts to reach a price break and then storing 150 of them in
+              someone&apos;s garage until next season.
+            </Typography>
+            <Typography>
+              We optimize for experimentation with all our clients: print a small run, find out what
+              your members actually wear, then reorder the design that worked. Being a smaller club
+              is not a limitation on that — it is the situation it was designed around.
+            </Typography>
+          </>
+        ),
+      },
+      {
+        q: 'Are you alumni owned?',
+        a: (
+          <Typography>
+            Yes, proudly. Class of 2011, lifelong Nole. That is part of why we are careful about the
+            branding and licensing side rather than treating it as paperwork — they are our
+            school&apos;s marks too.
+          </Typography>
+        ),
+      },
+    ],
+  },
+  {
     title: 'Branding & Licensing',
     items: [
       {
