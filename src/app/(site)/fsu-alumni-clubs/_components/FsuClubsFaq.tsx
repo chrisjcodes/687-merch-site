@@ -10,7 +10,6 @@ import {
   AccordionSummary,
   AccordionDetails,
   Button,
-  Chip,
   Divider,
 } from '@mui/material';
 import {
@@ -24,7 +23,8 @@ import {
   EmailOutlined,
   PhoneOutlined,
 } from '@mui/icons-material';
-import AppHeader from '@/app/(site)/_components/AppHeader';
+import Image from 'next/image';
+import Link from 'next/link';
 import AppFooter from '@/app/(site)/_components/AppFooter';
 
 const EMAIL = 'info@687merch.com';
@@ -195,11 +195,9 @@ const faqSections: FaqSection[] = [
               <TextLink href="https://licensing.fsu.edu/trademark-policies">
                 Office of Trademark Licensing&apos;s trademark policies
               </TextLink>
-              . If you are a Seminole Club, the Alumni Association&apos;s{' '}
-              <TextLink href="https://alumni.fsu.edu/clubs/resources">
-                resources for club leaders
-              </TextLink>{' '}
-              covers the club-specific pieces, including your official club wordmark.
+              . The club-specific pieces — including your official club wordmark — come from
+              university leadership rather than from the brand site, so check with them if you are
+              not sure which wordmark your club has been issued.
             </Typography>
             <Typography>
               The short version: FSU marks can change size, but they cannot be altered, recolored,
@@ -213,13 +211,13 @@ const faqSections: FaqSection[] = [
         a: (
           <>
             <Typography paragraph>
-              Recognized clubs and chapters are issued an official wordmark by the FSU Alumni
-              Association, and using that wordmark as issued is the fastest path — it generally
-              does not need additional design approval from the university.
+              Recognized clubs and chapters are issued an official wordmark by university
+              leadership, and using that wordmark as issued is the fastest path — it generally
+              does not need additional design approval.
             </Typography>
             <Typography>
-              If you want a custom mark of your own instead, it has to be approved by the Alumni
-              Association, which will in turn seek approval from the Office of Trademark Licensing.
+              If you want a custom mark of your own instead, it has to be approved by university
+              leadership, who will in turn seek approval from the Office of Trademark Licensing.
               That is a longer road, so tell us early if that is the direction you want to go.
             </Typography>
           </>
@@ -230,7 +228,7 @@ const faqSections: FaqSection[] = [
         a: (
           <Typography>
             Sometimes, but there are limits. Sponsor logos may only appear alongside your official
-            club or chapter wordmark furnished by the Alumni Association — they cannot be
+            club or chapter wordmark furnished by university leadership — they cannot be
             combined with standalone University trademarks, and the design must not imply that FSU
             endorses the sponsor. Send us the sponsor artwork up front so we can flag any problems
             before it goes to licensing.
@@ -430,23 +428,44 @@ const resources = [
     href: 'https://licensing.fsu.edu/campus-use/campus-departments',
     desc: 'The internal-use rules our license operates under.',
   },
-  {
-    label: 'FSU Alumni Association — Club Leader Resources',
-    href: 'https://alumni.fsu.edu/clubs/resources',
-    desc: 'Club wordmarks and the branding basics written specifically for Seminole Clubs.',
-  },
 ];
 
 export default function FsuClubsFaq() {
   return (
     <Box>
-      <AppHeader />
+      {/* Standalone page: logo only, linked back to the main site — no site nav. */}
+      <Box
+        component="header"
+        sx={{
+          py: { xs: 2, md: 2.5 },
+          backgroundColor: '#0f0f0f',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+        }}
+      >
+        <Container maxWidth="lg">
+          <Box
+            component={Link}
+            href="/"
+            aria-label="687 Merch home"
+            sx={{ display: 'inline-flex', alignItems: 'center' }}
+          >
+            <Image
+              src="/687-logo.png"
+              alt="687 Merch"
+              width={144}
+              height={48}
+              style={{ width: 'auto', height: '48px', maxWidth: '100%' }}
+              priority
+            />
+          </Box>
+        </Container>
+      </Box>
 
       <main>
         {/* Hero */}
         <Box
           sx={{
-            pt: { xs: 14, md: 20 },
+            pt: { xs: 7, md: 10 },
             pb: { xs: 8, md: 12 },
             backgroundColor: '#0f0f0f',
             backgroundImage:
@@ -454,19 +473,12 @@ export default function FsuClubsFaq() {
           }}
         >
           <Container maxWidth="md">
-            <Chip
-              label="For FSU Alumni Clubs"
-              sx={{
-                mb: 3,
-                color: 'primary.main',
-                borderColor: 'primary.main',
-                fontWeight: 600,
-                letterSpacing: '0.05em',
-              }}
-              variant="outlined"
-            />
-            <Typography variant="h1" component="h1" sx={{ mb: 3 }}>
-              Club Merch, By The Book
+            <Typography
+              variant="h1"
+              component="h1"
+              sx={{ mb: 3, fontSize: { xs: '2.25rem', sm: '3rem', md: '3.75rem' } }}
+            >
+              FSU Alumni Club Merch, By The Book
             </Typography>
             <Typography
               variant="body1"
@@ -539,7 +551,7 @@ export default function FsuClubsFaq() {
             py: { xs: 8, md: 12 },
             backgroundColor: '#ffffff',
             color: '#000',
-            scrollMarginTop: '80px',
+            scrollMarginTop: '24px',
           }}
         >
           <Container maxWidth="lg">
@@ -740,15 +752,15 @@ export default function FsuClubsFaq() {
             >
               <BrushOutlined sx={{ color: 'primary.main', fontSize: 44, mb: 2 }} />
               <Typography variant="h2" component="h2" sx={{ mb: 2 }}>
-                Got a Date in Mind?
+                Does Your Club Need Merch?
               </Typography>
               <Typography
                 color="text.secondary"
                 sx={{ mb: 4, fontSize: '1.1rem', lineHeight: 1.7, maxWidth: 620, mx: 'auto' }}
               >
-                Tell us the date and roughly what you want. We&apos;ll tell you what&apos;s realistic,
-                what licensing will need, and what it costs — royalty included, before you
-                commit to anything.
+                We&apos;re happy to help. Tell us roughly what you have in mind and we&apos;ll walk
+                you through what licensing will need and what it costs — royalty included —
+                before you commit to anything.
               </Typography>
 
               <Box
