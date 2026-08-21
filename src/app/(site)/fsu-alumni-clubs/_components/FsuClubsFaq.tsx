@@ -328,10 +328,11 @@ const faqSections: FaqSection[] = [
               clubs ordering merch for club use.
             </Typography>
             <Typography>
-              One thing worth being clear about: this is an internal-use license. It is not a retail
-              license, so we are not the right vendor for merch a club intends to sell to the general
-              public through a store or a public storefront. If that is what you have in mind, talk to
-              us first and we will point you toward the right path.
+              One nuance worth knowing: the license covers us selling to your club, not us selling
+              to the general public directly. What your club does with the merch afterward is your
+              call — reselling it to members, moving it at a game watch, or running it as a
+              fundraiser are all fair game. The order just runs through the club rather than
+              straight from us to a buyer.
             </Typography>
           </>
         ),
