@@ -1,4 +1,5 @@
-import { WorkItem, Partner } from './types';
+import { WorkItem, Partner, TestimonialsData } from './types';
+import testimonialsData from '@/data/testimonials.json';
 
 export const siteCopy = {
   headline: 'THINK BIG. START SMALL.',
@@ -80,6 +81,8 @@ export const recentWork: WorkItem[] = [
     year: 2024,
   },
 ];
+
+export const testimonials = testimonialsData as TestimonialsData;
 
 export const partners: Partner[] = [
   { name: 'Sony Pictures', logo: '/images/partners/sony.png' },

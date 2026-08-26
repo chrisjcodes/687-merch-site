@@ -1,0 +1,99 @@
+{
+  "business": {
+    "name": "687 Merch",
+    "category": "Screen printing shop",
+    "overall_rating": 5.0,
+    "total_reviews": 7,
+    "address": "1505 4th St, Santa Monica, CA 90401, US",
+    "phone": "(424) 260-3076",
+    "website": "https://687merch.com"
+  },
+  "reviews": [
+    {
+      "reviewer_name": "Danny Lynn",
+      "reviewer_reviews_count": 1,
+      "reviewer_photos_count": 8,
+      "rating": 5,
+      "date_relative": "42 weeks ago",
+      "review_text": "Chris provided us with T-Shirts for the staff of our cafe. Really worked with us on the design. Quick turn around and hand delivered. Really happy. Had to make the shirts available for purchase by customers because of demand. Will do business with 687 Merch again.",
+      "owner_response": {
+        "date_relative": "42 weeks ago",
+        "text": "Thanks Danny! We love seeing your staff rocking the shirts every time we stop in for a coffee!"
+      }
+    },
+    {
+      "reviewer_name": "Liz J",
+      "reviewer_reviews_count": 5,
+      "reviewer_photos_count": 0,
+      "rating": 5,
+      "date_relative": "42 weeks ago",
+      "review_text": "687 Merch created crew shirts for my employees and me at my residential cleaning company. We had tried several large t-shirt printers we saw on TV, but the shirts didn't meet our expectations. Chris was very helpful in designing the shirts and selecting the right shirts and tanks. Our crew loves the shirts and we plan on ordering more soon!",
+      "owner_response": {
+        "date_relative": "42 weeks ago",
+        "text": "Thank you so much Liz! Let us know whenever you need more and we'd be happy to help! Thanks for choosing us!!"
+      }
+    },
+    {
+      "reviewer_name": "Juliana Gonzalez",
+      "reviewer_badge": "Local Guide",
+      "reviewer_reviews_count": 17,
+      "reviewer_photos_count": 37,
+      "rating": 5,
+      "date_relative": "43 weeks ago",
+      "review_text": "This is my go-to production shop! Chris is attentive, accommodating, and efficient. I've worked with 687 Merch for several years and our shirts always come out looking amazing. Chris goes above and beyond for his customers. You can truly tell how much he cares by the amazing quality of his products. I highly recommend them!",
+      "owner_response": {
+        "date_relative": "43 weeks ago",
+        "text": "Thank you, Juliana! We are so happy to be able to provide you and your club with swag! Go Noles!"
+      }
+    },
+    {
+      "reviewer_name": "Max Cain",
+      "reviewer_reviews_count": 6,
+      "reviewer_photos_count": 0,
+      "rating": 5,
+      "date_relative": "43 weeks ago",
+      "review_text": "If you operate your business in Southern California and you need custom prints, this is for sure the place to go. They are very professional and quick with orders. They're very quick and reliable and quality of products is always top tier, I have been using them for 2 years now and all of my customers are very happy with the shirts I get for my business.",
+      "owner_response": {
+        "date_relative": "43 weeks ago",
+        "text": "Thanks, Max! We love working with you as well. Always a pleasure to collaborate on whatever new ideas you have and make them become a reality!"
+      }
+    },
+    {
+      "reviewer_name": "Jenna Garagiola",
+      "reviewer_reviews_count": 1,
+      "reviewer_photos_count": 1,
+      "rating": 5,
+      "date_relative": "43 weeks ago",
+      "review_text": "I usually don't write reviews, but I had to for 687 Merch. My husband recently had some t-shirts made and I was blown away by how good they turned out. The design came from this old logo he had from the 90s. Honestly, I didn't think it could be salvaged, but Chris completely transformed it. The final design looks like something you'd buy in a trendy shop, not something pulled from a decades-old business card. The shirts themselves are also amazing...super soft and comfy, and they wash really well (no shrinking or fading, which is rare!). My husband has barely stopped wearing his. What really stood out was how personal the process felt. Chris clearly puts care into every detail, and it shows in the final product. If you want custom shirts that are both meaningful and high quality, this is the place.",
+      "owner_response": {
+        "date_relative": "43 weeks ago",
+        "text": "Thank you, Jenny. It means so much that you left us a review. We're happy to help with any future project you or your husband may have."
+      }
+    },
+    {
+      "reviewer_name": "Niko Vitacco",
+      "reviewer_reviews_count": 1,
+      "reviewer_photos_count": 2,
+      "rating": 5,
+      "date_relative": "43 weeks ago",
+      "review_text": "I can't recommend 687 Merch enough! For the 30-year anniversary of an old DJ business my buddy and I started back in the 90s, I wanted to do something special. All I had left was one of our original business cards - with a logo I half hand-drew and the rest slapped together in WordArt (yep, very 90s). Chris took that old card, worked his magic, and completely brought it back to life. He not only recreated the logo, he actually made it BETTER - giving it a true retro vibe that still feels modern. The shirts turned out amazing: super soft, fit great, and now we've got a piece of our history we can actually wear. If you've got an idea, even if it's just some old artwork or a rough sketch, 687 Merch will turn it into something you'll be proud to rock.",
+      "owner_response": {
+        "date_relative": "43 weeks ago",
+        "text": "Thank you so much, Niko. We were happy to help bring this to life for you and I'm glad that you and your buddy were able to enjoy this memory with one of our T-shirts."
+      }
+    },
+    {
+      "reviewer_name": "Taylor Crouse",
+      "reviewer_badge": "Local Guide",
+      "reviewer_reviews_count": 11,
+      "reviewer_photos_count": 9,
+      "rating": 5,
+      "date_relative": "43 weeks ago",
+      "review_text": "Great shirts and Service! Chris is the man. shirts came out even better than I expected. Super clean, comfortable. I am in process of ordering more right now!",
+      "owner_response": {
+        "date_relative": "43 weeks ago",
+        "text": "Taylor, thank you so much for your review. We really appreciate it and we're excited to get your next order out!"
+      }
+    }
+  ]
+}
