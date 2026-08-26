@@ -112,18 +112,18 @@ const faqSections: FaqSection[] = [
     title: 'Is This a Fit for Our Club?',
     items: [
       {
-        q: 'Can you print for our club if we’re nowhere near Tallahassee?',
+        q: 'Can you still print merch for us even if we’re not a West Coast club?',
         a: (
           <>
             <Typography paragraph>
-              Yes. We print for FSU clubs across the country and ship to wherever you are. Your club
-              does not need to be near campus, and neither do we — the process and the licensing
-              rules are the same either way.
+              Yes. Our shop is on the West Coast, and we print and ship for FSU clubs all over the
+              country — most of the clubs we work with are nowhere near us. Nothing about the
+              process or the licensing changes based on where your club sits.
             </Typography>
             <Typography>
               The only thing distance really changes is the shipping leg at the end, so if you are
-              far out — or shipping to an event venue instead of somebody&apos;s address — build
-              in a little extra room.
+              far from us — or shipping to an event venue instead of somebody&apos;s address —
+              build in a little extra room.
             </Typography>
           </>
         ),
