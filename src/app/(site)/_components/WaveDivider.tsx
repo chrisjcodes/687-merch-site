@@ -1,17 +1,18 @@
 'use client';
 
 import React from 'react';
-import { Box } from '@mui/material';
+import { Box, SxProps, Theme } from '@mui/material';
 
 interface WaveDividerProps {
   fromColor: string;
   toColor: string;
   flipY?: boolean;
   height?: number;
+  sx?: SxProps<Theme>;
 }
 
 // Animated wave divider — three layers at different speeds, mirroring the van's wavy stripe motif
-export default function WaveDivider({ fromColor, toColor, flipY = false, height = 80 }: WaveDividerProps) {
+export default function WaveDivider({ fromColor, toColor, flipY = false, height = 80, sx }: WaveDividerProps) {
   return (
     <Box
       sx={{
@@ -21,6 +22,7 @@ export default function WaveDivider({ fromColor, toColor, flipY = false, height 
         overflow: 'hidden',
         flexShrink: 0,
         ...(flipY && { transform: 'scaleY(-1)' }),
+        ...sx,
 
         '@keyframes waveSlowL': {
           '0%': { transform: 'translateX(0)' },

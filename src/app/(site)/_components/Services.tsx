@@ -2,10 +2,10 @@
 
 import React from 'react';
 import { Box, Typography, Container } from '@mui/material';
-import Image from 'next/image';
 import { motion, type Variants } from 'framer-motion';
 import { services } from '@/lib/data';
 import WaveDivider from './WaveDivider';
+import { ScreenPrintIcon, TransferSheetsIcon, VanIcon } from './ServiceIcons';
 
 const stagger: Variants = {
   hidden: {},
@@ -17,16 +17,16 @@ const cardVariant: Variants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
-const SERVICE_IMAGES: Record<string, string | null> = {
-  traditional: '/images/service-traditional.jpg',
-  flexible: '/images/service-flexible.jpg',
-  mobile: '/images/van.png',
+const SERVICE_ICONS: Record<string, React.ReactNode> = {
+  traditional: <ScreenPrintIcon />,
+  flexible:    <TransferSheetsIcon />,
+  mobile:      <VanIcon />,
 };
 
 export default function Services() {
   return (
     <>
-      <WaveDivider fromColor="#0f0f0f" toColor="#fff" height={80} />
+      <WaveDivider fromColor="#0f0f0f" toColor="#fff" height={80} sx={{ mt: '-2px' }} />
 
       <Box id="services" sx={{ py: { xs: 8, md: 12 }, backgroundColor: '#fff', color: '#000' }}>
         <Container maxWidth="lg">
@@ -64,11 +64,7 @@ export default function Services() {
                 gap: 3,
               }}
             >
-              {services.map((service) => {
-                const imageSrc = SERVICE_IMAGES[service.id] ?? null;
-                const hasImage = imageSrc !== null;
-
-                return (
+              {services.map((service) => (
                   <motion.div
                     key={service.id}
                     variants={cardVariant}
@@ -86,56 +82,23 @@ export default function Services() {
                         backgroundColor: service.featured ? '#0f0f0f' : '#fafafa',
                       }}
                     >
-                      {/* Image */}
-                      {hasImage && (
-                        <Box sx={{ position: 'relative', height: 200, flexShrink: 0, overflow: 'hidden' }}>
-                          <Image
-                            src={imageSrc as string}
-                            alt={service.title}
-                            fill
-                            style={{ objectFit: 'cover', objectPosition: 'center' }}
-                          />
-                        </Box>
-                      )}
-
-                      {/* No-image placeholder showing the icon large */}
-                      {!hasImage && (
-                        <Box
-                          sx={{
-                            height: 140,
-                            flexShrink: 0,
-                            backgroundColor: service.featured ? '#1a1a1a' : '#f0f0f0',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                          }}
-                        >
-                          <Typography
-                            sx={{
-                              fontFamily: 'var(--font-anton), "Anton", sans-serif',
-                              fontSize: '5rem',
-                              lineHeight: 1,
-                              color: service.featured ? '#2a2a2a' : '#ddd',
-                            }}
-                          >
-                            {service.icon}
-                          </Typography>
-                        </Box>
-                      )}
+                      {/* Illustrated icon header */}
+                      <Box
+                        sx={{
+                          aspectRatio: '14/9',
+                          flexShrink: 0,
+                          overflow: 'hidden',
+                          backgroundColor: service.featured ? '#111' : '#f5f5f5',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          p: 3,
+                        }}
+                      >
+                        {SERVICE_ICONS[service.id]}
+                      </Box>
 
                       <Box sx={{ p: { xs: 3, md: 4 }, flex: 1, display: 'flex', flexDirection: 'column' }}>
-                        <Typography
-                          sx={{
-                            fontFamily: 'var(--font-anton), "Anton", sans-serif',
-                            fontSize: '2rem',
-                            lineHeight: 1,
-                            color: service.featured ? '#f2bf00' : '#e0e0e0',
-                            mb: 1.5,
-                          }}
-                        >
-                          {service.icon}
-                        </Typography>
-
                         <Typography
                           variant="h4"
                           component="h3"
@@ -175,8 +138,7 @@ export default function Services() {
                       </Box>
                     </Box>
                   </motion.div>
-                );
-              })}
+              ))}
             </Box>
           </motion.div>
 
@@ -187,7 +149,7 @@ export default function Services() {
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             <Box sx={{ mt: 6, textAlign: 'center' }}>
-              <Typography variant="body1" sx={{ color: '#888', fontSize: '0.92rem' }}>
+              <Typography variant="body1" sx={{ color: '#555', fontSize: '0.92rem' }}>
                 We also offer{' '}
                 <Box component="span" sx={{ fontWeight: 700, color: '#000' }}>
                   design services

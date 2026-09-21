@@ -1,8 +1,8 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Box, Typography, Button, Container } from '@mui/material';
-import { motion, type Variants } from 'framer-motion';
+import { motion, useAnimation, type Variants } from 'framer-motion';
 import { siteCopy } from '@/lib/data';
 
 const contentVariants: Variants = {
@@ -12,10 +12,38 @@ const contentVariants: Variants = {
 
 const itemVariant: Variants = {
   hidden: { opacity: 0, y: 28 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.65 } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55 } },
 };
 
 export default function Hero() {
+  const controls = useAnimation();
+
+  useEffect(() => {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const start = () => {
+      if (prefersReduced) {
+        controls.set('visible');
+      } else {
+        controls.start('visible');
+      }
+    };
+
+    if (document.visibilityState === 'visible') {
+      start();
+    } else {
+      // Tab opened in background — wait until it's foregrounded
+      const handler = () => {
+        if (document.visibilityState === 'visible') {
+          start();
+          document.removeEventListener('visibilitychange', handler);
+        }
+      };
+      document.addEventListener('visibilitychange', handler);
+      return () => document.removeEventListener('visibilitychange', handler);
+    }
+  }, [controls]);
+
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -42,7 +70,7 @@ export default function Hero() {
         maxWidth="lg"
         sx={{ position: 'relative', zIndex: 2, textAlign: 'center', px: { xs: 3, sm: 4 } }}
       >
-        <motion.div initial="hidden" animate="visible" variants={contentVariants}>
+        <motion.div initial="hidden" animate={controls} variants={contentVariants}>
           <motion.div variants={itemVariant}>
             <Typography
               variant="h1"

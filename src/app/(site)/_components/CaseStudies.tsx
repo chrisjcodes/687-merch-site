@@ -69,7 +69,7 @@ export default function CaseStudies({ onItemClick }: CaseStudiesProps) {
             </Typography>
             <Typography
               variant="body1"
-              sx={{ color: '#666', maxWidth: 520, mx: 'auto', lineHeight: 1.75 }}
+              sx={{ color: '#aaa', maxWidth: 520, mx: 'auto', lineHeight: 1.75 }}
             >
               Every project is different. Here&apos;s why each client chose the model they did.
             </Typography>
@@ -197,14 +197,14 @@ export default function CaseStudies({ onItemClick }: CaseStudiesProps) {
                           {item.context && (
                             <Typography
                               variant="body2"
-                              sx={{ color: '#777', lineHeight: 1.65, fontSize: '0.82rem', flex: 1 }}
+                              sx={{ color: '#aaa', lineHeight: 1.65, fontSize: '0.82rem', flex: 1 }}
                             >
                               {item.context}
                             </Typography>
                           )}
 
                           {item.year && (
-                            <Typography variant="caption" sx={{ color: '#444', display: 'block' }}>
+                            <Typography variant="caption" sx={{ color: '#777', display: 'block' }}>
                               {item.year}
                             </Typography>
                           )}
@@ -233,14 +233,14 @@ export default function CaseStudies({ onItemClick }: CaseStudiesProps) {
                     width: 9,
                     height: 9,
                     borderRadius: '50%',
-                    backgroundColor: MODEL_COLORS[key].bg,
-                    border: key === 'traditional' ? '1px solid #444' : 'none',
+                    backgroundColor: key === 'mobile' ? '#f2bf00' : MODEL_COLORS[key].bg,
+                    border: key === 'traditional' ? '1px solid #666' : key === 'mobile' ? 'none' : 'none',
                     flexShrink: 0,
                   }}
                 />
                 <Typography
                   variant="caption"
-                  sx={{ color: '#555', fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.5px' }}
+                  sx={{ color: '#aaa', fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.5px' }}
                 >
                   {label}
                 </Typography>

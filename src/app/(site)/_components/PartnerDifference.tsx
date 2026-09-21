@@ -60,7 +60,7 @@ export default function PartnerDifference() {
               We&apos;re your merch partner.<br />
               Not just your printer.
             </Typography>
-            <Typography variant="body1" sx={{ color: '#777', fontSize: '1.1rem', lineHeight: 1.8, maxWidth: 640 }}>
+            <Typography variant="body1" sx={{ color: '#aaa', fontSize: '1.1rem', lineHeight: 1.8, maxWidth: 640 }}>
               Most print shops take your order, hand it back, and move on. We work alongside you
               to figure out which production model actually fits your business—and with Mobile Merch,
               we put our own resources on the line to make it work. You shouldn&apos;t have to absorb
@@ -79,7 +79,7 @@ export default function PartnerDifference() {
         >
           <Typography
             variant="overline"
-            sx={{ color: '#444', letterSpacing: '0.15em', fontSize: '0.7rem', display: 'block', mb: 4 }}
+            sx={{ color: '#888', letterSpacing: '0.15em', fontSize: '0.7rem', display: 'block', mb: 4 }}
           >
             How Mobile Merch Works
           </Typography>
@@ -115,12 +115,14 @@ export default function PartnerDifference() {
                 }}
               >
                 <Typography
+                  aria-hidden="true"
                   sx={{
                     fontFamily: 'var(--font-anton), "Anton", sans-serif',
                     fontSize: '2.5rem',
                     lineHeight: 1,
-                    color: i === 3 ? 'primary.main' : '#252525',
+                    color: 'primary.main',
                     mb: 2,
+                    opacity: i === 3 ? 1 : 0.4,
                   }}
                 >
                   {step.number}
@@ -131,13 +133,14 @@ export default function PartnerDifference() {
                 >
                   {step.label}
                 </Typography>
-                <Typography variant="body2" sx={{ color: '#555', lineHeight: 1.65, fontSize: '0.85rem' }}>
+                <Typography variant="body2" sx={{ color: '#999', lineHeight: 1.65, fontSize: '0.85rem' }}>
                   {step.detail}
                 </Typography>
 
                 {/* Connector arrow (desktop only, not last) */}
                 {i < 3 && (
                   <Box
+                    aria-hidden="true"
                     sx={{
                       display: { xs: 'none', md: 'flex' },
                       position: 'absolute',
@@ -150,7 +153,7 @@ export default function PartnerDifference() {
                       alignItems: 'center',
                       justifyContent: 'center',
                       backgroundColor: '#0f0f0f',
-                      color: '#333',
+                      color: '#666',
                       fontSize: '1rem',
                     }}
                   >
@@ -170,41 +173,13 @@ export default function PartnerDifference() {
           custom={0}
           variants={fadeUp}
         >
-          <Box
-            sx={{
-              borderTop: '1px solid #1e1e1e',
-              pt: 5,
-              display: 'flex',
-              flexDirection: { xs: 'column', md: 'row' },
-              gap: 4,
-              alignItems: { md: 'center' },
-              justifyContent: 'space-between',
-            }}
-          >
-            <Typography variant="body1" sx={{ color: '#555', maxWidth: 480, lineHeight: 1.75 }}>
+          <Box sx={{ borderTop: '1px solid #1e1e1e', pt: 5 }}>
+            <Typography variant="body1" sx={{ color: '#555', maxWidth: 640, lineHeight: 1.75 }}>
               At the end of the event, we pack up and leave with our blank inventory—every unsold
               garment goes back in the van. You walk away with zero finished merchandise to store,
               manage, or mark down. Any unused screen printing is still yours—your transfer sheets
               can be applied to future orders or future events whenever you&apos;re ready.
             </Typography>
-            <Box sx={{ flexShrink: 0, textAlign: { xs: 'left', md: 'right' } }}>
-              <Typography
-                sx={{
-                  fontFamily: 'var(--font-anton), "Anton", sans-serif',
-                  fontSize: { xs: '3.5rem', md: '5rem' },
-                  lineHeight: 1,
-                  color: '#fff',
-                }}
-              >
-                $0
-              </Typography>
-              <Typography
-                variant="caption"
-                sx={{ color: '#444', textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.7rem' }}
-              >
-                Leftover inventory
-              </Typography>
-            </Box>
           </Box>
         </motion.div>
 
