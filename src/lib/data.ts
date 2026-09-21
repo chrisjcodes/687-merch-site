@@ -1,9 +1,9 @@
 import { WorkItem, Partner } from './types';
 
 export const siteCopy = {
-  headline: 'MERCH ON YOUR TERMS.',
+  headline: 'YOUR MERCH PARTNER.',
   subhead:
-    'Three production models designed around how you actually work—not how a print shop wants you to order.',
+    'Most printers take your order and hand it back. We work alongside you to figure out the right production model—and put our own resources on the line to make it work.',
 };
 
 export const services = [
@@ -24,8 +24,8 @@ export const services = [
   {
     id: 'mobile',
     title: 'Mobile Merch',
-    tagline: 'We bring the shop to your event.',
-    body: 'You purchase the transfers and provide a deposit. We bring blank merchandise, equipment, and staff to run your merch shop on-site. Customers buy at the event and we produce on the spot. Once sales recoup your deposit, it\'s returned to you and we split remaining profits. Zero leftover finished inventory.',
+    tagline: 'We bring the shop. You keep the upside.',
+    body: 'You purchase the transfers and put down a deposit covering only hard costs—blanks and materials, no markup on risk. We bring the equipment, inventory, and staff and run your merch booth on-site. Event revenue pays back your deposit first. Then we split what\'s left. We only profit when you do. At the end of the night, we pack up and leave with our blanks. You walk away with zero finished inventory to manage.',
     icon: '03',
     featured: true,
   },

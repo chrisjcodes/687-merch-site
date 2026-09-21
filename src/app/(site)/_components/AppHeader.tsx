@@ -60,16 +60,13 @@ export default function AppHeader() {
       <Container maxWidth="lg">
         <Toolbar sx={{ px: 0 }}>
           <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
+            {/* White logo on transparent dark nav; black logo when scrolled (nav goes dark) */}
             <Image
-              src="/687-logo.png"
+              src={scrolled ? '/images/687-logo-white.png' : '/images/687-logo-white.png'}
               alt="687 Merch"
               width={144}
               height={48}
-              style={{ 
-                width: 'auto',
-                height: '48px',
-                maxWidth: '100%'
-              }}
+              style={{ width: 'auto', height: '42px', maxWidth: '100%' }}
               priority
             />
           </Box>
@@ -99,18 +96,6 @@ export default function AppHeader() {
               }}
             >
               Case Studies
-            </Button>
-            <Button
-              color="inherit"
-              onClick={() => scrollToSection('partners')}
-              sx={{
-                fontWeight: 600,
-                textTransform: 'uppercase',
-                letterSpacing: '0.5px',
-                '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.1)' },
-              }}
-            >
-              Partners
             </Button>
             <Button
               color="inherit"
@@ -186,24 +171,13 @@ export default function AppHeader() {
               />
             </ListItem>
             
-            <ListItem 
-              onClick={() => scrollToSection('partners')}
-              sx={{
-                cursor: 'pointer',
-                '&:hover': {
-                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                },
-              }}
+            <ListItem
+              onClick={() => scrollToSection('contact')}
+              sx={{ cursor: 'pointer', '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.1)' } }}
             >
-              <ListItemText 
-                primary="PARTNERS" 
-                sx={{
-                  '& .MuiTypography-root': {
-                    fontWeight: 600,
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.5px',
-                  }
-                }}
+              <ListItemText
+                primary="CONTACT"
+                sx={{ '& .MuiTypography-root': { fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.5px' } }}
               />
             </ListItem>
             

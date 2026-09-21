@@ -5,8 +5,8 @@ import { Box } from '@mui/material';
 import AppHeader from './_components/AppHeader';
 import Hero from './_components/Hero';
 import Services from './_components/Services';
+import PartnerDifference from './_components/PartnerDifference';
 import CaseStudies from './_components/CaseStudies';
-import Partners from './_components/Partners';
 import ContactForm from './_components/ContactForm';
 import AppFooter from './_components/AppFooter';
 import Lightbox from './_components/Lightbox';
@@ -23,23 +23,15 @@ export default function Home() {
     setLightboxOpen(true);
   };
 
-  const handleLightboxClose = () => {
-    setLightboxOpen(false);
-  };
-
-  const handleLightboxNavigate = (index: number) => {
-    setCurrentImageIndex(index);
-  };
-
   return (
     <Box>
       <AppHeader />
-      
+
       <main>
         <Hero />
         <Services />
+        <PartnerDifference />
         <CaseStudies onItemClick={handleWorkItemClick} />
-        <Partners />
         <ContactForm />
       </main>
 
@@ -47,10 +39,10 @@ export default function Home() {
 
       <Lightbox
         open={lightboxOpen}
-        onClose={handleLightboxClose}
+        onClose={() => setLightboxOpen(false)}
         images={lightboxImages}
         currentIndex={currentImageIndex}
-        onNavigate={handleLightboxNavigate}
+        onNavigate={(index: number) => setCurrentImageIndex(index)}
       />
     </Box>
   );
