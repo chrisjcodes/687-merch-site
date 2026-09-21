@@ -59,8 +59,8 @@ export const recentWork: WorkItem[] = [
     images: ['/images/work/humungulus-setsuko-front-back.jpg'],
     tags: ['Music', 'Artist', 'Apparel'],
     year: 2026,
-    productionModel: 'flexible',
-    context: 'Merch for Humungulus Records — front print referencing the anime characters Setsuko and Seita with "We Can Be Fragile Together," back print featuring a detailed illustrative design. Single red ink on mustard Comfort Colors. Printed to transfers for flexible restocking.',
+    productionModel: 'traditional',
+    context: 'A collab shirt for Setsuko and Seita — a band on the Humungulus Records label — printed for their show. Front features an illustrative back print with "We Can Be Fragile Together," front chest has the Humungulus Records mark. Single red ink on mustard Comfort Colors, traditional run for the event.',
   },
   {
     slug: 'drip-king-la',
