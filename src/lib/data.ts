@@ -99,8 +99,8 @@ export const recentWork: WorkItem[] = [
     images: ['/images/work/SanRemoNotLikeUs.png'],
     tags: ['Music', 'Culture'],
     year: 2024,
-    productionModel: 'flexible',
-    context: 'Music venue selling merch across multiple events—screen printing to transfer sheets made it easy to restock between shows and apply to whatever garments were trending.',
+    productionModel: 'traditional',
+    context: 'Music venue needed tees for a specific run of shows—defined design, one order, delivered and done.',
   },
   {
     slug: 'sf-fsu-design',
