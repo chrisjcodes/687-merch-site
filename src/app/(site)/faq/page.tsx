@@ -500,38 +500,38 @@ export default function FaqPage() {
       {/* ── Theme filters ─────────────────────────────────────────────────────── */}
       <Box sx={{ borderBottom: '1px solid #1a1a1a', position: 'sticky', top: { xs: 56, md: 64 }, zIndex: 10, backgroundColor: 'rgba(15,15,15,0.97)', backdropFilter: 'blur(10px)' }}>
         <Container maxWidth="lg">
-          <Box sx={{ py: 2, display: 'flex', gap: 1.5, overflowX: 'auto', alignItems: 'center', pb: 2, scrollbarWidth: 'none', '&::-webkit-scrollbar': { display: 'none' } }}>
+          <Box sx={{ py: 3, display: 'flex', gap: 2, overflowX: 'auto', alignItems: 'center', justifyContent: 'center', scrollbarWidth: 'none', '&::-webkit-scrollbar': { display: 'none' } }}>
             {THEMES.map((theme) => (
               <Box
                 key={theme.value}
                 onClick={() => setActiveTheme(theme.value)}
                 sx={{
-                  px: 2.5,
-                  py: 0.75,
+                  px: 3,
+                  py: 1,
                   borderRadius: 5,
                   border: '1px solid',
-                  borderColor: activeTheme === theme.value ? '#f2bf00' : '#252525',
-                  backgroundColor: activeTheme === theme.value ? 'rgba(242,191,0,0.08)' : 'transparent',
-                  color: activeTheme === theme.value ? '#f2bf00' : '#666',
-                  fontSize: '0.78rem',
-                  fontWeight: activeTheme === theme.value ? 700 : 400,
-                  letterSpacing: '0.04em',
+                  borderColor: activeTheme === theme.value ? '#f2bf00' : '#2a2a2a',
+                  backgroundColor: activeTheme === theme.value ? 'rgba(242,191,0,0.1)' : '#111',
+                  color: activeTheme === theme.value ? '#f2bf00' : '#555',
+                  fontSize: '0.82rem',
+                  fontWeight: activeTheme === theme.value ? 700 : 500,
+                  letterSpacing: '0.05em',
                   cursor: 'pointer',
                   whiteSpace: 'nowrap',
                   transition: 'all 0.15s ease',
-                  '&:hover': { borderColor: '#444', color: '#aaa' },
+                  '&:hover': { borderColor: '#3a3a3a', color: '#aaa' },
                   flexShrink: 0,
                 }}
               >
                 {theme.label}
               </Box>
             ))}
-            {(term || activeTheme !== 'all') && (
-              <Typography variant="caption" sx={{ color: '#555', fontSize: '0.76rem', ml: 'auto', flexShrink: 0, whiteSpace: 'nowrap' }}>
-                {totalResults} result{totalResults !== 1 ? 's' : ''}
-              </Typography>
-            )}
           </Box>
+          {(term || activeTheme !== 'all') && (
+            <Typography variant="caption" sx={{ color: '#444', fontSize: '0.74rem', textAlign: 'center', display: 'block', pb: 1.5 }}>
+              {totalResults} result{totalResults !== 1 ? 's' : ''}
+            </Typography>
+          )}
         </Container>
       </Box>
 
