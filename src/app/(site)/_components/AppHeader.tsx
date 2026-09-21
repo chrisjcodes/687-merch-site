@@ -78,14 +78,24 @@ export default function AppHeader() {
           <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 2 }}>
             <Button
               color="inherit"
+              onClick={() => scrollToSection('services')}
+              sx={{
+                fontWeight: 600,
+                textTransform: 'uppercase',
+                letterSpacing: '0.5px',
+                '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.1)' },
+              }}
+            >
+              Services
+            </Button>
+            <Button
+              color="inherit"
               onClick={() => scrollToSection('work')}
               sx={{
                 fontWeight: 600,
                 textTransform: 'uppercase',
                 letterSpacing: '0.5px',
-                '&:hover': {
-                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                },
+                '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.1)' },
               }}
             >
               Work
@@ -97,9 +107,7 @@ export default function AppHeader() {
                 fontWeight: 600,
                 textTransform: 'uppercase',
                 letterSpacing: '0.5px',
-                '&:hover': {
-                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                },
+                '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.1)' },
               }}
             >
               Partners
@@ -111,9 +119,7 @@ export default function AppHeader() {
                 fontWeight: 600,
                 textTransform: 'uppercase',
                 letterSpacing: '0.5px',
-                '&:hover': {
-                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                },
+                '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.1)' },
               }}
             >
               Contact
@@ -161,7 +167,16 @@ export default function AppHeader() {
           </Box>
           
           <List>
-            <ListItem 
+            <ListItem
+              onClick={() => scrollToSection('services')}
+              sx={{ cursor: 'pointer', '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.1)' } }}
+            >
+              <ListItemText
+                primary="SERVICES"
+                sx={{ '& .MuiTypography-root': { fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.5px' } }}
+              />
+            </ListItem>
+            <ListItem
               onClick={() => scrollToSection('work')}
               sx={{
                 cursor: 'pointer',
@@ -170,8 +185,8 @@ export default function AppHeader() {
                 },
               }}
             >
-              <ListItemText 
-                primary="WORK" 
+              <ListItemText
+                primary="WORK"
                 sx={{
                   '& .MuiTypography-root': {
                     fontWeight: 600,

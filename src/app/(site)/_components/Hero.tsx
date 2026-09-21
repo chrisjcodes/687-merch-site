@@ -67,18 +67,41 @@ export default function Hero() {
           {siteCopy.subhead}
         </Typography>
         
-        <Button
-          variant="contained"
-          size="large"
-          onClick={scrollToContact}
-          sx={{
-            px: 4,
-            py: 1.5,
-          }}
-        >
-          Get a Quote
-        </Button>
+        <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap' }}>
+          <Button
+            variant="contained"
+            size="large"
+            onClick={() => {
+              const el = document.getElementById('services');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }}
+            sx={{ px: 4, py: 1.5 }}
+          >
+            See How It Works
+          </Button>
+          <Button
+            variant="outlined"
+            size="large"
+            color="inherit"
+            onClick={scrollToContact}
+            sx={{
+              px: 4,
+              py: 1.5,
+              borderColor: 'rgba(255,255,255,0.5)',
+              '&:hover': { borderColor: '#fff', backgroundColor: 'rgba(255,255,255,0.08)' },
+            }}
+          >
+            Get a Quote
+          </Button>
+        </Box>
       </Container>
+
+      {/* Wave bottom edge */}
+      <Box sx={{ position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 3, lineHeight: 0 }}>
+        <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style={{ display: 'block', width: '100%', height: 60 }}>
+          <path d="M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,60 L0,60 Z" fill="#fff" />
+        </svg>
+      </Box>
     </Box>
   );
 }

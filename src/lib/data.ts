@@ -1,10 +1,35 @@
 import { WorkItem, Partner } from './types';
 
 export const siteCopy = {
-  headline: 'THINK BIG. START SMALL.',
+  headline: 'MERCH ON YOUR TERMS.',
   subhead:
-    'We help brands, artists, and small businesses launch and refine merchandise programs with flexible, small-batch production and creative support. Experiment, scale, and connect with your audience—without the big upfront costs.',
+    'Three production models designed around how you actually work—not how a print shop wants you to order.',
 };
+
+export const services = [
+  {
+    id: 'traditional',
+    title: 'Traditional Production',
+    tagline: 'The straightforward option.',
+    body: 'We work with you on the design, you choose your garments, sizes, colors and quantities, and we decorate everything and deliver the finished order to you.',
+    icon: '01',
+  },
+  {
+    id: 'flexible',
+    title: 'Flexible Merch Production',
+    tagline: 'Quantity pricing without quantity commitment.',
+    body: 'We produce your designs as professional plastisol screen-print transfers. You purchase the prints upfront but decide when and how to use them—on any garment, color, or size mix, whenever you\'re ready. Lower print costs from quantity without predicting exactly what you\'ll need months out.',
+    icon: '02',
+  },
+  {
+    id: 'mobile',
+    title: 'Mobile Merch',
+    tagline: 'We bring the shop to your event.',
+    body: 'You purchase the transfers and provide a deposit. We bring blank merchandise, equipment, and staff to run your merch shop on-site. Customers buy at the event and we produce on the spot. Once sales recoup your deposit, it\'s returned to you and we split remaining profits. Zero leftover finished inventory.',
+    icon: '03',
+    featured: true,
+  },
+];
 
 export const recentWork: WorkItem[] = [
   {
