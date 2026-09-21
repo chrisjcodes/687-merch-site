@@ -6,12 +6,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   // Static pages
   const staticPages = [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 1,
-    },
+    { url: baseUrl, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 1 },
+    { url: `${baseUrl}/faq`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.9 },
+    { url: `${baseUrl}/mobile-risk`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/flex-catalog`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/mobile-experience`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/mobile-logistics`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.8 },
   ]
   
   // Dynamic work pages

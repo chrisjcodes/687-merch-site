@@ -72,7 +72,15 @@ export default function PitchLayout({ children }: { children: React.ReactNode })
                 height={34}
                 style={{ width: 'auto', height: '20px', opacity: 0.25 }}
               />
-              <Box sx={{ display: 'flex', gap: { xs: 3, sm: 4 }, flexWrap: 'wrap' }}>
+              <Box sx={{ display: 'flex', gap: { xs: 3, sm: 4 }, flexWrap: 'wrap', alignItems: 'center' }}>
+                <Typography
+                  component="a"
+                  href="/faq"
+                  variant="caption"
+                  sx={{ color: '#888', textDecoration: 'none', '&:hover': { color: '#f2bf00' }, transition: 'color 0.15s' }}
+                >
+                  FAQ
+                </Typography>
                 <Typography
                   component="a"
                   href="tel:+14242603076"
