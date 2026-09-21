@@ -16,23 +16,23 @@ const fadeUp: Variants = {
 const steps = [
   {
     number: '01',
-    label: 'You pay a deposit',
-    detail: 'Covers hard costs only—blank merchandise and production materials. No markup on risk.',
+    label: 'You pay for your transfers',
+    detail: 'Your artwork gets screen printed as plastisol transfers. You own them—use any leftovers however you want, whenever you want.',
   },
   {
     number: '02',
-    label: 'We run the booth',
-    detail: 'Our crew shows up with equipment, inventory, and staff. You focus on your event.',
+    label: 'You put down an operational deposit',
+    detail: 'Covers our labor hours, travel, and event overhead—gas, van costs, power. Not a cent goes toward blanks.',
   },
   {
     number: '03',
-    label: 'Sales cover your deposit',
-    detail: 'Event revenue pays back your deposit first—before we take anything.',
+    label: 'We bring everything else',
+    detail: 'Blank garments, equipment, van, and staff—entirely at our cost and risk. You pay nothing for inventory.',
   },
   {
     number: '04',
-    label: "We split what's left",
-    detail: 'Remaining profits are shared. We only win when you win.',
+    label: 'We split what\'s left',
+    detail: 'Event sales return your deposit first. Then we split remaining profits. We only win when you do.',
   },
 ];
 
@@ -182,9 +182,10 @@ export default function PartnerDifference() {
             }}
           >
             <Typography variant="body1" sx={{ color: '#555', maxWidth: 480, lineHeight: 1.75 }}>
-              At the end of the event, we pack up and take our blank inventory. You walk away with
-              zero leftover finished merchandise to manage, store, or mark down—and any unused
-              transfers are still yours for future events.
+              At the end of the event, we pack up and leave with our blank inventory—every unsold
+              garment goes back in the van. You walk away with zero finished merchandise to store,
+              manage, or mark down. Any unused transfers are still yours to use at future events or
+              future orders, however you see fit.
             </Typography>
             <Box sx={{ flexShrink: 0, textAlign: { xs: 'left', md: 'right' } }}>
               <Typography

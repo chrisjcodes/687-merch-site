@@ -25,7 +25,7 @@ export const services = [
     id: 'mobile',
     title: 'Mobile Merch',
     tagline: 'We bring the shop. You keep the upside.',
-    body: 'You purchase the transfers and put down a deposit covering only hard costs—blanks and materials, no markup on risk. We bring the equipment, inventory, and staff and run your merch booth on-site. Event revenue pays back your deposit first. Then we split what\'s left. We only profit when you do. At the end of the night, we pack up and leave with our blanks. You walk away with zero finished inventory to manage.',
+    body: 'You pay to have your artwork printed as transfers—you own those regardless of how the event goes. You also put down an operational deposit covering our labor, travel, and event overhead. We bring the blank garments, equipment, van, and staff entirely at our own cost. Event sales return your deposit first, then we split remaining profits. We only win when you do—and you walk away with zero finished inventory.',
     icon: '03',
     featured: true,
   },
