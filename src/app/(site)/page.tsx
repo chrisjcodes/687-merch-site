@@ -29,8 +29,8 @@ export default function Home() {
 
       <main>
         <Hero />
-        <ProductionModels />
         <MerchPartner />
+        <ProductionModels />
         <CaseStudies onItemClick={handleWorkItemClick} />
         <ContactForm />
       </main>
