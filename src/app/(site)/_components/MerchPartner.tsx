@@ -5,6 +5,7 @@ import { Box, Typography, Container } from '@mui/material';
 import { motion } from 'framer-motion';
 import WaveDivider from './WaveDivider';
 import Link from 'next/link';
+import { useTrackSection } from '@/hooks/useTrackSection';
 
 const problems = [
   {
@@ -32,11 +33,12 @@ const cardVariant = {
 };
 
 export default function MerchPartner() {
+  const sectionRef = useTrackSection('MerchPartner');
   return (
     <>
       <WaveDivider fromColor="#0f0f0f" toColor="#fff" height={80} sx={{ mt: '-2px' }} />
 
-      <Box id="how-we-work" sx={{ py: { xs: 10, md: 14 }, backgroundColor: '#fff', color: '#000' }}>
+      <Box ref={sectionRef} id="how-we-work" sx={{ py: { xs: 10, md: 14 }, backgroundColor: '#fff', color: '#000' }}>
         <Container maxWidth="lg">
 
           <motion.div

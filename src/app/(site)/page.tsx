@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Box } from '@mui/material';
+import { track } from '@vercel/analytics/react';
 import AppHeader from './_components/AppHeader';
 import Hero from './_components/Hero';
 import MerchPartner from './_components/MerchPartner';
@@ -18,6 +19,7 @@ export default function Home() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const handleWorkItemClick = (item: typeof recentWork[0]) => {
+    track('work_item_clicked', { title: item.title, model: item.productionModel ?? 'unknown' });
     setLightboxImages(item.images);
     setCurrentImageIndex(0);
     setLightboxOpen(true);

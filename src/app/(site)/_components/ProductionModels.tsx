@@ -3,6 +3,7 @@
 import React from 'react';
 import { Box, Typography, Container } from '@mui/material';
 import { motion } from 'framer-motion';
+import { useTrackSection } from '@/hooks/useTrackSection';
 interface Model {
   label: string;
   headline: string;
@@ -87,8 +88,9 @@ const cardVariant = {
 };
 
 export default function ProductionModels() {
+  const sectionRef = useTrackSection('ProductionModels');
   return (
-    <Box sx={{ py: { xs: 10, md: 14 }, backgroundColor: '#0f0f0f' }}>
+    <Box ref={sectionRef} sx={{ py: { xs: 10, md: 14 }, backgroundColor: '#0f0f0f' }}>
       <Container maxWidth="lg">
 
         <motion.div

@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { Box, Typography, Container, InputBase } from '@mui/material';
 import { motion } from 'framer-motion';
+import { track } from '@vercel/analytics/react';
 import AppHeader from '../_components/AppHeader';
 import AppFooter from '../_components/AppFooter';
 
@@ -357,10 +358,26 @@ export default function FaqPage() {
   const totalResults = isFlat ? flatItems.length : groupedSections.reduce((n, s) => n + s.items.length, 0);
   const isEmpty = isFlat ? flatItems.length === 0 : false;
 
-  const toggleOpen = (id: string) => {
+  // Debounced search tracking — fires 1.5s after the user stops typing
+  const searchTracked = useRef('');
+  useEffect(() => {
+    if (!term || term === searchTracked.current) return;
+    const timer = setTimeout(() => {
+      searchTracked.current = term;
+      track('faq_searched', { query: term, results: flatItems.length });
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, [term, flatItems.length]);
+
+  const toggleOpen = (id: string, question: string, sectionLabel: string) => {
     setOpenIds((prev) => {
       const next = new Set(prev);
-      next.has(id) ? next.delete(id) : next.add(id);
+      if (next.has(id)) {
+        next.delete(id);
+      } else {
+        next.add(id);
+        track('faq_item_opened', { question, section: sectionLabel, theme: activeTheme });
+      }
       return next;
     });
   };
@@ -370,7 +387,7 @@ export default function FaqPage() {
     return (
       <Box key={item.id} sx={{ borderBottom: index < total - 1 ? '1px solid #1a1a1a' : 'none' }}>
         <Box
-          onClick={() => toggleOpen(item.id)}
+          onClick={() => toggleOpen(item.id, item.q, item.sectionLabel)}
           sx={{
             display: 'flex',
             justifyContent: 'space-between',
@@ -507,7 +524,10 @@ export default function FaqPage() {
             {THEMES.map((theme) => (
               <Box
                 key={theme.value}
-                onClick={() => setActiveTheme(theme.value)}
+                onClick={() => {
+                  setActiveTheme(theme.value);
+                  if (theme.value !== 'all') track('faq_filter_selected', { theme: theme.label });
+                }}
                 sx={{
                   px: 3,
                   py: 1,

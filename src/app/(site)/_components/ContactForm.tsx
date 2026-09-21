@@ -1,6 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
+import { track } from '@vercel/analytics/react';
+import { useTrackSection } from '@/hooks/useTrackSection';
 import {
   Box,
   Typography,
@@ -168,6 +170,7 @@ const TIMELINE_OPTIONS: ChipOption[] = [
 // ─── Component ──────────────────────────────────────────────────────────────
 
 export default function ContactForm() {
+  const sectionRef = useTrackSection('ContactForm');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess]   = useState(false);
   const [showError, setShowError]       = useState(false);
@@ -203,6 +206,7 @@ export default function ContactForm() {
         body: JSON.stringify({ ...data, model, occasion, timeline }),
       });
       if (response.ok) {
+        track('contact_form_submitted', { model, occasion, timeline });
         setShowSuccess(true);
         reset();
         setModel('');
@@ -219,7 +223,7 @@ export default function ContactForm() {
   };
 
   return (
-    <Box id="contact" sx={{ py: { xs: 10, md: 14 }, backgroundColor: 'primary.main' }}>
+    <Box ref={sectionRef} id="contact" sx={{ py: { xs: 10, md: 14 }, backgroundColor: 'primary.main' }}>
       <Container maxWidth="md">
 
         <Box sx={{ mb: { xs: 6, md: 8 } }}>

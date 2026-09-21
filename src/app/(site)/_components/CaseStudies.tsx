@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useCallback } from 'react';
+import { useTrackSection } from '@/hooks/useTrackSection';
 import {
   Box,
   Typography,
@@ -34,6 +35,7 @@ interface CaseStudiesProps {
 }
 
 export default function CaseStudies({ onItemClick }: CaseStudiesProps) {
+  const sectionRef = useTrackSection('CaseStudies');
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: false,
     dragFree: true,
@@ -48,6 +50,7 @@ export default function CaseStudies({ onItemClick }: CaseStudiesProps) {
       <WaveDivider fromColor="#0f0f0f" toColor="#1a1a1a" height={60} />
 
       <Box
+        ref={sectionRef}
         id="work"
         sx={{
           py: { xs: 8, md: 12 },

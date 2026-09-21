@@ -3,7 +3,9 @@
 import React, { useEffect } from 'react';
 import { Box, Typography, Button, Container } from '@mui/material';
 import { motion, useAnimation, type Variants } from 'framer-motion';
+import { track } from '@vercel/analytics/react';
 import { siteCopy } from '@/lib/data';
+import { useTrackSection } from '@/hooks/useTrackSection';
 
 const contentVariants: Variants = {
   hidden: {},
@@ -17,6 +19,7 @@ const itemVariant: Variants = {
 
 export default function Hero() {
   const controls = useAnimation();
+  const sectionRef = useTrackSection('Hero');
 
   useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -50,6 +53,7 @@ export default function Hero() {
 
   return (
     <Box
+      ref={sectionRef}
       sx={{
         position: 'relative',
         height: '100vh',
@@ -106,7 +110,7 @@ export default function Hero() {
               <Button
                 variant="contained"
                 size="large"
-                onClick={() => scrollTo('how-we-work')}
+                onClick={() => { scrollTo('how-we-work'); track('cta_clicked', { button: 'See How It Works', location: 'Hero' }); }}
                 sx={{ px: 4, py: 1.5 }}
               >
                 See How It Works
@@ -115,7 +119,7 @@ export default function Hero() {
                 variant="outlined"
                 size="large"
                 color="inherit"
-                onClick={() => scrollTo('contact')}
+                onClick={() => { scrollTo('contact'); track('cta_clicked', { button: 'Get a Quote', location: 'Hero' }); }}
                 sx={{
                   px: 4,
                   py: 1.5,
