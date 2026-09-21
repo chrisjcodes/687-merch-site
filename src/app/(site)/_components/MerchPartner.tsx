@@ -36,7 +36,7 @@ export default function MerchPartner() {
     <>
       <WaveDivider fromColor="#0f0f0f" toColor="#fff" height={80} sx={{ mt: '-2px' }} />
 
-      <Box sx={{ py: { xs: 10, md: 14 }, backgroundColor: '#fff', color: '#000' }}>
+      <Box id="how-we-work" sx={{ py: { xs: 10, md: 14 }, backgroundColor: '#fff', color: '#000' }}>
         <Container maxWidth="lg">
 
           <motion.div

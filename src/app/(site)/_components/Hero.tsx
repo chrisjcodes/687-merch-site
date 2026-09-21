@@ -106,7 +106,7 @@ export default function Hero() {
               <Button
                 variant="contained"
                 size="large"
-                onClick={() => scrollTo('services')}
+                onClick={() => scrollTo('how-we-work')}
                 sx={{ px: 4, py: 1.5 }}
               >
                 See How It Works
