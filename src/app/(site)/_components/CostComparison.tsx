@@ -14,6 +14,7 @@ const TRAD_STAFF = 320;         // 2 staff × 8 hrs × $20
 const TRAD_STORAGE = 75;        // storage before + after
 const MOBILE_DEPOSIT = 540;     // 2 staff × 4 hrs × $55 + $100 travel/expenses
 const UNSOLD_RATE = 0.3;
+const SALE_PRICE = 35;          // typical event shirt price
 
 function calc(units: number) {
   const tradTotal = units * BLANK_COST + units * TRAD_PRINT_PER + TRAD_SETUP + TRAD_STAFF + TRAD_STORAGE;
@@ -23,9 +24,26 @@ function calc(units: number) {
   const mobilePrint = units * TRANSFER_PRINT_PER;
   const mobileTotal = mobilePrint + MOBILE_DEPOSIT;
 
+  // Sales scenario: 70% sell-through at $35
+  const soldUnits = units - tradUnsoldUnits;
+  const grossSales = soldUnits * SALE_PRICE;
+
+  // Traditional: client keeps 100% of gross, already paid all costs
+  const tradNetProfit = grossSales - tradTotal;
+
+  // Mobile: deposit returned, print cost refunded per sold shirt, blanks deducted, rest split
+  const mobilePrintRefund = soldUnits * TRANSFER_PRINT_PER;
+  const mobileBlankCost   = soldUnits * BLANK_COST;
+  const netToSplit        = grossSales - MOBILE_DEPOSIT - mobilePrintRefund - mobileBlankCost;
+  const clientSplit       = netToSplit * 0.5;
+  const clientTotalBack   = MOBILE_DEPOSIT + mobilePrintRefund + clientSplit;
+  const mobileNetProfit   = clientTotalBack - mobileTotal;
+
   return {
     units,
     unsoldUnits: tradUnsoldUnits,
+    soldUnits,
+    grossSales,
     rows: {
       blanks:    { trad: units * BLANK_COST,     mobile: 0 },
       setup:     { trad: TRAD_SETUP,             mobile: 0 },
@@ -39,6 +57,15 @@ function calc(units: number) {
       inventory: { trad: tradUnsoldValue, mobile: 0 },
     },
     exposure: { trad: tradTotal + tradUnsoldValue, mobile: mobilePrint },
+    sales: {
+      gross:      grossSales,
+      tradNet:    tradNetProfit,
+      mobileBack: clientTotalBack,
+      mobileNet:  mobileNetProfit,
+      mobileDepositBack: MOBILE_DEPOSIT,
+      mobilePrintRefund,
+      mobileClientSplit: clientSplit,
+    },
   };
 }
 
@@ -56,13 +83,14 @@ interface RowProps {
   tradVal: React.ReactNode;
   mobileVal: React.ReactNode;
   sectionBg?: string;
-  highlight?: 'red' | 'yellow';
+  highlight?: 'red' | 'yellow' | 'green';
   bold?: boolean;
 }
 
 function CompareRow({ label, tradSub, mobileSub, tradVal, mobileVal, sectionBg, highlight, bold }: RowProps) {
   const isRed    = highlight === 'red';
   const isYellow = highlight === 'yellow';
+  const isGreen  = highlight === 'green';
 
   return (
     <Box
@@ -93,14 +121,14 @@ function CompareRow({ label, tradSub, mobileSub, tradVal, mobileVal, sectionBg, 
           px: { xs: 2, md: 3 },
           py: 1.75,
           borderRight: '1px solid #1e1e1e',
-          backgroundColor: isRed ? 'rgba(192,57,43,0.06)' : undefined,
+          backgroundColor: isRed ? 'rgba(192,57,43,0.06)' : isGreen ? 'rgba(39,174,96,0.06)' : undefined,
         }}
       >
         <Typography
           variant="body2"
           sx={{
             fontWeight: bold ? 800 : 600,
-            color: isRed ? '#e74c3c' : bold ? '#eaeaea' : '#ccc',
+            color: isRed ? '#e74c3c' : isGreen ? '#27ae60' : bold ? '#eaeaea' : '#ccc',
             fontSize: bold ? '0.95rem' : '0.88rem',
           }}
         >
@@ -118,14 +146,14 @@ function CompareRow({ label, tradSub, mobileSub, tradVal, mobileVal, sectionBg, 
         sx={{
           px: { xs: 2, md: 3 },
           py: 1.75,
-          backgroundColor: isYellow ? 'rgba(242,191,0,0.07)' : undefined,
+          backgroundColor: isYellow ? 'rgba(242,191,0,0.07)' : isGreen ? 'rgba(39,174,96,0.06)' : undefined,
         }}
       >
         <Typography
           variant="body2"
           sx={{
             fontWeight: bold ? 800 : 600,
-            color: isYellow ? '#f2bf00' : bold ? '#f2bf00' : undefined,
+            color: isYellow ? '#f2bf00' : isGreen ? '#27ae60' : bold ? '#f2bf00' : undefined,
             fontSize: bold ? '0.95rem' : '0.88rem',
           }}
         >
@@ -326,6 +354,41 @@ export default function CostComparison() {
                 mobileVal={`${fmt(d.exposure.mobile)}†`}
                 bold
                 highlight="red"
+                sectionBg="#0a0a0a"
+              />
+
+              {/* ── If 70% sells at $35 ── */}
+              <SectionHeader label={`If ${d.soldUnits} items sell at $${SALE_PRICE} — ${fmt(d.grossSales)} gross`} />
+
+              <CompareRow
+                label="Deposit returned"
+                tradSub="N/A"
+                mobileSub="First dollars back to you"
+                tradVal="—"
+                mobileVal={fmt(d.sales.mobileDepositBack)}
+              />
+              <CompareRow
+                label="Print cost refund"
+                tradSub="You keep 100% of gross"
+                mobileSub={`${d.soldUnits} sold × $${TRANSFER_PRINT_PER} back to you`}
+                tradVal="—"
+                mobileVal={fmt(d.sales.mobilePrintRefund)}
+              />
+              <CompareRow
+                label="Your share of sales"
+                tradSub={`${fmt(d.grossSales)} gross kept in full`}
+                mobileSub="50% of remaining after blanks"
+                tradVal={fmt(d.grossSales)}
+                mobileVal={fmt(d.sales.mobileClientSplit)}
+              />
+              <CompareRow
+                label="Your net profit"
+                tradSub="After all upfront costs"
+                mobileSub="After all upfront costs"
+                tradVal={fmt(d.sales.tradNet)}
+                mobileVal={fmt(d.sales.mobileNet)}
+                bold
+                highlight="green"
                 sectionBg="#0a0a0a"
               />
             </Box>
