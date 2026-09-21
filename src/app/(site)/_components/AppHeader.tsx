@@ -17,10 +17,19 @@ import {
 } from '@mui/material';
 import { Menu as MenuIcon, Close as CloseIcon } from '@mui/icons-material';
 import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+
+const NAV_ITEMS = [
+  { label: 'Work',    href: '/#work' },
+  { label: 'FAQ',     href: '/faq' },
+  { label: 'Contact', href: '/#contact' },
+];
 
 export default function AppHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   const trigger = useScrollTrigger({
     disableHysteresis: true,
@@ -31,16 +40,14 @@ export default function AppHeader() {
     setScrolled(trigger);
   }, [trigger]);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-    setMobileMenuOpen(false);
-  };
+  const isHome = pathname === '/';
 
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
+  const handleNavClick = (href: string) => {
+    setMobileMenuOpen(false);
+    if (isHome && href.startsWith('/#')) {
+      const id = href.slice(2);
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
@@ -48,12 +55,12 @@ export default function AppHeader() {
       position="fixed"
       elevation={0}
       sx={{
-        backgroundColor: scrolled 
-          ? 'rgba(15, 15, 15, 0.95)' 
+        backgroundColor: scrolled
+          ? 'rgba(15, 15, 15, 0.95)'
           : 'transparent',
         backdropFilter: scrolled ? 'blur(10px)' : 'none',
-        borderBottom: scrolled 
-          ? '1px solid rgba(255, 255, 255, 0.1)' 
+        borderBottom: scrolled
+          ? '1px solid rgba(255, 255, 255, 0.1)'
           : 'none',
         transition: 'all 0.3s ease',
       }}
@@ -61,68 +68,47 @@ export default function AppHeader() {
       <Container maxWidth="lg">
         <Toolbar sx={{ px: 0 }}>
           <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
-            {/* White logo on transparent dark nav; black logo when scrolled (nav goes dark) */}
-            <Image
-              src="/images/687-logo-white.svg"
-              alt="687 Merch"
-              width={144}
-              height={48}
-              style={{ width: 'auto', height: 'clamp(24px, 4vw, 42px)', maxWidth: '100%' }}
-              priority
-            />
-          </Box>
-          
-          {/* Desktop Navigation */}
-          <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 2 }}>
-            <Button
-              color="inherit"
-              onClick={() => scrollToSection('services')}
-              sx={{
-                fontWeight: 600,
-                textTransform: 'uppercase',
-                letterSpacing: '0.5px',
-                '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.1)' },
-              }}
-            >
-              Services
-            </Button>
-            <Button
-              color="inherit"
-              onClick={() => scrollToSection('work')}
-              sx={{
-                fontWeight: 600,
-                textTransform: 'uppercase',
-                letterSpacing: '0.5px',
-                '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.1)' },
-              }}
-            >
-              Case Studies
-            </Button>
-            <Button
-              color="inherit"
-              onClick={() => scrollToSection('contact')}
-              sx={{
-                fontWeight: 600,
-                textTransform: 'uppercase',
-                letterSpacing: '0.5px',
-                '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.1)' },
-              }}
-            >
-              Contact
-            </Button>
+            <Link href="/" style={{ display: 'block', lineHeight: 0 }}>
+              <Image
+                src="/images/687-logo-white.svg"
+                alt="687 Merch"
+                width={144}
+                height={48}
+                style={{ width: 'auto', height: 'clamp(24px, 4vw, 42px)', maxWidth: '100%' }}
+                priority
+              />
+            </Link>
           </Box>
 
-          {/* Mobile Hamburger Menu */}
+          {/* Desktop Navigation */}
+          <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 1, alignItems: 'center' }}>
+            {NAV_ITEMS.map(({ label, href }) => (
+              <Button
+                key={label}
+                color="inherit"
+                component={Link}
+                href={href}
+                onClick={() => handleNavClick(href)}
+                sx={{
+                  fontWeight: pathname === href || (href === '/faq' && pathname === '/faq') ? 700 : 600,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.5px',
+                  color: href === '/faq' && pathname === '/faq' ? 'primary.main' : 'inherit',
+                  '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.1)' },
+                }}
+              >
+                {label}
+              </Button>
+            ))}
+          </Box>
+
+          {/* Mobile Hamburger */}
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               color="inherit"
-              onClick={toggleMobileMenu}
+              onClick={() => setMobileMenuOpen(true)}
               aria-label="Open menu"
-              sx={{
-                width: 48,
-                height: 48,
-                '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.1)' },
-              }}
+              sx={{ width: 48, height: 48, '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.1)' } }}
             >
               <MenuIcon />
             </IconButton>
@@ -130,38 +116,27 @@ export default function AppHeader() {
         </Toolbar>
       </Container>
 
-      {/* Mobile Menu Drawer */}
+      {/* Mobile Drawer */}
       <Drawer
         anchor="right"
         open={mobileMenuOpen}
         onClose={() => setMobileMenuOpen(false)}
-        sx={{
-          '& .MuiDrawer-paper': {
-            width: 250,
-            backgroundColor: '#0f0f0f',
-            color: 'white',
-          },
-        }}
+        sx={{ '& .MuiDrawer-paper': { width: 250, backgroundColor: '#0f0f0f', color: 'white' } }}
       >
         <Box sx={{ p: 2 }}>
-          <Box sx={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', mb: 3 }}>
-            <IconButton
-              color="inherit"
-              onClick={() => setMobileMenuOpen(false)}
-            >
+          <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 3 }}>
+            <IconButton color="inherit" onClick={() => setMobileMenuOpen(false)}>
               <CloseIcon />
             </IconButton>
           </Box>
-          
+
           <List disablePadding>
-            {[
-              { label: 'Services',     id: 'services' },
-              { label: 'Case Studies', id: 'work' },
-              { label: 'Contact',      id: 'contact' },
-            ].map(({ label, id }) => (
+            {NAV_ITEMS.map(({ label, href }) => (
               <ListItem
-                key={id}
-                onClick={() => scrollToSection(id)}
+                key={label}
+                component={Link}
+                href={href}
+                onClick={() => handleNavClick(href)}
                 sx={{ cursor: 'pointer', minHeight: 52, '&:hover': { backgroundColor: 'rgba(255,255,255,0.07)' } }}
               >
                 <ListItemText
@@ -178,7 +153,9 @@ export default function AppHeader() {
             <Button
               fullWidth
               variant="contained"
-              onClick={() => scrollToSection('contact')}
+              component={Link}
+              href="/#contact"
+              onClick={() => handleNavClick('/#contact')}
               sx={{
                 backgroundColor: '#f2bf00',
                 color: '#000',

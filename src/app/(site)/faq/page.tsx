@@ -3,6 +3,8 @@
 import React, { useState, useMemo } from 'react';
 import { Box, Typography, Container, InputBase } from '@mui/material';
 import { motion } from 'framer-motion';
+import AppHeader from '../_components/AppHeader';
+import AppFooter from '../_components/AppFooter';
 
 // ─── FAQ data ────────────────────────────────────────────────────────────────
 
@@ -443,6 +445,7 @@ export default function FaqPage() {
 
   return (
     <Box sx={{ backgroundColor: '#0f0f0f', minHeight: '100vh' }}>
+      <AppHeader />
 
       {/* ── Hero ──────────────────────────────────────────────────────────────── */}
       <Box sx={{ pt: { xs: 10, md: 14 }, pb: { xs: 6, md: 8 }, borderBottom: '1px solid #1a1a1a' }}>
@@ -585,6 +588,7 @@ export default function FaqPage() {
           </Box>
         )}
       </Container>
+      <AppFooter />
     </Box>
   );
 }
