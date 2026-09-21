@@ -5,8 +5,8 @@ import { Box, Typography, Container } from '@mui/material';
 import { motion } from 'framer-motion';
 
 // ─── Scenario constants ───────────────────────────────────────────────────────
-const SHEETS_PER_RUN = 50;    // transfer sheets per ink color
-const SHEET_COST     = 3.5;   // per sheet
+const SHEETS_PER_RUN = 100;   // transfer sheets per ink color (100-unit pricing tier)
+const SHEET_COST     = 1.8;   // per sheet — single color, 12×12, 100-unit run
 const TRAD_SETUP     = 40;    // setup fee per traditional run
 const TRAD_PRINT_PER = 5;     // per-garment print cost (traditional)
 const BLANK_COST     = 10;    // wholesale blank, average across styles
@@ -61,7 +61,7 @@ export default function FlexCatalogPage() {
             </Typography>
 
             <Typography variant="body1" sx={{ color: '#999', maxWidth: 540, lineHeight: 1.8, mb: 4, fontSize: '1rem', mx: 'auto' }}>
-              With transfer sheet printing, your design and your garment are two separate decisions. Print a white ink version and a black ink version — then apply either one to any style, color, or cut whenever demand calls for it. One print job covers every dark garment. The other covers every light one.
+              With transfer sheet printing, your design and your garment are two separate decisions. Print a light-ink version and a dark-ink version — then apply either one to any style, colorway, or cut whenever demand calls for it. One print job covers every dark colorway. The other covers every light one.
             </Typography>
 
             {/* Applies to both models note */}
@@ -91,19 +91,19 @@ export default function FlexCatalogPage() {
               <Box sx={{ flex: 1, px: 3, py: 2.5, borderRight: { sm: '1px solid #1e1e1e' }, borderBottom: { xs: '1px solid #1e1e1e', sm: 'none' }, backgroundColor: 'rgba(255,255,255,0.02)' }}>
                 <Box sx={{ width: 18, height: 18, borderRadius: '50%', backgroundColor: '#fff', mb: 1.5, border: '1px solid #333' }} />
                 <Typography variant="body2" sx={{ color: '#eaeaea', fontWeight: 700, fontSize: '0.82rem', textTransform: 'uppercase', letterSpacing: '0.08em', mb: 0.5 }}>
-                  White ink
+                  Light ink
                 </Typography>
                 <Typography variant="caption" sx={{ color: '#888', fontSize: '0.78rem', lineHeight: 1.5, display: 'block' }}>
-                  Applies to any dark garment — black, navy, charcoal, forest
+                  Applies to dark colorways — black, navy, charcoal, forest
                 </Typography>
               </Box>
               <Box sx={{ flex: 1, px: 3, py: 2.5, backgroundColor: 'rgba(255,255,255,0.02)' }}>
                 <Box sx={{ width: 18, height: 18, borderRadius: '50%', backgroundColor: '#1a1a1a', mb: 1.5, border: '1px solid #555' }} />
                 <Typography variant="body2" sx={{ color: '#eaeaea', fontWeight: 700, fontSize: '0.82rem', textTransform: 'uppercase', letterSpacing: '0.08em', mb: 0.5 }}>
-                  Black ink
+                  Dark ink
                 </Typography>
                 <Typography variant="caption" sx={{ color: '#888', fontSize: '0.78rem', lineHeight: 1.5, display: 'block' }}>
-                  Applies to any light garment — white, natural, cream, sand
+                  Applies to light colorways — white, natural, cream, sand
                 </Typography>
               </Box>
             </Box>
@@ -173,7 +173,7 @@ export default function FlexCatalogPage() {
                 <Box sx={{ px: 3, py: 2.5, backgroundColor: '#111', borderBottom: '1px solid #222', display: 'flex', alignItems: 'center', gap: 2 }}>
                   <Box sx={{ width: 14, height: 14, borderRadius: '50%', backgroundColor: '#fff', border: '1px solid #444', flexShrink: 0 }} />
                   <Typography variant="body2" sx={{ color: '#eaeaea', fontWeight: 700, fontSize: '0.82rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-                    White ink — dark garments
+                    Light ink — dark garments
                   </Typography>
                 </Box>
                 {darkGarments.map((g, i) => (
@@ -205,7 +205,7 @@ export default function FlexCatalogPage() {
                 <Box sx={{ px: 3, py: 2.5, backgroundColor: '#111', borderBottom: '1px solid #222', display: 'flex', alignItems: 'center', gap: 2 }}>
                   <Box sx={{ width: 14, height: 14, borderRadius: '50%', backgroundColor: '#1a1a1a', border: '1px solid #555', flexShrink: 0 }} />
                   <Typography variant="body2" sx={{ color: '#eaeaea', fontWeight: 700, fontSize: '0.82rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-                    Black ink — light garments
+                    Dark ink — light garments
                   </Typography>
                 </Box>
                 {lightGarments.map((g, i) => (
@@ -238,7 +238,7 @@ export default function FlexCatalogPage() {
                 Three things that have to line up
               </Typography>
               <Typography variant="body2" sx={{ color: '#888', lineHeight: 1.75, fontSize: '0.88rem', mb: 2 }}>
-                Transfers work on almost any garment — with three checks: the garment color needs to work with the ink (white ink on a dark base, black ink on a light base), the size of the print needs to fit the garment, and the fabric needs to be able to take the heat. Beyond that, if it fits and looks right, we can use the same print on it.
+                Transfers work on almost any garment — with three checks: the garment colorway needs to work with the ink (light ink on a dark base, dark ink on a light base), the size of the print needs to fit the garment, and the fabric needs to be able to take the heat. Beyond that, if it fits and looks right, we can use the same print on it.
               </Typography>
               <Box sx={{ display: 'flex', gap: { xs: 2, sm: 4 }, flexWrap: 'wrap' }}>
                 {['Ink vs. garment color', 'Print fits the cut', 'Fabric handles heat'].map((c) => (
@@ -355,7 +355,7 @@ export default function FlexCatalogPage() {
               {
                 when: 'Anytime',
                 action: 'New colorway request',
-                detail: 'Someone asks for navy. Order the blank, apply the white-ink transfer. Done same week.',
+                detail: 'Someone asks for navy. Order the blank, apply the light-ink transfer. Done same week.',
               },
             ].map((item, i) => (
               <motion.div key={i} {...fadeUp} transition={{ duration: 0.45, delay: i * 0.07 }}>
@@ -403,7 +403,7 @@ export default function FlexCatalogPage() {
                 </Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
                   {[
-                    '4 shows = same $350 in printing spread across all of them',
+                    `4 shows = same ${fmt(flexPrintTotal)} in printing spread across all of them`,
                     "Bring more or fewer blanks based on each venue's expected crowd",
                     'Leftover transfers carry forward to the next show',
                   ].map((line, i) => (
@@ -447,7 +447,7 @@ export default function FlexCatalogPage() {
                 Example: band with 4 shows
               </Typography>
               <Typography variant="body2" sx={{ color: '#888', lineHeight: 1.75, fontSize: '0.85rem' }}>
-                Print 100 white-ink and 100 black-ink transfer sheets once — {fmt((SHEETS_PER_RUN * 2) * 2 * SHEET_COST)} in printing. Split them across 4 shows: ~50 sheets per night. Whether you run the table yourself or we show up with the van, your design cost is {fmt((SHEETS_PER_RUN * 2) * 2 * SHEET_COST / 4)} per show. Any unsold sheets move to the next date — nothing is wasted.
+                Print 100 light-ink and 100 dark-ink transfer sheets once — {fmt(SHEETS_PER_RUN * 2 * SHEET_COST)} in printing. Split them across 4 shows: ~50 combined sheets per night. Whether you run the table yourself or we show up with the van, your design cost is {fmt(SHEETS_PER_RUN * 2 * SHEET_COST / 4)} per show. Any unsold sheets move to the next date — nothing is wasted.
               </Typography>
             </Box>
           </motion.div>
