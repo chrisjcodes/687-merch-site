@@ -56,7 +56,7 @@ function calc(units: number) {
     unsold: {
       inventory: { trad: tradUnsoldValue, mobile: 0 },
     },
-    exposure: { trad: tradTotal + tradUnsoldValue, mobile: mobilePrint },
+    exposure: { trad: tradTotal, mobile: mobilePrint },
     sales: {
       gross:      grossSales,
       tradNet:    tradNetProfit,
@@ -349,7 +349,9 @@ export default function CostComparison() {
 
               {/* ── Worst-case exposure ── */}
               <CompareRow
-                label="Worst-case exposure"
+                label="If nothing sells at all"
+                tradSub="Everything you spent, zero back"
+                mobileSub="Just the print cost — sheets are yours to reuse"
                 tradVal={fmt(d.exposure.trad)}
                 mobileVal={`${fmt(d.exposure.mobile)}†`}
                 bold
