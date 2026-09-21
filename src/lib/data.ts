@@ -99,8 +99,8 @@ export const recentWork: WorkItem[] = [
     images: ['/images/work/blumeria-powerlines.jpeg'],
     tags: ['Artist', 'Music', 'Apparel'],
     year: 2026,
-    productionModel: 'flexible',
-    context: 'Merch for Blumeria — minimal, photography-inspired front print on a Comfort Colors black tee. Clean single-color white print with a handwritten logotype. Printed to transfers for flexible restocking between shows.',
+    productionModel: 'traditional',
+    context: 'Blumeria is a band looking to sell merch at an upcoming show without over-committing on inventory. A small, manageable traditional run — minimal front print with a handwritten logotype on a Comfort Colors black tee, single white ink.',
   },
   {
     slug: 'penn-vs-usc-showdown',
