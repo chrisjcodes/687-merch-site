@@ -97,8 +97,8 @@ const FAQ_DATA: FaqSection[] = [
         ],
       },
       {
-        q: 'Are there fabrics or items that don\'t work with heat transfers?',
-        a: 'A few. Very high-stretch fabrics like spandex-heavy athletic wear can cause transfers to crack over time as the fabric moves. Some nylons and synthetic blends may not bond properly or can be damaged by the heat required. Items with thick structural seams or hardware that prevent a flat press are also difficult. We\'ll flag these before you commit to a garment.',
+        q: 'Are there fabrics or garments that don\'t work with screen print transfers?',
+        a: 'The main factor is heat sensitivity. Screen print transfers require a heat press to apply, so garments that are particularly sensitive to heat — certain nylons, some technical synthetics, or materials that warp or melt under pressure — may not be a good fit. We have transfer products specifically formulated for stretch fabrics, so high-stretch materials like athletic wear aren\'t automatically ruled out. Items with thick structural seams or hardware that prevent a flat press can also be difficult.\n\nOne thing we don\'t do at all is print products — posters, paper goods, flat printed materials. We\'re strictly apparel and soft goods. If it\'s a wearable or a bag, we can likely work with it; if it\'s a print-on-paper product, that\'s outside what we do.',
       },
       {
         q: 'Do you supply blanks or can I bring my own?',
