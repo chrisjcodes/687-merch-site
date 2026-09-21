@@ -75,8 +75,8 @@ export const recentWork: WorkItem[] = [
   {
     slug: 'philthy-design',
     title: 'Eagles x Brit — Philthy Collab Tee',
-    thumbnail: '/images/work/PhilthyFront.png',
-    images: ['/images/work/PhilthyFront.png', '/images/work/PhilthyBack.png'],
+    thumbnail: '/images/work/brit-philthy-tee-natural-front-back.jpg',
+    images: ['/images/work/brit-philthy-tee-natural-front-back.jpg'],
     tags: ['Eagles', 'Football', 'Collab'],
     year: 2025,
     productionModel: 'flexible',
