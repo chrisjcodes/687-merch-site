@@ -28,8 +28,8 @@ export default function MobileLogisticsPage() {
               variant="h1"
               sx={{ color: '#fff', mb: 4, lineHeight: { xs: 1.1, md: 1.05 }, fontSize: { xs: '2.8rem', sm: '3.5rem', md: '4.5rem' } }}
             >
-              You&apos;ve got 400 things<br />
-              <Box component="span" sx={{ color: '#f2bf00' }}>to manage today.</Box>
+              You&apos;ve got 400 things to manage.<br />
+              <Box component="span" sx={{ color: '#f2bf00' }}>Merch doesn&apos;t have to be one of them.</Box>
             </Typography>
 
             <Typography variant="body1" sx={{ color: '#999', maxWidth: 520, lineHeight: 1.8, mb: 5, fontSize: '1rem', mx: 'auto' }}>
