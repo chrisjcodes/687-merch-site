@@ -5,8 +5,8 @@ import { Box, Typography, Container, ToggleButton, ToggleButtonGroup } from '@mu
 import { motion, AnimatePresence } from 'framer-motion';
 
 // ─── Illustrative pricing model ────────────────────────────────────────────
-const BLANK_COST = 9;           // wholesale blank t-shirt
-const TRAD_PRINT_PER = 7;       // traditional screen printing per garment at this qty
+const BLANK_COST = 5;           // wholesale blank t-shirt (Bella Canvas, etc.)
+const TRAD_PRINT_PER = 5;       // traditional screen printing per garment (total $10/shirt out the door)
 const TRANSFER_PRINT_PER = 3.5; // 687 screen printing to transfer sheet (quantity pricing)
 const TRAD_STAFF_TOTAL = 240;   // 2 staff × 8 hrs × $15
 const TRAD_STORAGE = 75;        // storage before + after (conservative)
@@ -228,7 +228,7 @@ export default function CostComparison() {
 
                 <Box sx={{ px: 3, py: 2 }}>
                   <LineItem label={`${units} blank garments`} sub={`${fmt(BLANK_COST)} ea.`} value={fmt(d.trad.blanks)} />
-                  <LineItem label="Screen printing" sub={`${fmt(TRAD_PRINT_PER)} ea. at this qty`} value={fmt(d.trad.print)} />
+                  <LineItem label="Screen printing" sub={`${fmt(TRAD_PRINT_PER)} ea. — $10 total per shirt`} value={fmt(d.trad.print)} />
                   <LineItem label="Booth staff" sub="2 people × 8 hrs × $15/hr" value={fmt(d.trad.staff)} />
                   <LineItem label="Storage" sub="Before + after event" value={fmt(d.trad.storage)} />
                 </Box>
