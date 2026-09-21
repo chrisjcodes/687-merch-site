@@ -24,10 +24,6 @@ export default function MobileLogisticsPage() {
             transition={{ duration: 0.5 }}
             style={{ textAlign: 'center' }}
           >
-            <Typography variant="caption" sx={{ color: '#888', textTransform: 'uppercase', letterSpacing: '0.14em', fontSize: '0.74rem', fontWeight: 700, display: 'block', mb: 3 }}>
-              Mobile Merch
-            </Typography>
-
             <Typography
               variant="h1"
               sx={{ color: '#fff', mb: 2, lineHeight: { xs: 1.15, md: 1.1 }, fontSize: { xs: '2rem', sm: '2.6rem', md: '3.2rem' }, fontWeight: 700 }}
