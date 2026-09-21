@@ -279,7 +279,7 @@ export default function CostComparison() {
               />
               <CompareRow
                 label="Operational deposit"
-                tradSub="N/A"
+                tradSub="They drop off the order. The event is yours."
                 mobileSub="Labor, travel, overhead — returned from sales"
                 tradVal="—"
                 mobileVal={fmt(MOBILE_DEPOSIT)}
