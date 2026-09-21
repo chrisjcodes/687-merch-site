@@ -60,20 +60,19 @@ const FAQ_DATA: FaqSection[] = [
       },
       {
         q: 'Do you do digital printing (DTG or DTF)?',
-        a: 'We primarily work with screen print transfers because of the quality, durability, and per-unit cost advantages at volume. That said, there are cases where digital printing makes more sense, and we\'ll tell you honestly when that\'s true for your project.',
+        a: 'We primarily work with screen print transfers — including full-color process printing — because of the quality, durability, and per-unit cost advantages at volume. We do use DTF (direct-to-film) in specific situations, and we\'ll tell you honestly when it\'s the right call.',
         bullets: [
-          'Very small quantities where screen setup costs aren\'t economical',
-          'Highly detailed photographic designs with complex gradients or many colors',
-          'Certain garment types that don\'t respond well to heat-applied transfers',
+          'Finite small quantities — if you truly won\'t need more of a design and screen setup costs aren\'t justified',
+          'Certain items like hats, where DTF can produce a better result depending on the specific design',
         ],
       },
       {
-        q: 'When would you recommend digital over screen print transfers?',
-        a: 'Digital is the right call when your run is too small to make screen setup fees economical (typically under 24 pieces), your design has photographic detail or gradients that are difficult to reproduce in spot colors, or the item you want to print on doesn\'t work with heat transfer application. For most standard merch — tees, hoodies, hats, totes — screen print transfers are the better choice on quality, durability, and cost.',
+        q: 'When would you recommend DTF over screen print transfers?',
+        a: 'DTF makes the most sense for finite, small-quantity runs where you\'re confident you won\'t need more of that design — typically under 24 pieces — and where paying for screen setup doesn\'t make economic sense. It\'s also worth considering for certain items like hats, where the design and application constraints sometimes favor DTF over screen print. For ongoing or repeatable merch needs, screen print transfers are almost always the better choice — lower per-unit cost at quantity, same or better durability, and the flexibility to reorder without new setup costs.',
       },
       {
-        q: 'Can you do multi-color designs on transfers?',
-        a: 'Yes. Screen print transfers support multi-color designs including halftones and simulated process printing. Each color in your design requires its own screen, which factors into setup cost. We\'ll advise on whether consolidating colors or going digital is more cost-effective for your specific design.',
+        q: 'Can you do full-color and photographic designs on screen print transfers?',
+        a: 'Yes — we can do full-color process screen printing to transfer, which handles photographic detail, gradients, and complex imagery the same way a traditional process screen print would. Having a photographic design doesn\'t automatically move you to digital. We\'ll assess the design and recommend the right approach based on your quantity, the specific artwork, and the item you\'re printing on.',
       },
       {
         q: 'How durable are screen print transfers compared to direct screen prints?',
@@ -107,7 +106,7 @@ const FAQ_DATA: FaqSection[] = [
       },
       {
         q: 'Can you print on hats and accessories?',
-        a: 'Yes. Structured snapbacks, dad hats, and caps with a flat front panel work well. Curved-brim finished hats require a specialty press that we have. Tote bags and flat accessories are straightforward. For items with irregular shapes or very small print areas, we\'ll tell you what\'s feasible before you order.',
+        a: 'Yes. Structured snapbacks, dad hats, and caps with a flat front panel work well with screen print transfers. Curved-brim finished hats require a specialty press that we have. That said, for hats specifically, DTF can produce a better result depending on the design — particularly for designs with fine detail or certain color combinations. We\'ll tell you which approach makes more sense for your specific hat and artwork. Tote bags and flat accessories are generally straightforward.',
       },
     ],
   },
