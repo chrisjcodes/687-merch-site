@@ -24,7 +24,7 @@ export default function AppFooter() {
         <Box sx={{ textAlign: 'center' }}>
           <Box sx={{ mb: 1 }}>
             <Image
-              src="/687-logo.png"
+              src="/images/687-logo-white.png"
               alt="687 Merch"
               width={192}
               height={64}
@@ -39,7 +39,7 @@ export default function AppFooter() {
             color="text.secondary"
             sx={{ mb: 1 }}
           >
-            Think Big. Start Small.
+            Your Merch Partner.
           </Typography>
           
           <Typography

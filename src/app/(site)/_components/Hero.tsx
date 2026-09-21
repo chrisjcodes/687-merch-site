@@ -102,38 +102,18 @@ export default function Hero() {
         </motion.div>
       </Container>
 
-      {/* Animated wave bottom edge */}
+      {/* Solid dark strip at the very bottom so WaveDivider below butts up seamlessly */}
       <Box
         sx={{
           position: 'absolute',
           bottom: 0,
           left: 0,
           right: 0,
+          height: 4,
+          backgroundColor: '#0f0f0f',
           zIndex: 3,
-          lineHeight: 0,
-          '@keyframes heroWave': {
-            '0%': { transform: 'translateX(0)' },
-            '100%': { transform: 'translateX(-50%)' },
-          },
         }}
-      >
-        <Box sx={{ display: 'flex', width: '200%', animation: 'heroWave 10s linear infinite' }}>
-          {[0, 1].map((i) => (
-            <svg
-              key={i}
-              viewBox="0 0 1440 48"
-              xmlns="http://www.w3.org/2000/svg"
-              preserveAspectRatio="none"
-              style={{ display: 'block', width: '50%', height: 48, flexShrink: 0 }}
-            >
-              <path
-                d="M0,24 C180,48 360,0 540,24 C720,48 900,0 1080,24 C1260,48 1380,12 1440,24 L1440,48 L0,48 Z"
-                fill="#0f0f0f"
-              />
-            </svg>
-          ))}
-        </Box>
-      </Box>
+      />
     </Box>
   );
 }
