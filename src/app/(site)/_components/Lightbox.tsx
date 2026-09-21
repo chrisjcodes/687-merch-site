@@ -90,7 +90,7 @@ export default function Lightbox({
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          minHeight: isMobile ? '100vh' : '500px',
+          height: isMobile ? '100vh' : 'calc(100vh - 64px)',
           overflow: 'hidden',
         }}
       >
@@ -170,20 +170,13 @@ export default function Lightbox({
               position: 'relative',
               width: '100%',
               height: '100%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
             }}
           >
             <Image
               src={images[currentIndex]}
               alt={`Image ${currentIndex + 1} of ${images.length}`}
               fill
-              style={{
-                objectFit: 'contain',
-                maxWidth: '100%',
-                maxHeight: '100%',
-              }}
+              style={{ objectFit: 'contain' }}
               priority
             />
           </Box>
