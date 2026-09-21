@@ -44,13 +44,13 @@ export const recentWork: WorkItem[] = [
   },
   {
     slug: 'colony-cinco-anos',
-    title: 'Colony Cinco Años Tee',
+    title: 'Colony Ghost Kitchen — 5th Anniversary',
     thumbnail: '/images/work/ColonyCincoAnosFront.png',
     images: ['/images/work/ColonyCincoAnosFront.png'],
-    tags: ['Logo', 'Anniversary', 'Retro'],
+    tags: ['Food', 'Anniversary', 'Small Business'],
     year: 2024,
     productionModel: 'flexible',
-    context: 'Bar wanted to sell tees to regulars without over-ordering. Paying for the screen printing upfront let them apply prints to new blanks in small batches as demand came in.',
+    context: 'Ghost kitchen celebrating five years in business. Printing to transfer sheets let them sell tees to loyal customers in small batches without committing to a full inventory run.',
   },
   {
     slug: 'eagles-nest-west',
