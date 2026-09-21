@@ -12,7 +12,6 @@ const fadeUp = {
 };
 
 const DEPOSIT = 540;
-const SALE_PRICE = 35;
 const DROP_UNITS = 50;
 const DROP_PRICE = 45;
 const dropRevenue = DROP_UNITS * DROP_PRICE;

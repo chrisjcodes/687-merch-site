@@ -387,7 +387,7 @@ export default function FlexCatalogPage() {
               Same prints. Every show.
             </Typography>
             <Typography variant="body1" sx={{ color: '#888', lineHeight: 1.8, mb: { xs: 5, md: 7 }, maxWidth: 560 }}>
-              You pay for the screen printing once. Those transfer sheets work at every show, every market, every drop after that — whether you're applying them yourself or we&apos;re showing up as your merch booth.
+              You pay for the screen printing once. Those transfer sheets work at every show, every market, every drop after that — whether you&apos;re applying them yourself or we&apos;re showing up as your merch booth.
             </Typography>
           </motion.div>
 

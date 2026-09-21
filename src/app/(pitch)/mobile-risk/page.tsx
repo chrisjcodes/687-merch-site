@@ -238,7 +238,7 @@ export default function MobileRiskPage() {
         <Container maxWidth="lg">
           <motion.div {...fadeUp}>
             <Typography variant="caption" sx={{ color: '#888', textTransform: 'uppercase', letterSpacing: '0.14em', fontSize: '0.74rem', fontWeight: 700, display: 'block', mb: 6 }}>
-              What you're actually risking
+              What you&apos;re actually risking
             </Typography>
           </motion.div>
           <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', md: '1fr 1fr 1fr' }, gap: { xs: 3, md: 4 } }}>
