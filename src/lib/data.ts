@@ -79,8 +79,8 @@ export const recentWork: WorkItem[] = [
     images: ['/images/work/take-a-break-kazu.jpeg'],
     tags: ['Artist', 'Music', 'Apparel'],
     year: 2026,
-    productionModel: 'flexible',
-    context: 'Artist merch for Kazu — illustrative chest print on a Comfort Colors tee. Printed to transfers so the same artwork can be applied across colorways and restocked without another print run.',
+    productionModel: 'traditional',
+    context: 'Take a Break with Kazu is a well-known podcast that interviews musicians and covers album reviews. They were launching merch for the first time to offer their fans — illustrative chest print on a Comfort Colors white tee, traditional run.',
   },
   {
     slug: 'sof-tattoo-owl-tank',
