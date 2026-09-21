@@ -84,13 +84,13 @@ export const recentWork: WorkItem[] = [
   },
   {
     slug: 'good-people-advisory',
-    title: 'Good People Advisory',
+    title: 'Good People Coffee',
     thumbnail: '/images/work/GoodPeopleAdvisoryBack.png',
     images: ['/images/work/GoodPeopleAdvisoryBack.png'],
-    tags: ['Advisory', 'Lifestyle'],
+    tags: ['Coffee', 'Small Business', 'Community'],
     year: 2024,
     productionModel: 'traditional',
-    context: 'Corporate client gifting with a curated size run—straightforward one-time order, no ongoing inventory needed.',
+    context: 'Local minority and female owned coffee shop wanted branded tees for their staff and regulars—small batch, one run.',
   },
   {
     slug: 'san-remo-not-like-us',
