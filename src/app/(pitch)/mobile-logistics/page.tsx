@@ -25,8 +25,13 @@ export default function MobileLogisticsPage() {
             style={{ textAlign: 'center' }}
           >
             <Typography
-              variant="h1"
-              sx={{ color: '#fff', mb: 2, lineHeight: { xs: 1.15, md: 1.1 }, fontSize: { xs: '2rem', sm: '2.6rem', md: '3.2rem' }, fontWeight: 700 }}
+              sx={{
+                fontFamily: 'var(--font-anton), "Anton", sans-serif',
+                fontSize: { xs: '2.6rem', sm: '3.4rem', md: '4.2rem' },
+                lineHeight: 1.05,
+                color: '#fff',
+                mb: 0,
+              }}
             >
               You have enough to manage.
             </Typography>
@@ -34,7 +39,7 @@ export default function MobileLogisticsPage() {
             <Typography
               sx={{
                 fontFamily: 'var(--font-anton), "Anton", sans-serif',
-                fontSize: { xs: '2.4rem', sm: '3rem', md: '3.8rem' },
+                fontSize: { xs: '2.6rem', sm: '3.4rem', md: '4.2rem' },
                 lineHeight: 1.05,
                 color: '#f2bf00',
                 mb: 4,
