@@ -94,13 +94,13 @@ export const recentWork: WorkItem[] = [
   },
   {
     slug: 'san-remo-not-like-us',
-    title: 'San Remo Not Like Us',
+    title: 'San Remo Barista Competition Tee',
     thumbnail: '/images/work/SanRemoNotLikeUs.png',
     images: ['/images/work/SanRemoNotLikeUs.png'],
-    tags: ['Music', 'Culture'],
+    tags: ['Coffee', 'Competition', 'Corporate'],
     year: 2024,
     productionModel: 'traditional',
-    context: 'Music venue needed tees for a specific run of shows—defined design, one order, delivered and done.',
+    context: 'San Remo, an Italian coffee machine manufacturer, needed event tees for a barista competition they were sponsoring—set headcount, one delivery, done.',
   },
   {
     slug: 'sf-fsu-design',
