@@ -10,7 +10,7 @@ export const services = [
   {
     id: 'traditional',
     title: 'Traditional Production',
-    tagline: 'The straightforward option.',
+    tagline: 'The model you already know.',
     body: 'We work with you on the design, you choose your garments, sizes, colors and quantities, and we decorate everything and deliver the finished order to you.',
     icon: '01',
   },
