@@ -309,7 +309,7 @@ export default function MobileExperiencePage() {
               You&apos;re not hiring us. You&apos;re partnering with us.
             </Typography>
             <Typography variant="body1" sx={{ color: '#888', maxWidth: 560, lineHeight: 1.8, mb: { xs: 5, md: 7 } }}>
-              A hired live printer charges you by the hour — you pay their fee no matter how many items sell, and you never see that money again. Our model ties our outcome to yours. If the event is slow, your deposit comes back from first sales and you break even. If it pops, you earn on everything above that. The floor with us is better than the ceiling with anyone else.
+              A hired live printer charges a large booking fee plus a per-item cost for materials. They keep every dollar of upside — the event pays to have them there, and that&apos;s where the relationship ends. Our model ties our outcome to yours. If it&apos;s slow, your deposit comes back from first sales. If it pops, you earn above that. The floor with us is better than the ceiling with anyone else.
             </Typography>
           </motion.div>
 
@@ -329,7 +329,7 @@ export default function MobileExperiencePage() {
                 Even breaking even beats the alternative.
               </Typography>
               <Typography variant="body2" sx={{ color: '#888', lineHeight: 1.8, fontSize: '0.88rem' }}>
-                With a hired live printer, you pay their fee regardless of what sells — and there&apos;s no scenario where you get that money back. With us, if the event is slow and sales only cover the deposit, you still walk away at zero. That&apos;s already better than writing a check with no upside. When demand is strong, everything above the deposit splits in your favor.
+                With a hired live printer, you pay a booking fee and per-item material costs — regardless of what sells — and there&apos;s no scenario where you see any of that back. With us, if the event is slow and sales only cover the deposit, you still walk away at zero. That&apos;s already better than writing a check with no upside. When demand is strong, everything above the deposit splits in your favor.
               </Typography>
             </Box>
           </motion.div>
@@ -342,11 +342,11 @@ export default function MobileExperiencePage() {
                   Hired live printer
                 </Typography>
                 {[
-                  { label: 'Upfront cost', value: 'Flat hourly rate + setup', dim: true },
-                  { label: 'If sales are slow', value: 'You still pay the full rate', dim: true },
-                  { label: 'If sales are strong', value: 'Printer keeps their flat rate', dim: true },
-                  { label: 'Leftover inventory', value: 'Your problem to manage', dim: true },
-                  { label: 'Visual setup', value: 'Standard print table', dim: true },
+                  { label: 'What you pay', value: 'Booking fee + per-item material cost' },
+                  { label: 'Who keeps the sales', value: 'Printer keeps all of it' },
+                  { label: 'Your upside', value: 'None — you paid to have them there' },
+                  { label: 'If it\'s a slow night', value: 'You still owe the full booking fee' },
+                  { label: 'The spectacle', value: 'A screen printing wheel' },
                 ].map((row, i) => (
                   <Box key={i} sx={{ py: 1.75, borderBottom: i < 4 ? '1px solid #1a1a1a' : 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 2 }}>
                     <Typography variant="caption" sx={{ color: '#555', fontSize: '0.8rem' }}>{row.label}</Typography>
@@ -363,11 +363,11 @@ export default function MobileExperiencePage() {
                   Mobile Merch
                 </Typography>
                 {[
-                  { label: 'Upfront cost', value: `Print cost + ${fmt(DEPOSIT)} deposit`, green: false },
-                  { label: 'If sales are slow', value: 'Deposit returns from first sales', green: true },
-                  { label: 'If sales are strong', value: 'You earn on every item after deposit', green: true },
-                  { label: 'Leftover inventory', value: 'We take blanks back — nothing to store', green: true },
-                  { label: 'Visual setup', value: 'LED-lit production van', green: true },
+                  { label: 'What you pay', value: `Print cost + ${fmt(DEPOSIT)} deposit`, green: false },
+                  { label: 'Who keeps the sales', value: 'Split — after deposit returns to you', green: true },
+                  { label: 'Your upside', value: 'Everything above the deposit, split 50/50', green: true },
+                  { label: 'If it\'s a slow night', value: 'Deposit returns from first sales', green: true },
+                  { label: 'The spectacle', value: 'LED-lit production van', green: true },
                 ].map((row, i) => (
                   <Box key={i} sx={{ py: 1.75, borderBottom: i < 4 ? '1px solid rgba(242,191,0,0.1)' : 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 2 }}>
                     <Typography variant="caption" sx={{ color: '#888', fontSize: '0.8rem' }}>{row.label}</Typography>
