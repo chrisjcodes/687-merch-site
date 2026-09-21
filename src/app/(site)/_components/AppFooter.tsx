@@ -38,7 +38,7 @@ export default function AppFooter() {
                 priority
               />
             </Box>
-            <Typography variant="body2" sx={{ color: '#555', fontSize: '0.8rem' }}>
+            <Typography variant="body2" sx={{ color: '#888', fontSize: '0.8rem' }}>
               Your Merch Partner.
             </Typography>
           </Box>
@@ -74,14 +74,14 @@ export default function AppFooter() {
             >
               @687merch
             </Typography>
-            <Typography variant="body2" sx={{ color: '#555', fontSize: '0.78rem' }}>
+            <Typography variant="body2" sx={{ color: '#888', fontSize: '0.78rem' }}>
               Based in Los Angeles, CA
             </Typography>
           </Box>
         </Box>
 
         <Box sx={{ mt: { xs: 4, md: 6 }, pt: 3, borderTop: '1px solid #1a1a1a' }}>
-          <Typography variant="body2" sx={{ color: '#444', fontSize: '0.75rem' }}>
+          <Typography variant="body2" sx={{ color: '#888', fontSize: '0.75rem' }}>
             © {currentYear} 687 Merch. All rights reserved.
           </Typography>
         </Box>

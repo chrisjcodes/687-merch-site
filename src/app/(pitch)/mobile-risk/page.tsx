@@ -99,7 +99,7 @@ function RiskRow({ label, tradVal, mobVal, tradNote, mobNote, tradBad, mobGood }
       }}
     >
       <Box sx={{ px: { xs: 2.5, md: 3 }, py: 2, borderRight: { sm: '1px solid #1a1a1a' }, borderBottom: { xs: '1px solid #161616', sm: 'none' } }}>
-        <Typography variant="body2" sx={{ color: '#666', fontSize: '0.8rem', fontWeight: 500 }}>
+        <Typography variant="body2" sx={{ color: '#888', fontSize: '0.8rem', fontWeight: 500 }}>
           {label}
         </Typography>
       </Box>
@@ -108,7 +108,7 @@ function RiskRow({ label, tradVal, mobVal, tradNote, mobNote, tradBad, mobGood }
           {tradVal}
         </Typography>
         {tradNote && (
-          <Typography variant="caption" sx={{ color: '#444', fontSize: '0.68rem', display: 'block', mt: 0.5, lineHeight: 1.4 }}>
+          <Typography variant="caption" sx={{ color: '#888', fontSize: '0.78rem', display: 'block', mt: 0.5, lineHeight: 1.4 }}>
             {tradNote}
           </Typography>
         )}
@@ -118,7 +118,7 @@ function RiskRow({ label, tradVal, mobVal, tradNote, mobNote, tradBad, mobGood }
           {mobVal}
         </Typography>
         {mobNote && (
-          <Typography variant="caption" sx={{ color: '#444', fontSize: '0.68rem', display: 'block', mt: 0.5, lineHeight: 1.4 }}>
+          <Typography variant="caption" sx={{ color: '#888', fontSize: '0.78rem', display: 'block', mt: 0.5, lineHeight: 1.4 }}>
             {mobNote}
           </Typography>
         )}
@@ -138,6 +138,7 @@ export default function MobileRiskPage() {
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
+            style={{ textAlign: 'center' }}
           >
             <Typography
               variant="h1"
@@ -148,7 +149,7 @@ export default function MobileRiskPage() {
               haven&apos;t seen yet.
             </Typography>
 
-            <Typography variant="body1" sx={{ color: '#666', maxWidth: 540, lineHeight: 1.8, mb: 7, fontSize: '1rem' }}>
+            <Typography variant="body1" sx={{ color: '#999', maxWidth: 540, lineHeight: 1.8, mb: 7, fontSize: '1rem', mx: 'auto' }}>
               Traditional merch asks you to commit before the event — sizes, quantities, designs — all locked in before a single person walks through the door. How many will show? What sizes will they need? Which design moves? You don&apos;t know. Neither does anyone else. Mobile Merch turns your event into a live shop. We print on-site as demand shows itself, so you&apos;re never stuck holding product that didn&apos;t move.
             </Typography>
 
@@ -161,13 +162,15 @@ export default function MobileRiskPage() {
                 borderRadius: 2,
                 overflow: 'hidden',
                 maxWidth: 560,
+                mx: 'auto',
+                textAlign: 'left',
               }}
             >
               <Box sx={{ flex: 1, px: 3, py: 2.5, borderRight: { sm: '1px solid #1e1e1e' }, borderBottom: { xs: '1px solid #1e1e1e', sm: 'none' } }}>
                 <Typography variant="body2" sx={{ color: '#e74c3c', fontWeight: 700, fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.08em', mb: 0.75 }}>
                   Pre-order model
                 </Typography>
-                <Typography variant="caption" sx={{ color: '#444', fontSize: '0.75rem', lineHeight: 1.6, display: 'block' }}>
+                <Typography variant="caption" sx={{ color: '#888', fontSize: '0.82rem', lineHeight: 1.6, display: 'block' }}>
                   Sizes, quantities, and designs locked in weeks before anyone shows up
                 </Typography>
               </Box>
@@ -175,7 +178,7 @@ export default function MobileRiskPage() {
                 <Typography variant="body2" sx={{ color: '#f2bf00', fontWeight: 700, fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.08em', mb: 0.75 }}>
                   On-site shop model
                 </Typography>
-                <Typography variant="caption" sx={{ color: '#444', fontSize: '0.75rem', lineHeight: 1.6, display: 'block' }}>
+                <Typography variant="caption" sx={{ color: '#888', fontSize: '0.82rem', lineHeight: 1.6, display: 'block' }}>
                   Print what&apos;s actually selling, in real time, to a crowd you can see
                 </Typography>
               </Box>
@@ -200,7 +203,7 @@ export default function MobileRiskPage() {
               The scenario
             </Typography>
             <Box sx={{ width: { sm: 1 }, height: { xs: 1, sm: 20 }, backgroundColor: '#1e1e1e', display: { xs: 'none', sm: 'block' } }} />
-            <Typography variant="caption" sx={{ color: '#444', fontSize: '0.75rem', lineHeight: 1.5 }}>
+            <Typography variant="caption" sx={{ color: '#888', fontSize: '0.82rem', lineHeight: 1.5 }}>
               All numbers below are based on a <Box component="span" sx={{ color: '#777' }}>100-item event merch run</Box> — shirts selling at <Box component="span" sx={{ color: '#777' }}>${SALE_PRICE} each</Box>, a common starting point for bars, fan clubs, and community events. Use them as a reference frame, not a fixed quote.
             </Typography>
           </Box>
@@ -211,7 +214,7 @@ export default function MobileRiskPage() {
       <Box sx={{ py: { xs: 8, md: 10 }, backgroundColor: '#0a0a0a', borderBottom: '1px solid #1a1a1a' }}>
         <Container maxWidth="lg">
           <motion.div {...fadeUp}>
-            <Typography variant="caption" sx={{ color: '#333', textTransform: 'uppercase', letterSpacing: '0.14em', fontSize: '0.65rem', fontWeight: 700, display: 'block', mb: 6 }}>
+            <Typography variant="caption" sx={{ color: '#888', textTransform: 'uppercase', letterSpacing: '0.14em', fontSize: '0.74rem', fontWeight: 700, display: 'block', mb: 6 }}>
               What you're actually risking
             </Typography>
           </motion.div>
@@ -244,7 +247,7 @@ export default function MobileRiskPage() {
                   <Typography variant="body2" sx={{ color: '#eaeaea', fontWeight: 700, fontSize: '0.88rem', mb: 1, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
                     {item.label}
                   </Typography>
-                  <Typography variant="caption" sx={{ color: '#444', fontSize: '0.75rem', lineHeight: 1.6, display: 'block' }}>
+                  <Typography variant="caption" sx={{ color: '#888', fontSize: '0.82rem', lineHeight: 1.6, display: 'block' }}>
                     {item.sub}
                   </Typography>
                 </Box>
@@ -258,7 +261,7 @@ export default function MobileRiskPage() {
       <Box sx={{ py: { xs: 8, md: 10 }, borderBottom: '1px solid #1a1a1a' }}>
         <Container maxWidth="lg">
           <motion.div {...fadeUp}>
-            <Typography variant="caption" sx={{ color: '#333', textTransform: 'uppercase', letterSpacing: '0.14em', fontSize: '0.65rem', fontWeight: 700, display: 'block', mb: 2 }}>
+            <Typography variant="caption" sx={{ color: '#888', textTransform: 'uppercase', letterSpacing: '0.14em', fontSize: '0.74rem', fontWeight: 700, display: 'block', mb: 2 }}>
               The downside comparison
             </Typography>
             <Typography variant="h2" sx={{ color: '#fff', mb: { xs: 5, md: 7 }, fontSize: { xs: '1.8rem', md: '2.2rem' } }}>
@@ -279,7 +282,7 @@ export default function MobileRiskPage() {
               >
                 <Box sx={{ px: { xs: 2.5, md: 3 }, py: 2, borderRight: { sm: '1px solid #1e1e1e' }, display: { xs: 'none', sm: 'block' } }} />
                 <Box sx={{ px: { xs: 2.5, md: 3 }, py: 2, borderRight: { sm: '1px solid #1e1e1e' } }}>
-                  <Typography variant="caption" sx={{ color: '#555', fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.1em', display: 'block', mb: 0.25 }}>
+                  <Typography variant="caption" sx={{ color: '#888', fontSize: '0.74rem', textTransform: 'uppercase', letterSpacing: '0.1em', display: 'block', mb: 0.25 }}>
                     Their model
                   </Typography>
                   <Typography variant="body2" sx={{ color: '#777', fontWeight: 700, fontSize: '0.82rem' }}>
@@ -287,7 +290,7 @@ export default function MobileRiskPage() {
                   </Typography>
                 </Box>
                 <Box sx={{ px: { xs: 2.5, md: 3 }, py: 2 }}>
-                  <Typography variant="caption" sx={{ color: '#f2bf00', fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.1em', display: 'block', mb: 0.25 }}>
+                  <Typography variant="caption" sx={{ color: '#f2bf00', fontSize: '0.74rem', textTransform: 'uppercase', letterSpacing: '0.1em', display: 'block', mb: 0.25 }}>
                     Our model
                   </Typography>
                   <Typography variant="body2" sx={{ color: '#f2bf00', fontWeight: 700, fontSize: '0.82rem' }}>
@@ -302,10 +305,10 @@ export default function MobileRiskPage() {
             </Box>
 
             <Box sx={{ mt: 2, display: 'flex', flexDirection: 'column', gap: 0.5 }}>
-              <Typography variant="caption" sx={{ color: '#555', fontSize: '0.68rem' }}>
+              <Typography variant="caption" sx={{ color: '#888', fontSize: '0.78rem' }}>
                 * {fmt(MOB_DEPOSIT)} of this is your operational deposit, returned to you once event sales cover it.
               </Typography>
-              <Typography variant="caption" sx={{ color: '#555', fontSize: '0.68rem' }}>
+              <Typography variant="caption" sx={{ color: '#888', fontSize: '0.78rem' }}>
                 † Your worst-case is the screen printing cost — transfer sheets you own outright and can use at any future event.
               </Typography>
             </Box>
@@ -317,7 +320,7 @@ export default function MobileRiskPage() {
       <Box sx={{ py: { xs: 8, md: 10 }, backgroundColor: '#0a0a0a', borderBottom: '1px solid #1a1a1a' }}>
         <Container maxWidth="lg">
           <motion.div {...fadeUp}>
-            <Typography variant="caption" sx={{ color: '#333', textTransform: 'uppercase', letterSpacing: '0.14em', fontSize: '0.65rem', fontWeight: 700, display: 'block', mb: 2 }}>
+            <Typography variant="caption" sx={{ color: '#888', textTransform: 'uppercase', letterSpacing: '0.14em', fontSize: '0.74rem', fontWeight: 700, display: 'block', mb: 2 }}>
               How the model works
             </Typography>
             <Typography variant="h2" sx={{ color: '#fff', mb: { xs: 5, md: 7 }, fontSize: { xs: '1.8rem', md: '2.2rem' } }}>
@@ -358,7 +361,7 @@ export default function MobileRiskPage() {
                     height: '100%',
                   }}
                 >
-                  <Typography variant="caption" sx={{ color: '#2a2a2a', fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.14em', fontWeight: 700, display: 'block', mb: 2 }}>
+                  <Typography variant="caption" sx={{ color: '#2a2a2a', fontSize: '0.74rem', textTransform: 'uppercase', letterSpacing: '0.14em', fontWeight: 700, display: 'block', mb: 2 }}>
                     Step {item.step}
                   </Typography>
                   <Typography sx={{ fontFamily: 'var(--font-anton), "Anton", sans-serif', fontSize: '2rem', lineHeight: 1, color: '#f2bf00', mb: 1.5 }}>
@@ -367,10 +370,10 @@ export default function MobileRiskPage() {
                   <Typography variant="body2" sx={{ color: '#eaeaea', fontWeight: 700, fontSize: '0.88rem', mb: 2, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
                     {item.label}
                   </Typography>
-                  <Typography variant="body2" sx={{ color: '#555', lineHeight: 1.7, fontSize: '0.82rem', mb: 2.5 }}>
+                  <Typography variant="body2" sx={{ color: '#888', lineHeight: 1.7, fontSize: '0.82rem', mb: 2.5 }}>
                     {item.body}
                   </Typography>
-                  <Typography variant="caption" sx={{ color: '#2e2e2e', fontSize: '0.68rem', fontStyle: 'italic' }}>
+                  <Typography variant="caption" sx={{ color: '#2e2e2e', fontSize: '0.78rem', fontStyle: 'italic' }}>
                     {item.note}
                   </Typography>
                 </Box>
@@ -384,13 +387,13 @@ export default function MobileRiskPage() {
       <Box sx={{ py: { xs: 8, md: 10 }, borderBottom: '1px solid #1a1a1a' }}>
         <Container maxWidth="lg">
           <motion.div {...fadeUp}>
-            <Typography variant="caption" sx={{ color: '#333', textTransform: 'uppercase', letterSpacing: '0.14em', fontSize: '0.65rem', fontWeight: 700, display: 'block', mb: 2 }}>
+            <Typography variant="caption" sx={{ color: '#888', textTransform: 'uppercase', letterSpacing: '0.14em', fontSize: '0.74rem', fontWeight: 700, display: 'block', mb: 2 }}>
               When it works
             </Typography>
             <Typography variant="h2" sx={{ color: '#fff', mb: 1.5, fontSize: { xs: '1.8rem', md: '2.2rem' } }}>
               {soldUnits} of {UNITS} sell at ${SALE_PRICE}.
             </Typography>
-            <Typography variant="body1" sx={{ color: '#444', mb: { xs: 5, md: 7 }, maxWidth: 480 }}>
+            <Typography variant="body1" sx={{ color: '#888', mb: { xs: 5, md: 7 }, maxWidth: 480 }}>
               {fmt(grossSales)} gross. Both models make money. Only one exits clean.
             </Typography>
           </motion.div>
@@ -399,20 +402,20 @@ export default function MobileRiskPage() {
             <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' }, gap: 3 }}>
               {/* Traditional */}
               <Box sx={{ p: { xs: 3, md: 4 }, border: '1px solid #2a1a1a', borderRadius: 2, backgroundColor: 'rgba(192,57,43,0.03)' }}>
-                <Typography variant="caption" sx={{ color: '#555', textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.65rem', display: 'block', mb: 3 }}>
+                <Typography variant="caption" sx={{ color: '#888', textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.74rem', display: 'block', mb: 3 }}>
                   Traditional
                 </Typography>
                 <Typography sx={{ fontFamily: 'var(--font-anton), "Anton", sans-serif', fontSize: '2.5rem', lineHeight: 1, color: '#eaeaea', mb: 0.5 }}>
                   {fmt(tradNet)}
                 </Typography>
-                <Typography variant="caption" sx={{ color: '#555', fontSize: '0.68rem', display: 'block', mb: 3 }}>
+                <Typography variant="caption" sx={{ color: '#888', fontSize: '0.78rem', display: 'block', mb: 3 }}>
                   Net profit from event
                 </Typography>
                 <Box sx={{ pt: 3, borderTop: '1px solid #1e1e1e' }}>
                   <Typography variant="body2" sx={{ color: '#e74c3c', fontWeight: 700, fontSize: '0.82rem', mb: 0.75 }}>
                     + {unsoldUnits} shirts still in your hands
                   </Typography>
-                  <Typography variant="caption" sx={{ color: '#444', fontSize: '0.72rem', lineHeight: 1.6, display: 'block' }}>
+                  <Typography variant="caption" sx={{ color: '#888', fontSize: '0.82rem', lineHeight: 1.6, display: 'block' }}>
                     That&apos;s storage, listing time, discount sales, or a closet full of shirts.
                     The profit gap from selling them all covers the hassle — if you sell them.
                   </Typography>
@@ -421,20 +424,20 @@ export default function MobileRiskPage() {
 
               {/* Mobile */}
               <Box sx={{ p: { xs: 3, md: 4 }, border: '1px solid #1e2a1a', borderRadius: 2, backgroundColor: 'rgba(242,191,0,0.03)' }}>
-                <Typography variant="caption" sx={{ color: '#f2bf00', textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.65rem', display: 'block', mb: 3 }}>
+                <Typography variant="caption" sx={{ color: '#f2bf00', textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.74rem', display: 'block', mb: 3 }}>
                   687 Mobile Merch
                 </Typography>
                 <Typography sx={{ fontFamily: 'var(--font-anton), "Anton", sans-serif', fontSize: '2.5rem', lineHeight: 1, color: '#f2bf00', mb: 0.5 }}>
                   {fmt(mobNet)}
                 </Typography>
-                <Typography variant="caption" sx={{ color: '#555', fontSize: '0.68rem', display: 'block', mb: 3 }}>
+                <Typography variant="caption" sx={{ color: '#888', fontSize: '0.78rem', display: 'block', mb: 3 }}>
                   Net profit from event
                 </Typography>
                 <Box sx={{ pt: 3, borderTop: '1px solid #1e1e1e' }}>
                   <Typography variant="body2" sx={{ color: '#f2bf00', fontWeight: 700, fontSize: '0.82rem', mb: 0.75 }}>
                     Zero inventory remaining
                   </Typography>
-                  <Typography variant="caption" sx={{ color: '#444', fontSize: '0.72rem', lineHeight: 1.6, display: 'block' }}>
+                  <Typography variant="caption" sx={{ color: '#888', fontSize: '0.82rem', lineHeight: 1.6, display: 'block' }}>
                     You walk away from the event with your money and nothing left to figure out.
                     The profit difference is the cost of a clean exit.
                   </Typography>
@@ -453,7 +456,7 @@ export default function MobileRiskPage() {
               <Typography variant="h2" sx={{ color: '#fff', mb: 3, fontSize: { xs: '2rem', md: '2.8rem' } }}>
                 Every event has<br />different numbers.
               </Typography>
-              <Typography variant="body1" sx={{ color: '#555', mb: 6, maxWidth: 400, mx: 'auto', lineHeight: 1.75 }}>
+              <Typography variant="body1" sx={{ color: '#888', mb: 6, maxWidth: 400, mx: 'auto', lineHeight: 1.75 }}>
                 Tell us about your event and we&apos;ll run the math for your specific headcount, venue, and goals.
               </Typography>
               <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap' }}>

@@ -153,7 +153,7 @@ export default function PartnerDifference() {
                       alignItems: 'center',
                       justifyContent: 'center',
                       backgroundColor: '#0f0f0f',
-                      color: '#666',
+                      color: '#888',
                       fontSize: '1rem',
                     }}
                   >
@@ -174,7 +174,7 @@ export default function PartnerDifference() {
           variants={fadeUp}
         >
           <Box sx={{ borderTop: '1px solid #1e1e1e', pt: 5 }}>
-            <Typography variant="body1" sx={{ color: '#555', maxWidth: 640, lineHeight: 1.75 }}>
+            <Typography variant="body1" sx={{ color: '#888', maxWidth: 640, lineHeight: 1.75 }}>
               At the end of the event, we pack up and leave with our blank inventory—every unsold
               garment goes back in the van. You walk away with zero finished merchandise to store,
               manage, or mark down. Any unused screen printing is still yours—your transfer sheets

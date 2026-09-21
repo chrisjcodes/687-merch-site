@@ -77,7 +77,7 @@ export default function PitchLayout({ children }: { children: React.ReactNode })
                   component="a"
                   href="tel:+14242603076"
                   variant="caption"
-                  sx={{ color: '#444', textDecoration: 'none', '&:hover': { color: '#f2bf00' }, transition: 'color 0.15s' }}
+                  sx={{ color: '#888', textDecoration: 'none', '&:hover': { color: '#f2bf00' }, transition: 'color 0.15s' }}
                 >
                   (424) 260-3076
                 </Typography>
@@ -85,7 +85,7 @@ export default function PitchLayout({ children }: { children: React.ReactNode })
                   component="a"
                   href="mailto:info@687merch.com"
                   variant="caption"
-                  sx={{ color: '#444', textDecoration: 'none', '&:hover': { color: '#f2bf00' }, transition: 'color 0.15s' }}
+                  sx={{ color: '#888', textDecoration: 'none', '&:hover': { color: '#f2bf00' }, transition: 'color 0.15s' }}
                 >
                   info@687merch.com
                 </Typography>

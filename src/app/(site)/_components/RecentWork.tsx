@@ -174,7 +174,7 @@ export default function RecentWork({ onItemClick }: RecentWorkProps) {
                               size="small"
                               sx={{
                                 backgroundColor: '#f5f5f5',
-                                color: '#666',
+                                color: '#888',
                                 fontSize: '0.75rem',
                               }}
                             />

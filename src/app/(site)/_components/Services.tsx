@@ -43,7 +43,7 @@ export default function Services() {
               </Typography>
               <Typography
                 variant="body1"
-                sx={{ color: '#555', maxWidth: 600, mx: 'auto', fontSize: '1.05rem', lineHeight: 1.75 }}
+                sx={{ color: '#888', maxWidth: 600, mx: 'auto', fontSize: '1.05rem', lineHeight: 1.75 }}
               >
                 Every merch project is different. We offer three production models so you get the one
                 that actually fits your needs—not the one that&apos;s easiest for us.
@@ -149,7 +149,7 @@ export default function Services() {
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             <Box sx={{ mt: 6, textAlign: 'center' }}>
-              <Typography variant="body1" sx={{ color: '#555', fontSize: '0.92rem' }}>
+              <Typography variant="body1" sx={{ color: '#888', fontSize: '0.92rem' }}>
                 We also offer{' '}
                 <Box component="span" sx={{ fontWeight: 700, color: '#000' }}>
                   design services

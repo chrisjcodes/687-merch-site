@@ -135,7 +135,7 @@ function CompareRow({ label, tradSub, mobileSub, tradVal, mobileVal, sectionBg, 
           {tradVal}
         </Typography>
         {tradSub && (
-          <Typography variant="caption" sx={{ color: '#666', fontSize: '0.68rem', display: { xs: 'none', sm: 'block' }, mt: 0.3 }}>
+          <Typography variant="caption" sx={{ color: '#888', fontSize: '0.78rem', display: { xs: 'none', sm: 'block' }, mt: 0.3 }}>
             {tradSub}
           </Typography>
         )}
@@ -160,7 +160,7 @@ function CompareRow({ label, tradSub, mobileSub, tradVal, mobileVal, sectionBg, 
           {mobileVal}
         </Typography>
         {mobileSub && (
-          <Typography variant="caption" sx={{ color: '#666', fontSize: '0.68rem', display: { xs: 'none', sm: 'block' }, mt: 0.3 }}>
+          <Typography variant="caption" sx={{ color: '#888', fontSize: '0.78rem', display: { xs: 'none', sm: 'block' }, mt: 0.3 }}>
             {mobileSub}
           </Typography>
         )}
@@ -184,10 +184,10 @@ function SectionHeader({ label, danger }: { label: string; danger?: boolean }) {
         <Typography
           variant="caption"
           sx={{
-            color: danger ? '#c0392b' : '#3a3a3a',
+            color: danger ? '#c0392b' : '#555',
             textTransform: 'uppercase',
             letterSpacing: '0.12em',
-            fontSize: '0.68rem',
+            fontSize: '0.78rem',
             fontWeight: 700,
           }}
         >
@@ -215,7 +215,7 @@ export default function CostComparison() {
             <Typography variant="h2" component="h2" sx={{ color: '#fff', mb: 3 }}>
               Their Model vs. Ours
             </Typography>
-            <Typography variant="body1" sx={{ color: '#555', maxWidth: 520, mx: 'auto', lineHeight: 1.75 }}>
+            <Typography variant="body1" sx={{ color: '#888', maxWidth: 520, mx: 'auto', lineHeight: 1.75 }}>
               What does a 100-item event merch run actually cost—and what happens if 30% doesn&apos;t sell?
             </Typography>
           </Box>
@@ -250,7 +250,7 @@ export default function CostComparison() {
               >
                 <Box sx={{ px: { xs: 2, md: 3 }, py: 2, borderRight: '1px solid #1e1e1e' }} />
                 <Box sx={{ px: { xs: 2, md: 3 }, py: 2, borderRight: '1px solid #1e1e1e' }}>
-                  <Typography variant="caption" sx={{ color: '#555', fontSize: '0.68rem', textTransform: 'uppercase', letterSpacing: '0.1em', display: 'block', mb: 0.25 }}>
+                  <Typography variant="caption" sx={{ color: '#888', fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.1em', display: 'block', mb: 0.25 }}>
                     Their model
                   </Typography>
                   <Typography variant="body2" sx={{ color: '#888', fontWeight: 700, fontSize: '0.82rem' }}>
@@ -258,7 +258,7 @@ export default function CostComparison() {
                   </Typography>
                 </Box>
                 <Box sx={{ px: { xs: 2, md: 3 }, py: 2 }}>
-                  <Typography variant="caption" sx={{ color: '#f2bf00', fontSize: '0.68rem', textTransform: 'uppercase', letterSpacing: '0.1em', display: 'block', mb: 0.25 }}>
+                  <Typography variant="caption" sx={{ color: '#f2bf00', fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.1em', display: 'block', mb: 0.25 }}>
                     Our model
                   </Typography>
                   <Typography variant="body2" sx={{ color: '#f2bf00', fontWeight: 700, fontSize: '0.82rem' }}>
@@ -404,13 +404,13 @@ export default function CostComparison() {
 
             {/* Footnotes */}
             <Box sx={{ mt: 2, display: 'flex', flexDirection: 'column', gap: 0.5 }}>
-              <Typography variant="caption" sx={{ color: '#666', fontSize: '0.7rem' }}>
+              <Typography variant="caption" sx={{ color: '#888', fontSize: '0.8rem' }}>
                 * {fmt(MOBILE_DEPOSIT)} of this is your operational deposit, returned to you once event sales cover it.
               </Typography>
-              <Typography variant="caption" sx={{ color: '#666', fontSize: '0.7rem' }}>
+              <Typography variant="caption" sx={{ color: '#888', fontSize: '0.8rem' }}>
                 † Your worst-case is the screen printing cost—prints you own outright and can use on any future order or event.
               </Typography>
-              <Typography variant="caption" sx={{ color: '#555', fontSize: '0.7rem' }}>
+              <Typography variant="caption" sx={{ color: '#888', fontSize: '0.8rem' }}>
                 Figures are illustrative. Actual costs vary by garment selection, event size, location, and duration.
               </Typography>
             </Box>
@@ -435,18 +435,18 @@ export default function CostComparison() {
                 <Typography sx={{ fontFamily: 'var(--font-anton), "Anton", sans-serif', fontSize: { xs: '2.8rem', md: '3.8rem' }, lineHeight: 1, color: '#e74c3c' }}>
                   {fmt(d.exposure.trad)}
                 </Typography>
-                <Typography variant="caption" sx={{ color: '#444', textTransform: 'uppercase', letterSpacing: '0.08em', fontSize: '0.68rem' }}>
+                <Typography variant="caption" sx={{ color: '#888', textTransform: 'uppercase', letterSpacing: '0.08em', fontSize: '0.78rem' }}>
                   Traditional worst-case
                 </Typography>
               </Box>
 
-              <Typography sx={{ color: '#666', fontSize: '1.5rem', display: { xs: 'none', sm: 'block' } }}>vs</Typography>
+              <Typography sx={{ color: '#888', fontSize: '1.5rem', display: { xs: 'none', sm: 'block' } }}>vs</Typography>
 
               <Box>
                 <Typography sx={{ fontFamily: 'var(--font-anton), "Anton", sans-serif', fontSize: { xs: '2.8rem', md: '3.8rem' }, lineHeight: 1, color: '#f2bf00' }}>
                   {fmt(d.exposure.mobile)}
                 </Typography>
-                <Typography variant="caption" sx={{ color: '#444', textTransform: 'uppercase', letterSpacing: '0.08em', fontSize: '0.68rem' }}>
+                <Typography variant="caption" sx={{ color: '#888', textTransform: 'uppercase', letterSpacing: '0.08em', fontSize: '0.78rem' }}>
                   687 worst-case
                 </Typography>
               </Box>
@@ -455,7 +455,7 @@ export default function CostComparison() {
                 <Typography sx={{ fontFamily: 'var(--font-anton), "Anton", sans-serif', fontSize: { xs: '2.8rem', md: '3.8rem' }, lineHeight: 1, color: '#fff' }}>
                   {Math.round(d.exposure.trad / d.exposure.mobile)}×
                 </Typography>
-                <Typography variant="caption" sx={{ color: '#444', textTransform: 'uppercase', letterSpacing: '0.08em', fontSize: '0.68rem' }}>
+                <Typography variant="caption" sx={{ color: '#888', textTransform: 'uppercase', letterSpacing: '0.08em', fontSize: '0.78rem' }}>
                   More risk, their model
                 </Typography>
               </Box>
