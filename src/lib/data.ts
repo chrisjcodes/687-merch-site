@@ -67,10 +67,10 @@ export const recentWork: WorkItem[] = [
     title: 'Drip King LA',
     thumbnail: '/images/work/drip-king-la.jpeg',
     images: ['/images/work/drip-king-la.jpeg'],
-    tags: ['Streetwear', 'Brand', 'LA'],
+    tags: ['Streetwear', 'Brand', 'LA', 'Live Event'],
     year: 2026,
-    productionModel: 'flexible',
-    context: 'LA streetwear brand with a dense, detail-heavy single-color design referencing the city\'s culture — lowriders, palm trees, the Metro, Dodger blue. Printed to transfer sheets on Comfort Colors so they can apply to different garment styles as the brand grows.',
+    productionModel: 'mobile',
+    context: 'DripKingLA is a well-known LA graffiti artist. We joined him at a live painting event and ran a Mobile Merch booth right alongside him — selling limited edition tees while he painted. The design captures the culture he\'s known for: lowriders, palm trees, the Metro, the city. Customers walked away with a piece tied to the moment.',
   },
   {
     slug: 'take-a-break-kazu',
