@@ -1,3 +1,5 @@
+export type ProductionModel = 'traditional' | 'flexible' | 'mobile';
+
 export type WorkItem = {
   slug: string;
   title: string;
@@ -6,6 +8,8 @@ export type WorkItem = {
   images: string[];
   tags?: string[];
   year?: number;
+  productionModel?: ProductionModel;
+  context?: string;
 };
 
 export type Partner = {

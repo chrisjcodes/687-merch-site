@@ -13,6 +13,7 @@ import {
   List,
   ListItem,
   ListItemText,
+  Divider,
 } from '@mui/material';
 import { Menu as MenuIcon, Close as CloseIcon } from '@mui/icons-material';
 import Image from 'next/image';
@@ -60,16 +61,13 @@ export default function AppHeader() {
       <Container maxWidth="lg">
         <Toolbar sx={{ px: 0 }}>
           <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
+            {/* White logo on transparent dark nav; black logo when scrolled (nav goes dark) */}
             <Image
-              src="/687-logo.png"
+              src="/images/687-logo-white.svg"
               alt="687 Merch"
               width={144}
               height={48}
-              style={{ 
-                width: 'auto',
-                height: '48px',
-                maxWidth: '100%'
-              }}
+              style={{ width: 'auto', height: 'clamp(24px, 4vw, 42px)', maxWidth: '100%' }}
               priority
             />
           </Box>
@@ -78,31 +76,27 @@ export default function AppHeader() {
           <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 2 }}>
             <Button
               color="inherit"
+              onClick={() => scrollToSection('services')}
+              sx={{
+                fontWeight: 600,
+                textTransform: 'uppercase',
+                letterSpacing: '0.5px',
+                '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.1)' },
+              }}
+            >
+              Services
+            </Button>
+            <Button
+              color="inherit"
               onClick={() => scrollToSection('work')}
               sx={{
                 fontWeight: 600,
                 textTransform: 'uppercase',
                 letterSpacing: '0.5px',
-                '&:hover': {
-                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                },
+                '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.1)' },
               }}
             >
-              Work
-            </Button>
-            <Button
-              color="inherit"
-              onClick={() => scrollToSection('partners')}
-              sx={{
-                fontWeight: 600,
-                textTransform: 'uppercase',
-                letterSpacing: '0.5px',
-                '&:hover': {
-                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                },
-              }}
-            >
-              Partners
+              Case Studies
             </Button>
             <Button
               color="inherit"
@@ -111,9 +105,7 @@ export default function AppHeader() {
                 fontWeight: 600,
                 textTransform: 'uppercase',
                 letterSpacing: '0.5px',
-                '&:hover': {
-                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                },
+                '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.1)' },
               }}
             >
               Contact
@@ -125,10 +117,11 @@ export default function AppHeader() {
             <IconButton
               color="inherit"
               onClick={toggleMobileMenu}
+              aria-label="Open menu"
               sx={{
-                '&:hover': {
-                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                },
+                width: 48,
+                height: 48,
+                '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.1)' },
               }}
             >
               <MenuIcon />
@@ -160,70 +153,43 @@ export default function AppHeader() {
             </IconButton>
           </Box>
           
-          <List>
-            <ListItem 
-              onClick={() => scrollToSection('work')}
-              sx={{
-                cursor: 'pointer',
-                '&:hover': {
-                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                },
-              }}
-            >
-              <ListItemText 
-                primary="WORK" 
-                sx={{
-                  '& .MuiTypography-root': {
-                    fontWeight: 600,
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.5px',
-                  }
-                }}
-              />
-            </ListItem>
-            
-            <ListItem 
-              onClick={() => scrollToSection('partners')}
-              sx={{
-                cursor: 'pointer',
-                '&:hover': {
-                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                },
-              }}
-            >
-              <ListItemText 
-                primary="PARTNERS" 
-                sx={{
-                  '& .MuiTypography-root': {
-                    fontWeight: 600,
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.5px',
-                  }
-                }}
-              />
-            </ListItem>
-            
-            <ListItem 
+          <List disablePadding>
+            {[
+              { label: 'Services',     id: 'services' },
+              { label: 'Case Studies', id: 'work' },
+              { label: 'Contact',      id: 'contact' },
+            ].map(({ label, id }) => (
+              <ListItem
+                key={id}
+                onClick={() => scrollToSection(id)}
+                sx={{ cursor: 'pointer', minHeight: 52, '&:hover': { backgroundColor: 'rgba(255,255,255,0.07)' } }}
+              >
+                <ListItemText
+                  primary={label.toUpperCase()}
+                  sx={{ '& .MuiTypography-root': { fontWeight: 600, letterSpacing: '0.05em', fontSize: '0.9rem' } }}
+                />
+              </ListItem>
+            ))}
+          </List>
+
+          <Divider sx={{ borderColor: '#1e1e1e', my: 2 }} />
+
+          <Box sx={{ px: 1 }}>
+            <Button
+              fullWidth
+              variant="contained"
               onClick={() => scrollToSection('contact')}
               sx={{
-                cursor: 'pointer',
-                '&:hover': {
-                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                },
+                backgroundColor: '#f2bf00',
+                color: '#000',
+                fontWeight: 700,
+                py: 1.5,
+                '&:hover': { backgroundColor: '#e0b000' },
               }}
             >
-              <ListItemText 
-                primary="CONTACT" 
-                sx={{
-                  '& .MuiTypography-root': {
-                    fontWeight: 600,
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.5px',
-                  }
-                }}
-              />
-            </ListItem>
-          </List>
+              Get a Quote
+            </Button>
+          </Box>
         </Box>
       </Drawer>
     </AppBar>

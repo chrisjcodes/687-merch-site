@@ -4,8 +4,10 @@ import React, { useState } from 'react';
 import { Box } from '@mui/material';
 import AppHeader from './_components/AppHeader';
 import Hero from './_components/Hero';
-import RecentWork from './_components/RecentWork';
-import Partners from './_components/Partners';
+import Services from './_components/Services';
+import PartnerDifference from './_components/PartnerDifference';
+import CostComparison from './_components/CostComparison';
+import CaseStudies from './_components/CaseStudies';
 import ContactForm from './_components/ContactForm';
 import AppFooter from './_components/AppFooter';
 import Lightbox from './_components/Lightbox';
@@ -22,22 +24,16 @@ export default function Home() {
     setLightboxOpen(true);
   };
 
-  const handleLightboxClose = () => {
-    setLightboxOpen(false);
-  };
-
-  const handleLightboxNavigate = (index: number) => {
-    setCurrentImageIndex(index);
-  };
-
   return (
     <Box>
       <AppHeader />
-      
+
       <main>
         <Hero />
-        <RecentWork onItemClick={handleWorkItemClick} />
-        <Partners />
+        <Services />
+        <PartnerDifference />
+        <CostComparison />
+        <CaseStudies onItemClick={handleWorkItemClick} />
         <ContactForm />
       </main>
 
@@ -45,10 +41,10 @@ export default function Home() {
 
       <Lightbox
         open={lightboxOpen}
-        onClose={handleLightboxClose}
+        onClose={() => setLightboxOpen(false)}
         images={lightboxImages}
         currentIndex={currentImageIndex}
-        onNavigate={handleLightboxNavigate}
+        onNavigate={(index: number) => setCurrentImageIndex(index)}
       />
     </Box>
   );

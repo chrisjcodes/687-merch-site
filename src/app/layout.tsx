@@ -25,9 +25,9 @@ export const metadata: Metadata = {
   creator: "687 Merch",
   publisher: "687 Merch",
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/favicon.ico",
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/apple-icon.png",
   },
   openGraph: {
     type: "website",
@@ -36,11 +36,20 @@ export const metadata: Metadata = {
     title: "687 Merch | Think Big. Start Small.",
     description: "We help brands, artists, and small businesses launch and refine merchandise programs with flexible, small-batch production and creative support.",
     siteName: "687 Merch",
+    images: [
+      {
+        url: "https://687merch.com/images/og-image.jpg",
+        width: 1200,
+        height: 1200,
+        alt: "687 Merch",
+      },
+    ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: "687 Merch | Think Big. Start Small.",
     description: "We help brands, artists, and small businesses launch and refine merchandise programs with flexible, small-batch production and creative support.",
+    images: ["https://687merch.com/images/og-image.jpg"],
   },
   robots: {
     index: true,

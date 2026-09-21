@@ -19,6 +19,28 @@ a {
   text-decoration: none;
 }
 
+/* P1-6: Global keyboard focus ring */
+:focus-visible {
+  outline: 2px solid #f2bf00;
+  outline-offset: 2px;
+}
+
+/* Darker focus ring for elements on the yellow contact section */
+#contact :focus-visible {
+  outline-color: #000;
+}
+
+/* P2-7: Reduced motion — collapse all reveal animations instantly */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 .hero-overlay {
   position: absolute;
   top: 0;
@@ -26,10 +48,10 @@ a {
   width: 100%;
   height: 100%;
   background: linear-gradient(
-    135deg,
-    rgba(0, 0, 0, 0.8) 0%,
-    rgba(0, 0, 0, 0.6) 50%,
-    rgba(0, 0, 0, 0.8) 100%
+    to bottom,
+    rgba(0, 0, 0, 0.65) 0%,
+    rgba(0, 0, 0, 0.55) 50%,
+    rgba(0, 0, 0, 1) 100%
   );
   z-index: 1;
 }
