@@ -157,7 +157,7 @@ export default function MobileLogisticsPage() {
                 Don&apos;t find us a power drop.
               </Typography>
               <Typography variant="body1" sx={{ color: '#888', lineHeight: 1.8, mb: 4 }}>
-                The van runs on its own integrated battery system — up to four hours of operation with no external power input at all, depending on press volume. We don&apos;t need to be near an outlet. We don&apos;t need you to coordinate with the venue on power access.
+                The van runs on its own integrated battery system — 4 to 6 hours of operation with no external power input at all, depending on press volume. We don&apos;t need to be near an outlet. We don&apos;t need you to coordinate with the venue on power access.
               </Typography>
               <Typography variant="body2" sx={{ color: '#888', lineHeight: 1.8, mb: 3, fontSize: '0.9rem' }}>
                 If we&apos;re there for a long stretch or doing high volume, we have options:
@@ -207,7 +207,7 @@ export default function MobileLogisticsPage() {
                     mb: 1,
                   }}
                 >
-                  4hrs
+                  4–6hrs
                 </Typography>
                 <Typography variant="body2" sx={{ color: '#eaeaea', fontWeight: 700, fontSize: '0.88rem', textTransform: 'uppercase', letterSpacing: '0.04em', mb: 1 }}>
                   Battery runtime
