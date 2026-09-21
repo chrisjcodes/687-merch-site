@@ -46,7 +46,7 @@ export default function WaveDivider({ fromColor, toColor, flipY = false, height 
           left: 0,
           width: '200%',
           height: '100%',
-          animation: 'waveSlowL 9s linear infinite',
+          animation: 'waveSlowL 28s linear infinite',
         }}
       >
         <svg
@@ -81,7 +81,7 @@ export default function WaveDivider({ fromColor, toColor, flipY = false, height 
           left: 0,
           width: '200%',
           height: '70%',
-          animation: 'waveMedL 6s linear infinite',
+          animation: 'waveMedL 18s linear infinite',
           opacity: 0.45,
         }}
       >
@@ -117,7 +117,7 @@ export default function WaveDivider({ fromColor, toColor, flipY = false, height 
           left: '-30%',
           width: '200%',
           height: '45%',
-          animation: 'waveFastR 4s linear infinite',
+          animation: 'waveFastR 12s linear infinite',
           opacity: 0.2,
         }}
       >
