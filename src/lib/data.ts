@@ -67,10 +67,10 @@ export const recentWork: WorkItem[] = [
     title: 'Eagles Nest West Club Tee',
     thumbnail: '/images/work/EaglesNestWestFront.png',
     images: ['/images/work/EaglesNestWestFront.png', '/images/work/EaglesNestWestBack.png'],
-    tags: ['Club', 'Lifestyle'],
+    tags: ['Club', 'Lifestyle', 'Celebrity'],
     year: 2024,
     productionModel: 'flexible',
-    context: 'Growing fan club needed an ongoing supply without committing to garment styles upfront—paying for the screen printing and applying it to blanks later gave them flexibility as the group expanded.',
+    context: 'Eagles Nest West is the official Eagles fan club of Los Angeles, based out of Britannia Pub in Santa Monica. Their club tee ended up on Jason Kelce, who wore it on New Heights — the podcast he co-hosts with his brother Travis Kelce — after purchasing one from the club. Flexible printing gave them the ability to restock across watch parties without reordering the artwork each time.',
   },
   {
     slug: 'interstellar',
