@@ -50,6 +50,14 @@ export default function AppFooter() {
             </Typography>
             <Typography
               component="a"
+              href="tel:+14242603076"
+              variant="body2"
+              sx={{ color: '#999', fontSize: '0.82rem', textDecoration: 'none', '&:hover': { color: '#f2bf00' } }}
+            >
+              (424) 260-3076
+            </Typography>
+            <Typography
+              component="a"
               href="mailto:info@687merch.com"
               variant="body2"
               sx={{ color: '#999', fontSize: '0.82rem', textDecoration: 'none', '&:hover': { color: '#f2bf00' } }}
