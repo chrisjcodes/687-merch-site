@@ -406,6 +406,67 @@ export default function MobileRiskPage() {
         </Container>
       </Box>
 
+      {/* ── Never miss a sale ───────────────────────────────────────────────── */}
+      <Box sx={{ py: { xs: 8, md: 10 }, backgroundColor: '#0a0a0a', borderBottom: '1px solid #1a1a1a' }}>
+        <Container maxWidth="lg">
+          <motion.div {...fadeUp}>
+            <Box
+              sx={{
+                display: 'grid',
+                gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
+                gap: { xs: 4, md: 8 },
+                alignItems: 'center',
+              }}
+            >
+              <Box>
+                <Typography variant="caption" sx={{ color: '#888', textTransform: 'uppercase', letterSpacing: '0.14em', fontSize: '0.74rem', fontWeight: 700, display: 'block', mb: 2 }}>
+                  Built-in upside
+                </Typography>
+                <Typography variant="h2" sx={{ color: '#fff', mb: 3, fontSize: { xs: '1.8rem', md: '2.2rem' } }}>
+                  You&apos;ll never lose a sale because you ran out of a size.
+                </Typography>
+                <Typography variant="body1" sx={{ color: '#888', lineHeight: 1.8 }}>
+                  Traditional pre-orders lock you into whatever sizes and colorways you guessed right. If you run out of mediums at 2pm, those sales are gone.
+                </Typography>
+              </Box>
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+                {[
+                  {
+                    n: '01',
+                    label: 'Take the sale',
+                    body: 'Someone wants a 3XL or a colorway you don\'t have on the table — take their payment and set their transfer sheet aside.',
+                  },
+                  {
+                    n: '02',
+                    label: 'Order the blank',
+                    body: 'After the event, order exactly the garments you need to fulfill backordered items — no guessing, no overstocking.',
+                  },
+                  {
+                    n: '03',
+                    label: 'Deliver after the event',
+                    body: 'Apply the transfer to the blank and deliver directly. The sale happened at the event; the shirt arrives shortly after.',
+                  },
+                ].map((step) => (
+                  <Box key={step.n} sx={{ display: 'flex', gap: 2.5 }}>
+                    <Typography sx={{ fontFamily: 'var(--font-anton), "Anton", sans-serif', fontSize: '1.1rem', color: '#f2bf00', lineHeight: 1, pt: 0.25, minWidth: 28 }}>
+                      {step.n}
+                    </Typography>
+                    <Box>
+                      <Typography variant="body2" sx={{ color: '#eaeaea', fontWeight: 700, fontSize: '0.88rem', mb: 0.5, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                        {step.label}
+                      </Typography>
+                      <Typography variant="body2" sx={{ color: '#888', lineHeight: 1.7, fontSize: '0.85rem' }}>
+                        {step.body}
+                      </Typography>
+                    </Box>
+                  </Box>
+                ))}
+              </Box>
+            </Box>
+          </motion.div>
+        </Container>
+      </Box>
+
       {/* ── Profit scenario ──────────────────────────────────────────────────── */}
       <Box sx={{ py: { xs: 8, md: 10 }, borderBottom: '1px solid #1a1a1a' }}>
         <Container maxWidth="lg">
