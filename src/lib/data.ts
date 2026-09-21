@@ -114,13 +114,13 @@ export const recentWork: WorkItem[] = [
   },
   {
     slug: 'brit-since-96',
-    title: 'Brit Since 96',
+    title: 'Britannia Pub — Since \'96',
     thumbnail: '/images/work/BritSince96.png',
     images: ['/images/work/BritSince96.png'],
-    tags: ['Vintage', 'Year'],
+    tags: ['Bar', 'Pub', 'Anniversary'],
     year: 2024,
     productionModel: 'flexible',
-    context: 'Small streetwear brand running a design across multiple drops—paying for the screen printing once and applying it to different blanks meant the same print carried through the whole season as styles sold through.',
+    context: 'Britannia Pub celebrating their anniversary with a merch run—printing to transfer sheets let them restock tees across multiple events without reordering the artwork.',
   },
   {
     slug: 'hermosa-ink',
