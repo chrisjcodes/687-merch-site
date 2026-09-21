@@ -60,9 +60,20 @@ export default function FlexCatalogPage() {
               <Box component="span" sx={{ color: '#f2bf00' }}>Your whole catalog.</Box>
             </Typography>
 
-            <Typography variant="body1" sx={{ color: '#999', maxWidth: 520, lineHeight: 1.8, mb: 7, fontSize: '1rem', mx: 'auto' }}>
+            <Typography variant="body1" sx={{ color: '#999', maxWidth: 540, lineHeight: 1.8, mb: 4, fontSize: '1rem', mx: 'auto' }}>
               With transfer sheet printing, your design and your garment are two separate decisions. Print a white ink version and a black ink version — then apply either one to any style, color, or cut whenever demand calls for it. One print job covers every dark garment. The other covers every light one.
             </Typography>
+
+            {/* Applies to both models note */}
+            <Box sx={{ display: 'inline-flex', gap: 2, mb: 6, px: 2.5, py: 1.5, border: '1px solid #222', borderRadius: 2, mx: 'auto' }}>
+              <Typography variant="caption" sx={{ color: '#888', fontSize: '0.78rem', lineHeight: 1.5 }}>
+                Applies to both{' '}
+                <Box component="span" sx={{ color: '#f2bf00', fontWeight: 700 }}>Flexible Merch Production</Box>
+                {' '}and{' '}
+                <Box component="span" sx={{ color: '#f2bf00', fontWeight: 700 }}>Mobile Merch</Box>
+                {' '}— any model that uses transfer sheets.
+              </Typography>
+            </Box>
 
             {/* Ink split visual */}
             <Box
@@ -351,6 +362,84 @@ export default function FlexCatalogPage() {
               </motion.div>
             ))}
           </Box>
+        </Container>
+      </Box>
+
+      {/* ── Multi-event ──────────────────────────────────────────────────────── */}
+      <Box sx={{ py: { xs: 8, md: 10 }, backgroundColor: '#0a0a0a', borderBottom: '1px solid #1a1a1a' }}>
+        <Container maxWidth="lg">
+          <motion.div {...fadeUp}>
+            <Typography variant="caption" sx={{ color: '#888', textTransform: 'uppercase', letterSpacing: '0.14em', fontSize: '0.74rem', fontWeight: 700, display: 'block', mb: 2 }}>
+              Across multiple events
+            </Typography>
+            <Typography variant="h2" sx={{ color: '#fff', mb: 3, fontSize: { xs: '1.8rem', md: '2.2rem' } }}>
+              Same prints. Every show.
+            </Typography>
+            <Typography variant="body1" sx={{ color: '#888', lineHeight: 1.8, mb: { xs: 5, md: 7 }, maxWidth: 560 }}>
+              You pay for the screen printing once. Those transfer sheets work at every show, every market, every drop after that — whether you're applying them yourself or we&apos;re showing up as your merch booth.
+            </Typography>
+          </motion.div>
+
+          <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 4, mb: 5 }}>
+            {/* DIY across shows */}
+            <motion.div {...fadeUp}>
+              <Box sx={{ p: { xs: 3, md: 4 }, border: '1px solid #1e1e1e', borderRadius: 2, height: '100%' }}>
+                <Typography variant="body2" sx={{ color: '#f2bf00', fontWeight: 700, fontSize: '0.82rem', textTransform: 'uppercase', letterSpacing: '0.08em', mb: 2 }}>
+                  Flexible — you run the merch table
+                </Typography>
+                <Typography variant="body2" sx={{ color: '#888', lineHeight: 1.75, fontSize: '0.85rem', mb: 3 }}>
+                  Print your transfers once. Bring blank garments and a heat press to each show. Sell what you apply on the spot, or pre-apply a batch before each night. The print cost is already paid — each show costs only the blanks you bring.
+                </Typography>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+                  {[
+                    '4 shows = same $350 in printing spread across all of them',
+                    'Bring more or fewer blanks based on each venue's expected crowd',
+                    'Leftover transfers carry forward to the next show',
+                  ].map((line, i) => (
+                    <Box key={i} sx={{ display: 'flex', gap: 1.5, alignItems: 'flex-start' }}>
+                      <Box sx={{ width: 4, height: 4, borderRadius: '50%', backgroundColor: '#f2bf00', mt: 0.75, flexShrink: 0 }} />
+                      <Typography variant="caption" sx={{ color: '#888', fontSize: '0.82rem', lineHeight: 1.5 }}>{line}</Typography>
+                    </Box>
+                  ))}
+                </Box>
+              </Box>
+            </motion.div>
+
+            {/* Mobile across shows */}
+            <motion.div {...fadeUp} transition={{ duration: 0.45, delay: 0.08 }}>
+              <Box sx={{ p: { xs: 3, md: 4 }, border: '1px solid #1e1e1e', borderRadius: 2, height: '100%' }}>
+                <Typography variant="body2" sx={{ color: '#f2bf00', fontWeight: 700, fontSize: '0.82rem', textTransform: 'uppercase', letterSpacing: '0.08em', mb: 2 }}>
+                  Mobile — we are your merch booth
+                </Typography>
+                <Typography variant="body2" sx={{ color: '#888', lineHeight: 1.75, fontSize: '0.85rem', mb: 3 }}>
+                  We show up to each show with the press, the blanks, and the staff. You promote, we sell. Each show has its own operational deposit that comes back from sales — the transfer sheets you already own travel with us from night to night.
+                </Typography>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+                  {[
+                    'Prints paid once — no per-show print cost',
+                    'We restock blanks between shows as needed',
+                    'Each show runs its own deposit-and-split model',
+                  ].map((line, i) => (
+                    <Box key={i} sx={{ display: 'flex', gap: 1.5, alignItems: 'flex-start' }}>
+                      <Box sx={{ width: 4, height: 4, borderRadius: '50%', backgroundColor: '#f2bf00', mt: 0.75, flexShrink: 0 }} />
+                      <Typography variant="caption" sx={{ color: '#888', fontSize: '0.82rem', lineHeight: 1.5 }}>{line}</Typography>
+                    </Box>
+                  ))}
+                </Box>
+              </Box>
+            </motion.div>
+          </Box>
+
+          <motion.div {...fadeUp}>
+            <Box sx={{ p: { xs: 3, md: 4 }, border: '1px solid #222', borderLeft: '3px solid #f2bf00', borderRadius: 2, backgroundColor: '#080808' }}>
+              <Typography variant="body2" sx={{ color: '#eaeaea', fontWeight: 700, fontSize: '0.88rem', mb: 1 }}>
+                Example: band with 4 shows
+              </Typography>
+              <Typography variant="body2" sx={{ color: '#888', lineHeight: 1.75, fontSize: '0.85rem' }}>
+                Print 100 white-ink and 100 black-ink transfer sheets once — {fmt((SHEETS_PER_RUN * 2) * 2 * SHEET_COST)} in printing. Split them across 4 shows: ~50 sheets per night. Whether you run the table yourself or we show up with the van, your design cost is {fmt((SHEETS_PER_RUN * 2) * 2 * SHEET_COST / 4)} per show. Any unsold sheets move to the next date — nothing is wasted.
+              </Typography>
+            </Box>
+          </motion.div>
         </Container>
       </Box>
 
