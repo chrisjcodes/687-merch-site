@@ -24,16 +24,31 @@ export default function MobileLogisticsPage() {
             transition={{ duration: 0.5 }}
             style={{ textAlign: 'center' }}
           >
-            <Typography
-              variant="h1"
-              sx={{ color: '#fff', mb: 4, lineHeight: { xs: 1.1, md: 1.05 }, fontSize: { xs: '2.8rem', sm: '3.5rem', md: '4.5rem' } }}
-            >
-              You&apos;ve got 400 things to manage.<br />
-              <Box component="span" sx={{ color: '#f2bf00' }}>Merch doesn&apos;t have to be one of them.</Box>
+            <Typography variant="caption" sx={{ color: '#888', textTransform: 'uppercase', letterSpacing: '0.14em', fontSize: '0.74rem', fontWeight: 700, display: 'block', mb: 3 }}>
+              Mobile Merch
             </Typography>
 
-            <Typography variant="body1" sx={{ color: '#999', maxWidth: 520, lineHeight: 1.8, mb: 5, fontSize: '1rem', mx: 'auto' }}>
-              Merch isn&apos;t one of them. We show up with everything, run the whole operation, handle the money, and send you a check when it&apos;s over. Your job is to point us at the crowd.
+            <Typography
+              variant="h1"
+              sx={{ color: '#fff', mb: 2, lineHeight: { xs: 1.15, md: 1.1 }, fontSize: { xs: '2rem', sm: '2.6rem', md: '3.2rem' }, fontWeight: 700 }}
+            >
+              You&apos;ve got 400 things to manage.
+            </Typography>
+
+            <Typography
+              sx={{
+                fontFamily: 'var(--font-anton), "Anton", sans-serif',
+                fontSize: { xs: '2.4rem', sm: '3rem', md: '3.8rem' },
+                lineHeight: 1.05,
+                color: '#f2bf00',
+                mb: 4,
+              }}
+            >
+              Merch is handled.
+            </Typography>
+
+            <Typography variant="body1" sx={{ color: '#999', maxWidth: 480, lineHeight: 1.8, mb: 6, fontSize: '1rem', mx: 'auto' }}>
+              We show up with everything, run the whole operation, handle the money, and send you a check when it&apos;s over. Your job is to point us at the crowd.
             </Typography>
 
             {/* Stat strip */}
@@ -41,26 +56,24 @@ export default function MobileLogisticsPage() {
               sx={{
                 display: 'flex',
                 flexDirection: { xs: 'column', sm: 'row' },
-                justifyContent: 'center',
-                gap: { xs: 0, sm: 0 },
                 border: '1px solid #1e1e1e',
                 borderRadius: 2,
                 overflow: 'hidden',
-                maxWidth: 520,
+                maxWidth: 480,
                 mx: 'auto',
               }}
             >
               {[
                 { stat: '0', label: 'Things you source' },
                 { stat: '0', label: 'Staff you manage' },
-                { stat: '0', label: 'Shirts left over' },
+                { stat: '0', label: 'Inventory left over' },
               ].map((item, i) => (
                 <Box
                   key={i}
                   sx={{
                     flex: 1,
                     px: 3,
-                    py: 2.5,
+                    py: 3,
                     borderRight: { sm: i < 2 ? '1px solid #1e1e1e' : 'none' },
                     borderBottom: { xs: i < 2 ? '1px solid #1e1e1e' : 'none', sm: 'none' },
                     backgroundColor: 'rgba(255,255,255,0.02)',
@@ -69,15 +82,15 @@ export default function MobileLogisticsPage() {
                   <Typography
                     sx={{
                       fontFamily: 'var(--font-anton), "Anton", sans-serif',
-                      fontSize: '2rem',
+                      fontSize: '2.4rem',
                       lineHeight: 1,
                       color: '#f2bf00',
-                      mb: 0.5,
+                      mb: 0.75,
                     }}
                   >
                     {item.stat}
                   </Typography>
-                  <Typography variant="caption" sx={{ color: '#666', fontSize: '0.76rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                  <Typography variant="caption" sx={{ color: '#666', fontSize: '0.74rem', textTransform: 'uppercase', letterSpacing: '0.1em', lineHeight: 1.4, display: 'block' }}>
                     {item.label}
                   </Typography>
                 </Box>
@@ -254,7 +267,7 @@ export default function MobileLogisticsPage() {
 
           <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' }, gap: 2 }}>
             {[
-              { item: 'Sourcing blank garments', detail: "We own inventory across events. You don't order a single shirt." },
+              { item: 'Sourcing blank garments', detail: "We own inventory across events. You don't order a single item." },
               { item: 'Finding a power source', detail: 'We run on battery. Four hours, no input from the venue required.' },
               { item: 'Hiring or managing booth staff', detail: 'Our team runs the operation start to finish.' },
               { item: 'Setting up or breaking down', detail: 'We arrive early and leave clean. No supervision needed.' },
@@ -319,7 +332,7 @@ export default function MobileLogisticsPage() {
                 You pay for the printing and an operational deposit — that&apos;s it. Sales pay back your deposit first. Everything above that splits between us. You never write a check and walk away with nothing to show for it.
               </Typography>
               <Typography variant="body1" sx={{ color: '#888', lineHeight: 1.8 }}>
-                Slow night? Break even on the deposit and move on. Strong night? Your cut goes up with every shirt sold. Either way, you spent zero hours managing a merch operation.
+                Slow night? Break even on the deposit and move on. Strong night? Your cut goes up with every item sold. Either way, you spent zero hours managing a merch operation.
               </Typography>
             </motion.div>
 

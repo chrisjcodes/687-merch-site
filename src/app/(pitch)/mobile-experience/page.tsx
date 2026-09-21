@@ -108,7 +108,7 @@ export default function MobileExperiencePage() {
               {
                 icon: '✦',
                 title: 'LED production van',
-                body: 'The van is fitted with an LED lighting system that makes the whole setup a visual centerpiece — day or night. People notice it before they see the shirts.',
+                body: 'The van is fitted with an LED lighting system that makes the whole setup a visual centerpiece — day or night. People notice it before they see the merch.',
               },
               {
                 icon: '✦',
@@ -303,7 +303,7 @@ export default function MobileExperiencePage() {
               You&apos;re not hiring us. You&apos;re partnering with us.
             </Typography>
             <Typography variant="body1" sx={{ color: '#888', maxWidth: 560, lineHeight: 1.8, mb: { xs: 5, md: 7 } }}>
-              A hired live printer charges you by the hour — you pay their fee no matter how many shirts sell, and you never see that money again. Our model ties our outcome to yours. If the event is slow, your deposit comes back from first sales and you break even. If it pops, you earn on everything above that. The floor with us is better than the ceiling with anyone else.
+              A hired live printer charges you by the hour — you pay their fee no matter how many items sell, and you never see that money again. Our model ties our outcome to yours. If the event is slow, your deposit comes back from first sales and you break even. If it pops, you earn on everything above that. The floor with us is better than the ceiling with anyone else.
             </Typography>
           </motion.div>
 
@@ -359,7 +359,7 @@ export default function MobileExperiencePage() {
                 {[
                   { label: 'Upfront cost', value: `Print cost + ${fmt(DEPOSIT)} deposit`, green: false },
                   { label: 'If sales are slow', value: 'Deposit returns from first sales', green: true },
-                  { label: 'If sales are strong', value: 'You earn on every shirt after deposit', green: true },
+                  { label: 'If sales are strong', value: 'You earn on every item after deposit', green: true },
                   { label: 'Leftover inventory', value: 'We take blanks back — nothing to store', green: true },
                   { label: 'Visual setup', value: 'LED-lit production van', green: true },
                 ].map((row, i) => (
@@ -386,14 +386,14 @@ export default function MobileExperiencePage() {
                 Limited. On-location. One shot.
               </Typography>
               <Typography variant="body1" sx={{ color: '#888', lineHeight: 1.8, mb: 4 }}>
-                Want to do {DROP_UNITS} shirts and {DROP_UNITS} only — available for two hours at one location? We can run that. Exclusive drops with influencers, brands, or artists create real urgency without you having to pre-buy a single shirt.
+                Want to do {DROP_UNITS} pieces and {DROP_UNITS} only — available for two hours at one location? We can run that. Exclusive drops with influencers, brands, or artists create real urgency without you having to pre-buy a single item.
               </Typography>
               <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                 {[
                   'Set a hard cap on units — we stop when you say stop',
                   'Tie to a specific time window to drive urgency',
                   'Influencer or brand collabs with no upfront inventory risk',
-                  'Every shirt is made at the event — the scarcity is real',
+                  'Every item is made at the event — the scarcity is real',
                 ].map((line, i) => (
                   <Box key={i} sx={{ display: 'flex', gap: 2, alignItems: 'flex-start' }}>
                     <Box sx={{ width: 4, height: 4, borderRadius: '50%', backgroundColor: '#f2bf00', mt: 0.8, flexShrink: 0 }} />
@@ -424,7 +424,7 @@ export default function MobileExperiencePage() {
                 </Box>
                 <Box sx={{ px: { xs: 3, md: 4 }, pb: { xs: 3, md: 4 }, display: 'flex', flexDirection: 'column', gap: 0 }}>
                   {[
-                    { label: 'Units available', value: `${DROP_UNITS} shirts`, sub: 'Hard cap — first come, first served' },
+                    { label: 'Units available', value: `${DROP_UNITS} pieces`, sub: 'Hard cap — first come, first served' },
                     { label: 'Retail price', value: fmt(DROP_PRICE), sub: 'What fans pay at the event' },
                     { label: 'Max event revenue', value: fmt(dropRevenue), sub: 'If all 50 sell out' },
                     { label: 'Your deposit exposure', value: fmt(DEPOSIT), sub: 'Returns from first sales before split' },
