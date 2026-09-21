@@ -7,7 +7,8 @@ import { motion } from 'framer-motion';
 // ─── Illustrative pricing (100 items) ───────────────────────────────────────
 const UNITS = 100;
 const BLANK_COST = 5;           // wholesale blank (Bella Canvas, etc.)
-const TRAD_PRINT_PER = 5;       // traditional screen print per garment ($10/shirt total)
+const TRAD_PRINT_PER = 5;       // traditional screen print per garment ($4–7 depending on colors)
+const TRAD_SETUP = 40;          // one-time setup fee per design ($35–50 typical)
 const TRANSFER_PRINT_PER = 3.5; // 687 screen printing to transfer sheets
 const TRAD_STAFF = 320;         // 2 staff × 8 hrs × $20
 const TRAD_STORAGE = 75;        // storage before + after
@@ -15,7 +16,7 @@ const MOBILE_DEPOSIT = 375;     // operational deposit — returned from sales
 const UNSOLD_RATE = 0.3;
 
 function calc(units: number) {
-  const tradTotal = units * BLANK_COST + units * TRAD_PRINT_PER + TRAD_STAFF + TRAD_STORAGE;
+  const tradTotal = units * BLANK_COST + units * TRAD_PRINT_PER + TRAD_SETUP + TRAD_STAFF + TRAD_STORAGE;
   const tradUnsoldUnits = Math.round(units * UNSOLD_RATE);
   const tradUnsoldValue = tradUnsoldUnits * (BLANK_COST + TRAD_PRINT_PER);
 
@@ -26,7 +27,8 @@ function calc(units: number) {
     units,
     unsoldUnits: tradUnsoldUnits,
     rows: {
-      blanks:    { trad: units * BLANK_COST,    mobile: 0 },
+      blanks:    { trad: units * BLANK_COST,     mobile: 0 },
+      setup:     { trad: TRAD_SETUP,             mobile: 0 },
       printing:  { trad: units * TRAD_PRINT_PER, mobile: mobilePrint },
       staff:     { trad: TRAD_STAFF,             mobile: 0 },
       storage:   { trad: TRAD_STORAGE,           mobile: 0 },
@@ -248,8 +250,15 @@ export default function CostComparison() {
                 mobileVal={ZERO}
               />
               <CompareRow
+                label="Setup fee"
+                tradSub="Per design, per run ($35–50)"
+                mobileSub="Included in transfer rate"
+                tradVal={fmt(d.rows.setup.trad)}
+                mobileVal={ZERO}
+              />
+              <CompareRow
                 label="Screen printing"
-                tradSub="Applied directly to garment"
+                tradSub={`${UNITS} × $5 ea. ($4–7 by color count)`}
                 mobileSub="To transfer sheets you own"
                 tradVal={fmt(d.rows.printing.trad)}
                 mobileVal={fmt(d.rows.printing.mobile)}
