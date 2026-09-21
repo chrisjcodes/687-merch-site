@@ -223,6 +223,16 @@ export const recentWork: WorkItem[] = [
     context: 'Local service business needing branded crew tees—defined headcount, consistent colorway, single run.',
   },
   {
+    slug: 'hermosa-ink-summer-26',
+    title: 'Hermosa Ink — Summer \'26 Tee',
+    thumbnail: '/images/work/hermosa-ink-summer-26-front-back.jpg',
+    images: ['/images/work/hermosa-ink-summer-26-front-back.jpg'],
+    tags: ['Tattoo', 'Artist', 'Apparel'],
+    year: 2026,
+    productionModel: 'flexible',
+    context: 'Summer 2026 merch for Hermosa Ink — minimal calligraphic "CES / cogito ergo sum" chest logo on front, intricate ornate back graphic with bird skull, flames, and Okenkouken branding. Single gray ink on white Comfort Colors, printed to transfers for flexible restocking.',
+  },
+  {
     slug: 'humungulus-records-setsuko',
     title: 'Humungulus Records — Setsuko Tee',
     thumbnail: '/images/work/humungulus-setsuko-front-back.jpg',
