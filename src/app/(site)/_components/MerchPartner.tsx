@@ -16,7 +16,7 @@ const problems = [
   },
   {
     who: 'Events & activations',
-    body: 'Event merch is a completely different problem than standard merch. You have one window, unpredictable demand, and zero room for leftover inventory. We built a production model specifically for that — and it\'s the only one where we put our own resources on the line alongside you.',
+    body: 'Event merch is a completely different problem than standard merch. One window, unpredictable demand, zero room for leftover inventory. That applies whether you\'re a promoter running a concert or a small business with a grand opening — if you\'re tying merch to a moment, our mobile model is built for exactly that. We put our own resources on the line so you don\'t have to.',
   },
 ];
 
