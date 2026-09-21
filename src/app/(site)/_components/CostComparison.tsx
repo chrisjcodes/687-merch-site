@@ -9,7 +9,7 @@ const UNITS = 100;
 const BLANK_COST = 5;           // wholesale blank (Bella Canvas, etc.)
 const TRAD_PRINT_PER = 5;       // traditional screen print per garment ($10/shirt total)
 const TRANSFER_PRINT_PER = 3.5; // 687 screen printing to transfer sheets
-const TRAD_STAFF = 240;         // 2 staff × 8 hrs × $15
+const TRAD_STAFF = 320;         // 2 staff × 8 hrs × $20
 const TRAD_STORAGE = 75;        // storage before + after
 const MOBILE_DEPOSIT = 375;     // operational deposit — returned from sales
 const UNSOLD_RATE = 0.3;
@@ -256,7 +256,7 @@ export default function CostComparison() {
               />
               <CompareRow
                 label="Booth staff"
-                tradSub="2 people × 8 hrs × $15/hr"
+                tradSub="2 people × 8 hrs × $20/hr"
                 mobileSub="Included — we run the booth"
                 tradVal={fmt(d.rows.staff.trad)}
                 mobileVal={ZERO}
