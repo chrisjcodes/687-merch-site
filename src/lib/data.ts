@@ -180,7 +180,7 @@ export const recentWork: WorkItem[] = [
     tags: ['Music', 'Hat', 'Colorways'],
     year: 2024,
     productionModel: 'flexible',
-    context: 'Punk label dropping the same logo across four hat colorways—applying the same screen-printed patch to different blanks kept costs down and let them gauge which colors their crowd actually wanted.',
+    context: 'An original 687 design. Printing to transfer sheets let us produce small batches for different events on demand—same artwork, applied whenever and wherever we needed it.',
   },
   {
     slug: 'fsu-seminole-la',
