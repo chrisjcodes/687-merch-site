@@ -12,7 +12,7 @@ const TRAD_SETUP = 40;          // one-time setup fee per design ($35–50 typic
 const TRANSFER_PRINT_PER = 3.5; // 687 screen printing to transfer sheets
 const TRAD_STAFF = 320;         // 2 staff × 8 hrs × $20
 const TRAD_STORAGE = 75;        // storage before + after
-const MOBILE_DEPOSIT = 375;     // operational deposit — returned from sales
+const MOBILE_DEPOSIT = 540;     // 2 staff × 4 hrs × $55 + $100 travel/expenses
 const UNSOLD_RATE = 0.3;
 
 function calc(units: number) {
@@ -280,7 +280,7 @@ export default function CostComparison() {
               <CompareRow
                 label="Operational deposit"
                 tradSub="They drop off the order. The event is yours."
-                mobileSub="Labor, travel, overhead — returned from sales"
+                mobileSub="2 staff × 4 hrs × $55 + $100 expenses — returned from sales"
                 tradVal="—"
                 mobileVal={fmt(MOBILE_DEPOSIT)}
               />
