@@ -234,9 +234,20 @@ export default function FlexCatalogPage() {
 
           <motion.div {...fadeUp}>
             <Box sx={{ mt: 4, p: { xs: 3, md: 4 }, border: '1px solid #1e1e1e', borderRadius: 2, backgroundColor: '#0a0a0a' }}>
-              <Typography variant="body2" sx={{ color: '#888', lineHeight: 1.75, fontSize: '0.88rem' }}>
-                Every combination above comes from the same two print runs. You don&apos;t reorder the artwork — you just order the blank in whatever style or color someone asks for and apply the transfer. The only limit is what garments are available wholesale.
+              <Typography variant="body2" sx={{ color: '#eaeaea', fontWeight: 700, fontSize: '0.88rem', mb: 1, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                Three things that have to line up
               </Typography>
+              <Typography variant="body2" sx={{ color: '#888', lineHeight: 1.75, fontSize: '0.88rem', mb: 2 }}>
+                Transfers work on almost any garment — with three checks: the garment color needs to work with the ink (white ink on a dark base, black ink on a light base), the size of the print needs to fit the garment, and the fabric needs to be able to take the heat. Beyond that, if it fits and looks right, we can use the same print on it.
+              </Typography>
+              <Box sx={{ display: 'flex', gap: { xs: 2, sm: 4 }, flexWrap: 'wrap' }}>
+                {['Ink vs. garment color', 'Print fits the cut', 'Fabric handles heat'].map((c) => (
+                  <Box key={c} sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
+                    <Box sx={{ width: 4, height: 4, borderRadius: '50%', backgroundColor: '#f2bf00', flexShrink: 0 }} />
+                    <Typography variant="caption" sx={{ color: '#f2bf00', fontSize: '0.78rem', fontWeight: 600 }}>{c}</Typography>
+                  </Box>
+                ))}
+              </Box>
             </Box>
           </motion.div>
         </Container>
@@ -393,7 +404,7 @@ export default function FlexCatalogPage() {
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
                   {[
                     '4 shows = same $350 in printing spread across all of them',
-                    'Bring more or fewer blanks based on each venue's expected crowd',
+                    "Bring more or fewer blanks based on each venue's expected crowd",
                     'Leftover transfers carry forward to the next show',
                   ].map((line, i) => (
                     <Box key={i} sx={{ display: 'flex', gap: 1.5, alignItems: 'flex-start' }}>
