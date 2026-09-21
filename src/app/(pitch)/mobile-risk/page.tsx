@@ -187,25 +187,48 @@ export default function MobileRiskPage() {
         </Container>
       </Box>
 
-      {/* ── Scenario context strip ───────────────────────────────────────────── */}
-      <Box sx={{ borderBottom: '1px solid #1a1a1a', backgroundColor: '#080808' }}>
+      {/* ── Scenario callout ─────────────────────────────────────────────────── */}
+      <Box sx={{ borderBottom: '1px solid #1a1a1a', borderTop: '1px solid #1a1a1a', backgroundColor: '#0a0a0a' }}>
         <Container maxWidth="lg">
           <Box
             sx={{
               display: 'flex',
-              flexDirection: { xs: 'column', sm: 'row' },
-              alignItems: { xs: 'flex-start', sm: 'center' },
-              gap: { xs: 1.5, sm: 3 },
-              py: 2.5,
+              flexDirection: { xs: 'column', md: 'row' },
+              gap: { xs: 3, md: 6 },
+              py: { xs: 5, md: 6 },
+              borderLeft: '3px solid #f2bf00',
+              pl: { xs: 3, md: 4 },
             }}
           >
-            <Typography variant="caption" sx={{ color: '#f2bf00', textTransform: 'uppercase', letterSpacing: '0.14em', fontSize: '0.62rem', fontWeight: 700, whiteSpace: 'nowrap' }}>
-              The scenario
-            </Typography>
-            <Box sx={{ width: { sm: 1 }, height: { xs: 1, sm: 20 }, backgroundColor: '#1e1e1e', display: { xs: 'none', sm: 'block' } }} />
-            <Typography variant="caption" sx={{ color: '#888', fontSize: '0.82rem', lineHeight: 1.5 }}>
-              All numbers below are based on a <Box component="span" sx={{ color: '#777' }}>100-item event merch run</Box> — shirts selling at <Box component="span" sx={{ color: '#777' }}>${SALE_PRICE} each</Box>, a common starting point for bars, fan clubs, and community events. Use them as a reference frame, not a fixed quote.
-            </Typography>
+            {/* Left: key numbers */}
+            <Box sx={{ display: 'flex', gap: { xs: 4, sm: 6 }, flexShrink: 0 }}>
+              <Box>
+                <Typography sx={{ fontFamily: 'var(--font-anton), "Anton", sans-serif', fontSize: { xs: '2.2rem', md: '2.8rem' }, lineHeight: 1, color: '#f2bf00' }}>
+                  {UNITS}
+                </Typography>
+                <Typography variant="caption" sx={{ color: '#888', fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', mt: 0.5 }}>
+                  Items
+                </Typography>
+              </Box>
+              <Box>
+                <Typography sx={{ fontFamily: 'var(--font-anton), "Anton", sans-serif', fontSize: { xs: '2.2rem', md: '2.8rem' }, lineHeight: 1, color: '#f2bf00' }}>
+                  ${SALE_PRICE}
+                </Typography>
+                <Typography variant="caption" sx={{ color: '#888', fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', mt: 0.5 }}>
+                  Per shirt
+                </Typography>
+              </Box>
+            </Box>
+
+            {/* Right: explanation */}
+            <Box>
+              <Typography variant="body2" sx={{ color: '#eaeaea', fontWeight: 700, fontSize: '0.9rem', mb: 1, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                These are scenario numbers — not a quote
+              </Typography>
+              <Typography variant="body2" sx={{ color: '#888', lineHeight: 1.75, fontSize: '0.88rem', maxWidth: 560 }}>
+                Every number on this page assumes a 100-item event merch run with shirts selling at ${SALE_PRICE} each — a common starting point for bars, fan clubs, and community events. Your actual costs will vary by garment, location, and event size. Use this as a reference frame for how the two models compare, not as a binding estimate.
+              </Typography>
+            </Box>
           </Box>
         </Container>
       </Box>
