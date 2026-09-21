@@ -139,63 +139,71 @@ export default function MobileRiskPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            {/* Badge */}
-            <Box sx={{ display: 'inline-flex', alignItems: 'center', gap: 1.5, mb: 5, px: 2, py: 0.75, border: '1px solid #222', borderRadius: 2 }}>
-              <Typography variant="caption" sx={{ color: '#f2bf00', textTransform: 'uppercase', letterSpacing: '0.14em', fontSize: '0.65rem', fontWeight: 700 }}>
-                Mobile Merch
-              </Typography>
-              <Box sx={{ width: 1, height: 12, backgroundColor: '#2a2a2a' }} />
-              <Typography variant="caption" sx={{ color: '#444', textTransform: 'uppercase', letterSpacing: '0.14em', fontSize: '0.65rem' }}>
-                Risk Reduction
-              </Typography>
-            </Box>
-
             <Typography
               variant="h1"
               sx={{ color: '#fff', mb: 4, lineHeight: { xs: 1.1, md: 1.05 }, fontSize: { xs: '2.8rem', sm: '3.5rem', md: '4.5rem' } }}
             >
-              Your worst case<br />
-              is{' '}
-              <Box component="span" sx={{ color: '#f2bf00' }}>{fmt(mobPrint)}.</Box>
-              <br />
-              We carry<br />
-              everything else.
+              You&apos;re betting on<br />
+              a crowd you<br />
+              haven&apos;t seen yet.
             </Typography>
 
-            <Typography variant="body1" sx={{ color: '#666', maxWidth: 520, lineHeight: 1.8, mb: 7, fontSize: '1rem' }}>
-              Traditional merch means fronting {fmt(tradTotal)} before a single shirt sells, staffing the booth yourself, and leaving the event with unsold inventory to figure out. Mobile Merch flips that — you pay for your screen printing, we put our own resources on the line, and you walk away clean.
+            <Typography variant="body1" sx={{ color: '#666', maxWidth: 540, lineHeight: 1.8, mb: 7, fontSize: '1rem' }}>
+              Traditional merch asks you to commit before the event — sizes, quantities, designs — all locked in before a single person walks through the door. How many will show? What sizes will they need? Which design moves? You don&apos;t know. Neither does anyone else. Mobile Merch turns your event into a live shop. We print on-site as demand shows itself, so you&apos;re never stuck holding product that didn&apos;t move.
             </Typography>
 
-            {/* Hero stats */}
+            {/* Approach contrast */}
             <Box
               sx={{
                 display: 'flex',
                 flexDirection: { xs: 'column', sm: 'row' },
-                gap: { xs: 0, sm: 0 },
                 border: '1px solid #1e1e1e',
                 borderRadius: 2,
                 overflow: 'hidden',
-                maxWidth: 500,
+                maxWidth: 560,
               }}
             >
               <Box sx={{ flex: 1, px: 3, py: 2.5, borderRight: { sm: '1px solid #1e1e1e' }, borderBottom: { xs: '1px solid #1e1e1e', sm: 'none' } }}>
-                <Typography sx={{ fontFamily: 'var(--font-anton), "Anton", sans-serif', fontSize: '2rem', lineHeight: 1, color: '#e74c3c', mb: 0.5 }}>
-                  {fmt(tradTotal)}
+                <Typography variant="body2" sx={{ color: '#e74c3c', fontWeight: 700, fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.08em', mb: 0.75 }}>
+                  Pre-order model
                 </Typography>
-                <Typography variant="caption" sx={{ color: '#444', fontSize: '0.68rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-                  Traditional upfront
+                <Typography variant="caption" sx={{ color: '#444', fontSize: '0.75rem', lineHeight: 1.6, display: 'block' }}>
+                  Sizes, quantities, and designs locked in weeks before anyone shows up
                 </Typography>
               </Box>
               <Box sx={{ flex: 1, px: 3, py: 2.5 }}>
-                <Typography sx={{ fontFamily: 'var(--font-anton), "Anton", sans-serif', fontSize: '2rem', lineHeight: 1, color: '#f2bf00', mb: 0.5 }}>
-                  {fmt(mobPrint)}
+                <Typography variant="body2" sx={{ color: '#f2bf00', fontWeight: 700, fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.08em', mb: 0.75 }}>
+                  On-site shop model
                 </Typography>
-                <Typography variant="caption" sx={{ color: '#444', fontSize: '0.68rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-                  Your worst-case exposure
+                <Typography variant="caption" sx={{ color: '#444', fontSize: '0.75rem', lineHeight: 1.6, display: 'block' }}>
+                  Print what&apos;s actually selling, in real time, to a crowd you can see
                 </Typography>
               </Box>
             </Box>
           </motion.div>
+        </Container>
+      </Box>
+
+      {/* ── Scenario context strip ───────────────────────────────────────────── */}
+      <Box sx={{ borderBottom: '1px solid #1a1a1a', backgroundColor: '#080808' }}>
+        <Container maxWidth="lg">
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: { xs: 'column', sm: 'row' },
+              alignItems: { xs: 'flex-start', sm: 'center' },
+              gap: { xs: 1.5, sm: 3 },
+              py: 2.5,
+            }}
+          >
+            <Typography variant="caption" sx={{ color: '#f2bf00', textTransform: 'uppercase', letterSpacing: '0.14em', fontSize: '0.62rem', fontWeight: 700, whiteSpace: 'nowrap' }}>
+              The scenario
+            </Typography>
+            <Box sx={{ width: { sm: 1 }, height: { xs: 1, sm: 20 }, backgroundColor: '#1e1e1e', display: { xs: 'none', sm: 'block' } }} />
+            <Typography variant="caption" sx={{ color: '#444', fontSize: '0.75rem', lineHeight: 1.5 }}>
+              All numbers below are based on a <Box component="span" sx={{ color: '#777' }}>100-item event merch run</Box> — shirts selling at <Box component="span" sx={{ color: '#777' }}>${SALE_PRICE} each</Box>, a common starting point for bars, fan clubs, and community events. Use them as a reference frame, not a fixed quote.
+            </Typography>
+          </Box>
         </Container>
       </Box>
 
