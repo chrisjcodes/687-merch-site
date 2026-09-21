@@ -170,7 +170,7 @@ export const recentWork: WorkItem[] = [
     tags: ['Corporate', 'Collab', 'Cap'],
     year: 2024,
     productionModel: 'traditional',
-    context: 'Corporate collab with a defined gifting list and a hard delivery date—traditional bulk order was the obvious call.',
+    context: 'Small batch for one internal team on a tight turnaround—we hit the deadline with no minimum quantity requirements.',
   },
   {
     slug: 'love-is-punk-rock',
