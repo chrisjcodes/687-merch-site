@@ -6,7 +6,7 @@ import AppHeader from './_components/AppHeader';
 import Hero from './_components/Hero';
 import Services from './_components/Services';
 import PartnerDifference from './_components/PartnerDifference';
-import CostComparison from './_components/CostComparison';
+import ProductionModels from './_components/ProductionModels';
 import CaseStudies from './_components/CaseStudies';
 import ContactForm from './_components/ContactForm';
 import AppFooter from './_components/AppFooter';
@@ -32,7 +32,7 @@ export default function Home() {
         <Hero />
         <Services />
         <PartnerDifference />
-        <CostComparison />
+        <ProductionModels />
         <CaseStudies onItemClick={handleWorkItemClick} />
         <ContactForm />
       </main>
