@@ -382,9 +382,16 @@ export default function CostComparison() {
                 mobileVal={fmt(d.sales.mobileClientSplit)}
               />
               <CompareRow
+                label="Unsold shirts remaining"
+                tradSub="Still need storage, selling time, and likely discounts"
+                mobileSub="We take blanks back — your liability ends at the event"
+                tradVal={<span style={{ color: '#e74c3c', fontWeight: 700 }}>{d.unsoldUnits} shirts</span>}
+                mobileVal={ZERO}
+              />
+              <CompareRow
                 label="Your net profit"
-                tradSub="After all upfront costs"
-                mobileSub="After all upfront costs"
+                tradSub={`Cash profit — ${d.unsoldUnits} shirts still unresolved`}
+                mobileSub="Clean exit — zero remaining inventory"
                 tradVal={fmt(d.sales.tradNet)}
                 mobileVal={fmt(d.sales.mobileNet)}
                 bold
