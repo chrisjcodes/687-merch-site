@@ -25,27 +25,11 @@ export default function MobileLogisticsPage() {
             style={{ textAlign: 'center' }}
           >
             <Typography
-              sx={{
-                fontFamily: 'var(--font-anton), "Anton", sans-serif',
-                fontSize: { xs: '2.6rem', sm: '3.4rem', md: '4.2rem' },
-                lineHeight: 1.05,
-                color: '#fff',
-                mb: 0,
-              }}
+              variant="h1"
+              sx={{ color: '#fff', mb: 4, lineHeight: { xs: 1.1, md: 1.05 }, fontSize: { xs: '2.8rem', sm: '3.5rem', md: '4.5rem' } }}
             >
-              You have enough to manage.
-            </Typography>
-
-            <Typography
-              sx={{
-                fontFamily: 'var(--font-anton), "Anton", sans-serif',
-                fontSize: { xs: '2.6rem', sm: '3.4rem', md: '4.2rem' },
-                lineHeight: 1.05,
-                color: '#f2bf00',
-                mb: 4,
-              }}
-            >
-              Let us handle the merch.
+              You have enough to manage.<br />
+              <Box component="span" sx={{ color: '#f2bf00' }}>Let us handle the merch.</Box>
             </Typography>
 
             <Typography variant="body1" sx={{ color: '#999', maxWidth: 480, lineHeight: 1.8, mb: 6, fontSize: '1rem', mx: 'auto' }}>
