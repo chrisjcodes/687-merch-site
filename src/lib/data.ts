@@ -39,6 +39,8 @@ export const recentWork: WorkItem[] = [
     images: ['/images/work/PennXUSC.png'],
     tags: ['College', 'Event Tee', 'Rivalry'],
     year: 2024,
+    productionModel: 'traditional',
+    context: 'One-time rivalry event with a fixed date and known headcount—traditional bulk order was the right fit.',
   },
   {
     slug: 'colony-cinco-anos',
@@ -47,6 +49,8 @@ export const recentWork: WorkItem[] = [
     images: ['/images/work/ColonyCincoAnosFront.png'],
     tags: ['Logo', 'Anniversary', 'Retro'],
     year: 2024,
+    productionModel: 'flexible',
+    context: 'Bar wanted to sell tees to regulars over time without over-ordering. Transfers let them restock in small batches as demand came in.',
   },
   {
     slug: 'eagles-nest-west',
@@ -55,6 +59,8 @@ export const recentWork: WorkItem[] = [
     images: ['/images/work/EaglesNestWestFront.png', '/images/work/EaglesNestWestBack.png'],
     tags: ['Club', 'Lifestyle'],
     year: 2024,
+    productionModel: 'flexible',
+    context: 'Growing fan club needed an ongoing supply without committing to garment styles upfront—transfers gave them flexibility as the group expanded.',
   },
   {
     slug: 'interstellar',
@@ -63,6 +69,8 @@ export const recentWork: WorkItem[] = [
     images: ['/images/work/InterstellarFront.png', '/images/work/InterstellarBack.png'],
     tags: ['Graphic', 'Space', 'Movie'],
     year: 2024,
+    productionModel: 'traditional',
+    context: 'Limited-run for a film screening event—defined quantity, single delivery, no need for ongoing production.',
   },
   {
     slug: 'philthy-design',
@@ -71,6 +79,8 @@ export const recentWork: WorkItem[] = [
     images: ['/images/work/PhilthyFront.png', '/images/work/PhilthyBack.png'],
     tags: ['Custom', 'Street'],
     year: 2024,
+    productionModel: 'flexible',
+    context: 'Independent label testing multiple colorways—transfers let them produce small quantities of each without locking into a full run on any single style.',
   },
   {
     slug: 'good-people-advisory',
@@ -79,6 +89,8 @@ export const recentWork: WorkItem[] = [
     images: ['/images/work/GoodPeopleAdvisoryBack.png'],
     tags: ['Advisory', 'Lifestyle'],
     year: 2024,
+    productionModel: 'traditional',
+    context: 'Corporate client gifting with a curated size run—straightforward one-time order, no ongoing inventory needed.',
   },
   {
     slug: 'san-remo-not-like-us',
@@ -87,6 +99,8 @@ export const recentWork: WorkItem[] = [
     images: ['/images/work/SanRemoNotLikeUs.png'],
     tags: ['Music', 'Culture'],
     year: 2024,
+    productionModel: 'flexible',
+    context: 'Music venue selling merch across multiple events—transfers made it easy to restock between shows and adjust to whatever garments were trending.',
   },
   {
     slug: 'sf-fsu-design',
@@ -95,6 +109,8 @@ export const recentWork: WorkItem[] = [
     images: ['/images/work/SFFSU.png'],
     tags: ['College', 'SF'],
     year: 2024,
+    productionModel: 'traditional',
+    context: 'Alumni watch party tee with a known attendee list—bulk order with a hard deadline, done.',
   },
   {
     slug: 'brit-since-96',
@@ -103,6 +119,8 @@ export const recentWork: WorkItem[] = [
     images: ['/images/work/BritSince96.png'],
     tags: ['Vintage', 'Year'],
     year: 2024,
+    productionModel: 'flexible',
+    context: 'Small streetwear brand printing a design across multiple drops over the season—transfers meant they could use the same print on different blanks as styles sold through.',
   },
 ];
 

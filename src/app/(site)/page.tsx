@@ -5,7 +5,7 @@ import { Box } from '@mui/material';
 import AppHeader from './_components/AppHeader';
 import Hero from './_components/Hero';
 import Services from './_components/Services';
-import RecentWork from './_components/RecentWork';
+import CaseStudies from './_components/CaseStudies';
 import Partners from './_components/Partners';
 import ContactForm from './_components/ContactForm';
 import AppFooter from './_components/AppFooter';
@@ -38,7 +38,7 @@ export default function Home() {
       <main>
         <Hero />
         <Services />
-        <RecentWork onItemClick={handleWorkItemClick} />
+        <CaseStudies onItemClick={handleWorkItemClick} />
         <Partners />
         <ContactForm />
       </main>

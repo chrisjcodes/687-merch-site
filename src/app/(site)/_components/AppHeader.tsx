@@ -98,7 +98,7 @@ export default function AppHeader() {
                 '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.1)' },
               }}
             >
-              Work
+              Case Studies
             </Button>
             <Button
               color="inherit"
@@ -178,22 +178,11 @@ export default function AppHeader() {
             </ListItem>
             <ListItem
               onClick={() => scrollToSection('work')}
-              sx={{
-                cursor: 'pointer',
-                '&:hover': {
-                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                },
-              }}
+              sx={{ cursor: 'pointer', '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.1)' } }}
             >
               <ListItemText
-                primary="WORK"
-                sx={{
-                  '& .MuiTypography-root': {
-                    fontWeight: 600,
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.5px',
-                  }
-                }}
+                primary="CASE STUDIES"
+                sx={{ '& .MuiTypography-root': { fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.5px' } }}
               />
             </ListItem>
             
