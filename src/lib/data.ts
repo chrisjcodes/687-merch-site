@@ -74,13 +74,13 @@ export const recentWork: WorkItem[] = [
   },
   {
     slug: 'philthy-design',
-    title: 'Philthy Custom Design',
+    title: 'Eagles x Brit — Philthy Collab Tee',
     thumbnail: '/images/work/PhilthyFront.png',
     images: ['/images/work/PhilthyFront.png', '/images/work/PhilthyBack.png'],
-    tags: ['Custom', 'Street'],
-    year: 2024,
+    tags: ['Eagles', 'Football', 'Collab'],
+    year: 2025,
     productionModel: 'flexible',
-    context: 'Independent label testing multiple colorways—paying for the screen printing once and applying it to different blanks let them test each style without committing to a full run.',
+    context: 'A collab between Eagles Nest West and Britannia Pub to mark an iconic moment in the Eagles\' Super Bowl winning season. Demand was so high it sold out every batch—flexible printing meant they could restock quickly without reordering the artwork.',
   },
   {
     slug: 'good-people-advisory',
