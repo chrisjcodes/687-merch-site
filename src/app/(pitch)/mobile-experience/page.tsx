@@ -234,32 +234,38 @@ export default function MobileExperiencePage() {
           <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: { xs: 6, md: 10 }, alignItems: 'center' }}>
             <motion.div {...fadeUp}>
               <Typography variant="caption" sx={{ color: '#888', textTransform: 'uppercase', letterSpacing: '0.14em', fontSize: '0.74rem', fontWeight: 700, display: 'block', mb: 2 }}>
-                White label
+                White label — optional add-on
               </Typography>
               <Typography variant="h2" sx={{ color: '#fff', mb: 3, fontSize: { xs: '1.8rem', md: '2.2rem' } }}>
-                It looks like your operation.
+                It can look like your operation.
               </Typography>
-              <Typography variant="body1" sx={{ color: '#888', lineHeight: 1.8, mb: 4 }}>
-                We swap out the signage to match your event — your name, your logo, your colors. To everyone at the venue, this is your merch booth. We&apos;re the production behind it.
+              <Typography variant="body1" sx={{ color: '#888', lineHeight: 1.8, mb: 2 }}>
+                If you want the booth fully branded to your event — your name, your logo, your colors — we can do that. To everyone at the venue, it looks like your operation. We&apos;re just the production behind it.
+              </Typography>
+              <Typography variant="body2" sx={{ color: '#666', lineHeight: 1.8, mb: 4, fontSize: '0.88rem' }}>
+                These are optional add-ons, not included by default. Each one is scoped and priced as part of your operational deposit when you book.
               </Typography>
               <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                 {[
-                  'Custom signage to match your event or brand',
-                  'Staff can wear your branded gear',
-                  "Your name on the receipts, the booth, the whole setup",
-                  'We stay in the background — the experience is yours',
+                  'Custom van signage — your name, logo, and color scheme',
+                  'Staff branded gear — tees or hats matching your event',
+                  'Branded booth display — pricing boards, garment display',
+                  'Receipts & packaging — your brand at every touchpoint',
                 ].map((line, i) => (
                   <Box key={i} sx={{ display: 'flex', gap: 2, alignItems: 'flex-start' }}>
-                    <Box sx={{ width: 4, height: 4, borderRadius: '50%', backgroundColor: '#f2bf00', mt: 0.8, flexShrink: 0 }} />
-                    <Typography variant="body2" sx={{ color: '#888', fontSize: '0.88rem', lineHeight: 1.6 }}>{line}</Typography>
+                    <Box sx={{ width: 4, height: 4, borderRadius: '50%', backgroundColor: '#555', mt: 0.8, flexShrink: 0 }} />
+                    <Typography variant="body2" sx={{ color: '#777', fontSize: '0.88rem', lineHeight: 1.6 }}>{line}</Typography>
                   </Box>
                 ))}
               </Box>
             </motion.div>
             <motion.div {...fadeUp} transition={{ duration: 0.45, delay: 0.1 }}>
               <Box sx={{ p: { xs: 3, md: 4 }, border: '1px solid #222', borderRadius: 2, backgroundColor: '#080808' }}>
-                <Typography variant="body2" sx={{ color: '#f2bf00', fontWeight: 700, fontSize: '0.82rem', textTransform: 'uppercase', letterSpacing: '0.08em', mb: 3 }}>
-                  What customizes
+                <Typography variant="body2" sx={{ color: '#888', fontWeight: 700, fontSize: '0.82rem', textTransform: 'uppercase', letterSpacing: '0.08em', mb: 0.5 }}>
+                  Optional add-ons
+                </Typography>
+                <Typography variant="caption" sx={{ color: '#555', fontSize: '0.78rem', display: 'block', mb: 3 }}>
+                  Priced individually as part of your deposit
                 </Typography>
                 {[
                   { label: 'Van signage', detail: 'Full swap — your name, logo, and color scheme' },
