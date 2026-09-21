@@ -32,7 +32,7 @@ export default function MobileLogisticsPage() {
               variant="h1"
               sx={{ color: '#fff', mb: 2, lineHeight: { xs: 1.15, md: 1.1 }, fontSize: { xs: '2rem', sm: '2.6rem', md: '3.2rem' }, fontWeight: 700 }}
             >
-              You&apos;ve got 400 things to manage.
+              You have enough to manage.
             </Typography>
 
             <Typography
@@ -44,7 +44,7 @@ export default function MobileLogisticsPage() {
                 mb: 4,
               }}
             >
-              Merch is handled.
+              Let us handle the merch.
             </Typography>
 
             <Typography variant="body1" sx={{ color: '#999', maxWidth: 480, lineHeight: 1.8, mb: 6, fontSize: '1rem', mx: 'auto' }}>
