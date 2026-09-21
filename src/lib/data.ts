@@ -24,7 +24,7 @@ export const services = [
   {
     id: 'mobile',
     title: 'Mobile Merch',
-    tagline: 'We bring the shop. We split the profit.',
+    tagline: 'We Bring The Shop. You Bring The Demand. We Split The Profit.',
     body: 'You pay for your screen printing—we print your artwork onto transfer sheets so they can be applied on-site at the event. You also put down an operational deposit covering our labor, travel, and event overhead. We stock and reuse the blank garments ourselves across events. Event sales return your deposit first, then we split what\'s left. We only win when you do—and when the event ends, there\'s no unsold inventory for you to figure out how to store or sell.',
     icon: '03',
     featured: true,
