@@ -137,10 +137,10 @@ export const recentWork: WorkItem[] = [
     title: 'Coach Damon Wrap Em Up Tee',
     thumbnail: '/images/work/coach-damon-colorways.jpg',
     images: ['/images/work/coach-damon-colorways.jpg'],
-    tags: ['Sports', 'Creator', 'Colorways'],
+    tags: ['College', 'FSU', 'Parody'],
     year: 2024,
     productionModel: 'traditional',
-    context: 'Sports trainer wanted a clean small-batch run for his community—defined design, small quantity, one delivery.',
+    context: 'One-off parody drop for an FSU alumni club—limited run, single delivery, not meant to repeat.',
   },
   {
     slug: 'wildherness',
