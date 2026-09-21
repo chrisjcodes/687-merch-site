@@ -4,8 +4,7 @@ import React, { useState } from 'react';
 import { Box } from '@mui/material';
 import AppHeader from './_components/AppHeader';
 import Hero from './_components/Hero';
-import Services from './_components/Services';
-import PartnerDifference from './_components/PartnerDifference';
+import MerchPartner from './_components/MerchPartner';
 import ProductionModels from './_components/ProductionModels';
 import CaseStudies from './_components/CaseStudies';
 import ContactForm from './_components/ContactForm';
@@ -30,9 +29,8 @@ export default function Home() {
 
       <main>
         <Hero />
-        <Services />
-        <PartnerDifference />
         <ProductionModels />
+        <MerchPartner />
         <CaseStudies onItemClick={handleWorkItemClick} />
         <ContactForm />
       </main>
