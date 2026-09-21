@@ -16,8 +16,9 @@ import {
   Container,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import StorefrontIcon from '@mui/icons-material/Storefront';
 import DashboardIcon from '@mui/icons-material/Dashboard';
+import AssessmentIcon from '@mui/icons-material/Assessment';
+import InventoryIcon from '@mui/icons-material/Inventory';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
@@ -28,7 +29,8 @@ const drawerWidth = 240;
 
 const navItems = [
   { text: 'Overview', icon: <DashboardIcon />, href: '/admin' },
-  { text: 'Shops', icon: <StorefrontIcon />, href: '/admin/shops' },
+  { text: 'Reports', icon: <AssessmentIcon />, href: '/admin/reports' },
+  { text: 'Batches', icon: <InventoryIcon />, href: '/admin/batches' },
 ];
 
 export default function AdminLayout({
