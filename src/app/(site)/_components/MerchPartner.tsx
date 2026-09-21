@@ -4,6 +4,7 @@ import React from 'react';
 import { Box, Typography, Container } from '@mui/material';
 import { motion } from 'framer-motion';
 import WaveDivider from './WaveDivider';
+import Link from 'next/link';
 
 const problems = [
   {
@@ -142,7 +143,12 @@ export default function MerchPartner() {
                 with any approach — including designing for other printers on items we don&apos;t provide.
                 If you have a licensed property, we&apos;re experienced with brand guidelines, artwork
                 approvals, and royalty handling. Bring us the problem first. We&apos;ll tell you honestly
-                whether we&apos;re the right fit.
+                whether we&apos;re the right fit.{' '}
+                <Link href="/faq" style={{ textDecoration: 'none' }}>
+                  <Box component="span" sx={{ fontWeight: 700, color: '#000', '&:hover': { opacity: 0.55 }, transition: 'opacity 0.15s' }}>
+                    Have more questions? See our FAQ →
+                  </Box>
+                </Link>
               </Typography>
             </Box>
           </motion.div>

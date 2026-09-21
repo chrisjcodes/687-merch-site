@@ -3,8 +3,6 @@
 import React from 'react';
 import { Box, Typography, Container } from '@mui/material';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
-
 interface Model {
   label: string;
   headline: string;
@@ -12,8 +10,6 @@ interface Model {
   benefits: string[];
   forList: string[];
   notFor: string[];
-  pitchHref?: string;
-  pitchLabel?: string;
   accent: boolean;
 }
 
@@ -56,8 +52,6 @@ const MODELS: Model[] = [
       'Situations where you need finished garments delivered immediately',
       'One-time runs with no plans to reuse the design',
     ],
-    pitchHref: '/flex-catalog',
-    pitchLabel: 'See how the numbers work →',
     accent: false,
   },
   {
@@ -78,8 +72,6 @@ const MODELS: Model[] = [
       'Events where you want to control 100% of the sales operation yourself',
       'Situations where items need to be available before or long after the event',
     ],
-    pitchHref: '/mobile-experience',
-    pitchLabel: 'See how Mobile Merch works →',
     accent: true,
   },
 ];
@@ -169,23 +161,6 @@ export default function ProductionModels() {
                     <Typography variant="body2" sx={{ color: '#777', lineHeight: 1.8, fontSize: '0.88rem' }}>
                       {model.sub}
                     </Typography>
-                    {model.pitchHref && (
-                      <Box sx={{ mt: 3 }}>
-                        <Link href={model.pitchHref} style={{ textDecoration: 'none' }}>
-                          <Typography
-                            sx={{
-                              color: '#f2bf00',
-                              fontSize: '0.82rem',
-                              fontWeight: 600,
-                              '&:hover': { opacity: 0.75 },
-                              transition: 'opacity 0.15s ease',
-                            }}
-                          >
-                            {model.pitchLabel}
-                          </Typography>
-                        </Link>
-                      </Box>
-                    )}
                   </Box>
 
                   {/* Middle: good for */}
