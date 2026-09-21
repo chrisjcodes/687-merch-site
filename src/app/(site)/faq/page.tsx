@@ -42,6 +42,18 @@ const FAQ_DATA: FaqSection[] = [
         a: 'Yes. You can set a hard cap on units, tie the drop to a specific time window, or run it as an influencer or brand collab. Since we print on-site as items are ordered, the scarcity is real — we stop when you say stop, and no one can buy one before the event.',
       },
       {
+        q: 'Why not just use a print-on-demand service instead?',
+        a: 'If print-on-demand fits your business model better, we\'re genuinely fine with that — it\'s the right answer for some situations. But here\'s what\'s different about us.\n\nWe can create items on demand in person. Customers walk away with their item the same day. They can see it, touch it, and feel the quality before they commit to buying — which is a fundamentally different experience than ordering something online and hoping it shows up the way you imagined.\n\nYou also get a dedicated team that is actually invested in your outcome. Most print-on-demand platforms route your job to whichever vendor in their network has capacity — vendors whose primary concern is throughput, not your specific project. We\'re not trying to process the highest volume of orders we can. We\'re trying to make your thing right.',
+      },
+      {
+        q: 'Can the production models be customized to fit how I actually want to work?',
+        a: 'Yes — and that\'s something we actively look for with every client. The three models are frameworks, not rigid contracts. Some clients use the Mobile Merch model not primarily to sell at the event, but because they want the printed inventory regardless of what moves on the night. They print continuously, knowing the deposit clock is running, and walk away with a full run of finished goods. Anything that sells at the event is upside. It\'s a creative way to use the time and cost structure to your advantage.\n\nIf you have a specific situation or a use case that doesn\'t map cleanly to one model, bring it up. We\'d rather find the right angle than fit you into a box.',
+      },
+      {
+        q: 'Is anyone else doing this? Why hasn\'t this been done before?',
+        a: 'There are businesses that offer live printing services — we\'re not claiming to have invented the concept. What we haven\'t seen much of is the partnership model: a live printing operation where the event actually shares in the upside rather than just paying to have a printer present.\n\nThere\'s also a speed difference that matters. Traditional live screen printing is slow. It involves multiple passes on the same garment, and sometimes requires curing the ink between passes to get the right look. That limits how many items you can produce in a live event window. Because we use screen print transfers applied with a heat press, we can finish a shirt in about 30 seconds. That changes what\'s possible in a two- or three-hour window — both in terms of volume and the experience for the person waiting for their item.',
+      },
+      {
         q: 'How is Mobile Merch different from hiring a live printer?',
         a: 'A hired live printer charges a large booking fee plus per-item material costs. They keep all the sales revenue — the event pays to have them there, and that\'s where the relationship ends. With Mobile Merch, our outcome is tied to yours. Your deposit comes back from sales before we earn anything, and you share in the upside when demand is strong. The spectacle is also different: a production van with an LED lighting system versus a standard screen printing table.',
       },
@@ -102,7 +114,7 @@ const FAQ_DATA: FaqSection[] = [
       },
       {
         q: 'Do you supply blanks or can I bring my own?',
-        a: 'We source blanks for all our production models. For Traditional and Flexible production, we work with wholesale suppliers and pass quantity savings along. For Mobile Merch, we own and manage blank inventory across events. If you have a specific blank you want to use, bring it up — the main requirement is that it\'s compatible with heat transfer application and fits the print.',
+        a: 'Both. You can absolutely bring your own blanks — there\'s no requirement to source through us. If you do want us to source them, we buy at wholesale and pass that cost directly to you with no markup. Our service fees cover what we do, not the materials. You\'ll always see exactly what the blanks cost, separate from what we charge for printing and production.\n\nFor common blanks — black, white, gray tees and similar high-turnover items — we carry our own inventory and can pull from that directly. For less common requests like unusual colorways or specialty styles we wouldn\'t normally stock, there may be a restocking fee included as part of the deposit to account for any unsold blanks we\'re left holding. We\'ll always flag that upfront if it applies.',
       },
       {
         q: 'Can you print on hats and accessories?',
@@ -114,6 +126,17 @@ const FAQ_DATA: FaqSection[] = [
     category: 'Pricing & costs',
     items: [
       {
+        q: 'How much does it cost to print a shirt — or a hoodie, or a hat?',
+        a: 'It genuinely depends, and that\'s not a dodge — it\'s just the honest answer. The cost of a printed item is a function of too many variables to quote off the top of our heads: what you\'re printing on, how many colors are in the design, how many print locations, what size the print is, and how many units you\'re ordering. Shift any one of those and the number changes.\n\nThat said, if your goal is to get the lowest possible cost per item, here\'s exactly how to do it:\n',
+        bullets: [
+          'Reduce ink colors — every color is a screen, and every screen adds to setup cost. One or two colors is significantly cheaper than four.',
+          'Reduce print locations — front only is cheaper than front and back. One placement is always the floor.',
+          'Go with the smallest print size you can be happy with — a left-chest print costs less than a full front.',
+          'Choose the most inexpensive blank you\'re comfortable with — the garment is often a larger cost driver than people expect.',
+          'Order as many units as you possibly can — the more you order, the lower your per-unit cost across the board.',
+        ],
+      },
+      {
         q: 'What are the main cost levers on a project?',
         a: 'Four things drive the most variation in cost:',
         bullets: [
@@ -124,16 +147,20 @@ const FAQ_DATA: FaqSection[] = [
         ],
       },
       {
+        q: 'Can you print just one item?',
+        a: 'Technically, yes. But we\'re probably not the right fit for it. There are a lot of print-on-demand services — online platforms and marketplaces built specifically for single one-off items — that are better suited to that need and will give you a better result at a better price point than we can on a single unit.\n\nThere\'s also a principle we hold: if someone else — an Etsy seller, a small independent vendor — is already making the thing you\'re asking us to print, and they\'re offering it at a reasonable price, we\'d rather you buy it from them. Even if printing it ourselves wouldn\'t technically violate any IP, we don\'t want to take business from small creators. We\'d suggest supporting the person who made it.',
+      },
+      {
         q: 'What is the minimum order quantity?',
-        a: 'For screen print transfers and Traditional Production, the minimum is typically 24 pieces per design to make setup costs economical. For Flexible Merch Production, the minimum is 24 transfer sheets per print run — but you apply them over time in any quantity. Mobile Merch has no minimum on units; we print what sells at the event.',
+        a: 'For screen print transfers and Traditional Production, the hard minimum is 8 pieces per design — but at that quantity, per-unit cost is very high, close to retail pricing for the item itself. The first real price break is at 24 pieces, and we almost always recommend starting there. Even if you only sell a portion of a 24-piece run, you\'ll likely cover the print cost for all of them. For Flexible Merch Production, the minimum is 24 transfer sheets per print run — but you apply them over time in any quantity. Mobile Merch has no minimum on units; we print what sells at the event.',
       },
       {
         q: 'How does quantity affect pricing?',
-        a: 'Screen printing is setup-heavy — screens, inks, and time are largely fixed costs regardless of run size. The more units you spread those across, the lower the per-unit price. Common price breaks are at 24, 48, 72, and 100+ units. For Flexible Merch Production, ordering more transfer sheets upfront gets you a lower per-sheet cost, even if you don\'t apply them all at once.',
+        a: 'Screen printing is setup-heavy — screens, inks, and time are largely fixed costs regardless of run size. The more units you spread those across, the lower the per-unit price. The first meaningful price break is at 24 units, and that\'s where we recommend most customers start. Pricing continues to improve at 48, 72, and 100+ units. At the 8-piece minimum, setup cost is spread across very few items, so per-unit cost is high enough that you should go in knowing that. For Flexible Merch Production, ordering more transfer sheets upfront gets you a lower per-sheet cost, even if you don\'t apply them all at once.',
       },
       {
         q: 'Are there setup fees?',
-        a: 'Yes, for screen printing and screen print transfers there are screen setup fees — one per ink color per design. These are a one-time cost. For Flexible Merch Production, once screens are made, reorders of the same design don\'t require paying setup again. Digital printing has no screen fees but typically costs more per unit at volume.',
+        a: 'For screen printing and screen print transfers, yes — screen setup fees apply, one per ink color per design. These are a one-time cost per design. Once screens are made, reorders of the same design don\'t require paying setup again. Digital printing has no screen fees but typically costs more per unit at volume.\n\nFor most products we print on, there are no additional setup fees. Some specialty items — like heat-applied patch applications — do carry a setup fee as part of getting samples made and configuring our vendor\'s engraver. We\'ll always break that out clearly before you commit.',
       },
       {
         q: 'What does the Mobile Merch operational deposit cover?',
@@ -150,25 +177,37 @@ const FAQ_DATA: FaqSection[] = [
     items: [
       {
         q: 'What file formats do you need for artwork?',
-        a: 'Vector files are preferred — AI, EPS, or SVG with all fonts outlined. High-resolution rasterized files (300 DPI minimum at final print size) in PNG or PSD are also accepted. We review all artwork before going to print and will flag any issues. If you don\'t have print-ready files, we can help prepare them.',
+        a: 'We prefer files that are either fully vectorized (AI, EPS, or SVG with fonts outlined) or rasterized at real-world print size and 300 DPI minimum (PNG or PSD). The key is that the file should reflect what you actually want to print — not a small web export that gets scaled up. That said, we can help get your artwork up to standard before we go to print. If you\'re not sure whether your files are ready, send them over and we\'ll take a look.',
       },
       {
         q: 'What is the maximum print size?',
-        a: 'For garments, standard full-front prints go up to 12" × 16". Oversized prints up to 14" × 18" are possible on larger garments. For hats, the printable area depends on the panel — typically around 4" × 2.5" on a standard structured front. Tote bags and flat items have more flexibility. We\'ll confirm dimensions based on the specific garment.',
+        a: 'A single screen print transfer can go up to 12.75" × 19.75". If you need something larger, we can string together multiple transfers to create the illusion of a bigger print — but each additional transfer adds to the cost. For hats, the printable area depends on the panel — typically around 4" × 2.5" on a standard structured front. Tote bags and flat items generally have more flexibility. We\'ll confirm dimensions based on the specific garment and design.',
       },
       {
         q: 'Can you help with design?',
-        a: 'We can help with artwork preparation — setting files up for print, adjusting colors to spot-color equivalents, and separating layers. For full design work (creating from scratch or major revisions), we work with designers and can connect you if needed. Get in touch and we\'ll figure out what level of help makes sense.',
+        a: 'Yes — we offer design services at an hourly rate, and we\'re also happy to work with your own designer or an outside creative. For smaller tasks like bringing an asset up to print-ready spec, as long as it\'s not a full redo we typically don\'t charge for that — it\'s part of getting the job done right. If you need a full design built from scratch or a significant revision, that falls under our design services and we\'ll scope it with you before starting.',
+      },
+      {
+        q: 'Do you have experience working with licensed or trademarked intellectual property?',
+        a: 'Yes. We are licensed to print for Florida State University — our owner\'s alma mater — which means we operate under strict brand guidelines, submit artwork for approval through the FSU branding department, and handle royalty reporting as part of every licensed order. We work with FSU clubs and organizations regularly through that relationship.\n\nIf you\'re bringing a licensed property to us, we know what that process looks like and we won\'t cut corners on it. If you\'re not sure whether your project involves IP that requires licensing, we\'re happy to talk through it.',
+      },
+      {
+        q: 'Do you use AI in your design work?',
+        a: 'No — we do not use AI for end-to-end design work. Every finished design is built by hand in a design program by a person. That\'s not a caveat, it\'s the baseline.\n\nWhere we do use AI is in early-stage work — fast prototyping and sourcing reference assets. Think of it the way a designer might reach for a stock asset: when there\'s no off-the-shelf option that makes sense, we\'ll use AI to generate something that helps us hone the direction more quickly. It\'s a starting point, not a deliverable. It is never the output you receive.\n\nOur view is that AI can exist ethically in creative fields as a tool that helps skilled artists work better — not as a replacement for them. We also believe the equity AI generates belongs with the people using it, not with large technology companies. That\'s how we think about where it belongs in our process and where it doesn\'t.',
       },
       {
         q: 'Can you match exact brand colors?',
-        a: 'For screen print transfers, we mix inks to Pantone standards and send a color confirmation before going to print. Exact Pantone matching has a small upcharge for custom ink mixing. Digital printing uses CMYK and cannot guarantee exact Pantone matches — if color accuracy is critical, screen print transfers are the right choice.',
+        a: 'Yes — we offer PMS (Pantone Matching System) color matching for an additional fee. We mix inks to your specified Pantone and send a color confirmation before going to print. Digital printing uses CMYK and cannot guarantee exact Pantone matches — if color accuracy is critical, screen print transfers are the right choice.',
       },
     ],
   },
   {
     category: 'Turnaround & logistics',
     items: [
+      {
+        q: 'Do you offer samples?',
+        a: 'Yes. We can send you samples of our work — most likely 687-branded items from our own catalog. Keep them, wear them, and tell everyone how cool you think we are.\n\nIf you have an active order with us, we\'ll typically do samples pro bono. If you\'re just curious and not yet in a project, we ask that you cover the wholesale cost of the materials — we\'re not going to charge you for our time, just what the blank and transfer actually cost us.',
+      },
       {
         q: 'How long does a typical order take?',
         a: 'Standard turnaround for Traditional Production and Flexible Merch Production (transfer sheets) is 10–14 business days from artwork approval. This covers production time, not shipping. Rush options are available. For Mobile Merch, once printing is complete we coordinate timing directly around your event date.',
@@ -431,7 +470,7 @@ export default function FaqPage() {
 
                           {/* Answer */}
                           {isOpen && (
-                            <Box sx={{ px: { xs: 3, md: 4 }, pb: { xs: 3, md: 3.5 }, pt: 0 }}>
+                            <Box sx={{ px: { xs: 3, md: 4 }, pb: { xs: 3, md: 3.5 }, pt: { xs: 1.5, md: 2 } }}>
                               <Box sx={{ borderLeft: '2px solid #222', pl: { xs: 2.5, md: 3 } }}>
                                 <Typography variant="body2" sx={{ color: '#888', lineHeight: 1.85, fontSize: '0.9rem', mb: item.bullets ? 2 : 0 }}>
                                   {highlight(item.a, search)}
