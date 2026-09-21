@@ -34,7 +34,7 @@ export default function AppFooter() {
                 alt="687 Merch"
                 width={192}
                 height={64}
-                style={{ width: 'auto', height: '30px', maxWidth: '100%' }}
+                style={{ width: 'auto', height: '44px', maxWidth: '100%' }}
                 priority
               />
             </Box>

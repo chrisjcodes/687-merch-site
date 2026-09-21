@@ -67,7 +67,7 @@ export default function AppHeader() {
               alt="687 Merch"
               width={144}
               height={48}
-              style={{ width: 'auto', height: '42px', maxWidth: '100%' }}
+              style={{ width: 'auto', height: 'clamp(24px, 4vw, 42px)', maxWidth: '100%' }}
               priority
             />
           </Box>
