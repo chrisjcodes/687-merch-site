@@ -215,7 +215,7 @@ export default function MobileRiskPage() {
                   ${SALE_PRICE}
                 </Typography>
                 <Typography variant="caption" sx={{ color: '#888', fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', mt: 0.5 }}>
-                  Per shirt
+                  Retail price
                 </Typography>
               </Box>
             </Box>
@@ -223,10 +223,10 @@ export default function MobileRiskPage() {
             {/* Right: explanation */}
             <Box>
               <Typography variant="body2" sx={{ color: '#eaeaea', fontWeight: 700, fontSize: '0.9rem', mb: 1, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-                These are scenario numbers — not a quote
+                This is an example scenario
               </Typography>
               <Typography variant="body2" sx={{ color: '#888', lineHeight: 1.75, fontSize: '0.88rem', maxWidth: 560 }}>
-                Every number on this page assumes a 100-item event merch run with shirts selling at ${SALE_PRICE} each — a common starting point for bars, fan clubs, and community events. Your actual costs will vary by garment, location, and event size. Use this as a reference frame for how the two models compare, not as a binding estimate.
+                Every number on this page assumes a 100-item event merch run with shirts retailing at ${SALE_PRICE} each — a common starting point for bars, fan clubs, and community events. Your actual costs will vary by garment, location, and event size. Use this as a reference frame for how the two models compare, not a fixed estimate for your event.
               </Typography>
             </Box>
           </Box>
