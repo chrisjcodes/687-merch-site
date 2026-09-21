@@ -33,6 +33,16 @@ export const services = [
 
 export const recentWork: WorkItem[] = [
   {
+    slug: 'gwen-stefani-anaheim-tank',
+    title: 'Gwen Stefani — No Doubt Sphere Residency',
+    thumbnail: '/images/work/gwen-stefani-anaheim-tank.jpg',
+    images: ['/images/work/gwen-stefani-anaheim-tank.jpg'],
+    tags: ['Celebrity', 'One-of-One', 'Custom'],
+    year: 2025,
+    productionModel: 'traditional',
+    context: 'A one-of-one commission for Gwen Stefani to wear during No Doubt\'s residency at the Sphere in Anaheim. We were hired to faithfully recreate a handmade tank top she originally wore in an early music video — requiring precise design reconstruction, custom color matching, special handling for the designer blank, and close coordination with our print vendor to produce a garment that could stand up to the original.',
+  },
+  {
     slug: 'penn-vs-usc-showdown',
     title: 'Penn State vs USC Tailgate Tee',
     thumbnail: '/images/work/PennXUSC.png',
