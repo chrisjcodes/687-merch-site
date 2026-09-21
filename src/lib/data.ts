@@ -64,13 +64,13 @@ export const recentWork: WorkItem[] = [
   },
   {
     slug: 'interstellar',
-    title: 'Interstellar Graphic Tee',
+    title: 'Interstellar Restaurant & Coffee',
     thumbnail: '/images/work/InterstellarFront.png',
     images: ['/images/work/InterstellarFront.png', '/images/work/InterstellarBack.png'],
-    tags: ['Graphic', 'Space', 'Movie'],
+    tags: ['Coffee', 'Restaurant', 'Small Business'],
     year: 2024,
     productionModel: 'traditional',
-    context: 'Limited-run for a film screening event—defined quantity, single delivery, no need for ongoing production.',
+    context: 'Small restaurant and coffee shop wanting branded tees for their team—clean design, small batch, one run.',
   },
   {
     slug: 'philthy-design',
