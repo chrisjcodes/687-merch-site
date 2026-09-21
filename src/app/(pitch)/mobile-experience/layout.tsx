@@ -1,13 +1,15 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'The Merch Table That Draws a Crowd | 687 Merch',
+  title: { absolute: 'The Merch Table That Draws a Crowd | 687 Merch' },
   description:
     'LED-lit production van, live printing, white-label branding, exclusive drops, and a revenue share that earns you money when demand is strong — not a flat fee win or lose.',
+  robots: { index: false, follow: false },
   openGraph: {
     title: 'The Merch Table That Draws a Crowd',
     description:
       'Live printing. LED van. Exclusive drops. Revenue share instead of a flat fee. We show up and run it — you earn on strong demand.',
+    url: 'https://687merch.com/mobile-experience',
     type: 'website',
   },
 };

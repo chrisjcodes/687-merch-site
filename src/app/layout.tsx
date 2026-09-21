@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "687 Merch | Think Big. Start Small.",
     description: "We help brands, artists, and small businesses launch and refine merchandise programs with flexible, small-batch production and creative support.",
     images: ["https://687merch.com/images/og-image.jpg"],
