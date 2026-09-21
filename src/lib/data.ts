@@ -17,15 +17,15 @@ export const services = [
   {
     id: 'flexible',
     title: 'Flexible Merch Production',
-    tagline: 'Quantity pricing without quantity commitment.',
-    body: 'We produce your designs as professional plastisol screen-print transfers. You purchase the prints upfront but decide when and how to use them—on any garment, color, or size mix, whenever you\'re ready. Lower print costs from quantity without predicting exactly what you\'ll need months out.',
+    tagline: 'Your screen printing, applied on your schedule.',
+    body: 'You pay for your screen printing upfront—we print your artwork onto transfer sheets instead of directly onto garments. That means your prints aren\'t tied to any specific blank. Use them on t-shirts today, hoodies next month, or a different colorway entirely. Quantity pricing on the screen printing without having to predict exactly what you\'ll need or when.',
     icon: '02',
   },
   {
     id: 'mobile',
     title: 'Mobile Merch',
     tagline: 'We bring the shop. You keep the upside.',
-    body: 'You pay to have your artwork printed as transfers—you own those regardless of how the event goes. You also put down an operational deposit covering our labor, travel, and event overhead. We bring the blank garments, equipment, van, and staff entirely at our own cost. Event sales return your deposit first, then we split remaining profits. We only win when you do—and you walk away with zero finished inventory.',
+    body: 'You pay for your screen printing—we print your artwork onto transfer sheets so they can be applied on-site at the event. You also put down an operational deposit covering our labor, travel, and event overhead. We bring the blank garments, van, equipment, and staff entirely at our cost. Event sales return your deposit first, then we split what\'s left. We only win when you do—and you leave with zero finished inventory.',
     icon: '03',
     featured: true,
   },
@@ -50,7 +50,7 @@ export const recentWork: WorkItem[] = [
     tags: ['Logo', 'Anniversary', 'Retro'],
     year: 2024,
     productionModel: 'flexible',
-    context: 'Bar wanted to sell tees to regulars over time without over-ordering. Transfers let them restock in small batches as demand came in.',
+    context: 'Bar wanted to sell tees to regulars without over-ordering. Paying for the screen printing upfront let them apply prints to new blanks in small batches as demand came in.',
   },
   {
     slug: 'eagles-nest-west',
@@ -60,7 +60,7 @@ export const recentWork: WorkItem[] = [
     tags: ['Club', 'Lifestyle'],
     year: 2024,
     productionModel: 'flexible',
-    context: 'Growing fan club needed an ongoing supply without committing to garment styles upfront—transfers gave them flexibility as the group expanded.',
+    context: 'Growing fan club needed an ongoing supply without committing to garment styles upfront—paying for the screen printing and applying it to blanks later gave them flexibility as the group expanded.',
   },
   {
     slug: 'interstellar',
@@ -80,7 +80,7 @@ export const recentWork: WorkItem[] = [
     tags: ['Custom', 'Street'],
     year: 2024,
     productionModel: 'flexible',
-    context: 'Independent label testing multiple colorways—transfers let them produce small quantities of each without locking into a full run on any single style.',
+    context: 'Independent label testing multiple colorways—paying for the screen printing once and applying it to different blanks let them test each style without committing to a full run.',
   },
   {
     slug: 'good-people-advisory',
@@ -100,7 +100,7 @@ export const recentWork: WorkItem[] = [
     tags: ['Music', 'Culture'],
     year: 2024,
     productionModel: 'flexible',
-    context: 'Music venue selling merch across multiple events—transfers made it easy to restock between shows and adjust to whatever garments were trending.',
+    context: 'Music venue selling merch across multiple events—screen printing to transfer sheets made it easy to restock between shows and apply to whatever garments were trending.',
   },
   {
     slug: 'sf-fsu-design',
@@ -120,7 +120,7 @@ export const recentWork: WorkItem[] = [
     tags: ['Vintage', 'Year'],
     year: 2024,
     productionModel: 'flexible',
-    context: 'Small streetwear brand printing a design across multiple drops over the season—transfers meant they could use the same print on different blanks as styles sold through.',
+    context: 'Small streetwear brand running a design across multiple drops—paying for the screen printing once and applying it to different blanks meant the same print carried through the whole season as styles sold through.',
   },
 ];
 

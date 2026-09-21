@@ -16,8 +16,8 @@ const fadeUp: Variants = {
 const steps = [
   {
     number: '01',
-    label: 'You pay for your transfers',
-    detail: 'Your artwork gets screen printed as plastisol transfers. You own them—use any leftovers however you want, whenever you want.',
+    label: 'You pay for your screen printing',
+    detail: 'We screen print your artwork onto transfer sheets rather than directly onto garments—so the prints can be applied to any blank, at any time. You own them outright, leftovers and all.',
   },
   {
     number: '02',
@@ -184,8 +184,8 @@ export default function PartnerDifference() {
             <Typography variant="body1" sx={{ color: '#555', maxWidth: 480, lineHeight: 1.75 }}>
               At the end of the event, we pack up and leave with our blank inventory—every unsold
               garment goes back in the van. You walk away with zero finished merchandise to store,
-              manage, or mark down. Any unused transfers are still yours to use at future events or
-              future orders, however you see fit.
+              manage, or mark down. Any unused screen printing is still yours—your transfer sheets
+              can be applied to future orders or future events whenever you&apos;re ready.
             </Typography>
             <Box sx={{ flexShrink: 0, textAlign: { xs: 'left', md: 'right' } }}>
               <Typography
