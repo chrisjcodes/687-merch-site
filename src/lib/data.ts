@@ -147,10 +147,10 @@ export const recentWork: WorkItem[] = [
     title: 'Wildherness Graphic Tee',
     thumbnail: '/images/work/wildherness-colorways.jpg',
     images: ['/images/work/wildherness-colorways.jpg'],
-    tags: ['Outdoor', 'Lifestyle', 'Colorways'],
+    tags: ['Nonprofit', 'Women', 'Outdoor'],
     year: 2024,
     productionModel: 'flexible',
-    context: 'Outdoor lifestyle brand wanted to test five colorways before committing to inventory. One screen printing run covered them all—they ordered blanks as each color sold through.',
+    context: 'Women\'s nonprofit introducing more women to hunting, fishing, and camping. Printing to transfer sheets let them offer their design across multiple colorways without over-ordering—important when you\'re a nonprofit watching every dollar.',
   },
   {
     slug: 'solo-leveling-twitchcon',
