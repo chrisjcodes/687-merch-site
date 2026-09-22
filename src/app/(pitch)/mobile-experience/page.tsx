@@ -365,7 +365,7 @@ export default function MobileExperiencePage() {
                 {[
                   { label: 'What you pay', value: `Print cost + ${fmt(DEPOSIT)} deposit`, green: false },
                   { label: 'Who keeps the sales', value: 'Split — after deposit returns to you', green: true },
-                  { label: 'Your upside', value: 'Everything above the deposit, split 50/50', green: true },
+                  { label: 'Your upside', value: 'Everything above the deposit, split with you', green: true },
                   { label: 'If it\'s a slow night', value: 'Deposit returns from first sales', green: true },
                   { label: 'The spectacle', value: 'LED-lit production van', green: true },
                 ].map((row, i) => (

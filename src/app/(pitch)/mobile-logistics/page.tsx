@@ -330,7 +330,7 @@ export default function MobileLogisticsPage() {
                   { step: '1', label: 'Print cost', detail: 'Paid upfront — your design, your transfers' },
                   { step: '2', label: 'Operational deposit', detail: 'Covers our labor, travel, and event overhead' },
                   { step: '3', label: 'Sales return deposit first', detail: 'You get whole before we get anything' },
-                  { step: '4', label: '50/50 split on the rest', detail: 'Everything above deposit, split evenly' },
+                  { step: '4', label: 'We split what\'s left', detail: 'Everything above deposit, split with you' },
                   { step: '5', label: 'We send you a check', detail: "Reconciled after the event — you don't chase us" },
                 ].map((row, i) => (
                   <Box

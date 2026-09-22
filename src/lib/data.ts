@@ -40,7 +40,7 @@ export const recentWork: WorkItem[] = [
     tags: ['Celebrity', 'One-of-One', 'Custom'],
     year: 2026,
     productionModel: 'traditional',
-    context: 'A one-of-one commission for Gwen Stefani to wear during No Doubt\'s residency at the Sphere in Anaheim. We were hired to faithfully recreate a handmade tank top she originally wore in an early music video — requiring precise design reconstruction, custom color matching, special handling for the designer blank, and close coordination with our print vendor to produce a garment that could stand up to the original.',
+    context: 'A one-of-one commission for Gwen Stefani to wear during No Doubt\'s residency at the Sphere in Anaheim. We were hired to faithfully recreate a handmade tank top she originally wore in an early music video — requiring precise design reconstruction, custom color matching, and special handling for the designer blank.',
   },
   {
     slug: 'kenkouken-limited-edition',

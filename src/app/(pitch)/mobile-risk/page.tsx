@@ -369,9 +369,9 @@ export default function MobileRiskPage() {
               },
               {
                 step: '03',
-                amount: '50 / 50',
+                amount: 'SPLIT',
                 label: 'Profit split',
-                body: `Sales return your deposit first. Then we cover the blank cost per shirt sold. What\'s left we split down the middle — you get your money back plus a share of every sale.`,
+                body: `Sales return your deposit first. Then we cover the blank cost per shirt sold. What\'s left we split with you — you get your money back plus a share of every sale.`,
                 note: 'After you\'re whole, we split what\'s left',
               },
             ].map((item, i) => (

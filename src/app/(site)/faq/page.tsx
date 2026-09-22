@@ -37,7 +37,7 @@ const FAQ_DATA: FaqSection[] = [
       },
       {
         q: 'How does the Mobile Merch deposit and revenue split work?',
-        a: 'You pay for the screen printing upfront plus an operational deposit that covers our labor, travel, and event overhead. At the event, sales return your deposit first — before we take anything. Everything above the deposit splits 50/50. If it\'s a slow night and sales only cover the deposit, you walk away at zero. That\'s still better than paying a hired live printer a flat booking fee with no upside at all.',
+        a: 'You pay for the screen printing upfront plus an operational deposit that covers our labor, travel, and event overhead. At the event, sales return your deposit first — before we take anything. Everything above the deposit we split with you. If it\'s a slow night and sales only cover the deposit, you walk away at zero. That\'s still better than paying a hired live printer a flat booking fee with no upside at all.',
         tags: ['live-events', 'pricing'],
       },
       {
