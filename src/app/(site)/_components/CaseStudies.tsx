@@ -220,36 +220,6 @@ export default function CaseStudies({ onItemClick }: CaseStudiesProps) {
             </Box>
           </Box>
 
-          {/* Model legend */}
-          <Box
-            component={motion.div}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            sx={{ mt: 5, display: 'flex', gap: 3, justifyContent: 'center', flexWrap: 'wrap' }}
-          >
-            {(Object.entries(MODEL_LABELS) as [ProductionModel, string][]).map(([key, label]) => (
-              <Box key={key} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <Box
-                  sx={{
-                    width: 9,
-                    height: 9,
-                    borderRadius: '50%',
-                    backgroundColor: key === 'mobile' ? '#f2bf00' : MODEL_COLORS[key].bg,
-                    border: key === 'traditional' ? '1px solid #666' : key === 'mobile' ? 'none' : 'none',
-                    flexShrink: 0,
-                  }}
-                />
-                <Typography
-                  variant="caption"
-                  sx={{ color: '#aaa', fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.5px' }}
-                >
-                  {label}
-                </Typography>
-              </Box>
-            ))}
-          </Box>
         </Container>
       </Box>
     </>
