@@ -288,7 +288,7 @@ const FAQ_DATA: FaqSection[] = [
       },
       {
         q: 'What does your setup require at the venue?',
-        a: 'We run out of a 2020 Ford Transit, so you need enough space for the van plus roughly a 10×20\' booth area next to it. We work outdoors — we\'re not built for an indoor setup. Load-in is fast: we drive up, stage the presses, set up the workflow, and we\'re operational in under 30 minutes.\n\nFor power: we run on battery, so we\'re fully self-sufficient for most event windows. For longer events, access to shore power is helpful — we\'ll flag it during booking if it applies to yours.',
+        a: 'We run out of a 2020 Ford Transit — the van is the booth. All you need to carve out is roughly a 10×20\' footprint for us to operate out of. We work outdoors — we\'re not built for an indoor setup. Load-in is fast: we drive up, stage the presses, set up the workflow, and we\'re operational in under 30 minutes.\n\nFor power: we run on battery, so we\'re fully self-sufficient for most event windows. For longer events, access to shore power is helpful — we\'ll flag it during booking if it applies to yours.',
         tags: ['live-events', 'getting-started'],
       },
       {
