@@ -20,16 +20,19 @@ import { z } from 'zod';
 // ─── Schema ─────────────────────────────────────────────────────────────────
 
 const contactSchema = z.object({
-  firstName: z.string().min(1, 'First name is required'),
-  lastName:  z.string().min(1, 'Last name is required'),
-  email:     z.string().email('Please enter a valid email address'),
-  phone:     z.string().optional(),
-  quantity:  z.string().optional(),
-  message:   z.string().optional(),
-  honeypot:  z.string().max(0),
-  model:     z.string().optional(),
-  occasion:  z.string().optional(),
-  timeline:  z.string().optional(),
+  firstName:     z.string().min(1, 'First name is required'),
+  lastName:      z.string().min(1, 'Last name is required'),
+  email:         z.string().email('Please enter a valid email address'),
+  phone:         z.string().optional(),
+  quantity:      z.string().optional(),
+  message:       z.string().optional(),
+  honeypot:      z.string().max(0),
+  model:         z.string().optional(),
+  occasion:      z.string().optional(),
+  timeline:      z.string().optional(),
+  eventDate:     z.string().optional(),
+  eventLocation: z.string().optional(),
+  eventDuration: z.string().optional(),
 });
 
 type ContactFormData = z.infer<typeof contactSchema>;
@@ -145,22 +148,23 @@ const fieldSx = {
 
 // ─── Options ────────────────────────────────────────────────────────────────
 
-const MODEL_OPTIONS: ChipOption[] = [
-  { label: 'Traditional Production',    value: 'traditional' },
-  { label: 'Flexible Merch',            value: 'flexible'    },
-  { label: 'Mobile Merch',              value: 'mobile'      },
-  { label: "Not sure — help me decide", value: 'unsure'      },
+const EVENT_TYPE_OPTIONS: ChipOption[] = [
+  { label: 'Concert / Show',    value: 'concert'    },
+  { label: 'Festival',          value: 'festival'   },
+  { label: 'Brand Activation',  value: 'activation' },
+  { label: 'Pop-Up / Drop',     value: 'popup'      },
+  { label: 'Private Party',     value: 'private'    },
+  { label: 'Other',             value: 'other'      },
 ];
 
-const OCCASION_OPTIONS: ChipOption[] = [
-  { label: 'Live Event / Concert',  value: 'event'     },
-  { label: 'Business / Corporate',  value: 'corporate' },
-  { label: 'Brand / Streetwear',    value: 'brand'     },
-  { label: 'School / Organization', value: 'school'    },
-  { label: 'Other',                 value: 'other'     },
+const EVENT_TIMELINE_OPTIONS: ChipOption[] = [
+  { label: 'This month',     value: 'asap' },
+  { label: '1–3 months',     value: '3mo'  },
+  { label: '3–6 months',     value: '6mo'  },
+  { label: 'Planning ahead', value: 'tbd'  },
 ];
 
-const TIMELINE_OPTIONS: ChipOption[] = [
+const OTHER_TIMELINE_OPTIONS: ChipOption[] = [
   { label: 'ASAP',            value: 'asap' },
   { label: 'Within a month',  value: '1mo'  },
   { label: '1–3 months',      value: '3mo'  },
@@ -174,9 +178,17 @@ export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess]   = useState(false);
   const [showError, setShowError]       = useState(false);
-  const [model, setModel]               = useState('');
+  const [model, setModel]               = useState('mobile');
   const [occasion, setOccasion]         = useState('');
   const [timeline, setTimeline]         = useState('');
+
+  const isMobile = model === 'mobile';
+
+  const handleModelChange = (value: string) => {
+    setModel(value);
+    setOccasion('');
+    setTimeline('');
+  };
 
   const {
     register,
@@ -185,7 +197,6 @@ export default function ContactForm() {
     formState: { errors },
   } = useForm<ContactFormData>({ resolver: zodResolver(contactSchema) });
 
-  // P0-2: scroll to first error field on failed validation
   const onError = () => {
     const firstErrorName = ['firstName', 'lastName', 'email'].find(
       (f) => errors[f as keyof typeof errors]
@@ -209,7 +220,7 @@ export default function ContactForm() {
         track('contact_form_submitted', { model, occasion, timeline });
         setShowSuccess(true);
         reset();
-        setModel('');
+        setModel('mobile');
         setOccasion('');
         setTimeline('');
       } else {
@@ -226,12 +237,14 @@ export default function ContactForm() {
     <Box ref={sectionRef} id="contact" sx={{ py: { xs: 10, md: 14 }, backgroundColor: 'primary.main' }}>
       <Container maxWidth="md">
 
-        <Box sx={{ mb: { xs: 6, md: 8 } }}>
+        <Box sx={{ mb: { xs: 4, md: 5 } }}>
           <Typography variant="h2" component="h2" sx={{ color: '#000', mb: 2 }}>
-            Let&apos;s Talk Merch
+            {isMobile ? 'Book the Booth' : 'Get in Touch'}
           </Typography>
           <Typography variant="body1" sx={{ color: 'rgba(0,0,0,0.6)', maxWidth: 520, lineHeight: 1.75 }}>
-            Tell us about what you&apos;re working on and we&apos;ll reach back out—or just say hi if you&apos;re still figuring it out. We usually reply within one business day.
+            {isMobile
+              ? "We come to you, print live, and split the upside with you. Tell us about your event and we'll reach out within one business day."
+              : "Tell us what you're working on and we'll reach back out within one business day."}
           </Typography>
         </Box>
 
@@ -281,7 +294,7 @@ export default function ContactForm() {
             sx={fieldSx}
           />
 
-          {/* Phone (optional) */}
+          {/* Phone */}
           <TextField
             {...register('phone')}
             label="Phone (optional)"
@@ -292,44 +305,81 @@ export default function ContactForm() {
             sx={fieldSx}
           />
 
-          {/* Model interest */}
-          <ChipGroup
-            label="Which model interests you?"
-            options={MODEL_OPTIONS}
-            value={model}
-            onChange={setModel}
-          />
+          {isMobile ? (
+            <>
+              {/* Event type */}
+              <ChipGroup
+                label="What kind of event?"
+                options={EVENT_TYPE_OPTIONS}
+                value={occasion}
+                onChange={setOccasion}
+              />
 
-          {/* Occasion */}
-          <ChipGroup
-            label="What's the occasion?"
-            options={OCCASION_OPTIONS}
-            value={occasion}
-            onChange={setOccasion}
-          />
+              {/* Date + Location */}
+              <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' }, gap: 2 }}>
+                <TextField
+                  {...register('eventDate')}
+                  label="Event date"
+                  type="date"
+                  fullWidth
+                  InputLabelProps={{ shrink: true }}
+                  sx={fieldSx}
+                />
+                <TextField
+                  {...register('eventLocation')}
+                  label="Where is it?"
+                  fullWidth
+                  placeholder="Venue, city"
+                  sx={fieldSx}
+                />
+              </Box>
 
-          {/* Timeline */}
-          <ChipGroup
-            label="When do you need it?"
-            options={TIMELINE_OPTIONS}
-            value={timeline}
-            onChange={setTimeline}
-          />
+              {/* Duration + Attendance */}
+              <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' }, gap: 2 }}>
+                <TextField
+                  {...register('eventDuration')}
+                  label="How long does it run?"
+                  fullWidth
+                  placeholder="e.g. 6 hours, all day"
+                  sx={fieldSx}
+                />
+                <TextField
+                  {...register('quantity')}
+                  label="Estimated crowd size"
+                  fullWidth
+                  placeholder="e.g. 500 people, not sure"
+                  inputProps={{ inputMode: 'numeric' }}
+                  sx={fieldSx}
+                />
+              </Box>
+            </>
+          ) : (
+            <>
+              {/* Timeline */}
+              <ChipGroup
+                label="When do you need it?"
+                options={OTHER_TIMELINE_OPTIONS}
+                value={timeline}
+                onChange={setTimeline}
+              />
 
-          {/* Quantity */}
-          <TextField
-            {...register('quantity')}
-            label="Estimated quantity (optional)"
-            fullWidth
-            placeholder="e.g. 100 shirts"
-            inputProps={{ inputMode: 'numeric' }}
-            sx={fieldSx}
-          />
+              {/* Quantity */}
+              <TextField
+                {...register('quantity')}
+                label="Estimated quantity (optional)"
+                fullWidth
+                placeholder="e.g. 100 shirts"
+                inputProps={{ inputMode: 'numeric' }}
+                sx={fieldSx}
+              />
+            </>
+          )}
 
           {/* Message */}
           <TextField
             {...register('message')}
-            label="Anything else we should know?"
+            label={isMobile ? 'Tell us about the event' : 'Anything else we should know?'}
+            placeholder={isMobile ? 'What\'s the vibe, who\'s performing, what makes it special...' : undefined}
             multiline
             rows={3}
             fullWidth
@@ -359,8 +409,47 @@ export default function ContactForm() {
               '&:disabled': { backgroundColor: '#555', color: '#999' },
             }}
           >
-            {isSubmitting ? 'Sending…' : 'Send'}
+            {isSubmitting ? 'Sending…' : isMobile ? 'Request a Booking' : 'Send'}
           </Button>
+
+          {/* Secondary model options */}
+          <Box sx={{ textAlign: 'center', pt: 1 }}>
+            <Typography variant="caption" sx={{ color: 'rgba(0,0,0,0.45)', fontSize: '0.8rem' }}>
+              {isMobile ? 'Not looking for mobile merch?' : 'Want to book the mobile booth instead?'}
+            </Typography>
+            <Box sx={{ display: 'flex', gap: 1.5, justifyContent: 'center', flexWrap: 'wrap', mt: 1.5 }}>
+              {isMobile ? (
+                <>
+                  <Box
+                    component="button"
+                    type="button"
+                    onClick={() => handleModelChange('traditional')}
+                    sx={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(0,0,0,0.55)', fontSize: '0.82rem', fontWeight: 600, textDecoration: 'underline', p: 0, fontFamily: 'inherit', '&:hover': { color: '#000' } }}
+                  >
+                    Traditional Production
+                  </Box>
+                  <Typography variant="caption" sx={{ color: 'rgba(0,0,0,0.3)', lineHeight: 2 }}>·</Typography>
+                  <Box
+                    component="button"
+                    type="button"
+                    onClick={() => handleModelChange('flexible')}
+                    sx={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(0,0,0,0.55)', fontSize: '0.82rem', fontWeight: 600, textDecoration: 'underline', p: 0, fontFamily: 'inherit', '&:hover': { color: '#000' } }}
+                  >
+                    Flexible Merch
+                  </Box>
+                </>
+              ) : (
+                <Box
+                  component="button"
+                  type="button"
+                  onClick={() => handleModelChange('mobile')}
+                  sx={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(0,0,0,0.55)', fontSize: '0.82rem', fontWeight: 600, textDecoration: 'underline', p: 0, fontFamily: 'inherit', '&:hover': { color: '#000' } }}
+                >
+                  Book the Mobile Merch Booth →
+                </Box>
+              )}
+            </Box>
+          </Box>
         </Box>
       </Container>
 
