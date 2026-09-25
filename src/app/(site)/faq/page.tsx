@@ -232,6 +232,11 @@ const FAQ_DATA: FaqSection[] = [
         tags: ['about-us'],
       },
       {
+        q: 'I made something with AI — can I send it to you and have it put on a shirt?',
+        a: 'Yes — and we work with AI-generated art regularly. The main thing to know is that what AI outputs is rarely print-ready. It almost always needs treatment before it can go on press: cleaning up edges, separating colors, rebuilding detail that doesn\'t hold at print size, or converting the image into a format our process can actually work with. That\'s not a dealbreaker, just a reality of the format.\n\nWe\'d also encourage you to stay open to a different starting point. If you show us what you generated and tell us what you\'re going for, we can often build something from scratch — or build on what you made — that\'s stronger as a garment design and easier to execute at print. AI art and apparel design are two different disciplines, and what reads well on a screen doesn\'t always translate to a shirt. We\'re happy to work with what you have, but we\'ll always tell you honestly if we think we can do better.',
+        tags: ['getting-started', 'about-us'],
+      },
+      {
         q: 'Can you match exact brand colors?',
         a: 'Yes — we offer PMS (Pantone Matching System) color matching for an additional fee. We mix inks to your specified Pantone and send a color confirmation before going to print. Digital printing uses CMYK and cannot guarantee exact Pantone matches — if color accuracy is critical, screen print transfers are the right choice.',
         tags: ['print-quality', 'pricing'],
