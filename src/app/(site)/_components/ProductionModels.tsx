@@ -16,24 +16,24 @@ interface Model {
 
 const MODELS: Model[] = [
   {
-    label: 'Traditional Production',
-    headline: 'You order. We print. You own it.',
-    sub: 'The model most people know. Pick your garments and quantities upfront, we print and deliver everything. Lowest per-unit cost at volume.',
+    label: 'Mobile Merch',
+    headline: 'We show up. You earn.',
+    sub: 'We bring the van, the press, the staff, and the blanks. We print live at your event, return your deposit from sales, and split the upside with you.',
     benefits: [
-      'Best per-unit cost when you know your quantities',
-      'Full ownership — sell however, wherever, whenever you want',
-      'Reorder the same design without new setup fees',
+      'Zero inventory risk — we take unsold blanks back',
+      'You earn on high demand instead of just paying for a printer',
+      'Live production creates an experience, not just a merch table',
     ],
     forList: [
-      'Established brands with consistent, predictable demand',
-      'Retail or online stores with ongoing inventory',
-      'Bulk runs where you\'re confident in what will move',
+      'Event organizers and promoters who want merch without the headache',
+      'Exclusive drops and limited-edition runs tied to a specific moment',
+      'Venues, festivals, and brand activations with strong foot traffic',
     ],
     notFor: [
-      'First-time runs where you\'re not sure how much will sell',
-      'Event-specific merch where unsold stock becomes your problem',
+      'Events where you want to control 100% of the sales operation yourself',
+      'Situations where items need to be available before or long after the event',
     ],
-    accent: false,
+    accent: true,
   },
   {
     label: 'Flexible Merch Production',
@@ -56,24 +56,24 @@ const MODELS: Model[] = [
     accent: false,
   },
   {
-    label: 'Mobile Merch',
-    headline: 'We show up. You earn.',
-    sub: 'We bring the van, the press, the staff, and the blanks. We print live at your event, return your deposit from sales, and split the upside with you.',
+    label: 'Traditional Production',
+    headline: 'You order. We print. You own it.',
+    sub: 'The model most people know. Pick your garments and quantities upfront, we print and deliver everything. Lowest per-unit cost at volume.',
     benefits: [
-      'Zero inventory risk — we take unsold blanks back',
-      'You earn on high demand instead of just paying for a printer',
-      'Live production creates an experience, not just a merch table',
+      'Best per-unit cost when you know your quantities',
+      'Full ownership — sell however, wherever, whenever you want',
+      'Reorder the same design without new setup fees',
     ],
     forList: [
-      'Event organizers and promoters who want merch without the headache',
-      'Exclusive drops and limited-edition runs tied to a specific moment',
-      'Venues, festivals, and brand activations with strong foot traffic',
+      'Established brands with consistent, predictable demand',
+      'Retail or online stores with ongoing inventory',
+      'Bulk runs where you\'re confident in what will move',
     ],
     notFor: [
-      'Events where you want to control 100% of the sales operation yourself',
-      'Situations where items need to be available before or long after the event',
+      'First-time runs where you\'re not sure how much will sell',
+      'Event-specific merch where unsold stock becomes your problem',
     ],
-    accent: true,
+    accent: false,
   },
 ];
 
@@ -104,13 +104,13 @@ export default function ProductionModels() {
               variant="caption"
               sx={{ color: '#f2bf00', textTransform: 'uppercase', letterSpacing: '0.14em', fontSize: '0.72rem', fontWeight: 700, display: 'block', mb: 2 }}
             >
-              Three models. One right fit.
+              Mobile merch is what we do.
             </Typography>
             <Typography variant="h2" component="h2" sx={{ color: '#fff', mb: 3 }}>
-              Find yours.
+              Find your fit.
             </Typography>
-            <Typography variant="body1" sx={{ color: '#888', maxWidth: 480, mx: 'auto', lineHeight: 1.75 }}>
-              Each model is built for a different situation. Here&apos;s what makes them different — and who each one is actually for.
+            <Typography variant="body1" sx={{ color: '#888', maxWidth: 520, mx: 'auto', lineHeight: 1.75 }}>
+              Live event merch is what we built this around. We also offer flexible and traditional production to make sure we can serve you wherever you are.
             </Typography>
           </Box>
         </motion.div>

@@ -3,7 +3,7 @@ import { WorkItem, Partner } from './types';
 export const siteCopy = {
   headline: 'YOUR MERCH PARTNER.',
   subhead:
-    'Most printers take your order and hand it back. We work alongside you to figure out the right production model—and put our own resources on the line to make it work.',
+    "We're not a traditional printer. We're a mobile merch booth — built to make merch an experience instead of a headache.",
 };
 
 export const services = [
