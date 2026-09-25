@@ -303,7 +303,7 @@ const FAQ_DATA: FaqSection[] = [
       },
       {
         q: 'Who handles payments at the event, and how do I receive my cut?',
-        a: 'We run the booth and take all customer payments directly — you don\'t need to staff a register or manage a POS. After the event, we compile a full sales report and send you a copy. If sales returned your deposit and generated a split, we can remit your share as soon as the following day. If sales came in under the deposit, we bill you for the difference. Either way, you get a clear accounting of every transaction from the night.',
+        a: 'We run the booth and take all customer payments directly — you don\'t need to staff a register or manage a POS. Your deposit is already paid before the event, so there\'s no invoice waiting for you on the other side.\n\nAfter the event, we compile a full sales report and send you a copy. If sales covered the deposit and generated a split, we remit your share — typically as soon as the following day. If it was a slower night and sales only partially covered the deposit, you receive back whatever we were able to recover. The deposit is your floor, not a debt.\n\nThe only scenario where you\'d receive a bill after the event is if you asked us to do giveaways or purchase items off the booth on behalf of customers — in that case we\'ll invoice you for those separately.',
         tags: ['live-events', 'pricing'],
       },
       {
