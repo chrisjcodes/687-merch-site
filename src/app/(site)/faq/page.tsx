@@ -281,6 +281,41 @@ const FAQ_DATA: FaqSection[] = [
         a: 'Yes. Mobile Merch events have travel as part of the operational deposit calculation — longer distances are factored into your deposit. For Traditional and Flexible Production, we ship anywhere domestically. Get in touch with your location and we\'ll tell you what makes sense.',
         tags: ['getting-started', 'live-events'],
       },
+      {
+        q: 'How far in advance do I need to book Mobile Merch?',
+        a: 'We ask for a minimum of 15 business days — about three weeks — to confirm a date and get everything ready. That covers artwork approval, the print run, and logistics prep. In practice, the earlier you reach out the better: dates fill up, and more lead time means more room to develop design if you need it. If you\'re inside that window, reach out anyway — we\'ll tell you honestly whether we can make it work.',
+        tags: ['live-events', 'getting-started'],
+      },
+      {
+        q: 'What does your setup require at the venue?',
+        a: 'We run out of a 2020 Ford Transit, so you need enough space for the van plus roughly a 10×20\' booth area next to it. We work outdoors — we\'re not built for an indoor setup. Load-in is fast: we drive up, stage the presses, set up the workflow, and we\'re operational in under 30 minutes.\n\nFor power: we run on battery, so we\'re fully self-sufficient for most event windows. For longer events, access to shore power is helpful — we\'ll flag it during booking if it applies to yours.',
+        tags: ['live-events', 'getting-started'],
+      },
+      {
+        q: 'Can you run multiple designs at the same event?',
+        a: 'Yes. The most practical approach is to pick a lane on garment color — all light shirts or all dark shirts — so we\'re working from one consistent blank inventory and can run all your designs in a matching ink without juggling two separate catalogs. We can mix and match light and dark blanks, but it adds complexity.\n\nOne thing to think through on busier events: design complexity affects throughput. A simple front-chest print takes about 30 seconds per item. A design that hits the front, back, and both sleeves takes significantly longer — and at a high-traffic event, that one design can create a bottleneck at the booth. If you\'re planning multiple designs for a large crowd, we\'ll talk through which ones make sense to run live and how to sequence them.',
+        tags: ['live-events', 'getting-started'],
+      },
+      {
+        q: 'How does sizing work at a live event?',
+        a: 'We stock what we expect to be a solid size distribution for your event and crowd. If someone asks for a size we\'ve sold through or didn\'t bring, they can still purchase — we take the order, set aside a transfer in a backlog print bin, and order the missing sizes the following day. We run those prints and either get them to you directly or work with you to ship to the customer. Nobody walks away without their item; it just arrives a day or two later.',
+        tags: ['live-events', 'getting-started'],
+      },
+      {
+        q: 'Who handles payments at the event, and how do I receive my cut?',
+        a: 'We run the booth and take all customer payments directly — you don\'t need to staff a register or manage a POS. After the event, we compile a full sales report and send you a copy. If sales returned your deposit and generated a split, we can remit your share as soon as the following day. If sales came in under the deposit, we bill you for the difference. Either way, you get a clear accounting of every transaction from the night.',
+        tags: ['live-events', 'pricing'],
+      },
+      {
+        q: 'What happens if my event gets cancelled or postponed?',
+        a: 'We refund your deposit. The print run has already happened, so your transfers exist and belong to you — we don\'t hold them over a cancelled date. If the event is rescheduled, we come back out and pick up where we left off. If you want to use the transfers another way — a future show, a traditional production run, online fulfillment — that\'s yours to do. The print cost you already committed to means the artwork is ready whenever you are.',
+        tags: ['live-events', 'pricing'],
+      },
+      {
+        q: 'Do you carry liability insurance?',
+        a: 'Yes. We carry liability insurance and can provide a certificate of insurance (COI) as required by your venue or event organizer. Let us know during booking and we\'ll make sure you have what you need.',
+        tags: ['live-events', 'about-us'],
+      },
     ],
   },
 ];
