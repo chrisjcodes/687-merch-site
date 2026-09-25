@@ -308,7 +308,7 @@ const FAQ_DATA: FaqSection[] = [
       },
       {
         q: 'What happens if my event gets cancelled or postponed?',
-        a: 'It depends on whether you cancel us or just the event.\n\nIf you cancel us — meaning you tell us not to show up — we refund your deposit. The transfers already printed belong to you. If the event reschedules, we come back out. If you want to use the artwork another way — a future show, a traditional run, online fulfillment — it\'s ready whenever you are.\n\nIf we show up, the deposit stands. Even if the event runs slow, gets rained on, or something else cuts into attendance — once we\'ve loaded in and started operating, we\'ve committed our labor, travel, and overhead. Sales will work to recover your deposit first, as always, but the deposit itself is owed if we\'re on site.',
+        a: 'Simple rule: you only owe us the operational deposit if we operate. If the event gets cancelled or you don\'t have us come out, we refund your deposit in full.\n\nThe print cost is a fixed cost regardless — but those transfers are yours to keep. Use them at a rescheduled event, a future show, a traditional production run, whatever makes sense. The artwork is ready whenever you are.',
         tags: ['live-events', 'pricing'],
       },
       {
