@@ -303,7 +303,7 @@ const FAQ_DATA: FaqSection[] = [
       },
       {
         q: 'Can you print additional inventory for me during a slow event?',
-        a: 'Yes — absolutely. If traffic is light and you want to use the time to build finished goods inventory, we can keep the presses running. You\'ll pay the per-item print cost plus the cost of the blank for anything we produce beyond what sells at the event. We can reconcile that against your deposit, so there\'s no separate invoice to manage on the night — it all gets settled in the post-event report.',
+        a: 'Yes — absolutely. If traffic is light and you want to use the time to build finished goods inventory, we can keep the presses running. You\'ll pay the per-item service cost plus the cost of the blanks used. The service cost gets reconciled against your deposit — so as long as we\'re working within the hourly capacity your deposit covers, there\'s nothing extra to pay. The only time you\'d owe more is if you asked us to produce beyond that allotted capacity. It all gets settled in the post-event report.',
         tags: ['live-events', 'pricing'],
       },
       {
