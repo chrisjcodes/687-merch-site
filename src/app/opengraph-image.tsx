@@ -6,8 +6,8 @@ export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
 export default async function Image() {
-  const vanBuffer = await readFile(path.join(process.cwd(), 'public/images/van-illustration.png'));
-  const vanSrc = `data:image/png;base64,${vanBuffer.toString('base64')}`;
+  const vanBuffer = await readFile(path.join(process.cwd(), 'public/images/van-illustration.svg'));
+  const vanSrc = `data:image/svg+xml;base64,${vanBuffer.toString('base64')}`;
 
   return new ImageResponse(
     (

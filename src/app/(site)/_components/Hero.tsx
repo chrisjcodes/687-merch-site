@@ -64,9 +64,10 @@ export default function Hero() {
       style={{ position: 'relative', width: '100%', height: '100%' }}
     >
       <Image
-        src="/images/van-illustration.png"
+        src="/images/van-illustration.svg"
         alt="687 Merch mobile production van"
         fill
+        unoptimized
         style={{
           objectFit: 'contain',
           objectPosition: position === 'mobile' ? 'center bottom' : 'right bottom',
