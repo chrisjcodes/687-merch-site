@@ -26,8 +26,13 @@ const MODELS: Model[] = [
     ],
     forList: [
       'Event organizers and promoters who want merch without the headache',
+      'Concerts, shows, and performances — any size, any genre',
       'Exclusive drops and limited-edition runs tied to a specific moment',
       'Venues, festivals, and brand activations with strong foot traffic',
+      'Sports teams, tournaments, and leagues with a home crowd',
+      'Corporate events, offsites, and company milestones',
+      'School events, reunions, fundraisers, and community gatherings',
+      'Honestly? Any event. Worst case: you paid our deposit and own the prints.',
     ],
     notFor: [
       'Events where you want to control 100% of the sales operation yourself',
