@@ -6,13 +6,7 @@ export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
 export default async function Image() {
-  const [vanBuffer, antonBuffer] = await Promise.all([
-    readFile(path.join(process.cwd(), 'public/images/van-illustration.png')),
-    fetch('https://fonts.gstatic.com/s/anton/v25/1Ptgg87LROyAm0Kr4A.woff')
-      .then((r) => r.arrayBuffer())
-      .catch(() => null),
-  ]);
-
+  const vanBuffer = await readFile(path.join(process.cwd(), 'public/images/van-illustration.png'));
   const vanSrc = `data:image/png;base64,${vanBuffer.toString('base64')}`;
 
   return new ImageResponse(
@@ -107,11 +101,6 @@ export default async function Image() {
         </div>
       </div>
     ),
-    {
-      ...size,
-      fonts: antonBuffer
-        ? [{ name: 'Anton', data: antonBuffer, style: 'normal', weight: 400 }]
-        : [],
-    }
+    { ...size }
   );
 }
