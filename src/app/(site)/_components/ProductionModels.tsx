@@ -31,7 +31,6 @@ const MODELS: Model[] = [
     ],
     notFor: [
       'Events where you want to control 100% of the sales operation yourself',
-      'Situations where items need to be available before or long after the event',
     ],
     accent: true,
   },
