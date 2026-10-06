@@ -102,7 +102,7 @@ export default async function Image() {
               fontWeight: 400,
             }}
           >
-            We're not a traditional printer. We're a mobile merch booth.
+            {"We're not a traditional printer. We're a mobile merch booth."}
           </div>
         </div>
       </div>
