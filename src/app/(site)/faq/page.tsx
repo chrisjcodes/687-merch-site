@@ -302,6 +302,11 @@ const FAQ_DATA: FaqSection[] = [
         tags: ['live-events', 'getting-started'],
       },
       {
+        q: 'Can you print additional inventory for me during a slow event?',
+        a: 'Yes — absolutely. If traffic is light and you want to use the time to build finished goods inventory, we can keep the presses running. You\'ll pay the per-item print cost plus the cost of the blank for anything we produce beyond what sells at the event. We can reconcile that against your deposit, so there\'s no separate invoice to manage on the night — it all gets settled in the post-event report.',
+        tags: ['live-events', 'pricing'],
+      },
+      {
         q: 'Who handles payments at the event, and how do I receive my cut?',
         a: 'We run the booth and take all customer payments directly — you don\'t need to staff a register or manage a POS. Your deposit is already paid before the event, so there\'s no invoice waiting for you on the other side.\n\nAfter the event, we compile a full sales report and send you a copy. If sales covered the deposit and generated a split, we remit your share — typically as soon as the following day. If it was a slower night and sales only partially covered the deposit, you receive back whatever we were able to recover. The deposit is your floor, not a debt.\n\nThe only scenario where you\'d receive a bill after the event is if you asked us to do giveaways or purchase items off the booth on behalf of customers — in that case we\'ll invoice you for those separately.',
         tags: ['live-events', 'pricing'],
