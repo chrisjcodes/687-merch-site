@@ -56,55 +56,62 @@ export default function Hero() {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const vanImage = (position: 'mobile' | 'desktop') => (
+    <motion.div
+      initial="hidden"
+      animate={controls}
+      variants={vanVariant}
+      style={{ position: 'relative', width: '100%', height: '100%' }}
+    >
+      <Image
+        src="/images/van-illustration.png"
+        alt="687 Merch mobile production van"
+        fill
+        style={{
+          objectFit: 'contain',
+          objectPosition: position === 'mobile' ? 'center bottom' : 'right bottom',
+        }}
+        priority={position === 'desktop'}
+      />
+    </motion.div>
+  );
+
   return (
     <Box
       ref={sectionRef}
       sx={{
         position: 'relative',
-        height: '100vh',
-        minHeight: '600px',
+        height: { xs: '80vh', md: '100svh' },
+        minHeight: { xs: 0, md: '600px' },
         display: 'flex',
         alignItems: 'center',
         overflow: 'hidden',
         backgroundColor: '#0a0a0a',
       }}
     >
-      {/* Van illustration */}
+      {/* Desktop van — absolutely positioned right side, hidden on mobile */}
       <Box
         sx={{
+          display: { xs: 'none', md: 'block' },
           position: 'absolute',
           bottom: 0,
-          right: { xs: 0, md: '-4%' },
-          left: { xs: 0, md: 'auto' },
-          width: { xs: '100%', md: '62%' },
-          height: { xs: '48%', md: '80%' },
+          right: '-4%',
+          width: '62%',
+          height: '80%',
           pointerEvents: 'none',
           zIndex: 1,
         }}
       >
-        <motion.div
-          initial="hidden"
-          animate={controls}
-          variants={vanVariant}
-          style={{ position: 'relative', width: '100%', height: '100%' }}
-        >
-          <Image
-            src="/images/van-illustration.png"
-            alt="687 Merch mobile production van"
-            fill
-            style={{ objectFit: 'contain', objectPosition: 'center bottom' }}
-            priority
-          />
-        </motion.div>
+        {vanImage('desktop')}
       </Box>
 
-      {/* Text-protection gradient — top-to-bottom on mobile, left-to-right on desktop */}
+      {/* Gradient overlay */}
       <Box
         sx={{
           position: 'absolute',
           inset: 0,
           background: {
-            xs: 'linear-gradient(to bottom, #0a0a0a 0%, #0a0a0a 52%, transparent 78%)',
+            xs: 'linear-gradient(to bottom, #0a0a0a 0%, #0a0a0a 50%, transparent 70%)',
             md: 'linear-gradient(to right, #0a0a0a 0%, #0a0a0a 38%, transparent 58%)',
           },
           zIndex: 2,
@@ -112,10 +119,8 @@ export default function Hero() {
         }}
       />
 
-      <Container
-        maxWidth="lg"
-        sx={{ position: 'relative', zIndex: 3, px: { xs: 3, sm: 4 } }}
-      >
+      {/* Content + mobile van */}
+      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 3, px: { xs: 3, sm: 4 } }}>
         <motion.div initial="hidden" animate={controls} variants={contentVariants}>
           <Box sx={{ maxWidth: { xs: '100%', md: '52%' } }}>
             <motion.div variants={itemVariant}>
@@ -174,6 +179,19 @@ export default function Hero() {
                 </Button>
               </Box>
             </motion.div>
+
+            {/* Mobile van — in-flow directly below buttons, hidden on desktop */}
+            <Box
+              sx={{
+                display: { xs: 'block', md: 'none' },
+                mt: 4,
+                mx: { xs: -3, sm: -4 },
+                height: '50vw',
+                position: 'relative',
+              }}
+            >
+              {vanImage('mobile')}
+            </Box>
           </Box>
         </motion.div>
       </Container>
