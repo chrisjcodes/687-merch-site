@@ -26,6 +26,7 @@ export default async function Image() {
         {/* Van — right side */}
         <img
           src={vanSrc}
+          alt=""
           style={{
             position: 'absolute',
             right: '-2%',
@@ -75,6 +76,8 @@ export default async function Image() {
           </div>
           <div
             style={{
+              display: 'flex',
+              flexDirection: 'column',
               color: '#ffffff',
               fontSize: 88,
               fontWeight: 900,
@@ -84,7 +87,8 @@ export default async function Image() {
               fontFamily: 'Anton, sans-serif',
             }}
           >
-            YOUR MERCH<br />PARTNER.
+            <span>YOUR MERCH</span>
+            <span>PARTNER.</span>
           </div>
           <div
             style={{
