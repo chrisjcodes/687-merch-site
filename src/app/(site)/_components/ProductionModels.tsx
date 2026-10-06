@@ -32,7 +32,6 @@ const MODELS: Model[] = [
       'Sports teams, tournaments, and leagues with a home crowd',
       'Corporate events, offsites, and company milestones',
       'School events, reunions, fundraisers, and community gatherings',
-      'Honestly? Any event. Worst case: you paid our deposit and own the prints.',
     ],
     notFor: [
       'Events where you want to control 100% of the sales operation yourself',
